@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getAllWriting, formatPostDate, type WritingItem } from "@/lib/writing";
@@ -12,26 +13,35 @@ function WritingRow({ item }: { item: WritingItem }) {
   const isExternal = item.type === "external";
   const href = isExternal ? item.href : `/writing/${item.slug}`;
 
-  const titleNode = (
-    <span className="font-serif text-xl leading-snug tracking-tight transition-colors group-hover:text-accent sm:text-2xl">
-      {item.title}
-      {isExternal && (
-        <span aria-hidden className="ml-1 text-base text-muted">
-          ↗
-        </span>
+  const content = (
+    <div className="flex flex-col gap-4 sm:flex-row sm:gap-6">
+      {item.image && (
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded sm:w-44 sm:shrink-0">
+          <Image
+            src={item.image.src}
+            alt={item.image.alt ?? item.title}
+            fill
+            sizes="(min-width: 640px) 176px, 100vw"
+            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+          />
+        </div>
       )}
-    </span>
-  );
-
-  const meta = (
-    <p className="mt-2 font-mono text-sm text-muted">
-      {formatPostDate(item.date)}
-      {isExternal && <> · {item.source}</>}
-    </p>
-  );
-
-  const description = (
-    <p className="mt-3 leading-relaxed text-muted">{item.description}</p>
+      <div className="min-w-0 flex-1">
+        <span className="block font-serif text-xl leading-snug tracking-tight transition-colors group-hover:text-accent sm:text-2xl">
+          {item.title}
+          {isExternal && (
+            <span aria-hidden className="ml-1 text-base text-muted">
+              ↗
+            </span>
+          )}
+        </span>
+        <p className="mt-2 font-mono text-sm text-muted">
+          {formatPostDate(item.date)}
+          {isExternal && <> · {item.source}</>}
+        </p>
+        <p className="mt-3 leading-relaxed text-muted">{item.description}</p>
+      </div>
+    </div>
   );
 
   if (isExternal) {
@@ -42,18 +52,14 @@ function WritingRow({ item }: { item: WritingItem }) {
         rel="noopener noreferrer"
         className="group block"
       >
-        {titleNode}
-        {meta}
-        {description}
+        {content}
       </a>
     );
   }
 
   return (
     <Link href={href} className="group block">
-      {titleNode}
-      {meta}
-      {description}
+      {content}
     </Link>
   );
 }

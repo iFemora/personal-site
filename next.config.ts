@@ -6,6 +6,18 @@ const nextConfig: NextConfig = {
     root: __dirname,
   },
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn-images-1.medium.com",
+      },
+      {
+        protocol: "https",
+        hostname: "miro.medium.com",
+      },
+    ],
+  },
 };
 
 const withMDX = createMDX({});

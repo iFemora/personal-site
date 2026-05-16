@@ -1,9 +1,15 @@
+export type PostImage = {
+  src: string;
+  alt?: string;
+};
+
 export type InternalPost = {
   type: "internal";
   slug: string;
   title: string;
   date: string;
   description: string;
+  image?: PostImage;
   homepageHidden?: boolean;
 };
 
@@ -14,6 +20,7 @@ export type ExternalPost = {
   title: string;
   date: string;
   description: string;
+  image?: PostImage;
   homepageHidden?: boolean;
 };
 
@@ -27,9 +34,13 @@ export const externalPosts: ExternalPost[] = [
     href: "https://medium.com/@iFemora/the-wrong-scoreboard-5267ed9cb2b8",
     source: "Medium",
     title: "The Wrong Scoreboard",
-    date: "2026-04-01",
+    date: "2026-04-09",
     description:
       "On Jannik Sinner, Carlos Alcaraz, and why the debate between craft and efficiency was never the real argument.",
+    image: {
+      src: "https://cdn-images-1.medium.com/max/1024/1*-y43eP1OZ_QsFNudZryaLA.jpeg",
+      alt: "Hero image for The Wrong Scoreboard",
+    },
   },
   {
     type: "external",
@@ -39,6 +50,10 @@ export const externalPosts: ExternalPost[] = [
     date: "2026-03-01",
     description:
       "On dog poop, tennis courts, and the words that reveal a nation's unfinished work.",
+    image: {
+      src: "https://cdn-images-1.medium.com/max/1024/1*U9jTeNq8EwKaweuJch75WQ.png",
+      alt: "Hero image for Go Fetch",
+    },
   },
   {
     type: "external",
@@ -49,6 +64,10 @@ export const externalPosts: ExternalPost[] = [
     date: "2025-08-01",
     description:
       "A field guide for spiral thinkers on thriving where chaos meets coordination, with Lagos as the masterclass.",
+    image: {
+      src: "https://cdn-images-1.medium.com/max/1024/1*n3FcENOJdgPEPPOdK5fbyw.jpeg",
+      alt: "Hero image for Making Sense at the Edges",
+    },
   },
 ];
 
