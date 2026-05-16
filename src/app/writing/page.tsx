@@ -67,7 +67,7 @@ export default function WritingPage() {
         Writing
       </h1>
       <p className="mt-3 font-serif text-xl italic text-muted">
-        Essays from the long way around.
+        On software, cities, tennis, and the spaces where they meet.
       </p>
 
       <hr className="my-12 border-t border-rule" />

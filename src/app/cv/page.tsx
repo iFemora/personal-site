@@ -154,18 +154,16 @@ export default function CVPage() {
       <section>
         <h2 className="font-serif text-2xl tracking-tight">Summary</h2>
         <p className="mt-4 leading-relaxed">
-          Product leader with nine-plus years building and scaling payment
-          platforms, B2B fintech products, and enterprise operational tools
-          across card issuing, payment gateways and processing, and banking
-          (corporate and retail). Track record of shipping high-impact
-          products from zero to scale — including a self-conceptualized
-          micro-payment method that reached $30M+ in annualized volume within
-          twelve months, and a cardholder support platform delivered from
-          concept to production in under five months. Experienced people
-          manager who has hired, mentored, and grown product managers from
-          associate to lead level. Hands-on builder who works directly from
-          codebases and ships prototypes using Claude Code and modern AI
-          tooling.
+          I work in payments because payments is one of the few software
+          domains where the seam between what&apos;s promised and what
+          actually happens is unforgiving. Ten years of it now &mdash; card
+          issuing, payment gateways, corporate banking, and the long tail of
+          operational tools that keep all three running. I&apos;ve hired the
+          people who ran these systems and grown product managers from
+          associate to lead level. I&apos;ve also stayed close enough to the
+          code to ship prototypes myself in Claude Code, which means the CV
+          that follows is less a list of jobs than a record of what
+          I&apos;ve cared about.
         </p>
       </section>
 

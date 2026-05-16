@@ -54,7 +54,7 @@ export default function WorkPage() {
     <main className="mx-auto w-full max-w-[680px] px-6 py-16 sm:py-20">
       <h1 className="font-serif text-5xl tracking-tight sm:text-6xl">Work</h1>
       <p className="mt-3 font-serif text-xl italic text-muted">
-        Five things made, instead of five jobs held.
+        Built, not held.
       </p>
 
       <hr className="my-12 border-t border-rule" />
