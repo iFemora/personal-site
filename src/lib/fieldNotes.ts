@@ -1,3 +1,5 @@
+import fieldNotesData from "@/../content/field-notes.json";
+
 export type FieldNoteAudio = {
   src: string; // path under /public, e.g. "/field-notes/audio/2026-05-16-tennis.m4a"
   title?: string;
@@ -17,13 +19,7 @@ export type FieldNote = {
   links?: FieldNoteLink[];
 };
 
-export const fieldNotes: FieldNote[] = [
-  {
-    id: "welcome",
-    date: "2026-05-16",
-    body: "Field notes is the place I'll put short observations — a sentence, a paragraph, occasionally a voice memo. Lower bar than an essay; higher than X. Some will turn into longer pieces on the writing page; most won't.",
-  },
-];
+export const fieldNotes: FieldNote[] = fieldNotesData as FieldNote[];
 
 export function getFieldNotes(): FieldNote[] {
   return [...fieldNotes].sort(

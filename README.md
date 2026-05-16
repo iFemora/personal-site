@@ -91,54 +91,54 @@ Commit and push.
 ## Add a field note
 
 Field notes (`/field-notes`) are short observations — a sentence, a paragraph,
-or a voice memo. Manifest lives in `src/lib/fieldNotes.ts`.
+or a voice memo. The data lives in **`content/field-notes.json`** (plain JSON
+so the iOS Shortcut can edit it); `src/lib/fieldNotes.ts` reads from it.
 
 ### Text-only note
 
-Append an entry to `fieldNotes`:
+Prepend an entry to the array in `content/field-notes.json`:
 
-```ts
+```json
 {
-  id: "2026-05-20-some-thought",   // unique slug, used as anchor too
-  date: "2026-05-20",
-  body: "The body text. Double newlines\n\nbreak into paragraphs.",
-},
+  "id": "2026-05-20-some-thought",
+  "date": "2026-05-20",
+  "body": "The body text. Double newlines\n\nbreak into paragraphs."
+}
 ```
 
 Commit and push.
 
-### Note with audio (voice memo)
+### Note with audio (voice memo) — manual workflow
 
 1. Record on iPhone Voice Memos.
 2. AirDrop (or save to iCloud Drive) the file to your Mac.
 3. Optionally rename to a slugified name (e.g. `2026-05-20-tennis.m4a`).
 4. Drop the audio file into `public/field-notes/audio/`.
-5. Append an entry to `fieldNotes`:
+5. Prepend an entry to `content/field-notes.json`:
 
-   ```ts
+   ```json
    {
-     id: "2026-05-20-tennis",
-     date: "2026-05-20",
-     audio: {
-       src: "/field-notes/audio/2026-05-20-tennis.m4a",
-       title: "Optional title shown above the player",
+     "id": "2026-05-20-tennis",
+     "date": "2026-05-20",
+     "audio": {
+       "src": "/field-notes/audio/2026-05-20-tennis.m4a",
+       "title": "Optional title shown above the player"
      },
-     body: "Optional accompanying text.",
-     transcript: "Optional plain-text transcript shown in a collapsible.",
-   },
+     "body": "Optional accompanying text.",
+     "transcript": "Optional plain-text transcript shown in a collapsible."
+   }
    ```
 
 6. Commit and push.
 
-The HTML5 `<audio>` element handles M4A in Safari/Chrome/Firefox/Edge. If you
-want maximum compatibility, convert to MP3 (any audio editor or `ffmpeg`).
+The HTML5 `<audio>` element handles M4A in Safari/Chrome/Firefox/Edge.
 
-### Future: phone-only publishing
+### Phone-only workflow (iOS Shortcut)
 
-The current workflow needs a laptop. To skip that, install
-[Working Copy](https://workingcopy.app/) on iOS (one-time ~$25) — full git
-client that lets you commit files (including audio) straight from your phone.
-Or set up an iOS Shortcut that posts to the GitHub Contents API.
+A "Publish field note" Shortcut writes both the audio file and a new manifest
+entry directly to this repo via the GitHub Contents API. Steps to set up are
+documented separately. The Shortcut needs a fine-grained GitHub PAT with
+`Contents: read/write` on this repo only.
 
 ---
 
