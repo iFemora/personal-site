@@ -1,0 +1,17 @@
+export const metadata = {
+  title: "Template (not routed)",
+  date: "1970-01-01",
+  description:
+    "Build-only placeholder so Turbopack can resolve dynamic MDX imports. Not registered in internalPosts, so this file is never reachable through the site.",
+};
+
+# Template
+
+This file exists at `content/writing/_template.mdx` solely so that Turbopack can
+resolve dynamic imports of the form ``await import(`@/../content/writing/${slug}.mdx`)``
+in `src/app/writing/[slug]/page.tsx`. It is intentionally not listed in
+`internalPosts` in `src/lib/writing.ts`, so it has no `/writing/_template`
+route and is never reachable through the site.
+
+Leave this file in place unless you also rewrite the dynamic-import pattern in
+the post route to a static map of slug → MDX module.

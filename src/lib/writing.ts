@@ -19,17 +19,7 @@ export type ExternalPost = {
 
 export type WritingItem = InternalPost | ExternalPost;
 
-export const internalPosts: InternalPost[] = [
-  {
-    type: "internal",
-    slug: "welcome",
-    title: "A placeholder post (so the system works).",
-    date: "2026-05-16",
-    description:
-      "Documentation for the on-site publishing setup. Delete this when you publish your first real essay.",
-    homepageHidden: true,
-  },
-];
+export const internalPosts: InternalPost[] = [];
 
 export const externalPosts: ExternalPost[] = [
   {
