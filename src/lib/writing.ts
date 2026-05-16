@@ -4,6 +4,7 @@ export type InternalPost = {
   title: string;
   date: string;
   description: string;
+  homepageHidden?: boolean;
 };
 
 export type ExternalPost = {
@@ -13,6 +14,7 @@ export type ExternalPost = {
   title: string;
   date: string;
   description: string;
+  homepageHidden?: boolean;
 };
 
 export type WritingItem = InternalPost | ExternalPost;
@@ -25,6 +27,7 @@ export const internalPosts: InternalPost[] = [
     date: "2026-05-16",
     description:
       "Documentation for the on-site publishing setup. Delete this when you publish your first real essay.",
+    homepageHidden: true,
   },
 ];
 
@@ -63,6 +66,12 @@ export function getAllWriting(): WritingItem[] {
   return [...internalPosts, ...externalPosts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
+}
+
+export function getHomepageWriting(limit = 3): WritingItem[] {
+  return getAllWriting()
+    .filter((item) => !item.homepageHidden)
+    .slice(0, limit);
 }
 
 export function getInternalPostBySlug(slug: string): InternalPost | undefined {

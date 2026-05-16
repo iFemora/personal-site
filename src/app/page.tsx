@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getHomepageWriting } from "@/lib/writing";
 
 const workItems = [
   {
@@ -21,23 +22,9 @@ const workItems = [
   },
 ];
 
-const writingItems = [
-  {
-    title: "The Wrong Scoreboard",
-    href: "https://medium.com/@iFemora/the-wrong-scoreboard-5267ed9cb2b8",
-  },
-  {
-    title: "Go Fetch",
-    href: "https://medium.com/@iFemora/go-fetch-6c829f37aa70",
-  },
-  {
-    title:
-      "Making Sense at the Edges: A Field Guide for People Who Think in Spirals",
-    href: "https://medium.com/@iFemora/making-sense-at-the-edges-a-field-guide-for-people-who-think-in-spirals-c26e22298ae4",
-  },
-];
-
 export default function Home() {
+  const writingItems = getHomepageWriting(3);
+
   return (
     <main className="mx-auto w-full max-w-[680px] px-6 py-16 sm:py-20">
       <h1 className="font-serif text-5xl tracking-tight sm:text-6xl">
@@ -94,21 +81,38 @@ export default function Home() {
       <section>
         <h2 className="font-serif text-2xl">Recent writing</h2>
         <ul className="mt-6 space-y-5">
-          {writingItems.map((item) => (
-            <li key={item.href}>
-              <a
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-serif text-lg leading-snug transition-colors hover:text-accent"
-              >
-                {item.title}{" "}
-                <span aria-hidden className="text-sm text-muted">
-                  ↗
-                </span>
-              </a>
-            </li>
-          ))}
+          {writingItems.map((item) => {
+            const isExternal = item.type === "external";
+            const href = isExternal ? item.href : `/writing/${item.slug}`;
+            const titleNode = (
+              <span className="font-serif text-lg leading-snug transition-colors group-hover:text-accent">
+                {item.title}
+                {isExternal && (
+                  <span aria-hidden className="ml-1 text-sm text-muted">
+                    ↗
+                  </span>
+                )}
+              </span>
+            );
+            return (
+              <li key={isExternal ? item.href : item.slug}>
+                {isExternal ? (
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group"
+                  >
+                    {titleNode}
+                  </a>
+                ) : (
+                  <Link href={href} className="group">
+                    {titleNode}
+                  </Link>
+                )}
+              </li>
+            );
+          })}
         </ul>
         <p className="mt-8 text-sm">
           <Link
