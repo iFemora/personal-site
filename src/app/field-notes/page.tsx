@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getFieldNotes, formatFieldNoteDate } from "@/lib/fieldNotes";
+import AudioWaveform from "@/components/AudioWaveform";
 
 export const metadata: Metadata = {
   title: "Notes",
@@ -42,25 +43,11 @@ export default function FieldNotesPage() {
                 {note.audio && (
                   <div className="mt-5">
                     {note.audio.title && (
-                      <p className="mb-2 font-serif italic text-muted">
+                      <p className="mb-3 font-serif italic text-muted">
                         {note.audio.title}
                       </p>
                     )}
-                    <audio
-                      controls
-                      preload="metadata"
-                      src={note.audio.src}
-                      className="w-full"
-                    >
-                      Your browser does not support the audio element.{" "}
-                      <a
-                        href={note.audio.src}
-                        className="text-accent underline underline-offset-4"
-                      >
-                        Download
-                      </a>
-                      .
-                    </audio>
+                    <AudioWaveform src={note.audio.src} />
                   </div>
                 )}
 
