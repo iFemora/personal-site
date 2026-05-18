@@ -22,6 +22,20 @@ function pad2(n: number): string {
   return String(n).padStart(2, "0");
 }
 
+function normalizeBase64(s: string): string {
+  // Strip data URI prefix if present (e.g. "data:audio/m4a;base64,XXXX")
+  let body = s;
+  if (body.startsWith("data:")) {
+    const commaIdx = body.indexOf(",");
+    if (commaIdx >= 0) body = body.slice(commaIdx + 1);
+  }
+  // Remove all whitespace (RFC 2045 Base64 inserts \n every 76 chars; GitHub wants RFC 4648)
+  body = body.replace(/\s+/g, "");
+  // Convert URL-safe alphabet to standard
+  body = body.replace(/-/g, "+").replace(/_/g, "/");
+  return body;
+}
+
 function buildId(now: Date, title: string): { id: string; isoDate: string } {
   const yyyy = now.getFullYear();
   const mm = pad2(now.getMonth() + 1);
@@ -90,6 +104,7 @@ export async function POST(req: NextRequest) {
   // 1. Upload audio file if present
   let audioRelPath: string | undefined;
   if (audioBase64) {
+    const normalizedAudio = normalizeBase64(audioBase64);
     const audioFilename = `${id}.m4a`;
     const audioRepoPath = `${AUDIO_DIR}/${audioFilename}`;
     audioRelPath = `/field-notes/audio/${audioFilename}`;
@@ -105,7 +120,7 @@ export async function POST(req: NextRequest) {
         },
         body: JSON.stringify({
           message: commitMessage,
-          content: audioBase64,
+          content: normalizedAudio,
           branch: BRANCH,
         }),
       }
@@ -114,7 +129,14 @@ export async function POST(req: NextRequest) {
     if (!uploadRes.ok) {
       const detail = await uploadRes.text();
       return NextResponse.json(
-        { error: "audio upload failed", status: uploadRes.status, detail },
+        {
+          error: "audio upload failed",
+          status: uploadRes.status,
+          detail,
+          audioLength: normalizedAudio.length,
+          audioFirst40: normalizedAudio.slice(0, 40),
+          audioLast20: normalizedAudio.slice(-20),
+        },
         { status: 502 }
       );
     }
