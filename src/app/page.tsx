@@ -25,128 +25,180 @@ const workItems = [
   },
 ];
 
+function SectionLabel({ index, label }: { index: string; label: string }) {
+  return (
+    <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
+      <span className="text-accent">{index}</span> — {label}
+    </p>
+  );
+}
+
 export default function Home() {
   const writingItems = getHomepageWriting(3);
 
   return (
-    <main className="mx-auto w-full max-w-[680px] px-6 py-16 sm:py-20">
-      <MaskedLines
-        as="h1"
-        lines={["Femi Siji-Kenneth"]}
-        className="font-serif text-5xl tracking-tight sm:text-6xl"
-      />
-      <div className="mt-3 flex items-center gap-3">
+    <main className="mx-auto w-full max-w-[1100px] px-6 py-16 sm:py-24">
+      {/* Hero */}
+      <div className="relative">
         <MaskedLines
-          as="p"
-          lines={["Thinker. Tinkerer."]}
-          delay={0.18}
-          className="font-serif text-xl italic text-muted"
+          as="h1"
+          lines={[
+            { text: "Femi", className: "wonk" },
+            { text: "Siji-Kenneth", className: "wonk italic text-accent" },
+          ]}
+          className="font-serif text-[clamp(3.5rem,11vw,8rem)] font-medium leading-[0.95] tracking-tight"
         />
-        <Spiral size={22} delay={0.9} className="text-accent" />
+        <div className="mt-6 flex items-center gap-3">
+          <MaskedLines
+            as="p"
+            lines={["Thinker. Tinkerer."]}
+            delay={0.28}
+            className="font-serif text-xl italic text-muted sm:text-2xl"
+          />
+          <Spiral size={24} delay={1.0} className="text-accent" />
+        </div>
+
+        <Reveal immediate delay={0.5}>
+          <p className="mt-6 font-mono text-xs uppercase tracking-[0.18em] text-muted sm:absolute sm:right-0 sm:top-2 sm:mt-0 sm:text-right">
+            Product, payments
+            <br />
+            Toronto, Canada
+          </p>
+        </Reveal>
       </div>
 
-      <DrawnRule className="my-12" immediate delay={0.35} />
+      <DrawnRule className="my-14 sm:my-20" immediate delay={0.45} />
 
-      <Reveal immediate delay={0.45}>
-        <p className="text-base leading-relaxed sm:text-lg">
-          Femi Siji-Kenneth is a product leader in Toronto. He&apos;s built
-          corporate banking platforms across two continents, payment platforms
-          taken into new verticals like airline ticketing, and cardholder
-          support tools shipped from concept to production in months instead
-          of years. Off the clock he plays a lot of tennis, lives with his
-          wife, and writes for the kind of mind that thinks in spirals.
-        </p>
-      </Reveal>
-
-      <DrawnRule className="my-12" />
-
-      <section>
-        <Reveal>
-          <h2 className="font-serif text-2xl">Selected work</h2>
+      {/* Bio */}
+      <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12">
+        <Reveal immediate delay={0.55}>
+          <SectionLabel index="01" label="About" />
         </Reveal>
-        <ul className="mt-6 space-y-5">
-          {workItems.map((item, i) => (
-            <li key={item.href}>
-              <Reveal delay={i * 0.08}>
-                <Link
-                  href={item.href}
-                  className="group flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
-                >
-                  <span className="font-serif text-lg leading-snug transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent">
-                    {item.title}
-                  </span>
-                  <span className="whitespace-nowrap font-mono text-sm text-muted transition-transform duration-300 group-hover:-translate-x-1">
-                    {item.period}
-                  </span>
-                </Link>
-              </Reveal>
-            </li>
-          ))}
-        </ul>
-        <Reveal delay={0.2}>
-          <p className="mt-8 text-sm">
-            <Link
-              href="/work"
-              className="text-accent underline underline-offset-4 hover:no-underline"
-            >
-              See all work →
-            </Link>
+        <Reveal immediate delay={0.6}>
+          <p className="text-lg leading-relaxed sm:text-xl">
+            Femi Siji-Kenneth is a product leader in Toronto. He&apos;s built
+            corporate banking platforms across two continents, payment
+            platforms taken into new verticals like airline ticketing, and
+            cardholder support tools shipped from concept to production in
+            months instead of years. Off the clock he plays a lot of tennis,
+            lives with his wife, and writes for the kind of mind that thinks
+            in spirals.
           </p>
         </Reveal>
       </section>
 
-      <DrawnRule className="my-12" />
+      <DrawnRule className="my-14 sm:my-20" />
 
-      <section>
+      {/* Selected work */}
+      <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-12">
         <Reveal>
-          <h2 className="font-serif text-2xl">Recent writing</h2>
+          <SectionLabel index="02" label="Selected work" />
         </Reveal>
-        <ul className="mt-6 space-y-5">
-          {writingItems.map((item, i) => {
-            const isExternal = item.type === "external";
-            const href = isExternal ? item.href : `/writing/${item.slug}`;
-            const titleNode = (
-              <span className="inline-block font-serif text-lg leading-snug transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent">
-                {item.title}
-                {isExternal && (
-                  <span aria-hidden className="ml-1 text-sm text-muted">
-                    ↗
-                  </span>
-                )}
-              </span>
-            );
-            return (
-              <li key={isExternal ? item.href : item.slug}>
+        <div>
+          <ul className="space-y-8">
+            {workItems.map((item, i) => (
+              <li key={item.href}>
                 <Reveal delay={i * 0.08}>
-                  {isExternal ? (
-                    <a
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group"
+                  <Link
+                    href={item.href}
+                    className="group grid grid-cols-[3rem_1fr] items-baseline gap-4 sm:grid-cols-[3.5rem_1fr_auto] sm:gap-6"
+                  >
+                    <span
+                      aria-hidden
+                      className="font-serif text-3xl italic leading-none text-rule transition-colors duration-300 group-hover:text-accent sm:text-4xl"
                     >
-                      {titleNode}
-                    </a>
-                  ) : (
-                    <Link href={href} className="group">
-                      {titleNode}
-                    </Link>
-                  )}
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-serif text-xl leading-snug transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent sm:text-2xl">
+                      {item.title}
+                    </span>
+                    <span className="col-start-2 whitespace-nowrap font-mono text-xs uppercase tracking-[0.15em] text-muted transition-transform duration-300 group-hover:-translate-x-1 sm:col-start-3">
+                      {item.period}
+                    </span>
+                  </Link>
                 </Reveal>
               </li>
-            );
-          })}
-        </ul>
-        <Reveal delay={0.2}>
-          <p className="mt-8 text-sm">
-            <Link
-              href="/writing"
-              className="text-accent underline underline-offset-4 hover:no-underline"
-            >
-              See all writing →
-            </Link>
-          </p>
+            ))}
+          </ul>
+          <Reveal delay={0.2}>
+            <p className="mt-10">
+              <Link
+                href="/work"
+                className="link-swipe font-mono text-xs uppercase tracking-[0.18em] text-accent"
+              >
+                See all work →
+              </Link>
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      <DrawnRule className="my-14 sm:my-20" />
+
+      {/* Recent writing */}
+      <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-12">
+        <Reveal>
+          <SectionLabel index="03" label="Recent writing" />
         </Reveal>
+        <div>
+          <ul className="space-y-8">
+            {writingItems.map((item, i) => {
+              const isExternal = item.type === "external";
+              const href = isExternal ? item.href : `/writing/${item.slug}`;
+              const inner = (
+                <>
+                  <span
+                    aria-hidden
+                    className="font-serif text-3xl italic leading-none text-rule transition-colors duration-300 group-hover:text-accent sm:text-4xl"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="font-serif text-xl leading-snug transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent sm:text-2xl">
+                    {item.title}
+                    {isExternal && (
+                      <span aria-hidden className="ml-2 text-base text-muted">
+                        ↗
+                      </span>
+                    )}
+                  </span>
+                </>
+              );
+              return (
+                <li key={isExternal ? item.href : item.slug}>
+                  <Reveal delay={i * 0.08}>
+                    {isExternal ? (
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group grid grid-cols-[3rem_1fr] items-baseline gap-4 sm:grid-cols-[3.5rem_1fr] sm:gap-6"
+                      >
+                        {inner}
+                      </a>
+                    ) : (
+                      <Link
+                        href={href}
+                        className="group grid grid-cols-[3rem_1fr] items-baseline gap-4 sm:grid-cols-[3.5rem_1fr] sm:gap-6"
+                      >
+                        {inner}
+                      </Link>
+                    )}
+                  </Reveal>
+                </li>
+              );
+            })}
+          </ul>
+          <Reveal delay={0.2}>
+            <p className="mt-10">
+              <Link
+                href="/writing"
+                className="link-swipe font-mono text-xs uppercase tracking-[0.18em] text-accent"
+              >
+                See all writing →
+              </Link>
+            </p>
+          </Reveal>
+        </div>
       </section>
     </main>
   );

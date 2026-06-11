@@ -1,13 +1,13 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import Reveal from "@/components/motion/Reveal";
 import DrawnRule from "@/components/motion/DrawnRule";
 import MaskedLines from "@/components/motion/MaskedLines";
-import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Five things made, instead of five jobs held. A curated view of the artifacts I've cared about most over the last ten years.",
+    "Five things made, instead of five jobs held. Selected work by Femi Siji-Kenneth.",
 };
 
 type WorkEntry = {
@@ -54,56 +54,79 @@ const entries: WorkEntry[] = [
 
 export default function WorkPage() {
   return (
-    <main className="mx-auto w-full max-w-[680px] px-6 py-16 sm:py-20">
+    <main className="mx-auto w-full max-w-[1100px] px-6 py-16 sm:py-24">
       <MaskedLines
         as="h1"
-        lines={["Work"]}
-        className="font-serif text-5xl tracking-tight sm:text-6xl"
+        lines={[{ text: "Work", className: "wonk" }]}
+        className="font-serif text-[clamp(3.5rem,11vw,8rem)] font-medium leading-[0.95] tracking-tight"
       />
       <MaskedLines
         as="p"
         lines={["Built, not held."]}
         delay={0.18}
-        className="mt-3 font-serif text-xl italic text-muted"
+        className="mt-6 font-serif text-xl italic text-muted sm:text-2xl"
       />
 
-      <DrawnRule className="my-12" immediate delay={0.35} />
+      <DrawnRule className="my-14 sm:my-20" immediate delay={0.35} />
 
-      <Reveal immediate delay={0.45}>
-        <p className="text-base leading-relaxed sm:text-lg">
-          These are the artifacts I&apos;ve cared about most over the last ten
-          years. For the conventional view — roles, dates, every line item —
-          see the{" "}
-          <Link
-            href="/cv"
-            className="text-accent underline underline-offset-4 hover:no-underline"
+      <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12">
+        <Reveal immediate delay={0.45}>
+          <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
+            <span className="text-accent">Index</span> — five artifacts
+          </p>
+        </Reveal>
+        <Reveal immediate delay={0.5}>
+          <p className="text-lg leading-relaxed">
+            These are the artifacts I&apos;ve cared about most over the last
+            ten years. For the conventional view — roles, dates, every line
+            item — see the{" "}
+            <Link href="/cv" className="link-swipe text-accent">
+              long form
+            </Link>
+            .
+          </p>
+        </Reveal>
+      </section>
+
+      <DrawnRule className="my-14 sm:my-20" />
+
+      <div className="space-y-16 sm:space-y-24">
+        {entries.map((entry, i) => (
+          <article
+            key={entry.id}
+            id={entry.id}
+            className="grid scroll-mt-24 gap-6 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12"
           >
-            long form
-          </Link>
-          .
-        </p>
-      </Reveal>
-
-      <div className="mt-12 space-y-12 sm:space-y-16">
-        {entries.map((entry) => (
-          <article key={entry.id} id={entry.id} className="scroll-mt-24">
             <Reveal>
+              <div>
+                <p
+                  aria-hidden
+                  className="wonk font-serif text-6xl italic leading-none text-rule sm:text-7xl"
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <p className="mt-4 font-mono text-xs uppercase tracking-[0.15em] text-muted">
+                  {entry.meta}
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.08}>
               <h2 className="font-serif text-2xl leading-snug tracking-tight sm:text-3xl">
                 {entry.title}
               </h2>
-              <p className="mt-5 leading-relaxed">{entry.body}</p>
-              <p className="mt-4 font-mono text-sm text-muted">{entry.meta}</p>
+              <p className="mt-5 text-lg leading-relaxed">{entry.body}</p>
             </Reveal>
-            <DrawnRule className="mt-12" />
           </article>
         ))}
       </div>
 
+      <DrawnRule className="my-14 sm:my-20" />
+
       <Reveal>
-        <p className="mt-4 text-sm">
+        <p>
           <Link
             href="/cv"
-            className="text-accent underline underline-offset-4 hover:no-underline"
+            className="link-swipe font-mono text-xs uppercase tracking-[0.18em] text-accent"
           >
             Read the long form →
           </Link>

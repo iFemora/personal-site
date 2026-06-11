@@ -27,7 +27,8 @@ export default function CursorDot() {
   useEffect(() => {
     if (reduced) return;
     if (!window.matchMedia("(pointer: fine)").matches) return;
-    setEnabled(true);
+    // Defer so the enable flag flips after hydration, not during the effect pass.
+    const enableTimer = window.setTimeout(() => setEnabled(true), 0);
 
     const move = (e: PointerEvent) => {
       mx.set(e.clientX);
@@ -47,6 +48,7 @@ export default function CursorDot() {
     document.documentElement.addEventListener("pointerleave", leave);
     document.addEventListener("pointerover", over, { passive: true });
     return () => {
+      window.clearTimeout(enableTimer);
       window.removeEventListener("pointermove", move);
       document.documentElement.removeEventListener("pointerleave", leave);
       document.removeEventListener("pointerover", over);

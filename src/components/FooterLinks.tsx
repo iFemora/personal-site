@@ -16,7 +16,7 @@ export default function FooterLinks() {
 
   return (
     <motion.ul
-      className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted"
+      className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs uppercase tracking-[0.18em] text-muted"
       initial={reduced ? "visible" : "hidden"}
       whileInView="visible"
       viewport={{ once: true }}

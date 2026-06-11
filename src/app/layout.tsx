@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Fraunces, Newsreader, IBM_Plex_Mono } from "next/font/google";
 import Nav from "@/components/Nav";
 import FooterLinks from "@/components/FooterLinks";
+import AccentController from "@/components/AccentController";
 import CursorDot from "@/components/motion/CursorDot";
 import SmoothScroll from "@/components/motion/SmoothScroll";
 import "./globals.css";
@@ -10,12 +11,23 @@ const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
   display: "swap",
+  style: ["normal", "italic"],
+  axes: ["SOFT", "WONK", "opsz"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
   display: "swap",
+  style: ["normal", "italic"],
+  axes: ["opsz"],
+});
+
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500"],
 });
 
 const siteUrl =
@@ -50,7 +62,7 @@ export const metadata: Metadata = {
 
 function SiteHeader() {
   return (
-    <header className="mx-auto w-full max-w-[680px] px-6 pt-8 print:hidden">
+    <header className="mx-auto w-full max-w-[1100px] px-6 pt-8 print:hidden">
       <Nav />
     </header>
   );
@@ -58,9 +70,20 @@ function SiteHeader() {
 
 function SiteFooter() {
   return (
-    <footer className="mx-auto w-full max-w-[680px] px-6 pb-12 pt-16 print:hidden">
-      <hr className="mb-6 border-t border-rule" />
-      <FooterLinks />
+    <footer className="mx-auto w-full max-w-[1100px] overflow-hidden px-6 pb-8 pt-24 print:hidden">
+      <hr className="mb-8 border-t border-rule" />
+      <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <FooterLinks />
+        <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
+          Toronto, Canada · 43.65°N, 79.38°W
+        </p>
+      </div>
+      <p
+        aria-hidden
+        className="wordmark-ghost mt-10 select-none whitespace-nowrap font-serif text-[clamp(3rem,9.5vw,7.5rem)] font-semibold leading-none tracking-tight"
+      >
+        Femi Siji-Kenneth
+      </p>
     </footer>
   );
 }
@@ -73,11 +96,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${inter.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${newsreader.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <SmoothScroll>
+          <AccentController />
           <CursorDot />
+          <div aria-hidden className="grain print:hidden" />
           <SiteHeader />
           <div className="flex-1">{children}</div>
           <SiteFooter />

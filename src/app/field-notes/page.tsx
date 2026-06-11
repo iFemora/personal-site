@@ -15,44 +15,48 @@ export default function FieldNotesPage() {
   const notes = getFieldNotes();
 
   return (
-    <main className="mx-auto w-full max-w-[680px] px-6 py-16 sm:py-20">
+    <main className="mx-auto w-full max-w-[1100px] px-6 py-16 sm:py-24">
       <MaskedLines
         as="h1"
-        lines={["Notes"]}
-        className="font-serif text-5xl tracking-tight sm:text-6xl"
+        lines={[{ text: "Notes", className: "wonk" }]}
+        className="font-serif text-[clamp(3.5rem,11vw,8rem)] font-medium leading-[0.95] tracking-tight"
       />
       <MaskedLines
         as="p"
         lines={["Shorter than essays. Often half-finished thoughts."]}
         delay={0.18}
-        className="mt-3 font-serif text-xl italic text-muted"
+        className="mt-6 font-serif text-xl italic text-muted sm:text-2xl"
       />
 
-      <DrawnRule className="my-12" immediate delay={0.35} />
+      <DrawnRule className="my-14 sm:my-20" immediate delay={0.35} />
 
       {notes.length === 0 ? (
         <p className="leading-relaxed text-muted">
           Nothing yet. First note coming soon.
         </p>
       ) : (
-        <ol className="space-y-12 sm:space-y-16">
+        <ol className="space-y-14 sm:space-y-20">
           {notes.map((note, i) => (
             <li key={note.id}>
               <Reveal delay={Math.min(i, 2) * 0.08}>
-              <article id={note.id} className="scroll-mt-24">
-                <p className="font-mono text-sm text-muted">
+              <article
+                id={note.id}
+                className="grid scroll-mt-24 gap-4 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12"
+              >
+                <p className="font-mono text-xs uppercase tracking-[0.15em] text-muted sm:pt-1 sm:text-right">
                   {formatFieldNoteDate(note.date)}
                 </p>
 
+                <div>
                 {note.body &&
                   note.body.split("\n\n").map((para, i) => (
-                    <p key={i} className="mt-4 leading-relaxed">
+                    <p key={i} className="mt-4 text-lg leading-relaxed first:mt-0">
                       {para}
                     </p>
                   ))}
 
                 {note.audio && (
-                  <div className="mt-5">
+                  <div className="mt-5 first:mt-0">
                     {note.audio.title && (
                       <p className="mb-3 font-serif italic text-muted">
                         {note.audio.title}
@@ -93,6 +97,7 @@ export default function FieldNotesPage() {
                     ))}
                   </ul>
                 )}
+                </div>
               </article>
               </Reveal>
             </li>

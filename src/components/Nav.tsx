@@ -15,7 +15,7 @@ export default function Nav() {
   const isHome = pathname === "/";
 
   return (
-    <nav className="flex items-center justify-between gap-6 text-sm">
+    <nav className="flex items-center justify-between gap-6 font-mono text-xs uppercase tracking-[0.18em]">
       <Magnetic strength={0.35}>
         <Link
           href="/"

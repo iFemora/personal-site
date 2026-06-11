@@ -71,35 +71,53 @@ export default function WritingPage() {
   const items = getAllWriting();
 
   return (
-    <main className="mx-auto w-full max-w-[680px] px-6 py-16 sm:py-20">
+    <main className="mx-auto w-full max-w-[1100px] px-6 py-16 sm:py-24">
       <MaskedLines
         as="h1"
-        lines={["Writing"]}
-        className="font-serif text-5xl tracking-tight sm:text-6xl"
+        lines={[{ text: "Writing", className: "wonk" }]}
+        className="font-serif text-[clamp(3.5rem,11vw,8rem)] font-medium leading-[0.95] tracking-tight"
       />
       <MaskedLines
         as="p"
         lines={["On software, cities, tennis, and the spaces where they meet."]}
         delay={0.18}
-        className="mt-3 font-serif text-xl italic text-muted"
+        className="mt-6 font-serif text-xl italic text-muted sm:text-2xl"
       />
 
-      <DrawnRule className="my-12" immediate delay={0.35} />
+      <DrawnRule className="my-14 sm:my-20" immediate delay={0.35} />
 
-      <Reveal immediate delay={0.45}>
-        <p className="text-base leading-relaxed sm:text-lg">
-          A running collection &mdash; some published here, some on Medium. The
-          Medium ones open in a new tab; the local ones live on this site.
-        </p>
-      </Reveal>
+      <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12">
+        <Reveal immediate delay={0.45}>
+          <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
+            <span className="text-accent">Index</span> — {items.length} pieces
+          </p>
+        </Reveal>
+        <Reveal immediate delay={0.5}>
+          <p className="text-lg leading-relaxed">
+            A running collection &mdash; some published here, some on Medium.
+            The Medium ones open in a new tab; the local ones live on this
+            site.
+          </p>
+        </Reveal>
+      </section>
 
-      <ul className="mt-12 space-y-12 sm:space-y-14">
+      <DrawnRule className="my-14 sm:my-20" />
+
+      <ul className="space-y-14 sm:space-y-16">
         {items.map((item, i) => (
           <li
             key={item.type === "external" ? item.href : item.slug}
-            className="border-b border-rule pb-12 last:border-b-0 last:pb-0"
+            className="grid gap-6 border-b border-rule pb-14 last:border-b-0 last:pb-0 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12 sm:pb-16"
           >
             <Reveal delay={Math.min(i, 2) * 0.08}>
+              <p
+                aria-hidden
+                className="wonk hidden font-serif text-6xl italic leading-none text-rule sm:block sm:text-7xl"
+              >
+                {String(i + 1).padStart(2, "0")}
+              </p>
+            </Reveal>
+            <Reveal delay={Math.min(i, 2) * 0.08 + 0.05}>
               <WritingRow item={item} />
             </Reveal>
           </li>

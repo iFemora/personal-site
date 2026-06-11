@@ -1,21 +1,40 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafaf7;
-  --foreground: #1a1a1a;
-  --muted: #6b6b6b;
-  --accent: #8b3a1f;
-  --rule: #e5e5e0;
+  --background: #faf7f0;
+  --foreground: #1f1b16;
+  --muted: #6f675c;
+  --rule: #e2dccf;
+
+  /* One earthy family; each section claims a sibling. */
+  --accent-home: #9a3b1e; /* rust */
+  --accent-work: #2f5d62; /* slate teal */
+  --accent-writing: #5f6e3d; /* moss */
+  --accent-notes: #a4731f; /* ochre */
+  --accent: var(--accent-home);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0f0f10;
-    --foreground: #e8e8e6;
-    --muted: #9b9b98;
-    --accent: #e8997b;
-    --rule: #2a2a2c;
+    --background: #16120e;
+    --foreground: #ece6da;
+    --muted: #9a9183;
+    --rule: #2e2920;
+    --accent-home: #e8997b;
+    --accent-work: #8fc1c6;
+    --accent-writing: #b9c98b;
+    --accent-notes: #ddb56e;
   }
+}
+
+html[data-accent="work"] {
+  --accent: var(--accent-work);
+}
+html[data-accent="writing"] {
+  --accent: var(--accent-writing);
+}
+html[data-accent="notes"] {
+  --accent: var(--accent-notes);
 }
 
 @theme inline {
@@ -25,13 +44,50 @@
   --color-accent: var(--accent);
   --color-rule: var(--rule);
   --font-serif: var(--font-fraunces);
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-newsreader);
+  --font-mono: var(--font-plex-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-newsreader), Georgia, serif;
+}
+
+/* Fraunces' wonk axis: hand-set, slightly irregular letterforms. */
+.wonk {
+  font-variation-settings: "WONK" 1, "SOFT" 0;
+}
+
+/* Marker-swipe hover for inline links: a highlight sweeps in from the left. */
+.link-swipe {
+  background-image: linear-gradient(
+    transparent 58%,
+    color-mix(in srgb, var(--accent) 25%, transparent) 58%
+  );
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  background-position: left;
+  transition: background-size 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-swipe:hover {
+  background-size: 100% 100%;
+}
+
+/* Paper grain over everything — barely there. */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Ghost wordmark in the footer: outlined type, no fill. */
+.wordmark-ghost {
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--muted) 55%, transparent);
 }
 
 @media print {
@@ -45,5 +101,8 @@ body {
     background: #ffffff;
     color: #000000;
     font-size: 10.5pt;
+  }
+  .grain {
+    display: none;
   }
 }
