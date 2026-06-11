@@ -1,4 +1,7 @@
 import Link from "next/link";
+import Reveal from "@/components/motion/Reveal";
+import DrawnRule from "@/components/motion/DrawnRule";
+import MaskedLines from "@/components/motion/MaskedLines";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -52,47 +55,60 @@ const entries: WorkEntry[] = [
 export default function WorkPage() {
   return (
     <main className="mx-auto w-full max-w-[680px] px-6 py-16 sm:py-20">
-      <h1 className="font-serif text-5xl tracking-tight sm:text-6xl">Work</h1>
-      <p className="mt-3 font-serif text-xl italic text-muted">
-        Built, not held.
-      </p>
+      <MaskedLines
+        as="h1"
+        lines={["Work"]}
+        className="font-serif text-5xl tracking-tight sm:text-6xl"
+      />
+      <MaskedLines
+        as="p"
+        lines={["Built, not held."]}
+        delay={0.18}
+        className="mt-3 font-serif text-xl italic text-muted"
+      />
 
-      <hr className="my-12 border-t border-rule" />
+      <DrawnRule className="my-12" immediate delay={0.35} />
 
-      <p className="text-base leading-relaxed sm:text-lg">
-        These are the artifacts I&apos;ve cared about most over the last ten
-        years. For the conventional view — roles, dates, every line item —
-        see the{" "}
-        <Link
-          href="/cv"
-          className="text-accent underline underline-offset-4 hover:no-underline"
-        >
-          long form
-        </Link>
-        .
-      </p>
+      <Reveal immediate delay={0.45}>
+        <p className="text-base leading-relaxed sm:text-lg">
+          These are the artifacts I&apos;ve cared about most over the last ten
+          years. For the conventional view — roles, dates, every line item —
+          see the{" "}
+          <Link
+            href="/cv"
+            className="text-accent underline underline-offset-4 hover:no-underline"
+          >
+            long form
+          </Link>
+          .
+        </p>
+      </Reveal>
 
       <div className="mt-12 space-y-12 sm:space-y-16">
         {entries.map((entry) => (
           <article key={entry.id} id={entry.id} className="scroll-mt-24">
-            <h2 className="font-serif text-2xl leading-snug tracking-tight sm:text-3xl">
-              {entry.title}
-            </h2>
-            <p className="mt-5 leading-relaxed">{entry.body}</p>
-            <p className="mt-4 font-mono text-sm text-muted">{entry.meta}</p>
-            <hr className="mt-12 border-t border-rule" />
+            <Reveal>
+              <h2 className="font-serif text-2xl leading-snug tracking-tight sm:text-3xl">
+                {entry.title}
+              </h2>
+              <p className="mt-5 leading-relaxed">{entry.body}</p>
+              <p className="mt-4 font-mono text-sm text-muted">{entry.meta}</p>
+            </Reveal>
+            <DrawnRule className="mt-12" />
           </article>
         ))}
       </div>
 
-      <p className="mt-4 text-sm">
-        <Link
-          href="/cv"
-          className="text-accent underline underline-offset-4 hover:no-underline"
-        >
-          Read the long form →
-        </Link>
-      </p>
+      <Reveal>
+        <p className="mt-4 text-sm">
+          <Link
+            href="/cv"
+            className="text-accent underline underline-offset-4 hover:no-underline"
+          >
+            Read the long form →
+          </Link>
+        </p>
+      </Reveal>
     </main>
   );
 }

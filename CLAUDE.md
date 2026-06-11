@@ -69,8 +69,20 @@ Locked. Don't change tokens without confirming first.
 **Interaction:**
 - Links always underlined (`underline underline-offset-4`)
 - Hover: color shifts to `text-accent` and underline often removed
-- No page transitions, no fancy animations
 - External links get a small `↗` glyph
+
+**Motion system** (`src/components/motion/`, built on `motion/react` + `lenis`):
+- Philosophy: "quietly alive" — small travel (8–14px), house easing `[0.16, 1, 0.3, 1]`, nothing performs
+- `Reveal` — scroll-triggered fade-rise (or `immediate` for above-the-fold)
+- `DrawnRule` — hairline rules draw themselves left-to-right; use instead of raw `<hr>`
+- `MaskedLines` — type-being-set line reveal for page titles/taglines
+- `Spiral` — the signature mark; draws beside the home tagline ("thinks in spirals")
+- `CursorDot` + `Magnetic` — accent dot trails pointer, nav leans toward it (desktop only)
+- `SmoothScroll` — Lenis momentum scroll, wraps body in layout
+- `src/app/template.tsx` — soft page-entrance transition on route change
+- ALL motion respects `prefers-reduced-motion` (collapses to instant/static)
+- New sections must use these primitives, not ad-hoc animations
+- `/cv` is intentionally static (print-to-PDF page)
 
 ---
 

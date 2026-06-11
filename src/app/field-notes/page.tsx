@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { getFieldNotes, formatFieldNoteDate } from "@/lib/fieldNotes";
 import AudioWaveform from "@/components/AudioWaveform";
+import Reveal from "@/components/motion/Reveal";
+import DrawnRule from "@/components/motion/DrawnRule";
+import MaskedLines from "@/components/motion/MaskedLines";
 
 export const metadata: Metadata = {
   title: "Notes",
@@ -13,12 +16,19 @@ export default function FieldNotesPage() {
 
   return (
     <main className="mx-auto w-full max-w-[680px] px-6 py-16 sm:py-20">
-      <h1 className="font-serif text-5xl tracking-tight sm:text-6xl">Notes</h1>
-      <p className="mt-3 font-serif text-xl italic text-muted">
-        Shorter than essays. Often half-finished thoughts.
-      </p>
+      <MaskedLines
+        as="h1"
+        lines={["Notes"]}
+        className="font-serif text-5xl tracking-tight sm:text-6xl"
+      />
+      <MaskedLines
+        as="p"
+        lines={["Shorter than essays. Often half-finished thoughts."]}
+        delay={0.18}
+        className="mt-3 font-serif text-xl italic text-muted"
+      />
 
-      <hr className="my-12 border-t border-rule" />
+      <DrawnRule className="my-12" immediate delay={0.35} />
 
       {notes.length === 0 ? (
         <p className="leading-relaxed text-muted">
@@ -26,8 +36,9 @@ export default function FieldNotesPage() {
         </p>
       ) : (
         <ol className="space-y-12 sm:space-y-16">
-          {notes.map((note) => (
+          {notes.map((note, i) => (
             <li key={note.id}>
+              <Reveal delay={Math.min(i, 2) * 0.08}>
               <article id={note.id} className="scroll-mt-24">
                 <p className="font-mono text-sm text-muted">
                   {formatFieldNoteDate(note.date)}
@@ -83,6 +94,7 @@ export default function FieldNotesPage() {
                   </ul>
                 )}
               </article>
+              </Reveal>
             </li>
           ))}
         </ol>

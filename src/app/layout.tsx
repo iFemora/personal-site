@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import Nav from "@/components/Nav";
+import FooterLinks from "@/components/FooterLinks";
+import CursorDot from "@/components/motion/CursorDot";
+import SmoothScroll from "@/components/motion/SmoothScroll";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -54,29 +57,10 @@ function SiteHeader() {
 }
 
 function SiteFooter() {
-  const links = [
-    { label: "email", href: "mailto:oluwafemiakinseye@gmail.com" },
-    { label: "linkedin", href: "https://linkedin.com/in/ifemora" },
-    { label: "x", href: "https://x.com/iFemora" },
-    { label: "medium", href: "https://medium.com/@iFemora" },
-    { label: "substack", href: "https://substack.com/@ifemora" },
-  ];
-
   return (
     <footer className="mx-auto w-full max-w-[680px] px-6 pb-12 pt-16 print:hidden">
       <hr className="mb-6 border-t border-rule" />
-      <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
-        {links.map((link) => (
-          <li key={link.label}>
-            <a
-              href={link.href}
-              className="transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <FooterLinks />
     </footer>
   );
 }
@@ -92,9 +76,12 @@ export default function RootLayout({
       className={`${fraunces.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <SiteHeader />
-        <div className="flex-1">{children}</div>
-        <SiteFooter />
+        <SmoothScroll>
+          <CursorDot />
+          <SiteHeader />
+          <div className="flex-1">{children}</div>
+          <SiteFooter />
+        </SmoothScroll>
       </body>
     </html>
   );

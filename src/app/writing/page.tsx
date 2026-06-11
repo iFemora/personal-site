@@ -2,6 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getAllWriting, formatPostDate, type WritingItem } from "@/lib/writing";
+import Reveal from "@/components/motion/Reveal";
+import DrawnRule from "@/components/motion/DrawnRule";
+import MaskedLines from "@/components/motion/MaskedLines";
 
 export const metadata: Metadata = {
   title: "Writing",
@@ -69,27 +72,36 @@ export default function WritingPage() {
 
   return (
     <main className="mx-auto w-full max-w-[680px] px-6 py-16 sm:py-20">
-      <h1 className="font-serif text-5xl tracking-tight sm:text-6xl">
-        Writing
-      </h1>
-      <p className="mt-3 font-serif text-xl italic text-muted">
-        On software, cities, tennis, and the spaces where they meet.
-      </p>
+      <MaskedLines
+        as="h1"
+        lines={["Writing"]}
+        className="font-serif text-5xl tracking-tight sm:text-6xl"
+      />
+      <MaskedLines
+        as="p"
+        lines={["On software, cities, tennis, and the spaces where they meet."]}
+        delay={0.18}
+        className="mt-3 font-serif text-xl italic text-muted"
+      />
 
-      <hr className="my-12 border-t border-rule" />
+      <DrawnRule className="my-12" immediate delay={0.35} />
 
-      <p className="text-base leading-relaxed sm:text-lg">
-        A running collection &mdash; some published here, some on Medium. The
-        Medium ones open in a new tab; the local ones live on this site.
-      </p>
+      <Reveal immediate delay={0.45}>
+        <p className="text-base leading-relaxed sm:text-lg">
+          A running collection &mdash; some published here, some on Medium. The
+          Medium ones open in a new tab; the local ones live on this site.
+        </p>
+      </Reveal>
 
       <ul className="mt-12 space-y-12 sm:space-y-14">
-        {items.map((item) => (
+        {items.map((item, i) => (
           <li
             key={item.type === "external" ? item.href : item.slug}
             className="border-b border-rule pb-12 last:border-b-0 last:pb-0"
           >
-            <WritingRow item={item} />
+            <Reveal delay={Math.min(i, 2) * 0.08}>
+              <WritingRow item={item} />
+            </Reveal>
           </li>
         ))}
       </ul>

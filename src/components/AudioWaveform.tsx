@@ -81,7 +81,7 @@ export default function AudioWaveform({ src }: Props) {
         onClick={togglePlay}
         disabled={!isReady}
         aria-label={isPlaying ? "Pause" : "Play"}
-        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-background transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-50"
+        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-background transition-[opacity,transform] duration-200 hover:opacity-80 active:scale-90 disabled:cursor-not-allowed disabled:opacity-50"
       >
         {isPlaying ? (
           <svg
