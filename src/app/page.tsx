@@ -2,7 +2,9 @@ import Link from "next/link";
 import { getHomepageWriting } from "@/lib/writing";
 import Reveal from "@/components/motion/Reveal";
 import DrawnRule from "@/components/motion/DrawnRule";
-import MaskedLines from "@/components/motion/MaskedLines";
+import ProximityType from "@/components/motion/ProximityType";
+import IdentityFlip from "@/components/motion/IdentityFlip";
+import Highlight from "@/components/motion/Highlight";
 import Spiral from "@/components/motion/Spiral";
 
 const workItems = [
@@ -40,8 +42,7 @@ export default function Home() {
     <main className="mx-auto w-full max-w-[1100px] px-6 py-16 sm:py-24">
       {/* Hero */}
       <div className="relative">
-        <MaskedLines
-          as="h1"
+        <ProximityType
           lines={[
             { text: "Femi", className: "wonk" },
             { text: "Siji-Kenneth", className: "wonk italic text-accent" },
@@ -49,12 +50,13 @@ export default function Home() {
           className="font-serif text-[clamp(3.5rem,11vw,8rem)] font-medium leading-[0.95] tracking-tight"
         />
         <div className="mt-6 flex items-center gap-3">
-          <MaskedLines
-            as="p"
-            lines={["Thinker. Tinkerer."]}
-            delay={0.28}
-            className="font-serif text-xl italic text-muted sm:text-2xl"
-          />
+          <Reveal immediate delay={0.28}>
+            <IdentityFlip
+              first={["Thinker.", "Debater.", "Writer.", "Designer."]}
+              second={["Tinkerer.", "Builder.", "Athlete.", "Photographer."]}
+              className="font-serif text-xl italic text-muted sm:text-2xl"
+            />
+          </Reveal>
           <Spiral size={24} delay={1.0} className="text-accent" />
         </div>
 
@@ -77,12 +79,15 @@ export default function Home() {
         <Reveal immediate delay={0.6}>
           <p className="text-lg leading-relaxed sm:text-xl">
             Femi Siji-Kenneth is a product leader in Toronto. He&apos;s built
-            corporate banking platforms across two continents, payment
-            platforms taken into new verticals like airline ticketing, and
-            cardholder support tools shipped from concept to production in
-            months instead of years. Off the clock he plays a lot of tennis,
-            lives with his wife, and writes for the kind of mind that thinks
-            in spirals.
+            corporate banking platforms across{" "}
+            <Highlight order={0}>two continents</Highlight>, payment
+            platforms taken into new verticals like{" "}
+            <Highlight order={1}>airline ticketing</Highlight>, and cardholder
+            support tools shipped from concept to production in{" "}
+            <Highlight order={2}>months instead of years</Highlight>. Off the
+            clock he plays <Highlight order={3}>a lot of tennis</Highlight>,
+            lives with his wife, and writes for the kind of mind that{" "}
+            <Highlight order={4}>thinks in spirals</Highlight>.
           </p>
         </Reveal>
       </section>

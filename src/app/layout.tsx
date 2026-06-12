@@ -4,7 +4,7 @@ import Nav from "@/components/Nav";
 import FooterLinks from "@/components/FooterLinks";
 import AccentController from "@/components/AccentController";
 import CursorDot from "@/components/motion/CursorDot";
-import SmoothScroll from "@/components/motion/SmoothScroll";
+import BackgroundSpiral from "@/components/motion/BackgroundSpiral";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -99,14 +99,15 @@ export default function RootLayout({
       className={`${fraunces.variable} ${newsreader.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <SmoothScroll>
-          <AccentController />
-          <CursorDot />
-          <div aria-hidden className="grain print:hidden" />
+        <AccentController />
+        <CursorDot />
+        <BackgroundSpiral />
+        <div aria-hidden className="grain print:hidden" />
+        <div className="relative z-10 flex min-h-full flex-1 flex-col">
           <SiteHeader />
           <div className="flex-1">{children}</div>
           <SiteFooter />
-        </SmoothScroll>
+        </div>
       </body>
     </html>
   );

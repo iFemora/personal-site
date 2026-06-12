@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { spiralPath } from "@/lib/spiralPath";
 
 export const alt = "Femi Siji-Kenneth — Thinker. Tinkerer.";
 export const size = { width: 1200, height: 630 };
@@ -15,28 +16,36 @@ export default function OGImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "80px",
-          background: "#FAFAF7",
-          color: "#1A1A1A",
+          background: "#FAF7F0",
+          color: "#1F1B16",
           fontFamily: "serif",
+          position: "relative",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: 64,
-            height: 64,
-            background: "#8B3A1F",
-            color: "#FAFAF7",
-            fontSize: 44,
-            fontWeight: 600,
-            letterSpacing: "-0.04em",
-            borderRadius: 10,
-          }}
+        {/* Ghost spiral, echoing the site's background weather */}
+        <svg
+          width="560"
+          height="560"
+          viewBox="0 0 100 100"
+          fill="none"
+          style={{ position: "absolute", right: -120, top: 40, opacity: 0.07 }}
         >
-          F
-        </div>
+          <path
+            d={spiralPath(3.6, 13, 1.5)}
+            stroke="#9A3B1E"
+            strokeWidth={0.5}
+            strokeLinecap="round"
+          />
+        </svg>
+
+        <svg width="72" height="72" viewBox="0 0 100 100" fill="none">
+          <path
+            d={spiralPath()}
+            stroke="#9A3B1E"
+            strokeWidth={6}
+            strokeLinecap="round"
+          />
+        </svg>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div
@@ -54,7 +63,7 @@ export default function OGImage() {
               marginTop: 16,
               fontSize: 40,
               fontStyle: "italic",
-              color: "#6B6B6B",
+              color: "#6F675C",
             }}
           >
             Thinker. Tinkerer.
@@ -65,7 +74,7 @@ export default function OGImage() {
           style={{
             fontFamily: "monospace",
             fontSize: 22,
-            color: "#6B6B6B",
+            color: "#6F675C",
             display: "flex",
             gap: 16,
           }}

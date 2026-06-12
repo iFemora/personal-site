@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { spiralPath } from "@/lib/spiralPath";
 
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
@@ -13,16 +14,18 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#8B3A1F",
-          color: "#FAFAF7",
-          fontSize: 22,
-          fontFamily: "serif",
-          fontWeight: 600,
-          letterSpacing: "-0.04em",
-          borderRadius: 6,
+          background: "#FAF7F0",
+          borderRadius: 7,
         }}
       >
-        F
+        <svg width="26" height="26" viewBox="0 0 100 100" fill="none">
+          <path
+            d={spiralPath()}
+            stroke="#9A3B1E"
+            strokeWidth={7}
+            strokeLinecap="round"
+          />
+        </svg>
       </div>
     ),
     { ...size }

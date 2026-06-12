@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Magnetic from "@/components/motion/Magnetic";
+import { spiralPath } from "@/lib/spiralPath";
 
 const items = [
   { href: "/work", label: "Work" },
@@ -21,9 +22,23 @@ export default function Nav() {
           href="/"
           aria-label="Home"
           aria-current={isHome ? "page" : undefined}
-          className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-accent font-serif text-base font-semibold leading-none tracking-tight text-background transition-opacity hover:opacity-80"
+          className="group inline-flex h-9 w-9 items-center justify-center text-accent"
         >
-          F
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 100 100"
+            fill="none"
+            aria-hidden
+            className="transition-transform duration-700 ease-out group-hover:rotate-180"
+          >
+            <path
+              d={spiralPath()}
+              stroke="currentColor"
+              strokeWidth={5}
+              strokeLinecap="round"
+            />
+          </svg>
         </Link>
       </Magnetic>
 

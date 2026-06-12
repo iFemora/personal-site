@@ -77,9 +77,14 @@ Locked. Don't change tokens without confirming first.
 - `DrawnRule` — hairline rules draw themselves left-to-right; use instead of raw `<hr>`
 - `MaskedLines` — type-being-set line reveal for page titles/taglines
 - `Spiral` — the signature mark; draws beside the home tagline ("thinks in spirals")
+- `BackgroundSpiral` — huge ghost spiral behind the page; rotates with scroll, drifts toward cursor
+- `ProximityType` — hero type that breathes under the cursor (per-letter Fraunces variable axes)
+- `IdentityFlip` — tagline words roll through Femi's identities on hover/tap
+- `Highlight` — marker-swipe over key phrases, draws on scroll into view
 - `CursorDot` + `Magnetic` — accent dot trails pointer, nav leans toward it (desktop only)
-- `SmoothScroll` — Lenis momentum scroll, wraps body in layout
 - `src/app/template.tsx` — soft page-entrance transition on route change
+- NO scroll-hijacking: Lenis was added and removed (Femi found it laggy). Never re-add smooth-scroll libraries.
+- The spiral (src/lib/spiralPath.ts) IS the logo — favicon, apple-icon, OG image, nav mark all use it. No F-in-a-box.
 - ALL motion respects `prefers-reduced-motion` (collapses to instant/static)
 - New sections must use these primitives, not ad-hoc animations
 - `/cv` is intentionally static (print-to-PDF page)
