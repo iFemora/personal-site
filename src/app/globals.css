@@ -93,8 +93,11 @@ body {
   height: 200%;
   z-index: 60;
   pointer-events: none;
-  opacity: 0.07;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  /* Blend, don't float: overlay makes the noise bite into the page's
+     lights and darks like real film, instead of sitting on top of it. */
+  mix-blend-mode: overlay;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   animation: film-grain 1.6s steps(8) infinite;
 }
 
@@ -134,10 +137,12 @@ body {
   }
 }
 
-/* Grain reads weaker on dark paper — give it more presence there. */
+/* On dark paper, overlay grain reads weaker — soft-light keeps it
+   present without crushing the blacks, and a touch more opacity. */
 @media (prefers-color-scheme: dark) {
   .grain {
-    opacity: 0.11;
+    mix-blend-mode: soft-light;
+    opacity: 0.65;
   }
 }
 
