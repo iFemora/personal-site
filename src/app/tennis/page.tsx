@@ -39,8 +39,9 @@ export default function TennisPage() {
         </Reveal>
         <Reveal immediate delay={0.5}>
           <p className="text-lg leading-relaxed">
-            Match notes, clips, and photographs from the court. Played often,
-            mastered never.
+            Match notes, clips, and photos from the court. I introduce myself
+            as a part-time product manager and a full-time tennis enthusiast
+            &mdash; even in interviews. The audacity.
           </p>
         </Reveal>
       </section>

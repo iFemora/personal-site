@@ -22,7 +22,7 @@ export default function GalleryPage() {
       />
       <MaskedLines
         as="p"
-        lines={["A record of looking."]}
+        lines={["Proof I go outside."]}
         delay={0.18}
         className="mt-6 font-serif text-xl italic text-muted sm:text-2xl"
       />
@@ -38,8 +38,10 @@ export default function GalleryPage() {
         </Reveal>
         <Reveal immediate delay={0.5}>
           <p className="text-lg leading-relaxed">
-            Photographs sit muted until you look at them properly &mdash;
-            hover to bring one back to color, click to see it full.
+            Every frame sits faded until you give it some attention &mdash;
+            hover to bring the color back, click to see it full. Real
+            photographs are on their way; these frames are keeping the seats
+            warm.
           </p>
         </Reveal>
       </section>
