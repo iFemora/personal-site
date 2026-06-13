@@ -54,6 +54,7 @@ const entries: WorkEntry[] = [
 ];
 
 export default function WorkPage() {
+  const total = String(entries.length).padStart(2, "0");
   return (
     <main className="mx-auto w-full max-w-[1100px] px-6 py-16 sm:py-24">
       <ProximityType
@@ -105,7 +106,10 @@ export default function WorkPage() {
                 >
                   {String(i + 1).padStart(2, "0")}
                 </p>
-                <p className="mt-4 font-mono text-xs uppercase tracking-[0.15em] text-muted">
+                <p className="mt-2 font-mono text-xs uppercase tracking-[0.2em] text-muted">
+                  No. {String(i + 1).padStart(2, "0")} / {total}
+                </p>
+                <p className="mt-3 font-mono text-xs uppercase tracking-[0.15em] text-muted">
                   {entry.meta}
                 </p>
               </div>

@@ -5,6 +5,7 @@ import FooterLinks from "@/components/FooterLinks";
 import AccentController from "@/components/AccentController";
 import CursorDot from "@/components/motion/CursorDot";
 import BackgroundSpiral from "@/components/motion/BackgroundSpiral";
+import { CursorFieldProvider } from "@/components/motion/CursorField";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -111,15 +112,18 @@ export default function RootLayout({
       className={`${fraunces.variable} ${newsreader.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <AccentController />
-        <CursorDot />
-        <BackgroundSpiral />
-        <div aria-hidden className="grain print:hidden" />
-        <div className="relative z-10 flex min-h-full flex-1 flex-col">
-          <SiteHeader />
-          <div className="flex-1">{children}</div>
-          <SiteFooter />
-        </div>
+        <CursorFieldProvider>
+          <AccentController />
+          <CursorDot />
+          <div aria-hidden className="accent-wash print:hidden" />
+          <BackgroundSpiral />
+          <div aria-hidden className="grain print:hidden" />
+          <div className="relative z-10 flex min-h-full flex-1 flex-col">
+            <SiteHeader />
+            <div className="flex-1">{children}</div>
+            <SiteFooter />
+          </div>
+        </CursorFieldProvider>
       </body>
     </html>
   );

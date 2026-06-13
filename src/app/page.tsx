@@ -84,8 +84,8 @@ export default function Home() {
             of it: card issuing, banking across{" "}
             <Highlight order={1}>two continents</Highlight>, a micro-payment
             idea that grew into{" "}
-            <Highlight order={2}>tens of millions</Highlight> before I&apos;d
-            finished pitching it. I still{" "}
+            <Highlight order={2}>tens of millions</Highlight>{" "}
+            before I&apos;d finished pitching it. I still{" "}
             <Highlight order={3}>read the codebase</Highlight>. Off the clock
             I play a lot of tennis &mdash; badly, often &mdash; and write for
             minds that <Highlight order={4}>think in spirals</Highlight>.

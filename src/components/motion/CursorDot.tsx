@@ -4,40 +4,44 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import {
   motion,
-  useMotionValue,
   useSpring,
+  useTransform,
+  useMotionValueEvent,
   useReducedMotion,
 } from "motion/react";
+import { useCursorField } from "./CursorField";
 
 /**
- * A small accent dot that trails the pointer and grows over
- * interactive elements. Renders nothing on touch devices and
- * for users who prefer reduced motion. The system cursor stays.
+ * A small accent dot that trails the pointer, grows over interactive
+ * elements, and puffs slightly when you flick fast. Position and speed
+ * come from the shared cursor field. Touch / reduced-motion: renders
+ * nothing. The system cursor stays.
  */
 export default function CursorDot() {
   const reduced = useReducedMotion();
   const pathname = usePathname();
   const isTennis = pathname.startsWith("/tennis");
+  const { x: fx, y: fy, speed } = useCursorField();
+
   const [enabled, setEnabled] = useState(false);
   const [hoveringLink, setHoveringLink] = useState(false);
   const [visible, setVisible] = useState(false);
 
-  const mx = useMotionValue(-100);
-  const my = useMotionValue(-100);
-  const x = useSpring(mx, { stiffness: 400, damping: 40, mass: 0.6 });
-  const y = useSpring(my, { stiffness: 400, damping: 40, mass: 0.6 });
+  const x = useSpring(fx, { stiffness: 400, damping: 40, mass: 0.6 });
+  const y = useSpring(fy, { stiffness: 400, damping: 40, mass: 0.6 });
+  // Flick puff: a fast move briefly swells the dot.
+  const flickScale = useTransform(speed, [0, 1], [1, 1.6]);
+
+  // First pointer movement reveals the dot.
+  useMotionValueEvent(fx, "change", () => {
+    if (!visible) setVisible(true);
+  });
 
   useEffect(() => {
     if (reduced) return;
     if (!window.matchMedia("(pointer: fine)").matches) return;
-    // Defer so the enable flag flips after hydration, not during the effect pass.
     const enableTimer = window.setTimeout(() => setEnabled(true), 0);
 
-    const move = (e: PointerEvent) => {
-      mx.set(e.clientX);
-      my.set(e.clientY);
-      setVisible(true);
-    };
     const leave = () => setVisible(false);
     const over = (e: Event) => {
       const t = e.target;
@@ -47,18 +51,18 @@ export default function CursorDot() {
       );
     };
 
-    window.addEventListener("pointermove", move, { passive: true });
     document.documentElement.addEventListener("pointerleave", leave);
     document.addEventListener("pointerover", over, { passive: true });
     return () => {
       window.clearTimeout(enableTimer);
-      window.removeEventListener("pointermove", move);
       document.documentElement.removeEventListener("pointerleave", leave);
       document.removeEventListener("pointerover", over);
     };
-  }, [reduced, mx, my]);
+  }, [reduced]);
 
   if (!enabled) return null;
+
+  const size = hoveringLink ? 34 : isTennis ? 12 : 8;
 
   return (
     <motion.div
@@ -69,10 +73,11 @@ export default function CursorDot() {
         y,
         translateX: "-50%",
         translateY: "-50%",
+        scale: reduced ? 1 : flickScale,
       }}
       animate={{
-        width: hoveringLink ? 34 : isTennis ? 12 : 8,
-        height: hoveringLink ? 34 : isTennis ? 12 : 8,
+        width: size,
+        height: size,
         opacity: visible ? (hoveringLink ? 0.25 : isTennis ? 0.85 : 0.6) : 0,
       }}
       transition={{ duration: 0.25, ease: "easeOut" }}

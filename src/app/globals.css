@@ -84,6 +84,49 @@ body {
   background-size: 100% 100%;
 }
 
+/* Accent atmosphere: a faint wash of the section's accent, breathing
+   slowly. Each page's paper carries a breath of its own color; the tint
+   swaps with --accent on route change. */
+.accent-wash {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    115% 80% at 50% 0%,
+    color-mix(in srgb, var(--accent) 10%, transparent),
+    transparent 55%
+  );
+  animation: accent-breathe 9s ease-in-out infinite;
+}
+
+@keyframes accent-breathe {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .accent-wash {
+    background: radial-gradient(
+      115% 80% at 50% 0%,
+      color-mix(in srgb, var(--accent) 14%, transparent),
+      transparent 55%
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accent-wash {
+    animation: none;
+    opacity: 0.8;
+  }
+}
+
 /* Film grain over everything — barely there, and it flickers like a
    projected print. Oversized so the jitter never shows an edge. */
 .grain {
