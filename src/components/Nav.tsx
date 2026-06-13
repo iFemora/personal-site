@@ -6,6 +6,7 @@ import Magnetic from "@/components/motion/Magnetic";
 import { spiralPath } from "@/lib/spiralPath";
 
 const items = [
+  { href: "/about", label: "About" },
   { href: "/work", label: "Work" },
   { href: "/writing", label: "Writing" },
   { href: "/field-notes", label: "Notes" },

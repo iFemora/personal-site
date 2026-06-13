@@ -36,6 +36,7 @@ operations (deleting files, rewriting history, changing DNS).
 
 ```
 /                       Home — hero, bio, 3 work teasers, 3 writing teasers, footer
+/about                  Life timeline — "how I got here", dated beats, duotone-ready photos
 /work                   5 artifact-first case cards
 /cv                     Long-form designed résumé with print-to-PDF button
 /writing                Unified index of Medium pieces + on-site MDX posts
@@ -54,6 +55,11 @@ earthy family in `globals.css`.
 **Tennis log publishing:** prepend to `content/tennis.json` —
 `{ id, date, title?, body?, image?: {src, alt, caption?, width, height}, video?: {src, poster?, caption?} }`.
 Media files go in `public/tennis/`.
+
+**About timeline publishing:** edit `content/about-timeline.json` —
+`{ id, year, title, caption?, image?: {src, alt} }`. Sorted ascending by
+year ("Now" / non-numeric sort last). Photos (in `public/about/`) render
+duotone and flood to color on hover, matching the gallery treatment.
 
 **Gallery publishing:** add to `content/gallery.json` —
 `{ id, src, alt, caption?, location?, date?, width, height }`. Image files go
