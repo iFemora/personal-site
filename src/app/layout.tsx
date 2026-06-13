@@ -71,7 +71,19 @@ function SiteHeader() {
 function SiteFooter() {
   return (
     <footer className="mx-auto w-full max-w-[1100px] overflow-hidden px-6 pb-8 pt-24 print:hidden">
-      <hr className="mb-8 border-t border-rule" />
+      <p className="max-w-[640px] font-serif text-2xl leading-snug tracking-tight sm:text-3xl">
+        Building something in the{" "}
+        <s className="text-muted">intersection</s>{" "}
+        <span className="italic text-accent">messy middle</span> of product
+        and payments? Or just want to argue about tennis?{" "}
+        <a
+          href="mailto:oluwafemiakinseye@gmail.com"
+          className="link-swipe whitespace-nowrap text-accent"
+        >
+          Say hello →
+        </a>
+      </p>
+      <hr className="mb-8 mt-12 border-t border-rule" />
       <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <FooterLinks />
         <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">

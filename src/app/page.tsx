@@ -78,16 +78,17 @@ export default function Home() {
         </Reveal>
         <Reveal immediate delay={0.6}>
           <p className="text-lg leading-relaxed sm:text-xl">
-            Femi Siji-Kenneth is a product leader in Toronto. He&apos;s built
-            corporate banking platforms across{" "}
-            <Highlight order={0}>two continents</Highlight>, payment
-            platforms taken into new verticals like{" "}
-            <Highlight order={1}>airline ticketing</Highlight>, and cardholder
-            support tools shipped from concept to production in{" "}
-            <Highlight order={2}>months instead of years</Highlight>. Off the
-            clock he plays <Highlight order={3}>a lot of tennis</Highlight>,
-            lives with his wife, and writes for the kind of mind that{" "}
-            <Highlight order={4}>thinks in spirals</Highlight>.
+            I build payment software &mdash; the kind where the gap between
+            what you promised and what actually happens to someone&apos;s
+            money is <Highlight order={0}>unforgiving</Highlight>. Ten years
+            of it: card issuing, banking across{" "}
+            <Highlight order={1}>two continents</Highlight>, a micro-payment
+            idea that grew into{" "}
+            <Highlight order={2}>tens of millions</Highlight> before I&apos;d
+            finished pitching it. I still{" "}
+            <Highlight order={3}>read the codebase</Highlight>. Off the clock
+            I play a lot of tennis &mdash; badly, often &mdash; and write for
+            minds that <Highlight order={4}>think in spirals</Highlight>.
           </p>
         </Reveal>
       </section>
