@@ -5,6 +5,7 @@ import { getAllWriting, formatPostDate, type WritingItem } from "@/lib/writing";
 import Reveal from "@/components/motion/Reveal";
 import DrawnRule from "@/components/motion/DrawnRule";
 import MaskedLines from "@/components/motion/MaskedLines";
+import ProximityType from "@/components/motion/ProximityType";
 
 export const metadata: Metadata = {
   title: "Writing",
@@ -72,8 +73,7 @@ export default function WritingPage() {
 
   return (
     <main className="mx-auto w-full max-w-[1100px] px-6 py-16 sm:py-24">
-      <MaskedLines
-        as="h1"
+      <ProximityType
         lines={[{ text: "Writing", className: "wonk" }]}
         className="font-serif text-[clamp(3.5rem,11vw,8rem)] font-medium leading-[0.95] tracking-tight"
       />

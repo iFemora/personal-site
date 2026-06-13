@@ -1,0 +1,62 @@
+[
+  {
+    "id": "ph-01",
+    "src": "/gallery/ph-01.svg",
+    "alt": "Placeholder frame 01",
+    "caption": "Placeholder — replace with a real photograph",
+    "location": "Toronto",
+    "date": "2026",
+    "width": 800,
+    "height": 1000
+  },
+  {
+    "id": "ph-02",
+    "src": "/gallery/ph-02.svg",
+    "alt": "Placeholder frame 02",
+    "caption": "Placeholder — replace with a real photograph",
+    "location": "Toronto",
+    "date": "2026",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "ph-03",
+    "src": "/gallery/ph-03.svg",
+    "alt": "Placeholder frame 03",
+    "caption": "Placeholder — replace with a real photograph",
+    "location": "Toronto",
+    "date": "2026",
+    "width": 800,
+    "height": 800
+  },
+  {
+    "id": "ph-04",
+    "src": "/gallery/ph-04.svg",
+    "alt": "Placeholder frame 04",
+    "caption": "Placeholder — replace with a real photograph",
+    "location": "Toronto",
+    "date": "2026",
+    "width": 900,
+    "height": 1200
+  },
+  {
+    "id": "ph-05",
+    "src": "/gallery/ph-05.svg",
+    "alt": "Placeholder frame 05",
+    "caption": "Placeholder — replace with a real photograph",
+    "location": "Toronto",
+    "date": "2026",
+    "width": 1200,
+    "height": 900
+  },
+  {
+    "id": "ph-06",
+    "src": "/gallery/ph-06.svg",
+    "alt": "Placeholder frame 06",
+    "caption": "Placeholder — replace with a real photograph",
+    "location": "Toronto",
+    "date": "2026",
+    "width": 800,
+    "height": 1100
+  }
+]

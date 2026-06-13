@@ -4,6 +4,7 @@ import AudioWaveform from "@/components/AudioWaveform";
 import Reveal from "@/components/motion/Reveal";
 import DrawnRule from "@/components/motion/DrawnRule";
 import MaskedLines from "@/components/motion/MaskedLines";
+import ProximityType from "@/components/motion/ProximityType";
 
 export const metadata: Metadata = {
   title: "Notes",
@@ -16,8 +17,7 @@ export default function FieldNotesPage() {
 
   return (
     <main className="mx-auto w-full max-w-[1100px] px-6 py-16 sm:py-24">
-      <MaskedLines
-        as="h1"
+      <ProximityType
         lines={[{ text: "Notes", className: "wonk" }]}
         className="font-serif text-[clamp(3.5rem,11vw,8rem)] font-medium leading-[0.95] tracking-tight"
       />

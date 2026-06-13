@@ -7,6 +7,8 @@ function accentFor(pathname: string): string {
   if (pathname.startsWith("/work") || pathname.startsWith("/cv")) return "work";
   if (pathname.startsWith("/writing")) return "writing";
   if (pathname.startsWith("/field-notes")) return "notes";
+  if (pathname.startsWith("/tennis")) return "tennis";
+  if (pathname.startsWith("/gallery")) return "gallery";
   return "home";
 }
 

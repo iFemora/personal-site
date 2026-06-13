@@ -9,6 +9,8 @@ const items = [
   { href: "/work", label: "Work" },
   { href: "/writing", label: "Writing" },
   { href: "/field-notes", label: "Notes" },
+  { href: "/tennis", label: "Tennis" },
+  { href: "/gallery", label: "Gallery" },
 ];
 
 export default function Nav() {
@@ -42,7 +44,7 @@ export default function Nav() {
         </Link>
       </Magnetic>
 
-      <div className="flex gap-6">
+      <div className="flex flex-wrap gap-x-4 gap-y-1 sm:gap-x-6">
         {items.map((item) => {
           const isActive =
             pathname === item.href || pathname.startsWith(`${item.href}/`);

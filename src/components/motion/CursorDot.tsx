@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import {
   motion,
   useMotionValue,
@@ -15,6 +16,8 @@ import {
  */
 export default function CursorDot() {
   const reduced = useReducedMotion();
+  const pathname = usePathname();
+  const isTennis = pathname.startsWith("/tennis");
   const [enabled, setEnabled] = useState(false);
   const [hoveringLink, setHoveringLink] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -68,11 +71,36 @@ export default function CursorDot() {
         translateY: "-50%",
       }}
       animate={{
-        width: hoveringLink ? 34 : 8,
-        height: hoveringLink ? 34 : 8,
-        opacity: visible ? (hoveringLink ? 0.18 : 0.6) : 0,
+        width: hoveringLink ? 34 : isTennis ? 12 : 8,
+        height: hoveringLink ? 34 : isTennis ? 12 : 8,
+        opacity: visible ? (hoveringLink ? 0.25 : isTennis ? 0.85 : 0.6) : 0,
       }}
       transition={{ duration: 0.25, ease: "easeOut" }}
-    />
+    >
+      {isTennis && (
+        <svg
+          viewBox="0 0 100 100"
+          fill="none"
+          className="h-full w-full"
+          aria-hidden
+        >
+          {/* Tennis-ball seams, visible once the dot grows. */}
+          <path
+            d="M22,7 C44,30 44,70 22,93"
+            stroke="var(--background)"
+            strokeWidth={7}
+            strokeLinecap="round"
+            opacity={0.9}
+          />
+          <path
+            d="M78,7 C56,30 56,70 78,93"
+            stroke="var(--background)"
+            strokeWidth={7}
+            strokeLinecap="round"
+            opacity={0.9}
+          />
+        </svg>
+      )}
+    </motion.div>
   );
 }

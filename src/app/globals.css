@@ -11,6 +11,8 @@
   --accent-work: #2f5d62; /* slate teal */
   --accent-writing: #5f6e3d; /* moss */
   --accent-notes: #a4731f; /* ochre */
+  --accent-tennis: #7d8c26; /* optic chartreuse, muted to clay-court light */
+  --accent-gallery: #6e5747; /* umber — darkroom sepia */
   --accent: var(--accent-home);
 }
 
@@ -24,6 +26,8 @@
     --accent-work: #8fc1c6;
     --accent-writing: #b9c98b;
     --accent-notes: #ddb56e;
+    --accent-tennis: #d6e25e; /* ball under floodlights */
+    --accent-gallery: #c9ae96;
   }
 }
 
@@ -35,6 +39,12 @@ html[data-accent="writing"] {
 }
 html[data-accent="notes"] {
   --accent: var(--accent-notes);
+}
+html[data-accent="tennis"] {
+  --accent: var(--accent-tennis);
+}
+html[data-accent="gallery"] {
+  --accent: var(--accent-gallery);
 }
 
 @theme inline {
@@ -74,14 +84,54 @@ body {
   background-size: 100% 100%;
 }
 
-/* Paper grain over everything — barely there. */
+/* Film grain over everything — barely there, and it flickers like a
+   projected print. Oversized so the jitter never shows an edge. */
 .grain {
   position: fixed;
-  inset: 0;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
   z-index: 60;
   pointer-events: none;
-  opacity: 0.045;
+  opacity: 0.05;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: film-grain 1.6s steps(8) infinite;
+}
+
+@keyframes film-grain {
+  0% {
+    transform: translate(0, 0);
+  }
+  12.5% {
+    transform: translate(-2%, 1.4%);
+  }
+  25% {
+    transform: translate(1.2%, -1.8%);
+  }
+  37.5% {
+    transform: translate(-1.6%, -1.1%);
+  }
+  50% {
+    transform: translate(1.8%, 1.2%);
+  }
+  62.5% {
+    transform: translate(-1.1%, 1.9%);
+  }
+  75% {
+    transform: translate(1.5%, -1.3%);
+  }
+  87.5% {
+    transform: translate(-1.9%, -0.8%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain {
+    animation: none;
+  }
 }
 
 /* Ghost wordmark in the footer: outlined type, no fill. */

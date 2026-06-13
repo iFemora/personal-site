@@ -41,8 +41,24 @@ operations (deleting files, rewriting history, changing DNS).
 /writing                Unified index of Medium pieces + on-site MDX posts
 /writing/[slug]         Individual MDX post
 /field-notes            Short observations + voice memos
+/tennis                 Tennis log — match notes, photos, video clips
+/gallery                Contact-sheet photo gallery (duotone → color hover, lightbox)
 /api/field-notes        POST endpoint hit by the iOS Shortcut for phone publishing
 ```
+
+**Per-page accents** (html[data-accent], set by `AccentController`):
+home rust · work/cv slate-teal · writing moss · notes ochre · tennis muted
+chartreuse · gallery umber. New sections claim the next sibling from the
+earthy family in `globals.css`.
+
+**Tennis log publishing:** prepend to `content/tennis.json` —
+`{ id, date, title?, body?, image?: {src, alt, caption?, width, height}, video?: {src, poster?, caption?} }`.
+Media files go in `public/tennis/`.
+
+**Gallery publishing:** add to `content/gallery.json` —
+`{ id, src, alt, caption?, location?, date?, width, height }`. Image files go
+in `public/gallery/`. Current frames are labelled placeholders awaiting real
+photographs.
 
 ---
 
