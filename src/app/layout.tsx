@@ -4,7 +4,7 @@ import Nav from "@/components/Nav";
 import FooterLinks from "@/components/FooterLinks";
 import AccentController from "@/components/AccentController";
 import CursorDot from "@/components/motion/CursorDot";
-import BackgroundScene from "@/components/motion/BackgroundScene";
+import BackgroundSpiral from "@/components/motion/BackgroundSpiral";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -101,7 +101,7 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col">
         <AccentController />
         <CursorDot />
-        <BackgroundScene />
+        <BackgroundSpiral />
         <div aria-hidden className="grain print:hidden" />
         <div className="relative z-10 flex min-h-full flex-1 flex-col">
           <SiteHeader />
