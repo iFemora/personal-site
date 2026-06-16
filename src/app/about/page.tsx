@@ -38,15 +38,23 @@ export default function AboutPage() {
         </Reveal>
         <Reveal immediate delay={0.5}>
           <p className="text-lg leading-relaxed">
-            I&apos;m most interested in the seam between what software
-            promises and what actually happens to a person on the other side
-            of it. That&apos;s why I&apos;ve spent a decade in payments and
-            banking, why I still read the codebase, and why I write. The
-            résumé&apos;s on the{" "}
+            I build products people love &mdash; in payments, in banking, in
+            agriculture. The throughline was never the industry; it&apos;s the
+            tinkering. I worry an idea until I love it, then keep at it until
+            other people do too. Twice that turned into a company of my own
+            &mdash; I&apos;m between ventures now, not done with them.
+          </p>
+          <p className="mt-5 text-lg leading-relaxed">
+            Work has never been the whole story, though. I play a lot of
+            tennis &mdash; badly, often, happily. I write for minds that think
+            in spirals. I read more religion and philosophy than is strictly
+            useful, make a little art, and I&apos;ll still argue almost
+            anything to the ground &mdash; I came up as a debater and never
+            quite stopped. The tidy version is on the{" "}
             <a href="/cv" className="link-swipe text-accent">
               CV
             </a>
-            ; this page is the longer, less tidy story.
+            . This page is the rest.
           </p>
         </Reveal>
       </section>

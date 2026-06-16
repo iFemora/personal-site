@@ -72,11 +72,10 @@ function SiteHeader() {
 function SiteFooter() {
   return (
     <footer className="mx-auto w-full max-w-[1100px] overflow-hidden px-6 pb-8 pt-24 print:hidden">
-      <p className="max-w-[640px] font-serif text-2xl leading-snug tracking-tight sm:text-3xl">
-        Building something in the{" "}
-        <s className="text-muted">intersection</s>{" "}
-        <span className="italic text-accent">messy middle</span> of product
-        and payments? Or just want to argue about tennis?{" "}
+      <p className="max-w-[680px] font-serif text-2xl leading-snug tracking-tight sm:text-3xl">
+        Building something <s className="text-muted">in payments</s>{" "}
+        <span className="italic text-accent">genuinely good</span>? Or just
+        want to argue about tennis or religion?{" "}
         <a
           href="mailto:oluwafemiakinseye@gmail.com"
           className="link-swipe whitespace-nowrap text-accent"

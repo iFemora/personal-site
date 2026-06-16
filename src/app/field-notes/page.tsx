@@ -5,6 +5,7 @@ import Reveal from "@/components/motion/Reveal";
 import DrawnRule from "@/components/motion/DrawnRule";
 import MaskedLines from "@/components/motion/MaskedLines";
 import ProximityType from "@/components/motion/ProximityType";
+import ExternalArrow from "@/components/ExternalArrow";
 
 export const metadata: Metadata = {
   title: "Notes",
@@ -91,7 +92,8 @@ export default function FieldNotesPage() {
                           rel="noopener noreferrer"
                           className="text-accent underline underline-offset-4 hover:no-underline"
                         >
-                          {l.label} ↗
+                          {l.label}
+                          <ExternalArrow className="ml-1 text-accent" />
                         </a>
                       </li>
                     ))}

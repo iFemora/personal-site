@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getHomepageWriting } from "@/lib/writing";
+import ExternalArrow from "@/components/ExternalArrow";
 import Reveal from "@/components/motion/Reveal";
 import DrawnRule from "@/components/motion/DrawnRule";
 import ProximityType from "@/components/motion/ProximityType";
@@ -162,9 +163,7 @@ export default function Home() {
                   <span className="font-serif text-xl leading-snug transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent sm:text-2xl">
                     {item.title}
                     {isExternal && (
-                      <span aria-hidden className="ml-2 text-base text-muted">
-                        ↗
-                      </span>
+                      <ExternalArrow className="ml-1.5 text-muted" />
                     )}
                   </span>
                 </>

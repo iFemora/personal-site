@@ -6,6 +6,7 @@ import Reveal from "@/components/motion/Reveal";
 import DrawnRule from "@/components/motion/DrawnRule";
 import MaskedLines from "@/components/motion/MaskedLines";
 import ProximityType from "@/components/motion/ProximityType";
+import ExternalArrow from "@/components/ExternalArrow";
 
 export const metadata: Metadata = {
   title: "Writing",
@@ -33,11 +34,7 @@ function WritingRow({ item }: { item: WritingItem }) {
       <div className="min-w-0 flex-1">
         <span className="block font-serif text-xl leading-snug tracking-tight transition-colors group-hover:text-accent sm:text-2xl">
           {item.title}
-          {isExternal && (
-            <span aria-hidden className="ml-1 text-base text-muted">
-              ↗
-            </span>
-          )}
+          {isExternal && <ExternalArrow className="ml-1 text-muted" />}
         </span>
         <p className="mt-2 font-mono text-sm text-muted">
           {formatPostDate(item.date)}
