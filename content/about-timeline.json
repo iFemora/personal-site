@@ -3,48 +3,42 @@
     "id": "unilag",
     "year": "2019",
     "title": "Graduated into a recession with a Mass Communication degree.",
-    "caption": "University of Lagos, top 3% of the class. Learned to make an argument and hold a room — turns out that's most of product management. [Femi: rewrite in your voice / add the detail only you'd know.]"
+    "caption": "University of Lagos, top 3% of the class. Learned to make an argument and hold a room — which, it turns out, is most of product management."
   },
   {
     "id": "farmcrowdy",
     "year": "2019",
     "title": "Became someone's first-ever product hire.",
-    "caption": "Farmcrowdy, Lagos. No playbook, three mobile apps, and 29 Nigerian states I actually travelled to so I'd know who I was building for. [Draft — punch it up.]"
+    "caption": "No playbook, three mobile apps, and 29 Nigerian states I actually travelled to so I'd know who I was building for."
   },
   {
     "id": "scholar",
     "year": "2021",
     "title": "MasterCard Foundation Scholar.",
-    "caption": "Post-grad in Technology, Design & Entrepreneurship — the year the tinkering got a name. [Draft.]"
+    "caption": "A post-grad in Technology, Design & Entrepreneurship — the year the tinkering got a name."
   },
   {
     "id": "paystack",
     "year": "2021",
     "title": "Joined Paystack, learned how money actually moves.",
-    "caption": "A Stripe company. Shipped a payment method from a one-line idea to tens of millions in volume, and discovered I like the part where the promise meets the ledger. [Draft.]"
+    "caption": "A Stripe company. Took a payment idea from a single line to tens of millions in volume, and found I like the part where the promise meets the ledger."
   },
   {
     "id": "fcmb",
     "year": "2024",
-    "title": "Ran corporate banking across two continents and five time-zoned PMs.",
-    "caption": "Nigeria, the UK, and a lot of 6am calls. Grew a team; one mentee ended up running a whole division. [Draft.]"
+    "title": "Ran corporate banking across two continents and five PMs.",
+    "caption": "Nigeria, the UK, and a lot of 6am calls. Grew the team; one mentee ended up running a whole division."
   },
   {
     "id": "marqeta-toronto",
     "year": "2025",
     "title": "Moved to Toronto. Marqeta. Still here.",
-    "caption": "Lead PM on a card-issuing platform that moves billions. New country, new winter, same habit of building the thing myself to understand it. [Draft.]"
-  },
-  {
-    "id": "tennis-placeholder",
-    "year": "20XX",
-    "title": "[The tennis beat — when and why it started]",
-    "caption": "[Femi: this is yours. When did tennis stop being exercise and become the thing? Keep it specific and a little self-deprecating.]"
+    "caption": "Lead PM on a card-issuing platform that moves billions. New country, new winter, same habit of building the thing myself to understand it."
   },
   {
     "id": "now",
     "year": "Now",
     "title": "Toronto. Married. Still chasing a clean backhand.",
-    "caption": "Writing essays for minds that think in spirals, shipping prototypes in the evenings, losing to better players on weekends. [Draft — make it land.]"
+    "caption": "Writing essays for minds that think in spirals, making a little art, arguing about religion, and losing to better players on weekends."
   }
 ]

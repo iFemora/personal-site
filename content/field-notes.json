@@ -1,30 +1,5 @@
 [
   {
-    "id": "2026-06-14-0108-another-test",
-    "date": "2026-06-14",
-    "audio": {
-      "src": "/field-notes/audio/2026-06-14-0108-another-test.m4a",
-      "title": "Another test?"
-    }
-  },
-  {
-    "id": "2026-05-19-1359-test-3",
-    "date": "2026-05-19",
-    "audio": {
-      "src": "/field-notes/audio/2026-05-19-1359-test-3.m4a",
-      "title": "Test 3"
-    },
-    "body": "Test to see how the body shows up!"
-  },
-  {
-    "id": "2026-05-18-1435-test-2",
-    "date": "2026-05-18",
-    "audio": {
-      "src": "/field-notes/audio/2026-05-18-1435-test-2.m4a",
-      "title": "Test 2"
-    }
-  },
-  {
     "id": "welcome",
     "date": "2026-05-16",
     "body": "Field notes is the place I'll put short observations — a sentence, a paragraph, occasionally a voice memo. Lower bar than an essay; higher than X. Some will turn into longer pieces on the writing page; most won't."

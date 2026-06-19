@@ -8,7 +8,7 @@ import { maintenanceHtml } from "@/lib/maintenanceHtml";
 //  Local `npm run dev` always shows the real site so we can keep editing.
 //  To bring the site back online: set this to false and push.
 // ───────────────────────────────────────────────────────────────────────────
-const MAINTENANCE = true;
+const MAINTENANCE = false;
 
 export function middleware(_req: NextRequest) {
   if (!MAINTENANCE) return NextResponse.next();

@@ -33,20 +33,28 @@ export default function GalleryPage() {
         <Reveal immediate delay={0.45}>
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
             <span className="text-accent">Contact sheet</span> —{" "}
-            {frames.length} frames
+            {frames.length === 0 ? "in the darkroom" : `${frames.length} frames`}
           </p>
         </Reveal>
         <Reveal immediate delay={0.5}>
           <p className="text-lg leading-relaxed">
-            Every frame sits faded until you give it some attention &mdash;
-            hover to bring the color back, click to see it full. Real
-            photographs are on their way; these frames are keeping the seats
-            warm.
+            {frames.length === 0 ? (
+              <>
+                The prints are still drying. Photographs land here soon
+                &mdash; the good ones, eventually, once I stop second-guessing
+                which are the good ones.
+              </>
+            ) : (
+              <>
+                Every frame sits faded until you give it some attention
+                &mdash; hover to bring the color back, click to see it full.
+              </>
+            )}
           </p>
         </Reveal>
       </section>
 
-      <GalleryGrid frames={frames} />
+      {frames.length > 0 && <GalleryGrid frames={frames} />}
     </main>
   );
 }

@@ -79,17 +79,16 @@ export default function Home() {
         </Reveal>
         <Reveal immediate delay={0.6}>
           <p className="text-lg leading-relaxed sm:text-xl">
-            I build payment software &mdash; the kind where the gap between
-            what you promised and what actually happens to someone&apos;s
-            money is <Highlight order={0}>unforgiving</Highlight>. Ten years
-            of it: card issuing, banking across{" "}
-            <Highlight order={1}>two continents</Highlight>, a micro-payment
-            idea that grew into{" "}
-            <Highlight order={2}>tens of millions</Highlight>{" "}
-            before I&apos;d finished pitching it. I still{" "}
-            <Highlight order={3}>read the codebase</Highlight>. Off the clock
-            I play a lot of tennis &mdash; badly, often &mdash; and write for
-            minds that <Highlight order={4}>think in spirals</Highlight>.
+            I build <Highlight order={0}>products people love</Highlight>{" "}
+            &mdash; in payments, banking, and agriculture. The throughline
+            isn&apos;t the industry, it&apos;s{" "}
+            <Highlight order={1}>the tinkering</Highlight>: I worry an idea
+            until I love it, then keep at it until other people do too. Twice
+            that became <Highlight order={2}>a company of my own</Highlight>.
+            Off the clock I play <Highlight order={3}>a lot of tennis</Highlight>{" "}
+            &mdash; badly, often &mdash; read too much religion and
+            philosophy, and write for minds that{" "}
+            <Highlight order={4}>think in spirals</Highlight>.
           </p>
         </Reveal>
       </section>
