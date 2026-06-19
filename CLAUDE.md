@@ -61,7 +61,14 @@ Media files go in `public/tennis/`.
 year ("Now" / non-numeric sort last). Photos (in `public/about/`) render
 duotone and flood to color on hover, matching the gallery treatment.
 
-**Gallery publishing:** add to `content/gallery.json` —
+**Gallery publishing (phone):** `POST /api/gallery` (same shared secret /
+GITHUB_PAT as field notes) uploads a JPEG to `public/gallery/` and prepends
+to `content/gallery.json`. Payload: `{ imageBase64, caption?, location?,
+date?, width, height }`. The "Publish Photo" iOS Shortcut resizes → converts
+to JPEG → reads dimensions → POSTs. Gallery shows a "still in the darkroom"
+empty state until the first photo lands.
+
+**Gallery publishing (manual):** add to `content/gallery.json` —
 `{ id, src, alt, caption?, location?, date?, width, height }`. Image files go
 in `public/gallery/`. Current frames are labelled placeholders awaiting real
 photographs.
