@@ -26,7 +26,16 @@ export type ExternalPost = {
 
 export type WritingItem = InternalPost | ExternalPost;
 
-export const internalPosts: InternalPost[] = [];
+export const internalPosts: InternalPost[] = [
+  {
+    type: "internal",
+    slug: "the-honorary-member",
+    title: "The Honorary Member",
+    date: "2026-06-14",
+    description:
+      "Why Jesus could not have been a Muslim — on submission, the shahada, the missing Injīl, the corruption argument, and the historical Jesus the Gospels actually describe.",
+  },
+];
 
 export const externalPosts: ExternalPost[] = [
   {

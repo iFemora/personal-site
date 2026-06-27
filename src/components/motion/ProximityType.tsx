@@ -11,6 +11,8 @@ type Props = {
   className?: string;
   delay?: number;
   stagger?: number;
+  /** Element to render. Defaults to h1; use h2/div when there's already a page h1. */
+  as?: "h1" | "h2" | "div";
 };
 
 /**
@@ -23,9 +25,10 @@ export default function ProximityType({
   className,
   delay = 0,
   stagger = 0.12,
+  as: Tag = "h1",
 }: Props) {
   const reduced = useReducedMotion();
-  const rootRef = useRef<HTMLHeadingElement>(null);
+  const rootRef = useRef<HTMLElement>(null);
   const raf = useRef<number>(0);
 
   useEffect(() => {
@@ -75,7 +78,7 @@ export default function ProximityType({
   }, [reduced]);
 
   return (
-    <h1 ref={rootRef} className={className}>
+    <Tag ref={rootRef as React.Ref<HTMLHeadingElement>} className={className}>
       {lines.map((line, i) => (
         <span key={i} className="block overflow-hidden">
           <motion.span
@@ -110,6 +113,6 @@ export default function ProximityType({
           </motion.span>
         </span>
       ))}
-    </h1>
+    </Tag>
   );
 }
