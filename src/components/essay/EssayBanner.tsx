@@ -22,11 +22,13 @@ type Palette = {
   wm: string;
 };
 
+// Accents track the /writing section colour (moss), so the banners belong
+// to the page they live on rather than fighting it with a second hue.
 const LIGHT: Palette = {
   bg: "#efeae0",
   fg: "#1f1b16",
   muted: "#6f675c",
-  accent: "#9a3b1e",
+  accent: "#5f6e3d", // writing moss (light)
   rule: "rgba(31,27,22,0.16)",
   wm: "rgba(31,27,22,0.05)",
 };
@@ -35,7 +37,7 @@ const DARK: Palette = {
   bg: "#1c1813",
   fg: "#ece6da",
   muted: "#9a9183",
-  accent: "#cf7d56",
+  accent: "#b9c98b", // writing moss (dark)
   rule: "rgba(236,230,218,0.16)",
   wm: "rgba(236,230,218,0.05)",
 };
