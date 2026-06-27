@@ -93,20 +93,25 @@ export default function ProximityType({
               },
             }}
           >
-            {Array.from(line.text).map((ch, j) =>
-              ch === " " ? (
-                <span key={j}> </span>
+            {/* Group letters by word so words never break mid-letter. */}
+            {line.text.split(/(\s+)/).map((token, k) =>
+              token.trim() === "" ? (
+                <span key={k}> </span>
               ) : (
-                <span
-                  key={j}
-                  data-letter
-                  className="inline-block"
-                  style={{
-                    fontVariationSettings: `"WONK" 1, "SOFT" 0, "wght" 500`,
-                    transition: "font-variation-settings 0.18s ease-out",
-                  }}
-                >
-                  {ch}
+                <span key={k} className="inline-block whitespace-nowrap">
+                  {Array.from(token).map((ch, j) => (
+                    <span
+                      key={j}
+                      data-letter
+                      className="inline-block"
+                      style={{
+                        fontVariationSettings: `"WONK" 1, "SOFT" 0, "wght" 500`,
+                        transition: "font-variation-settings 0.18s ease-out",
+                      }}
+                    >
+                      {ch}
+                    </span>
+                  ))}
                 </span>
               )
             )}

@@ -269,7 +269,7 @@ export default function EssayBanner({
               text: l.text,
               className: l.accent ? "italic text-[color:var(--bnr-accent)]" : "",
             }))}
-            className="font-serif text-[2rem] font-medium leading-[1.04] tracking-tight sm:text-[2.7rem]"
+            className="max-w-[14ch] font-serif text-[1.75rem] font-medium leading-[1.05] tracking-tight sm:text-[2.3rem]"
           />
           {motif && (
             <div className="hidden shrink-0 self-center sm:block">
