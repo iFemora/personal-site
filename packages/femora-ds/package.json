@@ -1,0 +1,21 @@
+{
+  "name": "@femora/design-system",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Femora design system — standalone styling layer (tokens, fonts, utilities) for ifemora.dev. Step 1: styling only; decoupled components to follow.",
+  "type": "module",
+  "exports": {
+    ".": "./styles.css",
+    "./styles.css": "./styles.css",
+    "./tokens.css": "./tokens.css",
+    "./fonts.css": "./fonts.css",
+    "./utilities.css": "./utilities.css"
+  },
+  "files": [
+    "styles.css",
+    "tokens.css",
+    "fonts.css",
+    "utilities.css",
+    "README.md"
+  ]
+}

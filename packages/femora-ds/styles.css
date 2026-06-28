@@ -1,0 +1,12 @@
+/* Femora design system — standalone styling layer.
+   Import this one file to get the brand's fonts, color tokens, and utility
+   classes with no build step and no Next.js. This is the entry that an
+   external consumer (e.g. Claude Design) loads.
+
+   The live site does NOT import this file: it loads the fonts via next/font
+   and pulls in tokens.css + utilities.css directly, so fonts aren't loaded
+   twice. Keep this file as the union of those parts. */
+
+@import "./fonts.css";
+@import "./tokens.css";
+@import "./utilities.css";

@@ -1,0 +1,13 @@
+/* Femora design system — fonts.
+   Self-contained font loading via Google Fonts, so the styling layer
+   renders correctly with no build step and no Next.js (e.g. in Claude
+   Design). The live site loads these same families through next/font and
+   sets the identical CSS variables, so it does NOT import this file. */
+
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap");
+
+:root {
+  --font-fraunces: "Fraunces", Georgia, serif;
+  --font-newsreader: "Newsreader", Georgia, serif;
+  --font-plex-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+}
