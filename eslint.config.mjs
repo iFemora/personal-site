@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Generated / vendored code (gitignored, but present locally):
+    "packages/femora-ds/dist/**",
+    "ds-bundle/**",
+    ".ds-sync/**",
   ]),
 ]);
 
