@@ -1,0 +1,10 @@
+{
+  "pkg": "@femora/design-system",
+  "globalName": "FemoraDS",
+  "shape": "package",
+  "buildCmd": "npm run build --prefix packages/femora-ds",
+  "srcDir": "packages/femora-ds/src",
+  "tsconfig": "packages/femora-ds/tsconfig.json",
+  "cssEntry": "styles.css",
+  "readmeHeader": ".design-sync/conventions.md"
+}
