@@ -1,3 +1,4 @@
+import { timingSafeEqual } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 
 const REPO = "iFemora/personal-site";
@@ -9,6 +10,12 @@ const GH_HEADERS = {
   Accept: "application/vnd.github+json",
   "X-GitHub-Api-Version": "2022-11-28",
 };
+
+function safeEqual(a: string, b: string): boolean {
+  const bufA = Buffer.from(a);
+  const bufB = Buffer.from(b);
+  return bufA.length === bufB.length && timingSafeEqual(bufA, bufB);
+}
 
 function normalizeBase64(s: string): string {
   let body = s;
@@ -55,8 +62,8 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const auth = req.headers.get("authorization");
-  if (auth !== `Bearer ${sharedSecret}`) {
+  const auth = req.headers.get("authorization") ?? "";
+  if (!safeEqual(auth, `Bearer ${sharedSecret}`)) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
 

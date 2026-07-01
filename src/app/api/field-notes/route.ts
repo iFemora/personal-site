@@ -1,3 +1,4 @@
+import { timingSafeEqual } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 
 const REPO = "iFemora/personal-site";
@@ -9,6 +10,12 @@ const GH_HEADERS = {
   Accept: "application/vnd.github+json",
   "X-GitHub-Api-Version": "2022-11-28",
 };
+
+function safeEqual(a: string, b: string): boolean {
+  const bufA = Buffer.from(a);
+  const bufB = Buffer.from(b);
+  return bufA.length === bufB.length && timingSafeEqual(bufA, bufB);
+}
 
 function slugifyTitle(title: string): string {
   return title
@@ -67,8 +74,8 @@ export async function POST(req: NextRequest) {
   }
 
   // Auth: shortcut must send Authorization: Bearer <FIELD_NOTES_SECRET>
-  const auth = req.headers.get("authorization");
-  if (auth !== `Bearer ${sharedSecret}`) {
+  const auth = req.headers.get("authorization") ?? "";
+  if (!safeEqual(auth, `Bearer ${sharedSecret}`)) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
 
@@ -129,14 +136,7 @@ export async function POST(req: NextRequest) {
     if (!uploadRes.ok) {
       const detail = await uploadRes.text();
       return NextResponse.json(
-        {
-          error: "audio upload failed",
-          status: uploadRes.status,
-          detail,
-          audioLength: normalizedAudio.length,
-          audioFirst40: normalizedAudio.slice(0, 40),
-          audioLast20: normalizedAudio.slice(-20),
-        },
+        { error: "audio upload failed", status: uploadRes.status, detail },
         { status: 502 }
       );
     }
