@@ -2,10 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getAllWriting, formatPostDate, type WritingItem } from "@/lib/writing";
-import Reveal from "@/components/motion/Reveal";
-import DrawnRule from "@/components/motion/DrawnRule";
-import MaskedLines from "@/components/motion/MaskedLines";
-import ProximityType from "@/components/motion/ProximityType";
+import {
+  Reveal,
+  DrawnRule,
+  MaskedLines,
+  ProximityType,
+} from "@femora/design-system";
 import ExternalArrow from "@/components/ExternalArrow";
 
 export const metadata: Metadata = {

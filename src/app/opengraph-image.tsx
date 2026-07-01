@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { spiralPath } from "@/lib/spiralPath";
+import { spiralPath } from "@femora/design-system/spiral-path";
 
 export const alt = "Femi Siji-Kenneth — Thinker. Tinkerer.";
 export const size = { width: 1200, height: 630 };

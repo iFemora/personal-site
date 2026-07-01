@@ -1,7 +1,7 @@
 "use client";
 
-import ProximityType from "@/components/motion/ProximityType";
-import { spiralPath } from "@/lib/spiralPath";
+import { ProximityType } from "@femora/design-system";
+import { spiralPath } from "@femora/design-system/spiral-path";
 
 type Line = { text: string; accent?: boolean };
 type Motif =

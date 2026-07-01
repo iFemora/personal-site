@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import { EASE } from "@/components/motion/Reveal";
+import { EASE } from "@femora/design-system/ease";
 
 /**
  * Re-mounts on every route change, giving each page a soft entrance.

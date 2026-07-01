@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Magnetic from "@/components/motion/Magnetic";
-import { spiralPath } from "@/lib/spiralPath";
+import { Magnetic } from "@femora/design-system";
+import { spiralPath } from "@femora/design-system/spiral-path";
 
 const items = [
   { href: "/about", label: "About" },

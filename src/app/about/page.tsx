@@ -1,10 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import { getAboutTimeline } from "@/lib/about";
-import Reveal from "@/components/motion/Reveal";
-import DrawnRule from "@/components/motion/DrawnRule";
-import MaskedLines from "@/components/motion/MaskedLines";
-import ProximityType from "@/components/motion/ProximityType";
+import {
+  Reveal,
+  DrawnRule,
+  MaskedLines,
+  ProximityType,
+} from "@femora/design-system";
 
 export const metadata: Metadata = {
   title: "About",
@@ -32,6 +34,15 @@ export default function AboutPage() {
       {/* Intro — counter-signals the credentials: what I value first. */}
       <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12">
         <Reveal immediate delay={0.45}>
+          <figure className="mb-5 overflow-hidden rounded-sm border border-rule sm:mb-6">
+            <img
+              src="/about/headshot.jpg"
+              alt="Femi Siji-Kenneth"
+              width={1120}
+              height={928}
+              className="w-full brightness-[1.02] contrast-[1.02] saturate-[0.9] sepia-[0.3]"
+            />
+          </figure>
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
             <span className="text-accent">Who</span> — the short version
           </p>

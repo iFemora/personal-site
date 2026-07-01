@@ -1,9 +1,11 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import Reveal from "@/components/motion/Reveal";
-import DrawnRule from "@/components/motion/DrawnRule";
-import MaskedLines from "@/components/motion/MaskedLines";
-import ProximityType from "@/components/motion/ProximityType";
+import {
+  Reveal,
+  DrawnRule,
+  MaskedLines,
+  ProximityType,
+} from "@femora/design-system";
 
 export const metadata: Metadata = {
   title: "Work",

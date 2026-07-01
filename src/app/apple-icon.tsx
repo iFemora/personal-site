@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { spiralPath } from "@/lib/spiralPath";
+import { spiralPath } from "@femora/design-system/spiral-path";
 
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";

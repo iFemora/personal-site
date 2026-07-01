@@ -1,10 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import { getTennisEntries, formatTennisDate } from "@/lib/tennis";
-import Reveal from "@/components/motion/Reveal";
-import DrawnRule from "@/components/motion/DrawnRule";
-import MaskedLines from "@/components/motion/MaskedLines";
-import ProximityType from "@/components/motion/ProximityType";
+import {
+  Reveal,
+  DrawnRule,
+  MaskedLines,
+  ProximityType,
+} from "@femora/design-system";
 
 export const metadata: Metadata = {
   title: "Tennis",

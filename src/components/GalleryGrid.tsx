@@ -5,17 +5,25 @@
 import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import type { GalleryFrame } from "@/lib/gallery";
-import { EASE } from "@/components/motion/Reveal";
+import { EASE } from "@femora/design-system/ease";
 
 type Props = {
   frames: GalleryFrame[];
+  /** Photos start desaturated and flood to colour on hover. Art stays full colour. */
+  duotone?: boolean;
+  /** Serial prefix so the two sections number independently. */
+  prefix?: string;
 };
 
-function frameNumber(i: number): string {
-  return `FR-${String(i + 1).padStart(3, "0")}`;
+function frameNumber(prefix: string, i: number): string {
+  return `${prefix}-${String(i + 1).padStart(3, "0")}`;
 }
 
-export default function GalleryGrid({ frames }: Props) {
+export default function GalleryGrid({
+  frames,
+  duotone = true,
+  prefix = "FR",
+}: Props) {
   const reduced = useReducedMotion();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -45,6 +53,10 @@ export default function GalleryGrid({ frames }: Props) {
 
   const open = openIndex === null ? null : frames[openIndex];
 
+  const imgClass = duotone
+    ? "block w-full transition-[filter,transform] duration-500 ease-out grayscale-[0.85] sepia-[0.12] group-hover:scale-[1.015] group-hover:grayscale-0 group-hover:sepia-0"
+    : "block w-full transition-transform duration-500 ease-out group-hover:scale-[1.015]";
+
   return (
     <>
       {/* Contact sheet */}
@@ -56,11 +68,7 @@ export default function GalleryGrid({ frames }: Props) {
             initial={reduced ? { opacity: 1 } : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "0px 0px -8% 0px" }}
-            transition={{
-              duration: 0.7,
-              ease: EASE,
-              delay: (i % 3) * 0.08,
-            }}
+            transition={{ duration: 0.7, ease: EASE, delay: (i % 3) * 0.08 }}
           >
             <button
               type="button"
@@ -75,20 +83,43 @@ export default function GalleryGrid({ frames }: Props) {
                   width={frame.width}
                   height={frame.height}
                   loading="lazy"
-                  className="block w-full transition-[filter,transform] duration-500 ease-out grayscale-[0.85] sepia-[0.12] group-hover:scale-[1.015] group-hover:grayscale-0 group-hover:sepia-0"
+                  className={imgClass}
                 />
               </span>
               <figcaption className="mt-2 flex items-baseline justify-between gap-4 font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
-                <span className="text-accent">{frameNumber(i)}</span>
+                <span className="text-accent">{frameNumber(prefix, i)}</span>
                 {(frame.location || frame.date) && (
                   <span>
-                    {[frame.location, frame.date]
-                      .filter(Boolean)
-                      .join(" · ")}
+                    {[frame.location, frame.date].filter(Boolean).join(" · ")}
                   </span>
                 )}
               </figcaption>
             </button>
+            {(frame.caption || frame.note || frame.href) && (
+              <div className="mt-1.5 px-0.5">
+                {frame.caption && (
+                  <p className="font-serif text-sm italic leading-snug text-foreground">
+                    {frame.href ? (
+                      <a
+                        href={frame.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-accent underline underline-offset-4 hover:no-underline"
+                      >
+                        {frame.caption} ↗
+                      </a>
+                    ) : (
+                      frame.caption
+                    )}
+                  </p>
+                )}
+                {frame.note && (
+                  <p className="mt-1 font-serif text-xs italic text-muted">
+                    {frame.note}
+                  </p>
+                )}
+              </div>
+            )}
           </motion.figure>
         ))}
       </div>
@@ -111,7 +142,7 @@ export default function GalleryGrid({ frames }: Props) {
               key={open.id}
               src={open.src}
               alt={open.alt}
-              className="max-h-[80vh] max-w-full rounded-sm object-contain"
+              className="max-h-[78vh] max-w-full rounded-sm object-contain"
               initial={reduced ? { opacity: 1 } : { opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.35, ease: EASE }}
@@ -121,12 +152,35 @@ export default function GalleryGrid({ frames }: Props) {
               className="mt-5 flex w-full max-w-[720px] items-baseline justify-between gap-6 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"
               onClick={(e) => e.stopPropagation()}
             >
-              <span className="text-accent">{frameNumber(openIndex)}</span>
-              <span className="truncate">{open.caption ?? open.alt}</span>
+              <span className="text-accent">
+                {frameNumber(prefix, openIndex)}
+              </span>
+              <span className="truncate">
+                {open.href ? (
+                  <a
+                    href={open.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent hover:underline"
+                  >
+                    {open.caption ?? open.alt} ↗
+                  </a>
+                ) : (
+                  open.caption ?? open.alt
+                )}
+              </span>
               <span className="whitespace-nowrap">
                 {[open.location, open.date].filter(Boolean).join(" · ")}
               </span>
             </div>
+            {open.note && (
+              <p
+                className="mt-2 font-serif text-sm italic text-muted"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {open.note}
+              </p>
+            )}
             <div
               className="mt-6 flex gap-8 font-mono text-xs uppercase tracking-[0.18em]"
               onClick={(e) => e.stopPropagation()}

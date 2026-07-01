@@ -19,7 +19,12 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@femora/design-system": ["./packages/femora-ds/src/index.ts"],
+      "@femora/design-system/spiral-path": [
+        "./packages/femora-ds/src/lib/spiralPath.ts"
+      ],
+      "@femora/design-system/ease": ["./packages/femora-ds/src/lib/ease.ts"]
     }
   },
   "include": [
@@ -30,5 +35,5 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "packages/*/dist"]
 }

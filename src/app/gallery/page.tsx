@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
-import { getGalleryFrames } from "@/lib/gallery";
+import { getPhotos, getArt } from "@/lib/gallery";
 import GalleryGrid from "@/components/GalleryGrid";
-import Reveal from "@/components/motion/Reveal";
-import DrawnRule from "@/components/motion/DrawnRule";
-import MaskedLines from "@/components/motion/MaskedLines";
-import ProximityType from "@/components/motion/ProximityType";
+import {
+  Reveal,
+  DrawnRule,
+  MaskedLines,
+  ProximityType,
+} from "@femora/design-system";
 
 export const metadata: Metadata = {
   title: "Gallery",
-  description: "Photographs by Femi Siji-Kenneth.",
+  description: "Photographs and artwork by Femi Siji-Kenneth.",
 };
 
 export default function GalleryPage() {
-  const frames = getGalleryFrames();
+  const photos = getPhotos();
+  const art = getArt();
 
   return (
     <main className="mx-auto w-full max-w-[1100px] px-6 py-16 sm:py-24">
@@ -22,23 +25,26 @@ export default function GalleryPage() {
       />
       <MaskedLines
         as="p"
-        lines={["Proof I go outside."]}
+        lines={["Proof I go outside — and, occasionally, stay in and draw."]}
         delay={0.18}
         className="mt-6 font-serif text-xl italic text-muted sm:text-2xl"
       />
 
       <DrawnRule className="my-14 sm:my-20" immediate delay={0.35} />
 
-      <section className="mb-14 grid gap-6 sm:mb-20 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12">
+      {/* Contact sheet — photographs */}
+      <section className="mb-14 grid gap-6 sm:mb-16 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12">
         <Reveal immediate delay={0.45}>
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
             <span className="text-accent">Contact sheet</span> —{" "}
-            {frames.length === 0 ? "in the darkroom" : `${frames.length} frames`}
+            {photos.length === 0
+              ? "in the darkroom"
+              : `${photos.length} frames`}
           </p>
         </Reveal>
         <Reveal immediate delay={0.5}>
           <p className="text-lg leading-relaxed">
-            {frames.length === 0 ? (
+            {photos.length === 0 ? (
               <>
                 The prints are still drying. Photographs land here soon
                 &mdash; the good ones, eventually, once I stop second-guessing
@@ -47,14 +53,35 @@ export default function GalleryPage() {
             ) : (
               <>
                 Every frame sits faded until you give it some attention
-                &mdash; hover to bring the color back, click to see it full.
+                &mdash; hover to bring the colour back, click to see it full.
               </>
             )}
           </p>
         </Reveal>
       </section>
 
-      {frames.length > 0 && <GalleryGrid frames={frames} />}
+      {photos.length > 0 && <GalleryGrid frames={photos} prefix="FR" />}
+
+      {/* Made — artwork, in full colour */}
+      {art.length > 0 && (
+        <>
+          <DrawnRule className="my-14 sm:my-20" />
+          <section className="mb-14 grid gap-6 sm:mb-16 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12">
+            <Reveal delay={0.05}>
+              <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
+                <span className="text-accent">Made</span> — {art.length} pieces
+              </p>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="text-lg leading-relaxed">
+                Things I&apos;ve drawn and animated, kept in full colour
+                because that&apos;s the whole point of them.
+              </p>
+            </Reveal>
+          </section>
+          <GalleryGrid frames={art} duotone={false} prefix="MADE" />
+        </>
+      )}
     </main>
   );
 }

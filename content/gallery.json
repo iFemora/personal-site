@@ -1,1 +1,115 @@
-[]
+[
+  {
+    "id": "lonely-path",
+    "src": "/gallery/lonely-path.jpg",
+    "alt": "A lone hiker on a dirt trail winding toward distant peaks under a big cloudy sky",
+    "caption": "Lonely Path to Greatness",
+    "location": "Kananaskis, AB",
+    "date": "2025",
+    "width": 1500,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "trail-portrait",
+    "src": "/gallery/trail-portrait.jpg",
+    "alt": "Femi on a green mountain trail with a backpack and sunglasses, glancing back",
+    "caption": "Somewhere past the treeline",
+    "location": "Kananaskis, AB",
+    "date": "2025",
+    "width": 1500,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "gym-day",
+    "src": "/gallery/gym-day.jpg",
+    "alt": "Femi and his wife in a gym mirror selfie",
+    "caption": "Gym day with the wife 🧡",
+    "date": "2025",
+    "width": 1500,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "always-working",
+    "src": "/gallery/always-working.jpg",
+    "alt": "Femi in a white tee, focused on a laptop",
+    "caption": "Always working",
+    "date": "2025",
+    "width": 1500,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "dream-big",
+    "src": "/gallery/dream-big.jpg",
+    "alt": "Illustration of a crescent moon over textured blue clouds and stars, captioned Dream big",
+    "caption": "Dream big.",
+    "date": "2025",
+    "width": 1600,
+    "height": 1103,
+    "kind": "art"
+  },
+  {
+    "id": "ringed-planet",
+    "src": "/gallery/ringed-planet.jpg",
+    "alt": "Illustration of a pink ringed planet with yellow rings among other planets in space",
+    "caption": "The ringed planet in space",
+    "date": "2025",
+    "width": 1600,
+    "height": 1103,
+    "kind": "art"
+  },
+  {
+    "id": "purple-night",
+    "src": "/gallery/purple-night.jpg",
+    "alt": "Illustration of a full moon and shooting stars over purple mountain silhouettes",
+    "caption": "Purple night",
+    "date": "2025",
+    "width": 1227,
+    "height": 1600,
+    "kind": "art"
+  },
+  {
+    "id": "snowy-forest",
+    "src": "/gallery/snowy-forest.jpg",
+    "alt": "Illustration of a moonlit snowy landscape with pine trees",
+    "caption": "Snowy, moonlit fall",
+    "date": "2025",
+    "width": 1600,
+    "height": 1067,
+    "kind": "art"
+  },
+  {
+    "id": "butterfly",
+    "src": "/gallery/butterfly.gif",
+    "alt": "An animated butterfly in motion",
+    "caption": "A butterfly in motion",
+    "date": "2025",
+    "width": 900,
+    "height": 620,
+    "kind": "art"
+  },
+  {
+    "id": "femora-house-portrait",
+    "src": "/gallery/femora-house-portrait.jpg",
+    "alt": "A comic pop-art portrait of Femi, arms crossed, on an orange and blue halftone background",
+    "caption": "The Femora's House portrait",
+    "href": "https://femorashouse.com",
+    "date": "2025",
+    "width": 198,
+    "height": 286,
+    "kind": "art"
+  },
+  {
+    "id": "ballpoint-portrait",
+    "src": "/gallery/ballpoint-portrait.jpg",
+    "alt": "A blue ballpoint pen portrait sketch on gridded paper",
+    "caption": "My first attempt at a ballpoint portrait — hopefully I get better.",
+    "note": "Rest in peace to my angel sister.",
+    "width": 1206,
+    "height": 1206,
+    "kind": "art"
+  }
+]

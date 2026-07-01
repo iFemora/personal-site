@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { getHomepageWriting } from "@/lib/writing";
 import ExternalArrow from "@/components/ExternalArrow";
-import Reveal from "@/components/motion/Reveal";
-import DrawnRule from "@/components/motion/DrawnRule";
-import ProximityType from "@/components/motion/ProximityType";
-import IdentityFlip from "@/components/motion/IdentityFlip";
-import Highlight from "@/components/motion/Highlight";
-import Spiral from "@/components/motion/Spiral";
+import {
+  Reveal,
+  DrawnRule,
+  ProximityType,
+  IdentityFlip,
+  Highlight,
+  Spiral,
+} from "@femora/design-system";
 
 const workItems = [
   {

@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { getFieldNotes, formatFieldNoteDate } from "@/lib/fieldNotes";
 import AudioWaveform from "@/components/AudioWaveform";
-import Reveal from "@/components/motion/Reveal";
-import DrawnRule from "@/components/motion/DrawnRule";
-import MaskedLines from "@/components/motion/MaskedLines";
-import ProximityType from "@/components/motion/ProximityType";
+import {
+  Reveal,
+  DrawnRule,
+  MaskedLines,
+  ProximityType,
+} from "@femora/design-system";
 import ExternalArrow from "@/components/ExternalArrow";
 
 export const metadata: Metadata = {

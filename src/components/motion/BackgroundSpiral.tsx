@@ -8,7 +8,7 @@ import {
   useMotionValueEvent,
   useReducedMotion,
 } from "motion/react";
-import { spiralPath } from "@/lib/spiralPath";
+import { spiralPath } from "@femora/design-system/spiral-path";
 import { useCursorField } from "./CursorField";
 
 /**

@@ -1,17 +1,41 @@
 {
   "name": "@femora/design-system",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
-  "description": "Femora design system — standalone styling layer (tokens, fonts, utilities) for ifemora.dev. Step 1: styling only; decoupled components to follow.",
+  "description": "The motion, mark, and styling primitives behind ifemora.dev — decoupled from Next.js so they can be rendered, documented, and synced to Claude Design.",
   "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
   "exports": {
-    ".": "./styles.css",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./spiral-path": {
+      "types": "./dist/lib/spiralPath.d.ts",
+      "default": "./dist/lib/spiralPath.js"
+    },
+    "./ease": {
+      "types": "./dist/lib/ease.d.ts",
+      "default": "./dist/lib/ease.js"
+    },
     "./styles.css": "./styles.css",
     "./tokens.css": "./tokens.css",
     "./fonts.css": "./fonts.css",
     "./utilities.css": "./utilities.css"
   },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "motion": ">=12",
+    "react": ">=19",
+    "react-dom": ">=19"
+  },
   "files": [
+    "dist",
     "styles.css",
     "tokens.css",
     "fonts.css",
