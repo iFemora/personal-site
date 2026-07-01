@@ -7,6 +7,17 @@ Repo-specific gotchas for the converter + sync run. Read before re-syncing.
 - Shape: **package** (no Storybook). Build: `npm run build --prefix packages/femora-ds` → `tsc` → `packages/femora-ds/dist/index.js`. That file is the `--entry`.
 - `--node-modules` → repo-root `./node_modules`. `react`, `react-dom`, and `motion` are peer deps hoisted there; the package has no own `node_modules`.
 - `dist/` is **gitignored** (build-only artifact — the live site consumes package *source* via a tsconfig path alias, so Vercel has no build-order dependency on it). Always run `buildCmd` before the converter.
+- **Verified locally (2026-07-01):** build discovers **8 components**, `package-validate --no-render-check` exits with **0 errors** (`window.FemoraDS`, all `.d.ts` parse). Exact commands used:
+  ```sh
+  node .ds-sync/package-build.mjs --config .design-sync/config.json \
+    --node-modules ./node_modules --entry ./packages/femora-ds/dist/index.js --out ./ds-bundle
+  node .ds-sync/package-validate.mjs ./ds-bundle   # add --no-render-check only if no chromium
+  ```
+
+## Two converter gotchas already fixed (don't regress)
+
+- **`package.json` needs top-level `types` (+ `main`/`module`).** The converter's ts-morph `projectFor` reads `pkg.types`/`pkg.typings`, **not** the `exports` map, to find the entry `.d.ts`. Without `"types": "./dist/index.d.ts"` it looks for `index.d.ts` at the package root, finds nothing, and reports `[ZERO_MATCH] no component exports` (0 components). Keep those three fields.
+- **`cssEntry` (`styles.css`) must be self-contained.** The converter copies it verbatim to `ds-bundle/_ds_bundle.css`; relative sibling `@import`s (`./fonts.css` …) then dangle → `[CSS_IMPORT_MISSING]`. So `styles.css` is now a **flattened mirror** of `fonts.css` + `tokens.css` + `utilities.css`. Those three partials remain the **site's** source of truth (globals.css imports `tokens.css` + `utilities.css`; fonts come from next/font). **If you edit a partial, mirror the change into `styles.css`.**
 
 ## Styling is Tailwind utility classes, not component CSS — read this
 

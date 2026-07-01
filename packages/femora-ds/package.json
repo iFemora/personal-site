@@ -4,6 +4,9 @@
   "private": true,
   "description": "The motion, mark, and styling primitives behind ifemora.dev — decoupled from Next.js so they can be rendered, documented, and synced to Claude Design.",
   "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "sideEffects": [
     "*.css"
   ],
