@@ -39,4 +39,4 @@ Repo-specific gotchas for the converter + sync run. Read before re-syncing.
 
 - `conventions.md` was validated against package **source** (tokens.css / utilities.css / index barrel) on 2026-07-01, not against a built `ds-bundle`. Re-validate its class/token/component names against the built bundle on the first authenticated run.
 - Site imports the package via tsconfig `paths` (`@femora/design-system` → `packages/femora-ds/src/index.ts`, plus `/spiral-path` and `/ease` subpaths). If those aliases change, update `srcDir` / the exports.
-- No `projectId` recorded yet — set on first project creation during the authenticated run.
+- `projectId`: **`ed24f584-d1ea-4a7f-85f0-2e6cca502c59`** — project "ifemora.dev Design System", created + first synced 2026-07-01 (44 files, 8 components). Note: a separate, unrelated "Femora's House Design System" project also exists on claude.ai/design — do **not** push this bundle there.
