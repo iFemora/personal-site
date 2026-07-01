@@ -24,7 +24,8 @@ operations (deleting files, rewriting history, changing DNS).
 
 - **Next.js 16.2 (App Router, Turbopack)** — see `AGENTS.md` warning above
 - **React 19**
-- **Tailwind v4** with CSS-first `@theme` config in `src/app/globals.css` (no `tailwind.config.ts`)
+- **Tailwind v4** with CSS-first `@theme` config (no `tailwind.config.ts`) — tokens live in `packages/femora-ds/tokens.css`; `src/app/globals.css` just imports them
+- **`@femora/design-system`** (`packages/femora-ds/`) — local package holding the motion primitives, spiral mark, and styling tokens; resolved via `tsconfig.json` paths, built output (`dist/`) is gitignored
 - **MDX** for on-site essays via `@next/mdx` + a dynamic `[slug]` route
 - **TypeScript**, **ESLint**
 - Deployed on **Vercel** with auto-deploy on push to `main`
@@ -45,12 +46,15 @@ operations (deleting files, rewriting history, changing DNS).
 /tennis                 Tennis log — match notes, photos, video clips
 /gallery                Contact-sheet photo gallery (duotone → color hover, lightbox)
 /api/field-notes        POST endpoint hit by the iOS Shortcut for phone publishing
+/api/gallery            POST endpoint hit by the "Publish Photo" iOS Shortcut
+/maintenance            Preview of the "out, briefly" page (to take the site dark,
+                        restore src/middleware.ts from git history and set MAINTENANCE = true)
 ```
 
 **Per-page accents** (html[data-accent], set by `AccentController`):
 home rust · work/cv slate-teal · writing moss · notes ochre · tennis muted
 chartreuse · gallery umber. New sections claim the next sibling from the
-earthy family in `globals.css`.
+earthy family in `packages/femora-ds/tokens.css`.
 
 **Tennis log publishing:** prepend to `content/tennis.json` —
 `{ id, date, title?, body?, image?: {src, alt, caption?, width, height}, video?: {src, poster?, caption?} }`.
@@ -69,9 +73,8 @@ to JPEG → reads dimensions → POSTs. Gallery shows a "still in the darkroom"
 empty state until the first photo lands.
 
 **Gallery publishing (manual):** add to `content/gallery.json` —
-`{ id, src, alt, caption?, location?, date?, width, height }`. Image files go
-in `public/gallery/`. Current frames are labelled placeholders awaiting real
-photographs.
+`{ id, src, alt, caption?, location?, date?, width, height, kind? }`. Image
+files go in `public/gallery/`. `kind` is `"photo"` (default) or `"art"`.
 
 ---
 
@@ -79,17 +82,19 @@ photographs.
 
 Locked. Don't change tokens without confirming first.
 
-**Colors** (in `src/app/globals.css` `:root` + `prefers-color-scheme: dark`):
-- Light: bg `#fafaf7`, text `#1a1a1a`, muted `#6b6b6b`, accent `#8b3a1f` (warm rust), rule `#e5e5e0`
-- Dark: bg `#0f0f10`, text `#e8e8e6`, muted `#9b9b98`, accent `#e8997b`, rule `#2a2a2c`
+**Colors** (in `packages/femora-ds/tokens.css` `:root` + `prefers-color-scheme: dark`):
+- Light: bg `#faf7f0`, text `#1f1b16`, muted `#6f675c`, accent `#9a3b1e` (rust, home), rule `#e2dccf`
+- Dark: bg `#16120e`, text `#ece6da`, muted `#9a9183`, accent `#e8997b`, rule `#2e2920`
+- Each section has its own accent pair (see per-page accents above); `--accent` swaps via `html[data-accent]`
+- `packages/femora-ds/styles.css` is a flattened self-contained mirror (fonts + tokens + utilities) for external consumers — keep it in sync when tokens change
 
 **Fonts** (loaded via `next/font/google` in `src/app/layout.tsx`):
-- Display / headings: **Fraunces** (variable serif) → use class `font-serif`
-- Body / UI: **Inter** → default, or class `font-sans`
-- Date metadata: system monospace stack → class `font-mono`
+- Display / headings: **Fraunces** (variable serif, SOFT/WONK/opsz axes) → class `font-serif`
+- Body / UI: **Newsreader** (serif) → default body font, mapped to `font-sans`
+- Date metadata / eyebrows: **IBM Plex Mono** → class `font-mono`
 
 **Layout:**
-- Max content width `max-w-[680px]`, left-aligned, mx-auto
+- Page shell `max-w-[1100px]`; reading columns (essays, cv) `max-w-[680px]`, left-aligned, mx-auto
 - Hairline rules between sections (`border-t border-rule`)
 - Generous vertical rhythm
 - No cards / no boxes — just text and hairlines
@@ -100,8 +105,11 @@ Locked. Don't change tokens without confirming first.
 - Hover: color shifts to `text-accent` and underline often removed
 - External links get a small `↗` glyph
 
-**Motion system** (`src/components/motion/`, built on `motion/react` + `lenis`):
-- Philosophy: "quietly alive" — small travel (8–14px), house easing `[0.16, 1, 0.3, 1]`, nothing performs
+**Motion system** (built on `motion/react`; primitives live in
+`packages/femora-ds/src/components/`, exported from `@femora/design-system`;
+site-specific pieces — `BackgroundSpiral`, `CursorDot`, `CursorField` — stay in
+`src/components/motion/`):
+- Philosophy: "quietly alive" — small travel (8–14px), house easing `[0.16, 1, 0.3, 1]` (exported as `EASE` from `@femora/design-system/ease`), nothing performs
 - `Reveal` — scroll-triggered fade-rise (or `immediate` for above-the-fold)
 - `DrawnRule` — hairline rules draw themselves left-to-right; use instead of raw `<hr>`
 - `MaskedLines` — type-being-set line reveal for page titles/taglines
@@ -111,9 +119,10 @@ Locked. Don't change tokens without confirming first.
 - `IdentityFlip` — tagline words roll through Femi's identities on hover/tap
 - `Highlight` — marker-swipe over key phrases, draws on scroll into view
 - `CursorDot` + `Magnetic` — accent dot trails pointer, nav leans toward it (desktop only)
+- `CursorField` — context provider in `src/app/layout.tsx` sharing cursor position with `BackgroundSpiral`/`CursorDot`
 - `src/app/template.tsx` — soft page-entrance transition on route change
 - NO scroll-hijacking: Lenis was added and removed (Femi found it laggy). Never re-add smooth-scroll libraries.
-- The spiral (src/lib/spiralPath.ts) IS the logo — favicon, apple-icon, OG image, nav mark all use it. No F-in-a-box.
+- The spiral (`@femora/design-system/spiral-path`) IS the logo — favicon, apple-icon, OG image, nav mark all use it. No F-in-a-box.
 - ALL motion respects `prefers-reduced-motion` (collapses to instant/static)
 - New sections must use these primitives, not ad-hoc animations
 - `/cv` is intentionally static (print-to-PDF page)
@@ -232,7 +241,7 @@ to offer; never assume a tagline or paragraph is what he'd actually write.
 
 # Common gotchas
 
-- **Tailwind v4** uses `@theme inline` in CSS, not `tailwind.config.ts`. Adding a new color token means editing `src/app/globals.css`.
+- **Tailwind v4** uses `@theme inline` in CSS, not `tailwind.config.ts`. Adding a new color token means editing `packages/femora-ds/tokens.css` (and mirroring it in the flattened `packages/femora-ds/styles.css`).
 - **Dynamic MDX import** (`src/app/writing/[slug]/page.tsx`) requires at least one `.mdx` file in `content/writing/`. `_template.mdx` exists for this reason.
 - **`next/image` remote patterns** in `next.config.ts` must list any new image host. Currently allows `cdn-images-1.medium.com` and `miro.medium.com`.
 - **`metadataBase`** in `src/app/layout.tsx` reads `NEXT_PUBLIC_SITE_URL` env var. Production value is `https://ifemora.dev`.
