@@ -9,8 +9,8 @@ export type GalleryFrame = {
   date?: string; // freeform: "2026" or "2026-06-01"
   width: number;
   height: number;
-  /** "photo" (duotone contact sheet) or "art" (full colour). Defaults to photo. */
-  kind?: "photo" | "art";
+  /** "photo" (contact sheet), "art" (made things), or "book" (the shelf). Defaults to photo. All render duotone until hover. */
+  kind?: "photo" | "art" | "book";
   /** Optional outbound link surfaced on the caption. */
   href?: string;
   /** A small line rendered beneath the frame (e.g. a dedication). */
@@ -29,4 +29,8 @@ export function getPhotos(): GalleryFrame[] {
 
 export function getArt(): GalleryFrame[] {
   return galleryFrames.filter((f) => f.kind === "art");
+}
+
+export function getBooks(): GalleryFrame[] {
+  return galleryFrames.filter((f) => f.kind === "book");
 }

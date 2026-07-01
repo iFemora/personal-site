@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getPhotos, getArt } from "@/lib/gallery";
+import { getPhotos, getArt, getBooks } from "@/lib/gallery";
 import GalleryGrid from "@/components/GalleryGrid";
 import {
   Reveal,
@@ -10,12 +10,13 @@ import {
 
 export const metadata: Metadata = {
   title: "Gallery",
-  description: "Photographs and artwork by Femi Siji-Kenneth.",
+  description: "Photographs, artwork, and the bookshelf of Femi Siji-Kenneth.",
 };
 
 export default function GalleryPage() {
   const photos = getPhotos();
   const art = getArt();
+  const books = getBooks();
 
   return (
     <main className="mx-auto w-full max-w-[1100px] px-6 py-16 sm:py-24">
@@ -62,7 +63,7 @@ export default function GalleryPage() {
 
       {photos.length > 0 && <GalleryGrid frames={photos} prefix="FR" />}
 
-      {/* Made — artwork, in full colour */}
+      {/* Made — artwork */}
       {art.length > 0 && (
         <>
           <DrawnRule className="my-14 sm:my-20" />
@@ -74,12 +75,34 @@ export default function GalleryPage() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="text-lg leading-relaxed">
-                Things I&apos;ve drawn and animated, kept in full colour
-                because that&apos;s the whole point of them.
+                Things I&apos;ve drawn and animated. They wait faded like
+                everything else here &mdash; hover to wake the colour up.
               </p>
             </Reveal>
           </section>
-          <GalleryGrid frames={art} duotone={false} prefix="MADE" />
+          <GalleryGrid frames={art} prefix="MADE" />
+        </>
+      )}
+
+      {/* Shelf — books, current and queued */}
+      {books.length > 0 && (
+        <>
+          <DrawnRule className="my-14 sm:my-20" />
+          <section className="mb-14 grid gap-6 sm:mb-16 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12">
+            <Reveal delay={0.05}>
+              <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
+                <span className="text-accent">Shelf</span> — {books.length}{" "}
+                spines
+              </p>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="text-lg leading-relaxed">
+                Books I&apos;m reading, or circling before I commit. Covers
+                for now; arguments about them later.
+              </p>
+            </Reveal>
+          </section>
+          <GalleryGrid frames={books} prefix="BK" />
         </>
       )}
     </main>

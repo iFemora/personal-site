@@ -74,7 +74,10 @@ empty state until the first photo lands.
 
 **Gallery publishing (manual):** add to `content/gallery.json` —
 `{ id, src, alt, caption?, location?, date?, width, height, kind? }`. Image
-files go in `public/gallery/`. `kind` is `"photo"` (default) or `"art"`.
+files go in `public/gallery/` (book covers in `public/gallery/books/`).
+`kind` is `"photo"` (default), `"art"`, or `"book"` — sections "Contact
+sheet" / "Made" / "Shelf"; every kind renders duotone until hover. For books:
+caption = title, note = author.
 
 ---
 

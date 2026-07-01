@@ -111,5 +111,55 @@
     "width": 1206,
     "height": 1206,
     "kind": "art"
+  },
+  {
+    "id": "book-faith-to-be-an-atheist",
+    "src": "/gallery/books/faith-to-be-an-atheist.jpg",
+    "alt": "Cover of I Don't Have Enough Faith to Be an Atheist by Norman L. Geisler and Frank Turek",
+    "caption": "I Don't Have Enough Faith to Be an Atheist",
+    "note": "Norman L. Geisler & Frank Turek",
+    "width": 304,
+    "height": 500,
+    "kind": "book"
+  },
+  {
+    "id": "book-atomic-habits",
+    "src": "/gallery/books/atomic-habits.jpg",
+    "alt": "Cover of Atomic Habits by James Clear",
+    "caption": "Atomic Habits",
+    "note": "James Clear",
+    "width": 331,
+    "height": 500,
+    "kind": "book"
+  },
+  {
+    "id": "book-tactics",
+    "src": "/gallery/books/tactics.jpg",
+    "alt": "Cover of Tactics by Gregory Koukl",
+    "caption": "Tactics",
+    "note": "Gregory Koukl",
+    "width": 330,
+    "height": 500,
+    "kind": "book"
+  },
+  {
+    "id": "book-inspired",
+    "src": "/gallery/books/inspired.jpg",
+    "alt": "Cover of Inspired by Marty Cagan",
+    "caption": "Inspired",
+    "note": "Marty Cagan",
+    "width": 332,
+    "height": 494,
+    "kind": "book"
+  },
+  {
+    "id": "book-high-growth-handbook",
+    "src": "/gallery/books/high-growth-handbook.jpg",
+    "alt": "Cover of High Growth Handbook by Elad Gil",
+    "caption": "High Growth Handbook",
+    "note": "Elad Gil",
+    "width": 338,
+    "height": 500,
+    "kind": "book"
   }
 ]

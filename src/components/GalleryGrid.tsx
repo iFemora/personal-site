@@ -9,9 +9,7 @@ import { EASE } from "@femora/design-system/ease";
 
 type Props = {
   frames: GalleryFrame[];
-  /** Photos start desaturated and flood to colour on hover. Art stays full colour. */
-  duotone?: boolean;
-  /** Serial prefix so the two sections number independently. */
+  /** Serial prefix so each section numbers independently. */
   prefix?: string;
 };
 
@@ -19,11 +17,7 @@ function frameNumber(prefix: string, i: number): string {
   return `${prefix}-${String(i + 1).padStart(3, "0")}`;
 }
 
-export default function GalleryGrid({
-  frames,
-  duotone = true,
-  prefix = "FR",
-}: Props) {
+export default function GalleryGrid({ frames, prefix = "FR" }: Props) {
   const reduced = useReducedMotion();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -53,9 +47,9 @@ export default function GalleryGrid({
 
   const open = openIndex === null ? null : frames[openIndex];
 
-  const imgClass = duotone
-    ? "block w-full transition-[filter,transform] duration-500 ease-out grayscale-[0.85] sepia-[0.12] group-hover:scale-[1.015] group-hover:grayscale-0 group-hover:sepia-0"
-    : "block w-full transition-transform duration-500 ease-out group-hover:scale-[1.015]";
+  // Every frame sits desaturated until hover floods the colour back.
+  const imgClass =
+    "block w-full transition-[filter,transform] duration-500 ease-out grayscale-[0.85] sepia-[0.12] group-hover:scale-[1.015] group-hover:grayscale-0 group-hover:sepia-0";
 
   return (
     <>
