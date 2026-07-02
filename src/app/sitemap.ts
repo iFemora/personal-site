@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { internalPosts } from "@/lib/writing";
+import { getInternalPosts } from "@/lib/writing";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl =
@@ -22,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: path === "" ? 1.0 : 0.7,
   }));
 
-  const postRoutes = internalPosts.map((p) => ({
+  const postRoutes = getInternalPosts().map((p) => ({
     url: `${siteUrl}/writing/${p.slug}`,
     lastModified: new Date(p.date),
     changeFrequency: "yearly" as const,

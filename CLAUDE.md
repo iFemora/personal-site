@@ -147,41 +147,45 @@ site-specific pieces — `BackgroundSpiral`, `CursorDot`, `CursorField` — stay
 User pastes the essay content. You:
 
 1. Pick a slug like `2026-07-12-essay-title`.
-2. Create `content/writing/<slug>.mdx` with:
+2. Create `content/writing/<slug>.mdx` with YAML frontmatter:
    ```mdx
-   export const metadata = {
-     title: "The essay title",
-     date: "2026-07-12",
-     description: "One-sentence description.",
-   };
+   ---
+   title: The essay title
+   date: "2026-07-12"
+   description: One-sentence description.
+   ---
 
    # The essay title
 
    …body in Markdown…
    ```
-3. Append to `internalPosts` in `src/lib/writing.ts` with matching slug/title/date/description.
-4. Commit (`new post: <title>`) and push.
+3. Commit (`new post: <title>`) and push.
+
+There is no index to update: `src/lib/writing.ts` builds the writing index by
+reading frontmatter from every `.mdx` in `content/writing/` (files starting
+with `_` are skipped). Optional frontmatter: `homepageHidden: true`, `image:
+{src, alt}`. Essays are also editable in Pages CMS ("Essays" collection).
 
 **Note:** `content/writing/_template.mdx` is a build-only file. Do not delete it.
 Turbopack's dynamic-import glob needs at least one `.mdx` in the folder to resolve.
 
 ## 2. New Medium / external piece
 
-Append to `externalPosts` in `src/lib/writing.ts`:
+Prepend to the array in `content/writing/external.json` (no `type` field —
+the loader adds it):
 
-```ts
+```json
 {
-  type: "external",
-  href: "https://medium.com/@iFemora/...",
-  source: "Medium",
-  title: "Post title",
-  date: "YYYY-MM-DD",
-  description: "One-sentence description.",
-  image: {
-    src: "https://cdn-images-1.medium.com/...",
-    alt: "Hero image for <title>",
-  },
-},
+  "href": "https://medium.com/@iFemora/...",
+  "source": "Medium",
+  "title": "Post title",
+  "date": "YYYY-MM-DD",
+  "description": "One-sentence description.",
+  "image": {
+    "src": "https://cdn-images-1.medium.com/...",
+    "alt": "Hero image for <title>"
+  }
+}
 ```
 
 To get the image URL, fetch Medium's RSS at `https://medium.com/feed/@iFemora`

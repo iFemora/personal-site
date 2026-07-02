@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
-  internalPosts,
+  getInternalPosts,
   getInternalPostBySlug,
   formatPostDate,
 } from "@/lib/writing";
@@ -11,7 +11,7 @@ type Props = {
 };
 
 export function generateStaticParams() {
-  return internalPosts.map((p) => ({ slug: p.slug }));
+  return getInternalPosts().map((p) => ({ slug: p.slug }));
 }
 
 export const dynamicParams = false;

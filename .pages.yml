@@ -5,15 +5,80 @@
 # editable. Every save is a git commit to main, so Vercel redeploys and
 # the repo stays the single source of truth (and every edit is revertable).
 #
-# Essays (content/writing/*.mdx) are NOT modeled yet: their metadata lives
-# in src/lib/writing.ts, which a CMS can't safely edit. Refactoring the
-# writing index to JSON + frontmatter would unlock essay editing here.
-
 media:
   input: public
   output: /
 
 content:
+  - name: essays
+    label: Essays
+    type: collection
+    path: content/writing
+    format: yaml-frontmatter
+    extension: mdx
+    filename: "{fields.title}.mdx"
+    view:
+      fields: [title, date]
+      sort: [date]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        type: string
+        required: true
+      - name: date
+        label: Date (YYYY-MM-DD)
+        type: string
+        required: true
+      - name: description
+        label: One-sentence description
+        type: text
+        required: true
+      - name: homepageHidden
+        label: Hide from homepage teasers
+        type: boolean
+      - name: body
+        label: Essay
+        type: rich-text
+        required: true
+
+  - name: writing-external
+    label: Writing — external links
+    type: file
+    path: content/writing/external.json
+    format: json
+    list: true
+    fields:
+      - name: href
+        label: URL
+        type: string
+        required: true
+      - name: source
+        label: Source (e.g. Medium)
+        type: string
+        required: true
+      - name: title
+        type: string
+        required: true
+      - name: date
+        label: Date (YYYY-MM-DD)
+        type: string
+        required: true
+      - name: description
+        label: One-sentence description
+        type: text
+        required: true
+      - name: image
+        label: Hero image (remote URL)
+        type: object
+        fields:
+          - name: src
+            label: Image URL
+            type: string
+          - name: alt
+            type: string
+
   - name: field-notes
     label: Field notes
     type: file

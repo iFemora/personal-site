@@ -21,6 +21,11 @@ const nextConfig: NextConfig = {
   },
 };
 
-const withMDX = createMDX({});
+const withMDX = createMDX({
+  options: {
+    // Plugin as a string: Turbopack can't take JS functions in loader options.
+    remarkPlugins: ["remark-frontmatter"],
+  },
+});
 
 export default withMDX(nextConfig);

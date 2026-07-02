@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { spiralPath } from "@femora/design-system/spiral-path";
 import {
-  internalPosts,
+  getInternalPosts,
   getInternalPostBySlug,
   formatPostDate,
 } from "@/lib/writing";
@@ -13,7 +13,7 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export function generateStaticParams() {
-  return internalPosts.map((p) => ({ slug: p.slug }));
+  return getInternalPosts().map((p) => ({ slug: p.slug }));
 }
 
 export async function generateImageMetadata({
