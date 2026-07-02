@@ -3,20 +3,20 @@ import Link from "next/link";
 
 const components: MDXComponents = {
   h1: ({ children }) => (
-    <h1 className="mt-12 mb-4 font-serif text-4xl tracking-tight sm:text-5xl">
+    <h1 className="mt-12 mb-4 font-serif text-4xl tracking-tight text-balance sm:text-5xl">
       {children}
     </h1>
   ),
   h2: ({ children }) => (
-    <h2 className="mt-12 mb-4 font-serif text-2xl tracking-tight sm:text-3xl">
+    <h2 className="mt-12 mb-4 font-serif text-2xl tracking-tight text-balance sm:text-3xl">
       {children}
     </h2>
   ),
   h3: ({ children }) => (
-    <h3 className="mt-8 mb-3 font-serif text-xl tracking-tight">{children}</h3>
+    <h3 className="mt-8 mb-3 font-serif text-xl tracking-tight text-balance">{children}</h3>
   ),
   p: ({ children }) => (
-    <p className="my-5 text-base leading-relaxed sm:text-lg">{children}</p>
+    <p className="my-5 text-base leading-relaxed text-pretty sm:text-lg">{children}</p>
   ),
   a: ({ children, href }) => {
     const isExternal = href?.startsWith("http");
@@ -52,7 +52,7 @@ const components: MDXComponents = {
     </ol>
   ),
   blockquote: ({ children }) => (
-    <blockquote className="my-6 border-l-2 border-accent pl-5 italic text-muted">
+    <blockquote className="my-6 border-l-2 border-accent pl-5 italic text-muted [hanging-punctuation:first_last]">
       {children}
     </blockquote>
   ),

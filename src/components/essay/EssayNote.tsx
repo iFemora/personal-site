@@ -15,7 +15,7 @@ export default function EssayNote({ children, label, pull = false }: Props) {
   if (pull) {
     return (
       <div className="my-12 border-y border-rule py-8 text-center">
-        <p className="mx-auto max-w-[30ch] font-serif text-2xl italic leading-snug tracking-tight text-accent sm:text-3xl">
+        <p className="mx-auto max-w-[30ch] font-serif text-2xl italic leading-snug tracking-tight text-accent text-balance [hanging-punctuation:first_last] sm:text-3xl">
           {children}
         </p>
       </div>
