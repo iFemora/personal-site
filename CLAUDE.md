@@ -30,6 +30,11 @@ operations (deleting files, rewriting history, changing DNS).
 - **TypeScript**, **ESLint**
 - Deployed on **Vercel** with auto-deploy on push to `main`
 - Repo: **`iFemora/personal-site`** (SSH remote, pushes go to GitHub directly)
+- **Pages CMS** (`.pages.yml`) lets Femi edit the JSON content files + media
+  from pagescms.org without code; every CMS save is a git commit to `main`.
+  Keep `.pages.yml` in sync when content schemas change.
+- The repo must live OUTSIDE iCloud-synced folders (`~/Documents`, `~/Desktop`)
+  — iCloud resurrects deleted files inside git repos. Home is `~/Code/personal-site`.
 
 ---
 

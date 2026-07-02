@@ -1,0 +1,179 @@
+# Pages CMS configuration — https://pagescms.org
+#
+# Femi edits content here without touching code: sign in at pagescms.org
+# with GitHub, open iFemora/personal-site, and this file defines what's
+# editable. Every save is a git commit to main, so Vercel redeploys and
+# the repo stays the single source of truth (and every edit is revertable).
+#
+# Essays (content/writing/*.mdx) are NOT modeled yet: their metadata lives
+# in src/lib/writing.ts, which a CMS can't safely edit. Refactoring the
+# writing index to JSON + frontmatter would unlock essay editing here.
+
+media:
+  input: public
+  output: /
+
+content:
+  - name: field-notes
+    label: Field notes
+    type: file
+    path: content/field-notes.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        label: ID (YYYY-MM-DD-HHMM-slug)
+        type: string
+        required: true
+      - name: date
+        label: Date (YYYY-MM-DD)
+        type: string
+        required: true
+      - name: body
+        label: Note (double newline = new paragraph)
+        type: text
+      - name: audio
+        label: Audio
+        type: object
+        fields:
+          - name: src
+            label: Audio file (under /field-notes/audio/)
+            type: string
+          - name: title
+            label: Title
+            type: string
+
+  - name: gallery
+    label: Gallery
+    type: file
+    path: content/gallery.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        type: string
+        required: true
+      - name: src
+        label: Image
+        type: image
+        required: true
+      - name: alt
+        label: Alt text (describe the image)
+        type: string
+        required: true
+      - name: caption
+        type: string
+      - name: location
+        type: string
+      - name: date
+        label: Date (freeform, e.g. "2025")
+        type: string
+      - name: width
+        label: Width (px)
+        type: number
+        required: true
+      - name: height
+        label: Height (px)
+        type: number
+        required: true
+      - name: kind
+        label: Section
+        type: select
+        options:
+          values:
+            - value: photo
+              label: Contact sheet (photo)
+            - value: art
+              label: Made (art)
+            - value: book
+              label: Shelf (book)
+      - name: href
+        label: Link (optional, shown on caption)
+        type: string
+      - name: note
+        label: Note / author line
+        type: string
+      - name: status
+        label: Reading status (books only)
+        type: select
+        options:
+          values:
+            - reading
+            - queued
+            - finished
+      - name: verdict
+        label: One-line verdict (books only)
+        type: string
+
+  - name: tennis
+    label: Tennis log
+    type: file
+    path: content/tennis.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        type: string
+        required: true
+      - name: date
+        label: Date (YYYY-MM-DD)
+        type: string
+        required: true
+      - name: title
+        type: string
+      - name: body
+        label: Entry (double newline = new paragraph)
+        type: text
+      - name: image
+        type: object
+        fields:
+          - name: src
+            label: Image (under /tennis/)
+            type: image
+          - name: alt
+            type: string
+          - name: caption
+            type: string
+          - name: width
+            type: number
+          - name: height
+            type: number
+      - name: video
+        type: object
+        fields:
+          - name: src
+            label: Video file (under /tennis/)
+            type: string
+          - name: poster
+            label: Poster image
+            type: string
+          - name: caption
+            type: string
+
+  - name: about-timeline
+    label: About timeline
+    type: file
+    path: content/about-timeline.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        type: string
+        required: true
+      - name: year
+        label: Year ("2015", or "Now" — non-numeric sorts last)
+        type: string
+        required: true
+      - name: title
+        type: string
+        required: true
+      - name: caption
+        type: text
+      - name: image
+        type: object
+        fields:
+          - name: src
+            label: Photo (under /about/)
+            type: image
+          - name: alt
+            type: string
