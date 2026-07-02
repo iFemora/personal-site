@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/field-notes",
     "/tennis",
     "/gallery",
+    "/colophon",
   ].map((path) => ({
     url: `${siteUrl}${path}`,
     lastModified: new Date(),

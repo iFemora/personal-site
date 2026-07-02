@@ -9,6 +9,7 @@ const links = [
   { label: "x", href: "https://x.com/iFemora" },
   { label: "medium", href: "https://medium.com/@iFemora" },
   { label: "substack", href: "https://substack.com/@ifemora" },
+  { label: "colophon", href: "/colophon" },
 ];
 
 export default function FooterLinks() {

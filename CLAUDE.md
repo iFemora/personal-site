@@ -45,6 +45,7 @@ operations (deleting files, rewriting history, changing DNS).
 /field-notes            Short observations + voice memos
 /tennis                 Tennis log — match notes, photos, video clips
 /gallery                Contact-sheet photo gallery (duotone → color hover, lightbox)
+/colophon               How the site is made — mark, type, colour, motion, build
 /api/field-notes        POST endpoint hit by the iOS Shortcut for phone publishing
 /api/gallery            POST endpoint hit by the "Publish Photo" iOS Shortcut
 /maintenance            Preview of the "out, briefly" page (to take the site dark,
@@ -77,7 +78,9 @@ empty state until the first photo lands.
 files go in `public/gallery/` (book covers in `public/gallery/books/`).
 `kind` is `"photo"` (default), `"art"`, or `"book"` — sections "Contact
 sheet" / "Made" / "Shelf"; every kind renders duotone until hover. For books:
-caption = title, note = author.
+caption = title, note = author, plus optional `status`
+("reading" | "queued" | "finished") and `verdict` (a one-line marginalia
+quote in Femi's words — never invent these).
 
 ---
 
