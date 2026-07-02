@@ -11,13 +11,19 @@ type Props = {
   frames: GalleryFrame[];
   /** Serial prefix so each section numbers independently. */
   prefix?: string;
+  /** Denser columns for small sources (book covers) so they render at or below native size. */
+  dense?: boolean;
 };
 
 function frameNumber(prefix: string, i: number): string {
   return `${prefix}-${String(i + 1).padStart(3, "0")}`;
 }
 
-export default function GalleryGrid({ frames, prefix = "FR" }: Props) {
+export default function GalleryGrid({
+  frames,
+  prefix = "FR",
+  dense = false,
+}: Props) {
   const reduced = useReducedMotion();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -54,7 +60,13 @@ export default function GalleryGrid({ frames, prefix = "FR" }: Props) {
   return (
     <>
       {/* Contact sheet */}
-      <div className="columns-1 gap-5 sm:columns-2 lg:columns-3">
+      <div
+        className={
+          dense
+            ? "columns-2 gap-4 sm:columns-3 lg:columns-5"
+            : "columns-1 gap-5 sm:columns-2 lg:columns-3"
+        }
+      >
         {frames.map((frame, i) => (
           <motion.figure
             key={frame.id}

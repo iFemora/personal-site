@@ -161,5 +161,65 @@
     "width": 338,
     "height": 500,
     "kind": "book"
+  },
+  {
+    "id": "book-empowered",
+    "src": "/gallery/books/empowered.jpg",
+    "alt": "Cover of Empowered by Marty Cagan with Chris Jones",
+    "caption": "Empowered",
+    "note": "Marty Cagan with Chris Jones",
+    "width": 337,
+    "height": 500,
+    "kind": "book"
+  },
+  {
+    "id": "book-transformed",
+    "src": "/gallery/books/transformed.jpg",
+    "alt": "Cover of Transformed by Marty Cagan",
+    "caption": "Transformed",
+    "note": "Marty Cagan",
+    "width": 316,
+    "height": 466,
+    "kind": "book"
+  },
+  {
+    "id": "book-loved",
+    "src": "/gallery/books/loved.jpg",
+    "alt": "Cover of Loved by Martina Lauchengco",
+    "caption": "Loved",
+    "note": "Martina Lauchengco",
+    "width": 338,
+    "height": 500,
+    "kind": "book"
+  },
+  {
+    "id": "book-steal-like-an-artist",
+    "src": "/gallery/books/steal-like-an-artist.jpg",
+    "alt": "Cover of Steal Like an Artist by Austin Kleon",
+    "caption": "Steal Like an Artist",
+    "note": "Austin Kleon",
+    "width": 318,
+    "height": 318,
+    "kind": "book"
+  },
+  {
+    "id": "book-show-your-work",
+    "src": "/gallery/books/show-your-work.jpg",
+    "alt": "Cover of Show Your Work! by Austin Kleon",
+    "caption": "Show Your Work!",
+    "note": "Austin Kleon",
+    "width": 260,
+    "height": 260,
+    "kind": "book"
+  },
+  {
+    "id": "book-keep-going",
+    "src": "/gallery/books/keep-going.jpg",
+    "alt": "Cover of Keep Going by Austin Kleon",
+    "caption": "Keep Going",
+    "note": "Austin Kleon",
+    "width": 500,
+    "height": 500,
+    "kind": "book"
   }
 ]

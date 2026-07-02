@@ -102,7 +102,7 @@ export default function GalleryPage() {
               </p>
             </Reveal>
           </section>
-          <GalleryGrid frames={books} prefix="BK" />
+          <GalleryGrid frames={books} prefix="BK" dense />
         </>
       )}
     </main>
