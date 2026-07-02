@@ -1,8 +1,7 @@
 "use client";
 
-/* eslint-disable @next/next/no-img-element */
-
 import { useCallback, useEffect, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import type { GalleryFrame } from "@/lib/gallery";
 import { EASE } from "@femora/design-system/ease";
@@ -83,21 +82,39 @@ export default function GalleryGrid({
               aria-label={`Open ${frame.alt}`}
             >
               <span className="block overflow-hidden rounded-sm">
-                <img
+                <Image
                   src={frame.src}
                   alt={frame.alt}
                   width={frame.width}
                   height={frame.height}
-                  loading="lazy"
+                  sizes={
+                    dense
+                      ? "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 220px"
+                      : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 340px"
+                  }
+                  unoptimized={frame.src.endsWith(".gif")}
+                  priority={i < 3}
                   className={imgClass}
                 />
               </span>
               <figcaption className="mt-2 flex items-baseline justify-between gap-4 font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
                 <span className="text-accent">{frameNumber(prefix, i)}</span>
-                {(frame.location || frame.date) && (
-                  <span>
-                    {[frame.location, frame.date].filter(Boolean).join(" · ")}
+                {frame.status ? (
+                  <span
+                    className={
+                      frame.status === "reading" ? "text-accent" : undefined
+                    }
+                  >
+                    {frame.status}
                   </span>
+                ) : (
+                  (frame.location || frame.date) && (
+                    <span>
+                      {[frame.location, frame.date]
+                        .filter(Boolean)
+                        .join(" · ")}
+                    </span>
+                  )
                 )}
               </figcaption>
             </button>
@@ -124,6 +141,11 @@ export default function GalleryGrid({
                     {frame.note}
                   </p>
                 )}
+                {frame.verdict && (
+                  <p className="mt-1.5 font-serif text-[13px] italic leading-snug text-foreground/80">
+                    &ldquo;{frame.verdict}&rdquo;
+                  </p>
+                )}
               </div>
             )}
           </motion.figure>
@@ -144,16 +166,42 @@ export default function GalleryGrid({
             aria-modal="true"
             aria-label={open.alt}
           >
-            <motion.img
+            {/* The print "develops": opens duotone like its thumbnail, floods to colour. */}
+            <motion.div
               key={open.id}
-              src={open.src}
-              alt={open.alt}
-              className="max-h-[78vh] max-w-full rounded-sm object-contain"
-              initial={reduced ? { opacity: 1 } : { opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.35, ease: EASE }}
+              className="flex min-h-0 justify-center"
+              initial={
+                reduced
+                  ? { opacity: 1, filter: "grayscale(0) sepia(0)" }
+                  : {
+                      opacity: 0,
+                      scale: 0.97,
+                      filter: "grayscale(0.85) sepia(0.12)",
+                    }
+              }
+              animate={{
+                opacity: 1,
+                scale: 1,
+                filter: "grayscale(0) sepia(0)",
+              }}
+              transition={{
+                duration: 0.35,
+                ease: EASE,
+                filter: { duration: 0.9, ease: EASE, delay: 0.15 },
+              }}
               onClick={(e) => e.stopPropagation()}
-            />
+            >
+              <Image
+                src={open.src}
+                alt={open.alt}
+                width={open.width}
+                height={open.height}
+                sizes="100vw"
+                quality={85}
+                unoptimized={open.src.endsWith(".gif")}
+                className="max-h-[78vh] w-auto max-w-full rounded-sm object-contain"
+              />
+            </motion.div>
             <div
               className="mt-5 flex w-full max-w-[720px] items-baseline justify-between gap-6 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"
               onClick={(e) => e.stopPropagation()}

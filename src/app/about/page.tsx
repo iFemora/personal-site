@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getAboutTimeline } from "@/lib/about";
 import {
   Reveal,
@@ -35,11 +36,13 @@ export default function AboutPage() {
       <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12">
         <Reveal immediate delay={0.45}>
           <figure className="mb-5 overflow-hidden rounded-sm border border-rule sm:mb-6">
-            <img
+            <Image
               src="/about/headshot.jpg"
               alt="Femi Siji-Kenneth"
               width={1120}
               height={928}
+              sizes="(max-width: 640px) 100vw, 200px"
+              priority
               className="w-full brightness-[1.02] contrast-[1.02] saturate-[0.9] sepia-[0.3]"
             />
           </figure>

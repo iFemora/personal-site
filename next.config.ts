@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
   },
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   images: {
+    qualities: [75, 85],
     remotePatterns: [
       {
         protocol: "https",

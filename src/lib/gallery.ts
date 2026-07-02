@@ -13,8 +13,12 @@ export type GalleryFrame = {
   kind?: "photo" | "art" | "book";
   /** Optional outbound link surfaced on the caption. */
   href?: string;
-  /** A small line rendered beneath the frame (e.g. a dedication). */
+  /** A small line rendered beneath the frame (e.g. a dedication, or a book's author). */
   note?: string;
+  /** Shelf only: where the book sits in the reading life. */
+  status?: "reading" | "queued" | "finished";
+  /** Shelf only: a one-line marginalia verdict, rendered beneath the note. */
+  verdict?: string;
 };
 
 export const galleryFrames: GalleryFrame[] = galleryData as GalleryFrame[];

@@ -1,5 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getTennisEntries, formatTennisDate } from "@/lib/tennis";
 import {
   Reveal,
@@ -86,12 +86,12 @@ export default function TennisPage() {
 
                     {entry.image && (
                       <figure className="mt-6 first:mt-0">
-                        <img
+                        <Image
                           src={entry.image.src}
                           alt={entry.image.alt ?? entry.title ?? "Tennis"}
                           width={entry.image.width}
                           height={entry.image.height}
-                          loading="lazy"
+                          sizes="(max-width: 640px) 100vw, 640px"
                           className="w-full rounded-sm"
                         />
                         {entry.image.caption && (
