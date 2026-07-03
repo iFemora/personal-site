@@ -116,6 +116,18 @@ Locked. Don't change tokens without confirming first.
 - Hover: color shifts to `text-accent` and underline often removed
 - External links get a small `↗` glyph
 
+**Theme (light/dark):**
+- Defaults to the system (`prefers-color-scheme`); a nav ThemeToggle
+  (sun ↔ moon morph, `src/components/ThemeToggle.tsx`) forces
+  `html[data-theme="light"|"dark"]`, persisted in `localStorage.theme`,
+  applied pre-paint by an inline script in `layout.tsx` (html has
+  `suppressHydrationWarning` for that attribute).
+- Dark styles live in TWO selectors that must stay in sync:
+  `@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) … }`
+  and `:root[data-theme="dark"] …` — in `packages/femora-ds/tokens.css`
+  (palette) and `utilities.css` (.grain, .accent-wash). Never add a dark
+  style with only the media query or the toggle will miss it.
+
 **Motion system** (built on `motion/react`; primitives live in
 `packages/femora-ds/src/components/`, exported from `@femora/design-system`;
 site-specific pieces — `BackgroundSpiral`, `CursorDot`, `CursorField` — stay in

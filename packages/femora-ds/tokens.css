@@ -20,8 +20,13 @@
   --accent: var(--accent-home);
 }
 
+/* Dark palette applies two ways:
+   1. the system prefers dark and the visitor hasn't forced light, or
+   2. the visitor forced dark via the theme toggle (html[data-theme]).
+   The token values are duplicated across both selectors on purpose —
+   keep them in sync when editing. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --background: #16120e;
     --foreground: #ece6da;
     --muted: #9a9183;
@@ -33,6 +38,19 @@
     --accent-tennis: #d6e25e; /* ball under floodlights */
     --accent-gallery: #c9ae96;
   }
+}
+
+:root[data-theme="dark"] {
+  --background: #16120e;
+  --foreground: #ece6da;
+  --muted: #9a9183;
+  --rule: #2e2920;
+  --accent-home: #e8997b;
+  --accent-work: #8fc1c6;
+  --accent-writing: #b9c98b;
+  --accent-notes: #ddb56e;
+  --accent-tennis: #d6e25e; /* ball under floodlights */
+  --accent-gallery: #c9ae96;
 }
 
 html[data-accent="work"] {
@@ -66,6 +84,21 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-newsreader), Georgia, serif;
+}
+
+/* Manual theme flips cross-fade instead of hard-cutting. The class is
+   added by the toggle just for the transition, so page load stays instant. */
+:root[data-theme-transitioning] body,
+:root[data-theme-transitioning] body * {
+  transition: background-color 0.45s ease, color 0.45s ease,
+    border-color 0.45s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-theme-transitioning] body,
+  :root[data-theme-transitioning] body * {
+    transition: none;
+  }
 }
 
 @media print {

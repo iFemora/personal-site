@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Magnetic } from "@femora/design-system";
 import { spiralPath } from "@femora/design-system/spiral-path";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const items = [
   { href: "/about", label: "About" },
@@ -45,8 +46,9 @@ export default function Nav() {
         </Link>
       </Magnetic>
 
-      <div className="flex flex-wrap gap-x-4 gap-y-1 sm:gap-x-6">
-        {items.map((item) => {
+      <div className="flex items-center gap-x-4 sm:gap-x-6">
+        <div className="flex flex-wrap gap-x-4 gap-y-1 sm:gap-x-6">
+          {items.map((item) => {
           const isActive =
             pathname === item.href || pathname.startsWith(`${item.href}/`);
           return (
@@ -72,7 +74,11 @@ export default function Nav() {
               </Link>
             </Magnetic>
           );
-        })}
+          })}
+        </div>
+        <Magnetic strength={0.3}>
+          <ThemeToggle />
+        </Magnetic>
       </div>
     </nav>
   );

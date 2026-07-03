@@ -50,13 +50,21 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .accent-wash {
+  :root:not([data-theme="light"]) .accent-wash {
     background: radial-gradient(
       115% 80% at 50% 0%,
       color-mix(in srgb, var(--accent) 14%, transparent),
       transparent 55%
     );
   }
+}
+
+:root[data-theme="dark"] .accent-wash {
+  background: radial-gradient(
+    115% 80% at 50% 0%,
+    color-mix(in srgb, var(--accent) 14%, transparent),
+    transparent 55%
+  );
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -122,10 +130,15 @@
 /* On dark paper, overlay grain reads weaker — soft-light keeps it
    present without crushing the blacks, and a touch more opacity. */
 @media (prefers-color-scheme: dark) {
-  .grain {
+  :root:not([data-theme="light"]) .grain {
     mix-blend-mode: soft-light;
     opacity: 0.65;
   }
+}
+
+:root[data-theme="dark"] .grain {
+  mix-blend-mode: soft-light;
+  opacity: 0.65;
 }
 
 /* Ghost wordmark in the footer: outlined type, no fill. */

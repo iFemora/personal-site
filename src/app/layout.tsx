@@ -109,8 +109,17 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${fraunces.variable} ${newsreader.variable} ${plexMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col">
+        {/* Apply the saved theme before anything paints, so a reload never
+            flashes the wrong palette. Runs synchronously, fails silently. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              'try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}',
+          }}
+        />
         <CursorFieldProvider>
           <AccentController />
           <CursorDot />
