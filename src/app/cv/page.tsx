@@ -125,7 +125,7 @@ const toolGroups: { label: string; items: string }[] = [
 
 export default function CVPage() {
   return (
-    <main className="mx-auto w-full max-w-[680px] px-6 py-16 sm:py-20 print:max-w-none print:px-0 print:py-0">
+    <main className="mx-auto w-full max-w-[680px] px-6 py-16 sm:py-20 print:max-w-none print:px-0 print:py-0 print:text-[12px] print:leading-snug">
       <p className="mb-12 font-serif italic text-muted print:hidden">
         This is the long form. The short form lives on the{" "}
         <Link
@@ -154,11 +154,13 @@ export default function CVPage() {
         <PrintButton />
       </div>
 
-      <hr className="my-10 border-t border-rule" />
+      <hr className="my-10 border-t border-rule print:my-4" />
 
       <section>
-        <h2 className="font-serif text-2xl tracking-tight">Summary</h2>
-        <p className="mt-4 leading-relaxed">
+        <h2 className="font-serif text-2xl tracking-tight print:text-lg">
+          Summary
+        </h2>
+        <p className="mt-4 leading-relaxed print:mt-2 print:leading-snug">
           I work in payments because payments is one of the few software
           domains where the seam between what&apos;s promised and what
           actually happens is unforgiving. Ten years of it now: card
@@ -177,27 +179,32 @@ export default function CVPage() {
         </p>
       </section>
 
-      <hr className="my-10 border-t border-rule" />
+      <hr className="my-10 border-t border-rule print:my-4" />
 
       <section>
-        <h2 className="font-serif text-2xl tracking-tight">Experience</h2>
-        <div className="mt-6 space-y-10 print:space-y-6">
+        <h2 className="font-serif text-2xl tracking-tight print:text-lg">
+          Experience
+        </h2>
+        <div className="mt-6 space-y-10 print:mt-3 print:space-y-4">
           {experiences.map((job) => (
-            <article
-              key={`${job.company}-${job.dates}`}
-              className="print:break-inside-avoid"
-            >
-              <h3 className="font-serif text-xl leading-snug tracking-tight">
-                {job.role}
-                <span className="text-muted"> · {job.company}</span>
-              </h3>
-              <p className="mt-1 font-mono text-sm text-muted">
-                {job.dates} · {job.location}
-              </p>
-              <p className="mt-3 leading-relaxed">{job.summary}</p>
-              <ul className="mt-3 list-disc space-y-2 pl-5 leading-relaxed marker:text-muted">
+            <article key={`${job.company}-${job.dates}`}>
+              <div className="print:break-inside-avoid">
+                <h3 className="font-serif text-xl leading-snug tracking-tight print:text-[15px]">
+                  {job.role}
+                  <span className="text-muted"> · {job.company}</span>
+                </h3>
+                <p className="mt-1 font-mono text-sm text-muted print:text-[10.5px]">
+                  {job.dates} · {job.location}
+                </p>
+                <p className="mt-3 leading-relaxed print:mt-1.5 print:leading-snug">
+                  {job.summary}
+                </p>
+              </div>
+              <ul className="mt-3 list-disc space-y-2 pl-5 leading-relaxed marker:text-muted print:mt-1.5 print:space-y-1 print:leading-snug">
                 {job.bullets.map((b, i) => (
-                  <li key={i}>{b}</li>
+                  <li key={i} className="print:break-inside-avoid">
+                    {b}
+                  </li>
                 ))}
               </ul>
             </article>
@@ -205,44 +212,58 @@ export default function CVPage() {
         </div>
       </section>
 
-      <hr className="my-10 border-t border-rule" />
+      <hr className="my-10 border-t border-rule print:my-4" />
 
       <section>
-        <h2 className="font-serif text-2xl tracking-tight">Education</h2>
-        <ul className="mt-6 space-y-5">
+        <h2 className="font-serif text-2xl tracking-tight print:text-lg">
+          Education
+        </h2>
+        <ul className="mt-6 space-y-5 print:mt-3 print:space-y-2">
           {education.map((ed) => (
-            <li key={ed.school}>
-              <p className="font-serif text-lg leading-snug">{ed.school}</p>
-              <p className="mt-1 text-sm leading-relaxed">{ed.detail}</p>
-              <p className="mt-1 font-mono text-sm text-muted">{ed.year}</p>
+            <li key={ed.school} className="print:break-inside-avoid">
+              <p className="font-serif text-lg leading-snug print:text-[14px]">
+                {ed.school}
+              </p>
+              <p className="mt-1 text-sm leading-relaxed print:leading-snug">
+                {ed.detail}
+              </p>
+              <p className="mt-1 font-mono text-sm text-muted print:text-[10.5px]">
+                {ed.year}
+              </p>
             </li>
           ))}
         </ul>
       </section>
 
-      <hr className="my-10 border-t border-rule" />
+      <hr className="my-10 border-t border-rule print:my-4" />
 
-      <section>
-        <h2 className="font-serif text-2xl tracking-tight">Certifications</h2>
-        <p className="mt-4 leading-relaxed">
+      <section className="print:break-inside-avoid">
+        <h2 className="font-serif text-2xl tracking-tight print:text-lg">
+          Certifications
+        </h2>
+        <p className="mt-4 leading-relaxed print:mt-2">
           Certified Scrum Product Owner (CSPO)
         </p>
       </section>
 
-      <hr className="my-10 border-t border-rule" />
+      <hr className="my-10 border-t border-rule print:my-4" />
 
       <section className="print:break-inside-avoid">
-        <h2 className="font-serif text-2xl tracking-tight">Tools</h2>
-        <dl className="mt-6 space-y-4">
+        <h2 className="font-serif text-2xl tracking-tight print:text-lg">
+          Tools
+        </h2>
+        <dl className="mt-6 space-y-4 print:mt-3 print:space-y-1.5">
           {toolGroups.map((group) => (
             <div
               key={group.label}
               className="flex flex-col gap-1 sm:flex-row sm:gap-6"
             >
-              <dt className="font-mono text-sm text-muted sm:w-44 sm:shrink-0">
+              <dt className="font-mono text-sm text-muted sm:w-44 sm:shrink-0 print:text-[10.5px]">
                 {group.label}
               </dt>
-              <dd className="leading-relaxed">{group.items}</dd>
+              <dd className="leading-relaxed print:leading-snug">
+                {group.items}
+              </dd>
             </div>
           ))}
         </dl>
