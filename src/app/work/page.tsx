@@ -10,7 +10,7 @@ import {
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Five things made, instead of five jobs held. Selected work by Femi Siji-Kenneth.",
+    "Six things made, instead of jobs held. Selected work by Femi Siji-Kenneth.",
 };
 
 type WorkEntry = {
@@ -18,6 +18,7 @@ type WorkEntry = {
   title: string;
   body: string;
   meta: string;
+  caseStudy?: { href: string; label?: string };
 };
 
 const entries: WorkEntry[] = [
@@ -27,6 +28,7 @@ const entries: WorkEntry[] = [
       "A corporate banking platform, stood up from scratch across two continents.",
     body: "Served 50,000+ SME and enterprise clients across Nigeria and the UK. Onboarding time-to-value cut by 40%. A multi-product portfolio across corporate internet banking, payroll, remittances, and FX/trade management.",
     meta: "FCMB · 2024–25",
+    caseStudy: { href: "/work/corporate-banking" },
   },
   {
     id: "airline-payments",
@@ -40,18 +42,27 @@ const entries: WorkEntry[] = [
       "A cardholder support platform, concept to production in under five months.",
     body: "Designed by sitting with BPO agents and watching them work. Now in production for a global card issuer processing billions in payment volume, and growing release by release into a platform spanning debit, credit, and prepaid programs: payments, collections, disputes, fraud, and sub-status management in one tool. Built the automated testing workflow alongside it, entirely in Claude Code and Playwright.",
     meta: "Marqeta · 2025",
+    caseStudy: { href: "/work/resolve" },
   },
   {
     id: "greenfield-vertical",
     title: "A greenfield vertical, grown 8× in half the projected time.",
     body: "First product hire at the company. From 3,200 to 25,000 users in six months against a 12-month mandate. Owned the full portfolio across iOS, Android, and web: field-service software for farmers, technicians, and buyers. Travelled across 29 Nigerian states to sit with them in person.",
     meta: "Farmcrowdy · 2019–21",
+    caseStudy: { href: "/work/farmcrowdy" },
   },
   {
     id: "product-team",
     title: "A product team, hired and grown across three time zones.",
     body: "Five PMs at varying levels. Mentored APMs into PMs, recruited Senior PMs who became Leads. One mentee eventually became Head of Products for the Retail Banking division.",
     meta: "FCMB · 2024–25",
+  },
+  {
+    id: "this-site",
+    title: "This website, designed and built end to end in Claude Code.",
+    body: "The site you are reading: a bespoke design system with its own motion language, an MDX essay pipeline, and iOS Shortcut endpoints that publish notes and photos straight from a phone. Designed, prototyped, and shipped the same way I work: in small iterations.",
+    meta: "ifemora.dev · 2026",
+    caseStudy: { href: "/colophon", label: "Read the colophon →" },
   },
 ];
 
@@ -75,7 +86,7 @@ export default function WorkPage() {
       <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12">
         <Reveal immediate delay={0.45}>
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
-            <span className="text-accent">Index</span> — five artifacts
+            <span className="text-accent">Index</span> — six artifacts
           </p>
         </Reveal>
         <Reveal immediate delay={0.5}>
@@ -121,6 +132,16 @@ export default function WorkPage() {
                 {entry.title}
               </h2>
               <p className="mt-5 text-lg leading-relaxed">{entry.body}</p>
+              {entry.caseStudy && (
+                <p className="mt-5">
+                  <Link
+                    href={entry.caseStudy.href}
+                    className="link-swipe font-mono text-xs uppercase tracking-[0.18em] text-accent"
+                  >
+                    {entry.caseStudy.label ?? "Read the case study →"}
+                  </Link>
+                </p>
+              )}
             </Reveal>
           </article>
         ))}
