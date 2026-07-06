@@ -201,7 +201,7 @@ export default function Constellation({ beats }: Props) {
     <div>
       <div
         ref={wrapRef}
-        className="relative mx-auto aspect-square w-full max-w-[540px]"
+        className="relative aspect-square w-full max-w-[540px] sm:max-w-[640px]"
       >
         <canvas
           ref={canvasRef}
@@ -252,7 +252,7 @@ export default function Constellation({ beats }: Props) {
       </div>
       <p
         aria-live="polite"
-        className="mx-auto mt-2 min-h-[1.6em] max-w-[540px] text-center font-mono text-[11px] uppercase tracking-[0.15em] text-muted"
+        className="mt-2 min-h-[1.6em] max-w-[540px] text-center font-mono text-[11px] uppercase tracking-[0.15em] text-muted sm:max-w-[640px]"
       >
         {current ? (
           <>
