@@ -12,7 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/writing",
     "/cv",
     "/field-notes",
-    "/tennis",
     "/gallery",
     "/colophon",
   ].map((path) => ({

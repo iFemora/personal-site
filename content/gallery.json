@@ -221,5 +221,60 @@
     "width": 500,
     "height": 500,
     "kind": "book"
+  },
+  {
+    "id": "book-continuous-discovery-habits",
+    "src": "/gallery/books/continuous-discovery-habits.jpg",
+    "alt": "Cover of Continuous Discovery Habits by Teresa Torres",
+    "caption": "Continuous Discovery Habits",
+    "note": "Teresa Torres",
+    "status": "queued",
+    "width": 333,
+    "height": 500,
+    "kind": "book"
+  },
+  {
+    "id": "book-the-mom-test",
+    "src": "/gallery/books/mom-test.jpg",
+    "alt": "Cover of The Mom Test by Rob Fitzpatrick",
+    "caption": "The Mom Test",
+    "note": "Rob Fitzpatrick",
+    "status": "queued",
+    "width": 324,
+    "height": 500,
+    "kind": "book"
+  },
+  {
+    "id": "book-escaping-the-build-trap",
+    "src": "/gallery/books/escaping-the-build-trap.jpg",
+    "alt": "Cover of Escaping the Build Trap by Melissa Perri",
+    "caption": "Escaping the Build Trap",
+    "note": "Melissa Perri",
+    "status": "queued",
+    "width": 333,
+    "height": 500,
+    "kind": "book"
+  },
+  {
+    "id": "book-creative-selection",
+    "src": "/gallery/books/creative-selection.jpg",
+    "alt": "Cover of Creative Selection by Ken Kocienda",
+    "caption": "Creative Selection",
+    "note": "Ken Kocienda",
+    "status": "queued",
+    "width": 326,
+    "height": 500,
+    "kind": "book"
+  },
+  {
+    "id": "book-design-of-everyday-things",
+    "src": "/gallery/books/design-of-everyday-things.jpg",
+    "alt": "Cover of The Design of Everyday Things by Don Norman",
+    "caption": "The Design of Everyday Things",
+    "note": "Don Norman",
+    "status": "queued",
+    "width": 322,
+    "height": 500,
+    "kind": "book"
   }
 ]

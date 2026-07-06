@@ -72,8 +72,8 @@ export default function AboutPage() {
             Work has never been the whole story, though. I play a lot of
             tennis &mdash; badly, often, happily. I write for minds that think
             in spirals. I read more religion and philosophy than is strictly
-            useful, make a little art, and I&apos;ll still argue almost
-            anything to the ground &mdash; I came up as a debater and never
+            useful, make a little art, and I&apos;ll still debate almost
+            anything to the ground; I came up as a debater and never
             quite stopped. The tidy version is on the{" "}
             <a href="/cv" className="link-swipe text-accent">
               CV

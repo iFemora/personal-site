@@ -11,7 +11,6 @@ const items = [
   { href: "/work", label: "Work" },
   { href: "/writing", label: "Writing" },
   { href: "/field-notes", label: "Notes" },
-  { href: "/tennis", label: "Tennis" },
   { href: "/gallery", label: "Gallery" },
 ];
 

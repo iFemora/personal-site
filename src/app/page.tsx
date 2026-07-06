@@ -82,15 +82,15 @@ export default function Home() {
         <Reveal immediate delay={0.6}>
           <p className="text-lg leading-relaxed sm:text-xl">
             I build <Highlight order={0}>products people love</Highlight>{" "}
-            &mdash; in payments, banking, and agriculture. The throughline
-            isn&apos;t the industry, it&apos;s{" "}
-            <Highlight order={1}>the tinkering</Highlight>: I worry an idea
-            until I love it, then keep at it until other people do too. Twice
-            that became <Highlight order={2}>a company of my own</Highlight>.
-            Off the clock I play <Highlight order={3}>a lot of tennis</Highlight>{" "}
-            &mdash; badly, often &mdash; read too much religion and
-            philosophy, and write for minds that{" "}
-            <Highlight order={4}>think in spirals</Highlight>.
+            in payments, banking, and agriculture. The throughline isn&apos;t
+            the industry, it&apos;s{" "}
+            <Highlight order={1}>the tinkering</Highlight>: I go where the
+            customers are, worry an idea until I love it, then iterate in
+            small steps until other people love it too. Twice that became{" "}
+            <Highlight order={2}>a company of my own</Highlight>. Off the
+            clock I play <Highlight order={3}>a lot of tennis</Highlight>{" "}
+            (badly, often), read too much religion and philosophy, and write
+            for minds that <Highlight order={4}>think in spirals</Highlight>.
           </p>
         </Reveal>
       </section>
