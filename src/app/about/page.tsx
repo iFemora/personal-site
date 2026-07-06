@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { getAboutTimeline } from "@/lib/about";
+import Constellation from "@/components/motion/Constellation";
 import {
   Reveal,
   DrawnRule,
@@ -29,6 +30,15 @@ export default function AboutPage() {
         delay={0.18}
         className="mt-6 font-serif text-xl italic text-muted sm:text-2xl"
       />
+
+      {/* The constellation — every beat of the chronology as a point on the spiral. */}
+      <Reveal immediate delay={0.3}>
+        <div className="mt-12 sm:mt-16">
+          <Constellation
+            beats={beats.map(({ id, year, title }) => ({ id, year, title }))}
+          />
+        </div>
+      </Reveal>
 
       <DrawnRule className="my-14 sm:my-20" immediate delay={0.35} />
 
@@ -78,7 +88,7 @@ export default function AboutPage() {
       {/* Timeline */}
       <ol className="space-y-14 sm:space-y-20">
         {beats.map((beat, i) => (
-          <li key={beat.id}>
+          <li key={beat.id} id={`beat-${beat.id}`} className="scroll-mt-24">
             <Reveal delay={Math.min(i, 2) * 0.06}>
               <article className="grid gap-4 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12">
                 <p
