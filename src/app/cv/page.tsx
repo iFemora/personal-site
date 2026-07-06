@@ -24,15 +24,16 @@ const experiences: Experience[] = [
     dates: "Sep 2025 – Present",
     location: "Toronto, ON (Remote)",
     summary:
-      "Owns a four-product portfolio — Resolve (contact-center support portal), Marqeta Dashboard, Marqeta IVR, and Identity & Access Management — for a global card-issuing platform processing billions in payment volume.",
+      "Owns a four-product portfolio — Resolve (contact-center support platform), Marqeta Dashboard, Marqeta IVR, and Identity & Access Management — for a global card-issuing platform processing billions in payment volume.",
     bullets: [
-      "Led Resolve from concept to production in under five months, delivering a purpose-built cardholder support portal informed by direct observation of agent workflows during Coinbase program support.",
-      "Built the automated testing workflow exclusively using Claude Code and Playwright in Terminal.",
+      "Led Resolve from concept to production in under five months — a purpose-built cardholder support portal designed side by side with the design team, informed by direct observation of agent workflows during Coinbase program support.",
+      "Growing Resolve release by release — not one big launch — into a platform spanning debit, credit, and prepaid programs: payments and collections, disputes, fraud management, and account sub-status management in a single tool.",
       "Championing Resolve's credit expansion: FCRA disputes, collections/delinquency workflows, credit bureau reporting, and TCPA compliance.",
+      "Built the automated testing workflow exclusively using Claude Code and Playwright in Terminal.",
       "Presented Resolve's product vision and roadmap to cross-functional leadership across Credit, Operations, and Engineering. Created demo content for BPO transition stakeholders.",
       "Re-imagining the Marqeta Dashboard for enterprise program managers — defining product narrative and KPIs for cardholder lifecycle management and settlement tracking.",
       "Leading the design of a central, immutable audit log compliant with PCI DSS, GLBA, and SOC 2 — framed as a platform-wide capability.",
-      "Managing IVR improvements (including AI agent management) and Identity & Access Management on Auth0, including user-access tooling and credential lifecycle (Self-Service Credential API provisioning).",
+      "Owning Identity & Access Management on Auth0 — a multi-persona product balancing program administrators, developers, and support agents — including user-access management tooling and credential lifecycle (Self-Service Credential API provisioning). Also managing IVR improvements, including AI agent management.",
     ],
   },
   {
@@ -70,11 +71,11 @@ const experiences: Experience[] = [
     dates: "Feb 2019 – Jun 2021",
     location: "Lagos, Nigeria",
     summary:
-      "First product hire at the company. Owned the entire product portfolio across mobile (iOS and Android) and web platforms.",
+      "First product hire at the company. Owned the entire product portfolio across mobile (iOS and Android) and web platforms — field-service software serving distinct personas at once: farmers in the field, the technicians supporting them, and the buyers on the other end.",
     bullets: [
       "Managed three mobile products — Farmers App, Farmcrowdy Foods, Meathub — scaling the Farmers App to 200,000+ users.",
-      "Grew a greenfield vertical from 3,200 to 25,000 users in under six months against a 12-month mandate.",
-      "Built financial models and vendor management workflows. Conducted user research across 29 Nigerian states — travelled physically — to inform roadmap, pricing, and UI design.",
+      "Grew a greenfield vertical from 3,200 to 25,000 users in under six months against a 12-month mandate — through steady, compounding iteration rather than a single launch.",
+      "Conducted user research across 29 Nigerian states — travelling physically to farms to interview the farmers and field technicians using the product — and fed it directly into roadmap, pricing, and UI design. Built financial models and vendor management workflows.",
     ],
   },
 ];
@@ -100,8 +101,12 @@ const toolGroups: { label: string; items: string }[] = [
     items: "Claude Code, Cursor, Codex, GitHub",
   },
   {
+    label: "Design & Prototyping",
+    items: "Figma, Miro, working prototypes in Claude Code",
+  },
+  {
     label: "Product & PM",
-    items: "Jira, Confluence, Linear, Notion, Miro, Figma",
+    items: "Jira, Confluence, Linear, Notion",
   },
   {
     label: "Data & Analytics",
@@ -160,10 +165,15 @@ export default function CVPage() {
           issuing, payment gateways, corporate banking, and the long tail of
           operational tools that keep all three running. I&apos;ve hired the
           people who ran these systems and grown product managers from
-          associate to lead level. I&apos;ve also stayed close enough to the
-          code to ship prototypes myself in Claude Code, which means the CV
-          that follows is less a list of jobs than a record of what
-          I&apos;ve cared about.
+          associate to lead level. My method hasn&apos;t changed since my
+          first product job: go to where the customer is &mdash; I once
+          crossed 29 states to sit with the farmers and field technicians
+          using my product &mdash; work shoulder to shoulder with design,
+          and ship in small iterations, because growth compounds from little
+          changes more often than it arrives in big launches. I&apos;ve also
+          stayed close enough to the code to ship prototypes myself in
+          Claude Code, which means the CV that follows is less a list of
+          jobs than a record of what I&apos;ve cared about.
         </p>
       </section>
 

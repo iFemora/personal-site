@@ -38,13 +38,13 @@ const entries: WorkEntry[] = [
     id: "cardholder-support",
     title:
       "A cardholder support platform, concept to production in under five months.",
-    body: "Designed by sitting with BPO agents and watching them work. Now in production for a global card issuer processing billions in payment volume. Built the automated testing workflow alongside it, entirely in Claude Code and Playwright.",
+    body: "Designed by sitting with BPO agents and watching them work. Now in production for a global card issuer processing billions in payment volume — and growing release by release into a platform spanning debit, credit, and prepaid programs: payments, collections, disputes, fraud, and sub-status management in one tool. Built the automated testing workflow alongside it, entirely in Claude Code and Playwright.",
     meta: "Marqeta · 2025",
   },
   {
     id: "greenfield-vertical",
     title: "A greenfield vertical, grown 8× in half the projected time.",
-    body: "First product hire at the company. From 3,200 to 25,000 users in six months against a 12-month mandate. Owned the full portfolio across iOS, Android, and web — and travelled across 29 Nigerian states to research it in person.",
+    body: "First product hire at the company. From 3,200 to 25,000 users in six months against a 12-month mandate. Owned the full portfolio across iOS, Android, and web — field-service software for farmers, technicians, and buyers — and travelled across 29 Nigerian states to sit with them in person.",
     meta: "Farmcrowdy · 2019–21",
   },
   {
