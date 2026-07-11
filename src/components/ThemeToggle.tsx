@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
+import { useId, useSyncExternalStore } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { EASE } from "@femora/design-system/ease";
 
@@ -14,6 +14,15 @@ function effectiveTheme(): Theme {
     : "light";
 }
 
+function subscribeTheme(onStoreChange: () => void) {
+  window.addEventListener("ifemora:themechange", onStoreChange);
+  return () => window.removeEventListener("ifemora:themechange", onStoreChange);
+}
+
+function getThemeServerSnapshot(): Theme | null {
+  return null;
+}
+
 /**
  * Sun ↔ moon, in the site's hand: the rays retract while a shadow slides
  * across the disc to carve a crescent. The choice persists in
@@ -23,11 +32,11 @@ function effectiveTheme(): Theme {
 export default function ThemeToggle() {
   const reduced = useReducedMotion();
   const maskId = useId();
-  const [theme, setTheme] = useState<Theme | null>(null);
-
-  useEffect(() => {
-    setTheme(effectiveTheme());
-  }, []);
+  const theme = useSyncExternalStore(
+    subscribeTheme,
+    effectiveTheme,
+    getThemeServerSnapshot
+  );
 
   function toggle() {
     if (!theme) return;
@@ -45,7 +54,7 @@ export default function ThemeToggle() {
     } catch {
       /* private browsing — the flip still works for this visit */
     }
-    setTheme(next);
+    window.dispatchEvent(new Event("ifemora:themechange"));
   }
 
   const isDark = theme === "dark";

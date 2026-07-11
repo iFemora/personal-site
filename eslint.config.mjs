@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Claude Code can keep nested worktrees here. Their generated Next output
+    // is not authored site code and must not be included in lint results.
+    ".claude/worktrees/**",
     // Generated / vendored code (gitignored, but present locally):
     "packages/femora-ds/dist/**",
     "ds-bundle/**",

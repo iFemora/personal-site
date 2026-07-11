@@ -268,6 +268,11 @@ to offer; never assume a tagline or paragraph is what he'd actually write.
 
 # Common gotchas
 
+- **Linting and Claude worktrees:** `npm run lint` must lint authored project
+  files only. Claude Code may create nested worktrees under
+  `.claude/worktrees/`; their `.next` output is generated code and is
+  intentionally ignored in `eslint.config.mjs`. Do not remove that ignore or
+  treat errors from generated worktree files as site-code failures.
 - **Tailwind v4** uses `@theme inline` in CSS, not `tailwind.config.ts`. Adding a new color token means editing `packages/femora-ds/tokens.css` (and mirroring it in the flattened `packages/femora-ds/styles.css`).
 - **Dynamic MDX import** (`src/app/writing/[slug]/page.tsx`) requires at least one `.mdx` file in `content/writing/`. `_template.mdx` exists for this reason.
 - **`next/image` remote patterns** in `next.config.ts` must list any new image host. Currently allows `cdn-images-1.medium.com` and `miro.medium.com`.
