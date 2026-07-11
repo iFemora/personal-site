@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getHomepageWriting } from "@/lib/writing";
+import { getDesk } from "@/lib/desk";
 import ExternalArrow from "@/components/ExternalArrow";
 import {
   Reveal,
@@ -30,6 +31,39 @@ const workItems = [
   },
 ];
 
+const decisionPrinciples = [
+  {
+    title: "Start close to reality.",
+    body: "The roadmap changes when I sit beside the agent, walk the farm, or listen to the customer explain the problem in their own language.",
+    evidence: "29 states, one corrected roadmap",
+    href: "/work/farmcrowdy",
+  },
+  {
+    title: "Use scope to create momentum.",
+    body: "I decide what the first release must prove, then leave everything else out—even when the everything else matters.",
+    evidence: "Eight workflows in five months",
+    href: "/work/resolve",
+  },
+  {
+    title: "Release the argument in pieces.",
+    body: "A product should become more convincing with every release. I would rather learn through a sequence than defend one enormous launch.",
+    evidence: "Resolve, release by release",
+    href: "/work/resolve",
+  },
+  {
+    title: "Make complexity feel inevitable.",
+    body: "The hard work can stay underneath. The person moving money, filing a dispute, or asking for help should meet something that feels obvious.",
+    evidence: "Two markets, one banking surface",
+    href: "/work/corporate-banking",
+  },
+  {
+    title: "Bring a point of view; leave room for craft.",
+    body: "I map the workflow, prototype the argument, and push when an opinion earns its place. Then I let specialists make the work better.",
+    evidence: "Why Resolve is called Resolve",
+    href: "/work/resolve",
+  },
+];
+
 function SectionLabel({ index, label }: { index: string; label: string }) {
   return (
     <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
@@ -40,6 +74,7 @@ function SectionLabel({ index, label }: { index: string; label: string }) {
 
 export default function Home() {
   const writingItems = getHomepageWriting(3);
+  const desk = getDesk();
 
   return (
     <main className="mx-auto w-full max-w-[1100px] px-6 py-16 sm:py-24">
@@ -143,10 +178,114 @@ export default function Home() {
 
       <DrawnRule className="my-14 sm:my-20" />
 
+      {/* How I make decisions */}
+      <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-12">
+        <Reveal>
+          <SectionLabel index="03" label="How I decide" />
+        </Reveal>
+        <div>
+          <Reveal delay={0.05}>
+            <p className="mb-10 max-w-[640px] font-serif text-xl italic leading-snug text-muted sm:text-2xl">
+              The principles I seem to keep returning to—under pressure, in
+              the field, and when the roadmap is larger than the time.
+            </p>
+          </Reveal>
+          <ol className="border-t border-rule">
+            {decisionPrinciples.map((principle, i) => (
+              <li key={principle.title} className="border-b border-rule">
+                <Reveal delay={Math.min(i, 2) * 0.06}>
+                  <Link
+                    href={principle.href}
+                    className="group grid gap-3 py-6 sm:grid-cols-[2.5rem_minmax(0,1fr)_auto] sm:items-start sm:gap-5"
+                  >
+                    <span className="font-mono text-[10px] tracking-[0.18em] text-accent sm:pt-1">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span>
+                      <span className="block font-serif text-xl leading-snug tracking-tight transition-colors duration-300 group-hover:text-accent sm:text-2xl">
+                        {principle.title}
+                      </span>
+                      <span className="mt-2 block max-w-[580px] leading-relaxed text-muted">
+                        {principle.body}
+                      </span>
+                    </span>
+                    <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted transition-colors duration-300 group-hover:text-accent sm:max-w-32 sm:pt-1 sm:text-right">
+                      {principle.evidence} →
+                    </span>
+                  </Link>
+                </Reveal>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <DrawnRule className="my-14 sm:my-20" />
+
+      {/* From the desk */}
+      <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-12">
+        <Reveal>
+          <div>
+            <SectionLabel index="04" label="From the desk" />
+            <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.16em] text-muted">
+              Updated {desk.updated}
+            </p>
+          </div>
+        </Reveal>
+        <div className="grid border-t border-rule sm:grid-cols-3">
+          {desk.items.map((item, i) => {
+            const deskItemClass = `group block min-h-full border-b border-rule py-6 sm:border-b-0 ${
+              i === 0
+                ? "sm:border-r sm:pr-6"
+                : i === desk.items.length - 1
+                  ? "sm:pl-6"
+                  : "sm:border-r sm:px-6"
+            }`;
+            const content = (
+              <>
+                <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-accent">
+                  {item.label}
+                </p>
+                <p className="mt-4 font-serif text-xl leading-snug tracking-tight transition-colors duration-300 group-hover:text-accent">
+                  {item.title}
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-muted">
+                  {item.body}
+                </p>
+                {item.href && (
+                  <span className="mt-5 block font-mono text-[9px] uppercase tracking-[0.16em] text-accent">
+                    Follow the thread →
+                  </span>
+                )}
+              </>
+            );
+
+            return (
+              <Reveal key={`${item.label}-${item.title}`} delay={i * 0.08}>
+                {item.href ? (
+                  <Link
+                    href={item.href}
+                    className={deskItemClass}
+                  >
+                    {content}
+                  </Link>
+                ) : (
+                  <div className={deskItemClass}>
+                    {content}
+                  </div>
+                )}
+              </Reveal>
+            );
+          })}
+        </div>
+      </section>
+
+      <DrawnRule className="my-14 sm:my-20" />
+
       {/* Recent writing */}
       <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-12">
         <Reveal>
-          <SectionLabel index="03" label="Recent writing" />
+          <SectionLabel index="05" label="Recent writing" />
         </Reveal>
         <div>
           <ul className="space-y-8">

@@ -13,6 +13,7 @@ export type CaseStudyFigure = {
 export type CaseStudySection = {
   label: string;
   paras: string[];
+  artifact?: React.ReactNode;
   figures?: CaseStudyFigure[];
 };
 
@@ -73,6 +74,7 @@ export default function CaseStudy({
                   </p>
                 ))}
               </div>
+              {section.artifact}
               {section.figures?.map((figure) => (
                 <figure key={figure.src} className="mt-8">
                   <div className="overflow-hidden border border-rule">

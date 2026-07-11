@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CaseStudy from "@/components/CaseStudy";
+import NigeriaFieldMap from "@/components/work/NigeriaFieldMap";
 
 export const metadata: Metadata = {
   title: "Field-service software, learned in the field",
@@ -19,6 +20,7 @@ export default function FarmcrowdyCaseStudy() {
           paras: [
             "The roadmap questions could not be answered from Lagos. I travelled across 29 states to sit with the farmers and field technicians using the products, and the field kept correcting my assumptions. The biggest correction: many farmers didn't own smartphones. Not couldn't use. Didn't own.",
           ],
+          artifact: <NigeriaFieldMap />,
         },
         {
           label: "Design around it",

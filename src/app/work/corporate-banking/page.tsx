@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CaseStudy from "@/components/CaseStudy";
+import BankingSystemMap from "@/components/work/BankingSystemMap";
 
 export const metadata: Metadata = {
   title: "Corporate banking, from scratch",
@@ -25,6 +26,7 @@ export default function CorporateBankingCaseStudy() {
           paras: [
             "Corporate internet banking across two markets, from scratch: digital onboarding that removed the branch visit, TOTP authentication in place of hardware tokens, transfers with multi-party approval, bulk payments, payroll, FX and trade management, and team management for the people who actually operate a company's money. Onboarding time-to-value fell by 40%.",
           ],
+          artifact: <BankingSystemMap />,
         },
         {
           label: "Many personas",
