@@ -1,7 +1,7 @@
 type DecisionArtifactProps = {
   label: string;
   title: string;
-  caption: string;
+  caption?: React.ReactNode;
   children: React.ReactNode;
 };
 
@@ -28,9 +28,11 @@ export default function DecisionArtifact({
         {title}
       </h3>
       <div className="mt-7">{children}</div>
-      <figcaption className="mt-6 max-w-[62ch] font-mono text-[10px] uppercase leading-relaxed tracking-[0.14em] text-muted">
-        {caption}
-      </figcaption>
+      {caption && (
+        <figcaption className="mt-6 max-w-[62ch] font-mono text-[10px] uppercase leading-relaxed tracking-[0.14em] text-muted">
+          {caption}
+        </figcaption>
+      )}
     </figure>
   );
 }

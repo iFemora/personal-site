@@ -25,7 +25,7 @@ export default function ResolveCaseStudy() {
         {
           label: "Discovery",
           paras: [
-            "I listened to agent calls from across the programs, then sat beside agents and watched them work. Coinbase, the largest program, was the sharpest lens, but the pattern held everywhere. The feature ask was a laundry list; the product decision was scoping it down. I picked the eight workflows that drove the most calls: transactions cardholders didn't recognize, transactions that hadn't completed, card status and activation, payments, account closure, and their neighbours. Eight workflows, shipped fast, aimed squarely at handle time. Everything else could wait its turn.",
+            "I listened to agent calls from across the programs, then sat beside agents and watched them work. Coinbase, the largest program, was the sharpest lens, but the pattern held everywhere. The feature ask was a laundry list; the product decision was scoping it down. I picked the core workflows that drove the most calls: transactions cardholders didn't recognize, transactions that hadn't completed, card status and activation, payments, account closure, and their neighbours. Those workflows shipped fast, aimed squarely at handle time. Everything else could wait its turn.",
           ],
           artifact: <ResolveReleaseArtifact />,
         },

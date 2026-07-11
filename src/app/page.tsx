@@ -35,13 +35,13 @@ const decisionPrinciples = [
   {
     title: "Start close to reality.",
     body: "The roadmap changes when I sit beside the agent, walk the farm, or listen to the customer explain the problem in their own language.",
-    evidence: "29 states, one corrected roadmap",
+    evidence: "30 states, one corrected roadmap",
     href: "/work/farmcrowdy",
   },
   {
     title: "Use scope to create momentum.",
     body: "I decide what the first release must prove, then leave everything else out—even when the everything else matters.",
-    evidence: "Eight workflows in five months",
+    evidence: "Core workflows in five months",
     href: "/work/resolve",
   },
   {

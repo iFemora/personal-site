@@ -1,22 +1,33 @@
 import DecisionArtifact from "./DecisionArtifact";
 
 const v1Workflows = [
-  "Unrecognized transactions",
-  "Pending transactions",
-  "Card status",
-  "Activation",
+  "Card management",
+  "Account transition",
+  "Enhanced customer search",
+  "Bulk dispute intake",
   "Payments",
-  "Account closure",
-  "Dispute intake",
-  "Customer search",
+  "Transactions management",
+  "A proper customer overview",
 ];
 
 const releases = [
-  { marker: "01", title: "Resolve v1", detail: "Eight call drivers" },
-  { marker: "02", title: "Migration", detail: "Debit + prepaid" },
-  { marker: "03", title: "Credit", detail: "Collections + delinquency" },
-  { marker: "04", title: "Connected ops", detail: "Calls + dispositions" },
-  { marker: "05", title: "Platform", detail: "Fraud + sub-status" },
+  { marker: "01", title: "Resolve v1", detail: "Core call drivers" },
+  { marker: "02", title: "Improvement", detail: "Debit + prepaid" },
+  {
+    marker: "03",
+    title: "Credit",
+    detail: "Collections · delinquency · sub-status · statement · rewards",
+  },
+  {
+    marker: "04",
+    title: "Connected ops",
+    detail: "Call dispositions + AWS Amazon Connect",
+  },
+  {
+    marker: "05",
+    title: "Credit extension",
+    detail: "FCRA disputes + credit bureau reporting",
+  },
 ];
 
 export default function ResolveReleaseArtifact() {
@@ -24,19 +35,20 @@ export default function ResolveReleaseArtifact() {
     <DecisionArtifact
       label="Scope, then sequence"
       title="The first release was a boundary, not a miniature of the final platform."
-      caption="An editorial reconstruction from the case-study method; no confidential interface or company artifact is reproduced."
     >
       <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
         <div>
           <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
             <span>V1 · five months</span>
-            <span className="text-accent">8 workflows</span>
+            <span className="text-accent">Core workflows</span>
           </div>
           <ol className="mt-3 grid grid-cols-2 border-l border-t border-rule">
             {v1Workflows.map((workflow, i) => (
               <li
                 key={workflow}
-                className="min-h-20 border-b border-r border-rule p-3 transition-colors duration-300 group-hover:border-accent/35"
+                className={`min-h-20 border-b border-r border-rule p-3 transition-colors duration-300 group-hover:border-accent/35 ${
+                  i === v1Workflows.length - 1 ? "col-span-2" : ""
+                }`}
               >
                 <span className="font-mono text-[9px] tracking-[0.16em] text-accent">
                   {String(i + 1).padStart(2, "0")}

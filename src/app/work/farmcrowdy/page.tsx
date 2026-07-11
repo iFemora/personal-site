@@ -18,7 +18,7 @@ export default function FarmcrowdyCaseStudy() {
         {
           label: "Go to the field",
           paras: [
-            "The roadmap questions could not be answered from Lagos. I travelled across 29 states to sit with the farmers and field technicians using the products, and the field kept correcting my assumptions. The biggest correction: many farmers didn't own smartphones. Not couldn't use. Didn't own.",
+            "The roadmap questions could not be answered from Lagos. I travelled across 30 states to sit with the farmers and field technicians using the products, and the field kept correcting my assumptions. The biggest correction: many farmers didn't own smartphones. Not couldn't use. Didn't own.",
           ],
           artifact: <NigeriaFieldMap />,
         },
