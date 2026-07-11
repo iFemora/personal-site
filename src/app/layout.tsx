@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Newsreader, IBM_Plex_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import Nav from "@/components/Nav";
 import FooterLinks from "@/components/FooterLinks";
 import AccentController from "@/components/AccentController";
@@ -105,6 +107,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // GA only loads when NEXT_PUBLIC_GA_ID is set (Vercel env), so local dev
+  // traffic never reaches the property.
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+
   return (
     <html
       lang="en"
@@ -132,7 +138,9 @@ export default function RootLayout({
             <SiteFooter />
           </div>
         </CursorFieldProvider>
+        <Analytics />
       </body>
+      {gaId && <GoogleAnalytics gaId={gaId} />}
     </html>
   );
 }
