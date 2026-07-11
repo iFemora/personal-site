@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { sendGAEvent } from "@next/third-parties/google";
 import WaveSurfer from "wavesurfer.js";
 
 type Props = {
@@ -25,6 +26,7 @@ function readCssVar(name: string, fallback: string): string {
 export default function AudioWaveform({ src }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const wsRef = useRef<WaveSurfer | null>(null);
+  const playTrackedRef = useRef(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -56,7 +58,14 @@ export default function AudioWaveform({ src }: Props) {
     });
     ws.on("audioprocess", () => setCurrentTime(ws.getCurrentTime()));
     ws.on("seeking", () => setCurrentTime(ws.getCurrentTime()));
-    ws.on("play", () => setIsPlaying(true));
+    ws.on("play", () => {
+      setIsPlaying(true);
+      // First play only — resumes after pause shouldn't recount.
+      if (!playTrackedRef.current) {
+        playTrackedRef.current = true;
+        sendGAEvent("event", "field_note_play", { label: src });
+      }
+    });
     ws.on("pause", () => setIsPlaying(false));
     ws.on("finish", () => {
       setIsPlaying(false);

@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
+import { sendGAEvent } from "@next/third-parties/google";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import type { GalleryFrame } from "@/lib/gallery";
 import { EASE } from "@femora/design-system/ease";
@@ -34,6 +35,12 @@ export default function GalleryGrid({
       ),
     [frames.length]
   );
+
+  // Counts every photo viewed in the lightbox, including prev/next steps.
+  useEffect(() => {
+    if (openIndex === null) return;
+    sendGAEvent("event", "gallery_photo_view", { label: frames[openIndex].id });
+  }, [openIndex, frames]);
 
   useEffect(() => {
     if (openIndex === null) return;
