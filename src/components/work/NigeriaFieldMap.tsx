@@ -70,21 +70,6 @@ export default function NigeriaFieldMap() {
     <DecisionArtifact
       label="Field research"
       title="The roadmap covered more ground because the research did first."
-      caption={
-        <>
-          Twenty-nine of Nigeria&apos;s 36 states visited. State geometry adapted
-          from{" "}
-          <a
-            href="https://github.com/VictorCazanave/svg-maps/tree/master/packages/nigeria"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent underline underline-offset-4 hover:no-underline"
-          >
-            @svg-maps/nigeria
-          </a>{" "}
-          (CC BY 4.0); the connecting line shows coverage, not chronology.
-        </>
-      }
     >
       <div>
         <svg
