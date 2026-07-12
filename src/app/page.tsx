@@ -35,7 +35,7 @@ const decisionPrinciples = [
   {
     title: "Start close to reality.",
     body: "The roadmap changes when I sit beside the agent, walk the farm, or listen to the customer explain the problem in their own language.",
-    evidence: "30 states, one corrected roadmap",
+    evidence: "29 states, one corrected roadmap",
     href: "/work/farmcrowdy",
   },
   {

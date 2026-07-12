@@ -8,6 +8,7 @@ const unvisitedIds = new Set([
   "gombe",
   "zamfara",
   "sokoto",
+  "jigawa",
 ]);
 
 const routeIds = [
@@ -22,7 +23,6 @@ const routeIds = [
   "kaduna",
   "katsina",
   "kano",
-  "jigawa",
   "bauchi",
   "plateau",
   "nassarawa",
@@ -49,6 +49,22 @@ const route = routeIds.flatMap((id) => {
   return state ? [state] : [];
 });
 
+function connectedRoutePath() {
+  if (route.length === 0) return "";
+
+  let path = `M ${route[0].cx} ${route[0].cy}`;
+  for (let i = 1; i < route.length; i++) {
+    const previous = route[i - 1];
+    const current = route[i];
+    const midpointX = (previous.cx + current.cx) / 2;
+    const midpointY = (previous.cy + current.cy) / 2;
+    path += ` Q ${previous.cx} ${previous.cy} ${midpointX} ${midpointY}`;
+  }
+
+  const last = route[route.length - 1];
+  return `${path} L ${last.cx} ${last.cy}`;
+}
+
 export default function NigeriaFieldMap() {
   return (
     <DecisionArtifact
@@ -56,7 +72,7 @@ export default function NigeriaFieldMap() {
       title="The roadmap covered more ground because the research did first."
       caption={
         <>
-          Thirty of Nigeria&apos;s 36 states visited. State geometry adapted
+          Twenty-nine of Nigeria&apos;s 36 states visited. State geometry adapted
           from{" "}
           <a
             href="https://github.com/VictorCazanave/svg-maps/tree/master/packages/nigeria"
@@ -70,12 +86,12 @@ export default function NigeriaFieldMap() {
         </>
       }
     >
-      <div className="grid items-center gap-8 sm:grid-cols-[1fr_190px]">
+      <div>
         <svg
           viewBox="0 0 744 600"
           role="img"
-          aria-label="Map of Nigeria showing 30 visited states and six unvisited states"
-          className="mx-auto w-full max-w-[460px] overflow-visible"
+          aria-label="Map of Nigeria showing 29 visited states and seven unvisited states"
+          className="mx-auto w-full max-w-[620px] overflow-visible"
         >
           <g>
             {nigeriaStates.map((state) => {
@@ -102,16 +118,15 @@ export default function NigeriaFieldMap() {
             })}
           </g>
 
-          <polyline
-            points={route.map((state) => state.cx + "," + state.cy).join(" ")}
+          <path
+            d={connectedRoutePath()}
             fill="none"
-            stroke="var(--accent)"
-            strokeWidth="1.3"
-            strokeDasharray="4 6"
+            stroke="var(--rule)"
+            strokeWidth="1"
             strokeLinecap="round"
             strokeLinejoin="round"
             vectorEffect="non-scaling-stroke"
-            opacity="0.52"
+            opacity="0.9"
           />
 
           {route.map((state, i) => (
@@ -119,47 +134,16 @@ export default function NigeriaFieldMap() {
               key={state.id}
               cx={state.cx}
               cy={state.cy}
-              r={i === 0 || i === route.length - 1 ? 5.5 : 4.2}
-              fill="var(--accent)"
+              r={i === 0 || i === route.length - 1 ? 4 : 3.5}
+              fill="var(--muted)"
               stroke="var(--background)"
-              strokeWidth="1.5"
+              strokeWidth="1"
               vectorEffect="non-scaling-stroke"
-              opacity={0.74 + (i % 4) * 0.07}
-              className="transition-[r,opacity] duration-300 group-hover:opacity-100"
+              opacity="0.7"
+              className="transition-[fill,opacity] duration-300 group-hover:fill-accent group-hover:opacity-100"
             />
           ))}
         </svg>
-
-        <div>
-          <dl className="border-y border-rule py-4">
-            <div className="flex items-end justify-between gap-4">
-              <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
-                Visited
-              </dt>
-              <dd className="wonk font-serif text-5xl italic leading-none text-accent">
-                30
-              </dd>
-            </div>
-            <div className="mt-4 flex items-end justify-between gap-4 border-t border-rule pt-4">
-              <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
-                States
-              </dt>
-              <dd className="font-serif text-2xl leading-none text-muted">36</dd>
-            </div>
-          </dl>
-          <div className="mt-5">
-            <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-muted">
-              Not visited
-            </p>
-            <p className="mt-2 font-serif text-sm italic leading-relaxed text-muted">
-              Kebbi · Borno · Yobe · Gombe · Zamfara · Sokoto
-            </p>
-          </div>
-          <p className="mt-5 text-sm italic leading-relaxed text-muted">
-            Farms, technicians, local governments, universities, conferences.
-            The field kept correcting the roadmap.
-          </p>
-        </div>
       </div>
     </DecisionArtifact>
   );
