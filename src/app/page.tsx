@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getHomepageWriting } from "@/lib/writing";
 import { getDesk } from "@/lib/desk";
 import ExternalArrow from "@/components/ExternalArrow";
@@ -79,19 +80,42 @@ export default function Home() {
   return (
     <main className="mx-auto w-full max-w-[1100px] px-6 py-16 sm:py-24">
       {/* Hero */}
-      <div className="relative">
-        <ProximityType
-          lines={[
-            { text: "Femi", className: "wonk" },
-            { text: "Siji-Kenneth", className: "wonk italic text-accent" },
-          ]}
-          className="font-serif text-[clamp(3.5rem,11vw,8rem)] font-medium leading-[0.95] tracking-tight"
-        />
-        <div className="mt-6 flex items-center gap-3">
+      <div className="relative isolate min-h-[540px] overflow-hidden sm:min-h-[410px] sm:overflow-visible">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-0 top-[200px] z-0 h-[270px] w-[210px] overflow-hidden border border-rule bg-background sm:left-auto sm:right-[8%] sm:top-0 sm:h-[340px] sm:w-[270px]"
+        >
+          <Image
+            src="/about/femi-profile-2026.jpg"
+            alt=""
+            fill
+            priority
+            sizes="(max-width: 640px) 210px, 270px"
+            className="object-cover object-[50%_24%] contrast-[1.03] saturate-[0.9]"
+          />
+          <span className="absolute inset-y-0 left-0 w-1 bg-accent sm:left-auto sm:right-0" />
+        </div>
+
+        <div className="relative z-10">
+          <ProximityType
+            lines={[
+              { text: "Femi", className: "wonk" },
+              { text: "Siji-Kenneth", className: "wonk italic text-accent" },
+            ]}
+            className="font-serif text-[clamp(3.5rem,11vw,8rem)] font-medium leading-[0.95] tracking-tight"
+          />
+        </div>
+        <div className="relative z-10 mt-6 flex items-center gap-3">
           <Reveal immediate delay={0.28}>
             <IdentityFlip
-              first={["Thinker.", "Debater.", "Writer.", "Designer."]}
-              second={["Tinkerer.", "Builder.", "Athlete.", "Photographer."]}
+              first={["Thinker."]}
+              second={[
+                "Tinkerer.",
+                "Builder.",
+                "Athlete.",
+                "Designer.",
+                "Photographer.",
+              ]}
               className="font-serif text-xl italic text-muted sm:text-2xl"
             />
           </Reveal>
@@ -99,7 +123,7 @@ export default function Home() {
         </div>
 
         <Reveal immediate delay={0.5}>
-          <p className="mt-6 font-mono text-xs uppercase tracking-[0.18em] text-muted sm:absolute sm:right-0 sm:top-2 sm:mt-0 sm:text-right">
+          <p className="absolute left-0 top-[486px] mt-0 w-[210px] font-mono text-xs uppercase tracking-[0.18em] text-muted sm:left-auto sm:right-[8%] sm:top-[356px] sm:w-[270px] sm:text-right">
             Product, payments
             <br />
             Toronto, Canada

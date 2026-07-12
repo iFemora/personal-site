@@ -16,7 +16,7 @@ function FlipWord({
 
   const advance = () => setIndex((i) => (i + 1) % words.length);
 
-  if (reduced) {
+  if (reduced || words.length === 1) {
     return <span className={className}>{words[0]}</span>;
   }
 

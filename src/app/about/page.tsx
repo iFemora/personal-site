@@ -1,8 +1,8 @@
-/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import Image from "next/image";
 import { getAboutTimeline } from "@/lib/about";
 import Constellation from "@/components/motion/Constellation";
+import StoryThread from "@/components/about/StoryThread";
 import {
   Reveal,
   DrawnRule,
@@ -45,15 +45,14 @@ export default function AboutPage() {
       {/* Intro — counter-signals the credentials: what I value first. */}
       <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12">
         <Reveal immediate delay={0.45}>
-          <figure className="mb-5 overflow-hidden rounded-sm border border-rule sm:mb-6">
+          <figure className="relative mb-5 aspect-[4/5] overflow-hidden rounded-sm border border-rule sm:mb-6">
             <Image
-              src="/about/headshot.jpg"
+              src="/about/femi-profile-2026.jpg"
               alt="Femi Siji-Kenneth"
-              width={1120}
-              height={928}
+              fill
               sizes="(max-width: 640px) 100vw, 200px"
               priority
-              className="w-full brightness-[1.02] contrast-[1.02] saturate-[0.9] sepia-[0.3]"
+              className="object-cover object-[50%_32%] brightness-[1.02] contrast-[1.02] saturate-[0.9] sepia-[0.22]"
             />
           </figure>
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
@@ -86,42 +85,7 @@ export default function AboutPage() {
       <DrawnRule className="my-14 sm:my-20" />
 
       {/* Timeline */}
-      <ol className="space-y-14 sm:space-y-20">
-        {beats.map((beat, i) => (
-          <li key={beat.id} id={`beat-${beat.id}`} className="scroll-mt-24">
-            <Reveal delay={Math.min(i, 2) * 0.06}>
-              <article className="grid gap-4 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12">
-                <p
-                  aria-hidden
-                  className="wonk font-serif text-4xl italic leading-none text-rule sm:text-right sm:text-5xl"
-                >
-                  {beat.year}
-                </p>
-                <div>
-                  <h2 className="font-serif text-2xl leading-snug tracking-tight">
-                    {beat.title}
-                  </h2>
-                  {beat.caption && (
-                    <p className="mt-3 text-lg leading-relaxed text-muted">
-                      {beat.caption}
-                    </p>
-                  )}
-                  {beat.image && (
-                    <figure className="group mt-5 overflow-hidden rounded-sm">
-                      <img
-                        src={beat.image.src}
-                        alt={beat.image.alt}
-                        loading="lazy"
-                        className="w-full transition-[filter,transform] duration-500 ease-out grayscale-[0.85] sepia-[0.12] group-hover:scale-[1.015] group-hover:grayscale-0 group-hover:sepia-0"
-                      />
-                    </figure>
-                  )}
-                </div>
-              </article>
-            </Reveal>
-          </li>
-        ))}
-      </ol>
+      <StoryThread beats={beats} />
     </main>
   );
 }
