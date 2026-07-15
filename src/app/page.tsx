@@ -14,19 +14,17 @@ import {
 
 const workItems = [
   {
-    title:
-      "A corporate banking platform, stood up from scratch across two continents.",
+    title: "Built a corporate banking platform from scratch across Nigeria and the UK.",
     period: "2024–25",
     href: "/work#corporate-banking",
   },
   {
-    title: "A payment platform, taken into airline ticketing.",
+    title: "Expanded a payment platform into airline ticketing.",
     period: "2021–24",
     href: "/work#airline-payments",
   },
   {
-    title:
-      "A cardholder support platform, concept to production in under five months.",
+    title: "Took a cardholder support platform from concept to production in under five months.",
     period: "2025",
     href: "/work#cardholder-support",
   },
@@ -40,26 +38,26 @@ const decisionPrinciples = [
     href: "/work/farmcrowdy",
   },
   {
-    title: "Use scope to create momentum.",
-    body: "I decide what the first release must prove, then leave everything else out—even when the everything else matters.",
+    title: "Decide what the first release must prove.",
+    body: "I choose the smallest release that can answer the important question. The rest can wait, even when it matters.",
     evidence: "Core workflows in five months",
     href: "/work/resolve",
   },
   {
-    title: "Release the argument in pieces.",
-    body: "A product should become more convincing with every release. I would rather learn through a sequence than defend one enormous launch.",
+    title: "Ship in steps.",
+    body: "Each release should teach me something useful. I prefer several chances to learn over one large launch built on old assumptions.",
     evidence: "Resolve, release by release",
     href: "/work/resolve",
   },
   {
-    title: "Make complexity feel inevitable.",
-    body: "The hard work can stay underneath. The person moving money, filing a dispute, or asking for help should meet something that feels obvious.",
+    title: "Keep the complexity behind the product.",
+    body: "Moving money and filing disputes are complicated. The interface should not make them feel more complicated.",
     evidence: "Two markets, one banking surface",
     href: "/work/corporate-banking",
   },
   {
-    title: "Bring a point of view; leave room for craft.",
-    body: "I map the workflow, prototype the argument, and push when an opinion earns its place. Then I let specialists make the work better.",
+    title: "Bring an opinion, then work with the experts.",
+    body: "I map the workflow and build a prototype so the team has something concrete to react to. Design and engineering make it better.",
     evidence: "Why Resolve is called Resolve",
     href: "/work/resolve",
   },
@@ -140,16 +138,15 @@ export default function Home() {
         </Reveal>
         <Reveal immediate delay={0.6}>
           <p className="text-lg leading-relaxed sm:text-xl">
-            I build <Highlight order={0}>products people love</Highlight>{" "}
-            in payments, banking, and agriculture. The throughline isn&apos;t
-            the industry, it&apos;s{" "}
-            <Highlight order={1}>the tinkering</Highlight>: I go where the
-            customers are, worry an idea until I love it, then iterate in
-            small steps until other people love it too. Twice that became{" "}
-            <Highlight order={2}>a company of my own</Highlight>. Off the
-            clock I play <Highlight order={3}>a lot of tennis</Highlight>{" "}
-            (badly, often), read too much religion and philosophy, and write
-            for minds that <Highlight order={4}>think in spirals</Highlight>.
+            I build products in{" "}
+            <Highlight order={0}>payments, banking, and agriculture</Highlight>.
+            The industry changes; how I work does not. I go where the customers
+            are, stay with an idea until I understand it, then improve it in
+            small releases. Twice, that became{" "}
+            <Highlight order={1}>a company of my own</Highlight>. Off the clock I
+            play <Highlight order={2}>a lot of tennis</Highlight>, badly and
+            often, read too much religion and philosophy, and write for minds
+            that <Highlight order={3}>think in spirals</Highlight>.
           </p>
         </Reveal>
       </section>
@@ -210,8 +207,8 @@ export default function Home() {
         <div>
           <Reveal delay={0.05}>
             <p className="mb-10 max-w-[640px] font-serif text-xl italic leading-snug text-muted sm:text-2xl">
-              The principles I seem to keep returning to—under pressure, in
-              the field, and when the roadmap is larger than the time.
+              These are the principles I use when time is short, the roadmap
+              is crowded, or the evidence changes the plan.
             </p>
           </Reveal>
           <ol className="border-t border-rule">
@@ -278,7 +275,7 @@ export default function Home() {
                 </p>
                 {item.href && (
                   <span className="mt-5 block font-mono text-[9px] uppercase tracking-[0.16em] text-accent">
-                    Follow the thread →
+                    Read more →
                   </span>
                 )}
               </>

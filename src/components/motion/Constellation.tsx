@@ -260,7 +260,7 @@ export default function Constellation({ beats }: Props) {
             {current.title}
           </>
         ) : (
-          <>A life in spirals — touch a year, click to jump.</>
+          <>Touch a year to preview it. Click to jump to the story.</>
         )}
       </p>
     </div>

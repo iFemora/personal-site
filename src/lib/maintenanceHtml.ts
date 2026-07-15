@@ -164,11 +164,9 @@ export function maintenanceHtml(): string {
     <svg class="spiral" viewBox="0 0 100 100" aria-hidden="true"><path pathLength="1" d="${SPIRAL_D}" /></svg>
     <h1>Out, <em>briefly.</em></h1>
     <p class="lede">
-      I&rsquo;m in the back, editing &mdash; some of what lived here deserved
-      better words, and a few deserved fewer. The doors reopen once the
-      sentences can stand on their own.
+      I&rsquo;m making a few changes to the site. It will be back shortly.
     </p>
-    <p class="sign">&mdash; Femi, thinking in spirals as usual</p>
+    <p class="sign">&mdash; Femi</p>
     <p class="hello">
       Need me sooner? <a href="mailto:oluwafemiakinseye@gmail.com">say hello</a>
     </p>

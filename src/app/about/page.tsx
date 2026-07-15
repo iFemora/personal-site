@@ -61,19 +61,18 @@ export default function AboutPage() {
         </Reveal>
         <Reveal immediate delay={0.5}>
           <p className="text-lg leading-relaxed">
-            I build products people love &mdash; in payments, in banking, in
-            agriculture. The throughline was never the industry; it&apos;s the
-            tinkering. I worry an idea until I love it, then keep at it until
-            other people do too. Twice that turned into a company of my own
-            &mdash; I&apos;m between ventures now, not done with them.
+            I have built products in payments, banking, and agriculture. The
+            industries changed; my way of working did not. I stay with an idea
+            until I understand it, then keep working until other people find it
+            useful. Twice, that became a company of my own. I&apos;m between
+            ventures now, but I&apos;m not finished with them.
           </p>
           <p className="mt-5 text-lg leading-relaxed">
-            Work has never been the whole story, though. I play a lot of
-            tennis &mdash; badly, often, happily. I write for minds that think
-            in spirals. I read more religion and philosophy than is strictly
-            useful, make a little art, and I&apos;ll still debate almost
-            anything to the ground; I came up as a debater and never
-            quite stopped. The tidy version is on the{" "}
+            Work is not the whole story. I play a lot of tennis, badly, often,
+            and happily. I write for minds that think in spirals. I read more
+            religion and philosophy than is strictly useful, make a little art,
+            and will still debate almost anything to the ground. I came up as a
+            debater and never quite stopped. The tidy version is on the{" "}
             <a href="/cv" className="link-swipe text-accent">
               CV
             </a>

@@ -3,7 +3,7 @@
     "id": "born",
     "year": "1992",
     "title": "Born on a Wednesday.",
-    "caption": "February 26, 1992, Lagos. A middle child — small, quick, creative, and already everywhere at once."
+    "caption": "February 26, 1992, Lagos. A middle child: small, quick, creative, and already everywhere at once."
   },
   {
     "id": "primary-school",
@@ -15,7 +15,7 @@
     "id": "fgc-oyo",
     "year": "2001",
     "title": "Nine years old, sent to boarding school.",
-    "caption": "Federal Government College, Oyo State — three years as the smallest boy in a rural school, bullied for speaking English and for being scattered. Bright, creative, drifting in and out of class. The scatter wouldn't get its name for decades."
+    "caption": "Federal Government College, Oyo State: three years as the smallest boy in a rural school, bullied for speaking English and for being scattered. Bright, creative, drifting in and out of class. The scatter wouldn't get its name for decades."
   },
   {
     "id": "three-schools",
@@ -39,7 +39,7 @@
     "id": "hustle-and-friends",
     "year": "2010",
     "title": "Punch at parties, a voice on air.",
-    "caption": "Mixed and sold party punch to stay afloat, met Tosin and Nas — friends to this day — and talked my way onto radio for the first time."
+    "caption": "Mixed and sold party punch to stay afloat, met Tosin and Nas, friends to this day, and talked my way onto radio for the first time."
   },
   {
     "id": "radio",
@@ -56,20 +56,20 @@
   {
     "id": "unilag-two",
     "year": "2014",
-    "title": "Back to UNILAG — this time for my mother.",
+    "title": "Back to UNILAG, this time for my mother.",
     "caption": "Mass Communication, done right: class governor, departmental and faculty debate champion, university debate team. People had written me off; she never did."
   },
   {
     "id": "jumia",
     "year": "2016",
-    "title": "Jumia — where product found me.",
+    "title": "Jumia, where product found me.",
     "caption": "Joined customer experience at what became Africa's biggest e-commerce company, moved to the product experience team, and left in 2017 to finish the degree. The love for product never left."
   },
   {
     "id": "unilag",
     "year": "2019",
     "title": "Graduated into a recession with a Mass Communication degree.",
-    "caption": "University of Lagos, top 3% of the class. Learned to make an argument and hold a room — which, it turns out, is most of product management."
+    "caption": "University of Lagos, top 3% of the class. That training still helps me explain a product decision and defend it in a room."
   },
   {
     "id": "farmcrowdy",
@@ -87,13 +87,13 @@
     "id": "scholar",
     "year": "2021",
     "title": "MasterCard Foundation Scholar.",
-    "caption": "A post-grad in Technology, Design & Entrepreneurship — the year the tinkering got a name."
+    "caption": "A post-grad in Technology, Design & Entrepreneurship. It gave a formal name to work I had already been doing."
   },
   {
     "id": "paystack",
     "year": "2021",
     "title": "Joined Paystack, learned how money actually moves.",
-    "caption": "A Stripe company. Took a payment idea from a single line to tens of millions in volume, and found I like the part where the promise meets the ledger."
+    "caption": "A Stripe company. Took a payment idea from a single line to tens of millions in volume, and learned that I enjoy the operational detail behind a payment that actually clears."
   },
   {
     "id": "married",
@@ -117,7 +117,7 @@
     "id": "marqeta-toronto",
     "year": "2025",
     "title": "Moved to Toronto. Marqeta. Still here.",
-    "caption": "Landed in Calgary in March, Toronto by November. Lead PM on a card-issuing platform that moves billions. New country, new winter, same habit of building the thing myself to understand it."
+    "caption": "Landed in Calgary in March, Toronto by November. Lead PM on a card-issuing platform that moves billions. I kept building prototypes myself because that is still how I understand a product."
   },
   {
     "id": "apologetics",

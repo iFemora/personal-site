@@ -31,13 +31,13 @@ export default function CorporateBankingCaseStudy() {
         {
           label: "Many personas",
           paras: [
-            "A corporate bank is a multi-persona product wearing one interface. The person who initiates a payment is not the person who approves it, is not the treasurer watching cash flow, is not the admin deciding who may do what. Team management and approval workflows carry that weight: initiator and approver roles, multi-party approval on transfers, and a transaction PIN plus an authenticator standing between intent and money moving.",
+            "The platform served four roles with different permissions and responsibilities. Initiators create payments, approvers authorize them, treasurers monitor cash, and administrators control access. We designed team permissions, multi-party approvals, transaction PINs, and authenticator checks around those responsibilities.",
           ],
         },
         {
           label: "With design",
           paras: [
-            "Design and I worked side by side in Figma: the accounts home, statements, the send-money flow, and the transfer approval chain, mapped end to end before a line of code. My part was the workflow logic and the prototypes; design made it feel like a bank you would trust.",
+            "Design and I worked side by side in Figma on the accounts home, statements, send-money flow, and transfer approval chain before a line of code was written. I mapped the workflow logic and built prototypes. Design turned those prototypes into the final interface.",
           ],
         },
       ]}

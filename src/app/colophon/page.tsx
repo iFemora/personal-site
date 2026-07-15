@@ -16,11 +16,10 @@ const sections = [
     label: "The mark",
     body: (
       <>
-        The spiral is an Archimedean spiral, drawn in code &mdash; the same
-        few lines produce the favicon, the share cards, the nav mark, and the
-        ghost turning slowly behind every page. It stands in for a mind that
-        thinks in spirals: circling a thing, again and again, until it makes
-        sense.
+        The logo is an Archimedean spiral generated in code. The same path is
+        used for the favicon, social cards, navigation mark, and page
+        background. I chose it because I rarely think about a subject once and
+        move on.
       </>
     ),
   },
@@ -28,10 +27,8 @@ const sections = [
     label: "Type",
     body: (
       <>
-        Headlines are set in Fraunces, a variable serif whose softness and
-        wonk axes let the hero type breathe under your cursor. Body text is
-        Newsreader; dates and marginalia are IBM Plex Mono. Three voices, one
-        page &mdash; like a good conversation.
+        Headlines use Fraunces, with its variable softness and wonk axes. Body
+        copy uses Newsreader, while dates and labels use IBM Plex Mono.
       </>
     ),
   },
@@ -39,10 +36,9 @@ const sections = [
     label: "Colour",
     body: (
       <>
-        Warm paper, dark ink, and one earthy family of accents. Each section
-        claims its own: rust at home, slate teal for work, moss for writing,
-        ochre for notes, chartreuse for tennis, umber in the gallery. Dark
-        mode is its own mood, not an inversion.
+        The light palette uses warm paper tones, teal, muted gold, rust, and
+        ink. Dark mode uses a separate palette rather than reversing the light
+        one.
       </>
     ),
   },
@@ -50,12 +46,10 @@ const sections = [
     label: "Motion",
     body: (
       <>
-        The house rule is &ldquo;quietly alive&rdquo;: small travel, one
-        easing curve, nothing performs. Rules draw themselves, titles set
-        line by line, photographs sit faded until attention brings the colour
-        back. If your system asks for reduced motion, everything holds still.
-        The page scrolls the way your browser scrolls &mdash; no library
-        between your thumb and the text.
+        Motion is deliberately small: short distances, one easing curve, and
+        no scroll hijacking. Rules and headings animate on entry, while gallery
+        images reveal colour on hover. The site disables these effects when
+        reduced motion is enabled.
       </>
     ),
   },
@@ -63,11 +57,10 @@ const sections = [
     label: "Build",
     body: (
       <>
-        Next.js and MDX, deployed on Vercel; the styling and motion
-        primitives live in their own small design-system package. The whole
-        site is a public git repository &mdash; field notes and gallery
-        photos publish from my phone through a tiny API that writes straight
-        to it, one commit per thought.
+        Built with Next.js and MDX, and deployed on Vercel. Shared styling and
+        animation live in a separate design-system package. iPhone Shortcuts
+        publish field notes and gallery photos through an API that commits them
+        to the repository.
       </>
     ),
   },
@@ -115,7 +108,7 @@ export default function ColophonPage() {
       <DrawnRule className="my-14 sm:my-20" />
 
       <p className="max-w-[640px] font-serif text-lg italic text-muted sm:ml-[248px]">
-        Everything here is deliberate; nothing here is finished.
+        This is the current version. It will change again.
       </p>
     </main>
   );

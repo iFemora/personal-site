@@ -69,7 +69,7 @@ export default function NigeriaFieldMap() {
   return (
     <DecisionArtifact
       label="Field research"
-      title="The roadmap covered more ground because the research did first."
+      title="Research across 29 states changed the roadmap."
     >
       <div>
         <svg

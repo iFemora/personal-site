@@ -13,9 +13,9 @@ const capabilities = [
 export default function BankingSystemMap() {
   return (
     <DecisionArtifact
-      label="System, not screen"
-      title="One platform had to hold two markets, four jobs, and the movement of money."
-      caption="A product-system map reconstructed from the public case study; it represents relationships and responsibilities, not the bank’s internal architecture."
+      label="Product system"
+      title="The platform served two markets and four user roles."
+      caption="This simplified map shows the public roles and capabilities described in the case study. It does not reproduce FCMB’s internal architecture."
     >
       <div className="grid gap-7">
         <div className="grid grid-cols-2 gap-px bg-rule">
@@ -39,7 +39,7 @@ export default function BankingSystemMap() {
             <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-accent">
               Corporate banking platform
             </p>
-            <p className="mt-2 font-serif text-xl">One operating surface</p>
+            <p className="mt-2 font-serif text-xl">Shared platform</p>
           </div>
         </div>
 
@@ -61,7 +61,7 @@ export default function BankingSystemMap() {
           </div>
           <div>
             <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-muted">
-              Capabilities carrying the weight
+              Core capabilities
             </p>
             <ul className="mt-3 grid grid-cols-2 border-l border-t border-rule">
               {capabilities.map((capability) => (

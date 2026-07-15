@@ -78,7 +78,9 @@ export default function WritingPage() {
       />
       <MaskedLines
         as="p"
-        lines={["On software, cities, tennis, and the spaces where they meet."]}
+        lines={[
+          "Essays on software, cities, tennis, religion, and whatever else I cannot leave alone.",
+        ]}
         delay={0.18}
         className="mt-6 font-serif text-xl italic text-muted sm:text-2xl"
       />
@@ -93,9 +95,8 @@ export default function WritingPage() {
         </Reveal>
         <Reveal immediate delay={0.5}>
           <p className="text-lg leading-relaxed">
-            A running collection &mdash; some published here, some on Medium.
-            The Medium ones open in a new tab; the local ones live on this
-            site.
+            Some pieces are published here and others on Medium. Medium links
+            open in a new tab.
           </p>
         </Reveal>
       </section>

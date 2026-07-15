@@ -53,8 +53,8 @@ export default function GalleryPage() {
               </>
             ) : (
               <>
-                Every frame sits faded until you give it some attention
-                &mdash; hover to bring the colour back, click to see it full.
+                Photos start in monochrome. Hover to restore colour; click to
+                open one.
               </>
             )}
           </p>
@@ -75,8 +75,7 @@ export default function GalleryPage() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="text-lg leading-relaxed">
-                Things I&apos;ve drawn and animated. They wait faded like
-                everything else here &mdash; hover to wake the colour up.
+                Artwork starts in monochrome too. Hover to restore the colour.
               </p>
             </Reveal>
           </section>

@@ -9,8 +9,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Work",
-  description:
-    "Six things made, instead of jobs held. Selected work by Femi Siji-Kenneth.",
+  description: "Selected products and teams built by Femi Siji-Kenneth.",
 };
 
 type WorkEntry = {
@@ -24,43 +23,41 @@ type WorkEntry = {
 const entries: WorkEntry[] = [
   {
     id: "corporate-banking",
-    title:
-      "A corporate banking platform, stood up from scratch across two continents.",
-    body: "Served 50,000+ SME and enterprise clients across Nigeria and the UK. Onboarding time-to-value cut by 40%. A multi-product portfolio across corporate internet banking, payroll, remittances, and FX/trade management.",
+    title: "Built a corporate banking platform from scratch across Nigeria and the UK.",
+    body: "The platform now serves 50,000+ SME and enterprise clients across Nigeria and the UK. We cut onboarding time by 40% and shipped corporate banking, payroll, remittances, and FX and trade management.",
     meta: "FCMB · 2024–25",
     caseStudy: { href: "/work/corporate-banking" },
   },
   {
     id: "airline-payments",
-    title: "A payment platform, taken into airline ticketing.",
-    body: "A strategic enterprise expansion into a new vertical. Built product enhancements for high-volume airline transactions and owned industry stakeholder relationships end-to-end. The expansion drove a $7M revenue campaign.",
+    title: "Expanded a payment platform into airline ticketing.",
+    body: "Expanded Paystack into airline ticketing. I built the changes needed for high-volume airline payments and managed the relationships with airlines and industry partners. The work supported a $7M revenue campaign.",
     meta: "Paystack · 2021–2024",
   },
   {
     id: "cardholder-support",
-    title:
-      "A cardholder support platform, concept to production in under five months.",
-    body: "Designed by sitting with BPO agents and watching them work. Now in production for a global card issuer processing billions in payment volume, and growing release by release into a platform spanning debit, credit, and prepaid programs: payments, collections, disputes, fraud, and sub-status management in one tool. Built the automated testing workflow alongside it, entirely in Claude Code and Playwright.",
+    title: "Took a cardholder support platform from concept to production in under five months.",
+    body: "I designed Resolve by sitting with BPO agents and watching them work. It now supports debit, credit, and prepaid programs across payments, collections, disputes, fraud, and sub-status management. I also built its automated testing workflow in Claude Code and Playwright.",
     meta: "Marqeta · 2025",
     caseStudy: { href: "/work/resolve" },
   },
   {
     id: "greenfield-vertical",
-    title: "A greenfield vertical, grown 8× in half the projected time.",
+    title: "Grew a new agricultural community from 3,200 to 25,000 users in six months.",
     body: "First product hire at the company. From 3,200 to 25,000 users in six months against a 12-month mandate. Owned the full portfolio across iOS, Android, and web: field-service software for farmers, technicians, and buyers. Travelled across 29 Nigerian states to sit with them in person.",
     meta: "Farmcrowdy · 2019–21",
     caseStudy: { href: "/work/farmcrowdy" },
   },
   {
     id: "product-team",
-    title: "A product team, hired and grown across three time zones.",
+    title: "Built and grew a five-person product team across three time zones.",
     body: "Five PMs at varying levels. Mentored APMs into PMs, recruited Senior PMs who became Leads. One mentee eventually became Head of Products for the Retail Banking division.",
     meta: "FCMB · 2024–25",
   },
   {
     id: "this-site",
     title: "This website, designed and built end to end in Claude Code.",
-    body: "The site you are reading: a bespoke design system with its own motion language, an MDX essay pipeline, and iOS Shortcut endpoints that publish notes and photos straight from a phone. Designed, prototyped, and shipped the same way I work: in small iterations.",
+    body: "I designed and built this site in Claude Code. It includes an MDX writing system and iPhone Shortcuts that publish voice notes and photos. I built it the same way I build products: one small release at a time.",
     meta: "ifemora.dev · 2026",
     caseStudy: { href: "/colophon", label: "Read the colophon →" },
   },
@@ -76,7 +73,7 @@ export default function WorkPage() {
       />
       <MaskedLines
         as="p"
-        lines={["Built, not held."]}
+        lines={["Products, platforms, and teams I’ve built."]}
         delay={0.18}
         className="mt-6 font-serif text-xl italic text-muted sm:text-2xl"
       />
@@ -86,14 +83,13 @@ export default function WorkPage() {
       <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12">
         <Reveal immediate delay={0.45}>
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
-            <span className="text-accent">Index</span> — six artifacts
+            <span className="text-accent">Index</span> — six projects
           </p>
         </Reveal>
         <Reveal immediate delay={0.5}>
           <p className="text-lg leading-relaxed">
-            These are the artifacts I&apos;ve cared about most over the last
-            ten years. For the conventional view — roles, dates, every line
-            item — see the{" "}
+            These are the products and teams I&apos;ve cared about most over the
+            last ten years. For roles, dates, and the full list, see the{" "}
             <Link href="/cv" className="link-swipe text-accent">
               long form
             </Link>

@@ -34,7 +34,7 @@ export default function ResolveReleaseArtifact() {
   return (
     <DecisionArtifact
       label="Scope, then sequence"
-      title="The first release was a boundary, not a miniature of the final platform."
+      title="The first release covered the workflows agents used most."
     >
       <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
         <div>

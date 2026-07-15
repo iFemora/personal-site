@@ -5,7 +5,7 @@ import ResolveReleaseArtifact from "@/components/work/ResolveReleaseArtifact";
 export const metadata: Metadata = {
   title: "Resolve, a case study",
   description:
-    "A cardholder support platform for a global card issuer. Concept to production in under five months, then grown release by release.",
+    "A cardholder support platform for a global card issuer, shipped in under five months and expanded through small releases.",
 };
 
 export default function ResolveCaseStudy() {
@@ -13,26 +13,26 @@ export default function ResolveCaseStudy() {
     <CaseStudy
       eyebrow="Marqeta · 2025 to now"
       title={["Resolve"]}
-      standfirst="A cardholder support platform, concept to production in under five months. Then grown release by release."
+      standfirst="We shipped the first version in under five months and have expanded it in small releases since."
       sections={[
         {
           label: "The problem",
           paras: [
-            "Marqeta's contact center supports dozens of card programs, and agents worked out of the Marqeta Dashboard: a program-management tool built to serve many jobs at once. Program management, BIN management, card issuing, transaction management, disputes, fraud reporting. Internal teams and external customers, all in one interface. A tool built to do everything ends up serving nothing properly. Agents clicked through layer after layer to answer simple questions, and handle time showed it.",
+            "Marqeta's contact center supports dozens of card programs, and agents worked out of the Marqeta Dashboard: a program-management tool built to serve many jobs at once. Program management, BIN management, card issuing, transaction management, disputes, fraud reporting. Internal teams and external customers, all in one interface. Agents had to work through functions meant for program managers to answer basic cardholder questions. They clicked through layer after layer, and handle time showed it.",
             "The decision that support deserved its own tool predated me. What nobody had done was work out what to actually build.",
           ],
         },
         {
           label: "Discovery",
           paras: [
-            "I listened to agent calls from across the programs, then sat beside agents and watched them work. Coinbase, the largest program, was the sharpest lens, but the pattern held everywhere. The feature ask was a laundry list; the product decision was scoping it down. I picked the core workflows that drove the most calls: transactions cardholders didn't recognize, transactions that hadn't completed, card status and activation, payments, account closure, and their neighbours. Those workflows shipped fast, aimed squarely at handle time. Everything else could wait its turn.",
+            "I listened to agent calls from across the programs, then sat beside agents and watched them work. Coinbase had the highest call volume, so I started there. The same problems appeared across other programs. The requested feature list was far too large for a first release. I narrowed it to the workflows behind the most calls and the longest handling times: transactions cardholders didn't recognize, transactions that hadn't completed, card status and activation, payments, account closure, and their neighbours. That scope gave us a first release we could ship in five months and measure against handle time.",
           ],
           artifact: <ResolveReleaseArtifact />,
         },
         {
           label: "Bulk disputes",
           paras: [
-            "Most dispute calls are fraud reports, and fraud rarely touches one transaction. Filing disputes one at a time, each through its own questionnaire, could swallow most of an hour on a single call. The backend accepted one dispute at a time, and that wasn't going to change quickly. So the workflow changed instead: the agent collects every disputed transaction at once through a single questionnaire, the system submits them in batches behind the scenes, and a visual workflow shows each submission with a retry for anything that fails. The cardholder never sees the machinery. The agent stops re-typing the same answers.",
+            "Fraud reports often involved several transactions. Agents had to file each dispute separately and repeat the same questionnaire, which could take most of a call. The API still accepted one dispute at a time, so we changed the agent workflow instead. The agent collects every disputed transaction through one questionnaire, and the system submits them individually in the background. A visual workflow shows each submission and lets the agent retry anything that fails. Agents enter the shared answers once.",
           ],
         },
         {
@@ -44,20 +44,20 @@ export default function ResolveCaseStudy() {
         {
           label: "What v1 left out",
           paras: [
-            "Credit limit management. Collections. Delinquency workflows. FCRA disputes and credit bureau reporting. Not because they didn't matter, but because Marqeta's credit products were still young and delinquency takes time to exist. Leaving them out is what made five months possible.",
-            "They have since arrived in bits: collections and delinquency management, charge-off predictions, re-age workflows, call dispositions, an AWS Connect integration, sub-status management for accounts under regulation. Release by release, not one big launch.",
+            "We left out credit limit management, collections, delinquency workflows, FCRA disputes, and credit bureau reporting because Marqeta's credit products were still young and delinquency takes time to exist. That decision made a five-month first release possible.",
+            "We added them later across several releases: collections and delinquency management, charge-off predictions, re-age workflows, call dispositions, an AWS Connect integration, and sub-status management for accounts under regulation.",
           ],
         },
         {
           label: "With design",
           paras: [
-            "After the PRD, I build the workflow map in FigJam and sit with design to walk through it. Then I build a working prototype, in Claude Code these days, directly in Figma before that, and design iterates from there. Design makes the final design calls; that is their craft, and the product is better when I respect the line. I bring strong opinions when they earn their place: the product was called Customer's Portal when I arrived, and I named it Resolve, because that is what it is for.",
+            "After the PRD, I map the workflow in FigJam and review it with design. I also build a working prototype so we can test the flow before the visual design is final. Design owns the final interface decisions. I renamed Customer's Portal to Resolve because the name describes the agent's job.",
           ],
         },
         {
           label: "Where it stands",
           paras: [
-            "Every program has migrated off the dashboard and onto Resolve, and it now spans debit, credit, and prepaid programs: payments and collections, disputes, fraud management, sub-status management. Handle time has fallen sharply and keeps falling. The specific numbers stay inside Marqeta, which is where they belong. It is also why this case study has no screenshots: Resolve is an internal tool, so the method is the artifact I can show.",
+            "Every program has moved from Dashboard to Resolve. It now supports debit, credit, and prepaid workflows across payments, collections, disputes, fraud, and account sub-statuses. Handle time has fallen, but I cannot publish Marqeta's internal figures or screenshots. This case study therefore focuses on the decisions and workflows.",
           ],
         },
       ]}
