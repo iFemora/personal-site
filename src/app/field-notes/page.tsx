@@ -51,6 +51,12 @@ export default function FieldNotesPage() {
                 </p>
 
                 <div>
+                {note.audio?.title && (
+                  <h2 className="mb-4 font-serif text-2xl leading-snug tracking-tight">
+                    {note.audio.title}
+                  </h2>
+                )}
+
                 {note.body &&
                   note.body.split("\n\n").map((para, i) => (
                     <p key={i} className="mt-4 text-lg leading-relaxed first:mt-0">
@@ -60,11 +66,6 @@ export default function FieldNotesPage() {
 
                 {note.audio && (
                   <div className="mt-5 first:mt-0">
-                    {note.audio.title && (
-                      <p className="mb-3 font-serif italic text-muted">
-                        {note.audio.title}
-                      </p>
-                    )}
                     <AudioWaveform src={note.audio.src} />
                   </div>
                 )}
