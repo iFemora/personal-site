@@ -1,5 +1,14 @@
 [
   {
+    "id": "2026-07-18-2038-the-90-day-pm-myth",
+    "date": "2026-07-18",
+    "audio": {
+      "src": "/field-notes/audio/2026-07-18-2038-the-90-day-pm-myth.m4a",
+      "title": "The 90-Day PM Myth"
+    },
+    "body": "LinkedIn has helped create an unhealthy culture around product management. Posts promising a perfect first 30, 60, or 90 days often reduce complex work to a checklist: meet stakeholders, understand customers, define strategy, improve processes, and start shipping, all before a new PM has properly understood the company.\n\nThe problem is not that these activities are wrong. The problem is the timeline and the expectations it creates. In many organisations, 90 days may barely be enough to understand the product, the customers, the technology, the politics, and the history behind previous decisions. Shipping quickly can look impressive, but speed without context often produces half-baked products and expensive mistakes.\n\nWhen advice designed for LinkedIn engagement becomes a management standard, product managers are treated less like thoughtful decision-makers and more like machines expected to generate immediate output. That pressure creates toxic environments, encourages unnecessary overwork, and eventually affects people’s health and the quality of their work.\n\nGood product management requires urgency, but it also requires patience. We should stop confusing visible activity with meaningful progress, and give people enough time to understand the problems before demanding that they solve them."
+  },
+  {
     "id": "2026-07-06-1756-do-people-really-know-you-or-do-they-jus",
     "date": "2026-07-06",
     "audio": {
