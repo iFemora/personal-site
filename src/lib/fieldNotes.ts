@@ -13,6 +13,7 @@ export type FieldNoteLink = {
 export type FieldNote = {
   id: string; // unique slug, also used as the on-page anchor
   date: string; // ISO YYYY-MM-DD
+  title?: string; // shown above the body; falls back to audio.title
   body?: string; // plain text; double newlines split into paragraphs
   audio?: FieldNoteAudio;
   transcript?: string;

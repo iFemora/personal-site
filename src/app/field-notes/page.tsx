@@ -51,9 +51,9 @@ export default function FieldNotesPage() {
                 </p>
 
                 <div>
-                {note.audio?.title && (
+                {(note.title ?? note.audio?.title) && (
                   <h2 className="mb-4 font-serif text-2xl leading-snug tracking-tight">
-                    {note.audio.title}
+                    {note.title ?? note.audio?.title}
                   </h2>
                 )}
 

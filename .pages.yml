@@ -94,6 +94,9 @@ content:
         label: Date (YYYY-MM-DD)
         type: string
         required: true
+      - name: title
+        label: Title
+        type: string
       - name: body
         label: Note (double newline = new paragraph)
         type: text
