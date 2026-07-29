@@ -12,10 +12,23 @@ export const metadata: Metadata = {
   description: "Photographs, artwork, and the bookshelf of Femi Siji-Kenneth.",
 };
 
+// Rendered per request so every visit reshuffles the frames — the
+// contact sheet should never hang the same way twice.
+export const dynamic = "force-dynamic";
+
+function shuffle<T>(items: T[]): T[] {
+  const a = [...items];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 export default function GalleryPage() {
-  const photos = getPhotos();
-  const art = getArt();
-  const books = getBooks();
+  const photos = shuffle(getPhotos());
+  const art = shuffle(getArt());
+  const books = shuffle(getBooks());
 
   return (
     <main className="mx-auto w-full max-w-[1100px] px-6 py-16 sm:py-24">
