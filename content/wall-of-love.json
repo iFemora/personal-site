@@ -1,0 +1,82 @@
+[
+  {
+    "id": "2026-07-27-praise-fred-kareem",
+    "name": "Praise-Fred Kareem",
+    "role": "Costume designer, Film & TV",
+    "how": "Friend / family",
+    "date": "2026-07-27",
+    "kind": "character",
+    "quote": "Femi is an exceptional individual. Extremely smart, compassionate and passionate with everything he does & to the people around him.\n\nHe pours himself into everything he does, from his career, friendships and hobbies. He’s someone you can’t leave a conversation with without being better than you came.\n\nHappy to know him.",
+    "highlight": "someone you can’t leave a conversation with without being better than you came",
+    "image": {
+      "src": "/wall-of-love/praise-fred-kareem.jpg",
+      "alt": "Praise-Fred Kareem",
+      "width": 640,
+      "height": 800
+    }
+  },
+  {
+    "id": "2026-07-27-abidemi-adesokan",
+    "name": "Abidemi Adesokan",
+    "role": "Head, Growth & Marketing",
+    "how": "Unilag, Mass Communication",
+    "date": "2026-07-27",
+    "kind": "work",
+    "quote": "Femi was never someone you could keep down. He had a strong drive to get things done, and that was one of the qualities I connected with most. Back in Uni, he was one of the student leaders and was always committed to standing for what he believed was right. You could tell he was a serious, no-nonsense person who became deeply invested in every idea he pursued. Looking at him now, it’s clear that same determination has shaped him into someone who is truly living life to the fullest and relentlessly chasing his dreams.",
+    "highlight": "never someone you could keep down",
+    "image": {
+      "src": "/wall-of-love/abidemi-adesokan.jpg",
+      "alt": "Abidemi Adesokan",
+      "width": 800,
+      "height": 800
+    }
+  },
+  {
+    "id": "2026-07-28-oge-nelson",
+    "name": "Oge Nelson",
+    "role": "PR professional, Reneé PR",
+    "how": "The universe did its thing!",
+    "date": "2026-07-28",
+    "kind": "character",
+    "quote": "Femi is one person I know who is very passionate and dedicated to whatever cause he commits to. He’s absolutely brilliant and he always inspires me. A badass tennis player too!",
+    "highlight": "A badass tennis player too!",
+    "image": {
+      "src": "/wall-of-love/oge-nelson.jpg",
+      "alt": "Oge Nelson",
+      "width": 600,
+      "height": 800
+    }
+  },
+  {
+    "id": "2026-07-28-ayoola-awodein",
+    "name": "Ayoola Awodein",
+    "role": "Writer",
+    "how": "We met on Twitter",
+    "date": "2026-07-28",
+    "kind": "love",
+    "quote": "When people say someone is truly inspirational, I hear it but in a detached way. After we met, you quickly became that person for me, because I’m fascinated by how you make things come together.\n\nYou’re easily one of the most interesting people in a room (in a positive way). The way you love your partner inspires people to love her more. Watching your mind at work? Brilliant. But my favourite thing about you is how you drilled considering myself into my head. I’ll never forget that, I remember that conversation more often than you would imagine.\n\nWe miss you everyday! Thank you so much for being you, you really are a light to us all. 🫶🏾",
+    "highlight": "you really are a light to us all",
+    "image": {
+      "src": "/wall-of-love/ayoola-awodein.jpg",
+      "alt": "Ayoola Awodein",
+      "width": 450,
+      "height": 800
+    }
+  },
+  {
+    "id": "2026-07-28-jade",
+    "name": "Jade",
+    "role": "Team Lead, Techelevate and Management Services Ltd",
+    "how": "Long time friends",
+    "date": "2026-07-28",
+    "kind": "love",
+    "quote": "Well I can say you are a very passionate person who holds friendship in a high regard (although we have lost touch for a while) and also a very focused person.",
+    "highlight": "holds friendship in a high regard",
+    "image": {
+      "src": "/wall-of-love/jade-falase.jpg",
+      "alt": "Jade",
+      "width": 293,
+      "height": 800
+    }
+  }
+]

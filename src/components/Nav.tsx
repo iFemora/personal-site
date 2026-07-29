@@ -12,6 +12,7 @@ const items = [
   { href: "/writing", label: "Writing" },
   { href: "/field-notes", label: "Notes" },
   { href: "/gallery", label: "Gallery" },
+  { href: "/love", label: "Love" },
 ];
 
 export default function Nav() {

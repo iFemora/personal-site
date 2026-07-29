@@ -17,6 +17,7 @@
   --accent-notes: #a4731f; /* ochre */
   --accent-tennis: #7d8c26; /* optic chartreuse, muted to clay-court light */
   --accent-gallery: #6e5747; /* umber — darkroom sepia */
+  --accent-love: #8f4249; /* madder rose */
   --accent: var(--accent-home);
 }
 
@@ -37,6 +38,7 @@
     --accent-notes: #ddb56e;
     --accent-tennis: #d6e25e; /* ball under floodlights */
     --accent-gallery: #c9ae96;
+    --accent-love: #e2a1a6;
   }
 }
 
@@ -51,6 +53,7 @@
   --accent-notes: #ddb56e;
   --accent-tennis: #d6e25e; /* ball under floodlights */
   --accent-gallery: #c9ae96;
+  --accent-love: #e2a1a6;
 }
 
 html[data-accent="work"] {
@@ -67,6 +70,9 @@ html[data-accent="tennis"] {
 }
 html[data-accent="gallery"] {
   --accent: var(--accent-gallery);
+}
+html[data-accent="love"] {
+  --accent: var(--accent-love);
 }
 
 @theme inline {

@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/cv",
     "/field-notes",
     "/gallery",
+    "/love",
     "/colophon",
   ].map((path) => ({
     url: `${siteUrl}${path}`,

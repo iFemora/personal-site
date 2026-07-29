@@ -202,6 +202,63 @@ content:
         label: One-line verdict (books only)
         type: string
 
+  - name: wall-of-love
+    label: Wall of Love
+    type: file
+    path: content/wall-of-love.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        label: ID (YYYY-MM-DD-name)
+        type: string
+        required: true
+      - name: name
+        type: string
+        required: true
+      - name: role
+        label: What they do
+        type: string
+      - name: how
+        label: How we know each other
+        type: string
+      - name: date
+        label: Date (YYYY-MM-DD)
+        type: string
+      - name: kind
+        label: Why they love me
+        type: select
+        options:
+          values:
+            - value: work
+              label: The work
+            - value: character
+              label: The character
+            - value: love
+              label: Just love
+      - name: quote
+        label: Testimonial (double newline = new paragraph)
+        type: text
+        required: true
+      - name: highlight
+        label: Highlight (exact phrase from the quote)
+        type: string
+      - name: image
+        type: object
+        fields:
+          - name: src
+            label: Photo (under /wall-of-love/)
+            type: image
+          - name: alt
+            type: string
+          - name: width
+            type: number
+          - name: height
+            type: number
+      - name: featured
+        label: Feature on /work testimonials
+        type: boolean
+
   - name: tennis
     label: Tennis log
     type: file
