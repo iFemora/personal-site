@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { motion, useReducedMotion } from "motion/react";
+import { usePathname, useRouter } from "next/navigation";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Magnetic } from "@femora/design-system";
 import { EASE } from "@femora/design-system/ease";
 import { spiralPath } from "@femora/design-system/spiral-path";
@@ -18,22 +18,64 @@ const items = [
   { href: "/love", label: "Love" },
 ];
 
+function isActivePath(pathname: string, href: string): boolean {
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export default function Nav() {
   const pathname = usePathname();
+  const router = useRouter();
   const reduced = useReducedMotion();
   const isHome = pathname === "/";
-  const pillRef = useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const slidTo = useRef<string | null>(null);
 
-  // On narrow screens the pill scrolls; keep the current page in view.
   useEffect(() => {
-    const active = pillRef.current?.querySelector<HTMLElement>(
-      '[aria-current="page"]'
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    const onDown = (e: PointerEvent) => {
+      if (!menuRef.current?.contains(e.target as Node)) setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    window.addEventListener("pointerdown", onDown);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("pointerdown", onDown);
+    };
+  }, [open]);
+
+  // Slide-through selection: drag along the open stack, release to go.
+  const rowUnderPoint = (clientY: number): string | null => {
+    const rows = menuRef.current?.querySelectorAll<HTMLElement>("[data-href]");
+    if (!rows) return null;
+    for (const r of rows) {
+      const rect = r.getBoundingClientRect();
+      if (clientY >= rect.top && clientY <= rect.bottom)
+        return r.dataset.href ?? null;
+    }
+    return null;
+  };
+
+  const thumb = (layoutId: string) =>
+    reduced ? (
+      <span
+        aria-hidden
+        className="absolute inset-0 rounded-full bg-accent/10"
+      />
+    ) : (
+      <motion.span
+        layoutId={layoutId}
+        aria-hidden
+        className="absolute inset-0 rounded-full bg-accent/10"
+        transition={{ duration: 0.45, ease: EASE }}
+      />
     );
-    active?.scrollIntoView({ inline: "center", block: "nearest" });
-  }, [pathname]);
 
   return (
-    <nav className="flex items-center justify-between gap-3 font-mono text-xs uppercase tracking-[0.18em] sm:gap-6">
+    <nav className="relative flex items-center justify-between gap-3 font-mono text-xs uppercase tracking-[0.18em] sm:gap-6">
       <Magnetic strength={0.35}>
         <Link
           href="/"
@@ -59,42 +101,105 @@ export default function Nav() {
         </Link>
       </Magnetic>
 
-      <div className="flex min-w-0 items-center gap-3 sm:gap-5">
-        <div
-          ref={pillRef}
-          className="no-scrollbar flex min-w-0 items-center overflow-x-auto rounded-full border border-rule p-1"
-        >
+      <div className="flex items-center gap-3 sm:gap-5">
+        {/* Desktop: the pill inline. */}
+        <div className="hidden items-center rounded-full border border-rule p-1 sm:flex">
           {items.map((item) => {
-            const isActive =
-              pathname === item.href || pathname.startsWith(`${item.href}/`);
+            const active = isActivePath(pathname, item.href);
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                aria-current={isActive ? "page" : undefined}
-                className={`relative whitespace-nowrap rounded-full px-3 py-2 text-[11px] transition-colors duration-300 sm:px-3.5 sm:py-1.5 ${
-                  isActive ? "text-accent" : "text-muted hover:text-foreground"
+                aria-current={active ? "page" : undefined}
+                className={`relative whitespace-nowrap rounded-full px-3.5 py-1.5 text-[11px] transition-colors duration-300 ${
+                  active ? "text-accent" : "text-muted hover:text-foreground"
                 }`}
               >
-                {isActive &&
-                  (reduced ? (
-                    <span
-                      aria-hidden
-                      className="absolute inset-0 rounded-full bg-accent/10"
-                    />
-                  ) : (
-                    <motion.span
-                      layoutId="nav-active-thumb"
-                      aria-hidden
-                      className="absolute inset-0 rounded-full bg-accent/10"
-                      transition={{ duration: 0.45, ease: EASE }}
-                    />
-                  ))}
+                {active && thumb("nav-thumb-desktop")}
                 <span className="relative">{item.label}</span>
               </Link>
             );
           })}
         </div>
+
+        {/* Phone: menu button beside the theme toggle. */}
+        <div className="sm:hidden" ref={menuRef}>
+          <button
+            type="button"
+            aria-expanded={open}
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen((o) => !o)}
+            className="inline-flex h-9 w-9 items-center justify-center text-muted transition-colors hover:text-foreground"
+          >
+            <span className="relative block h-3.5 w-5" aria-hidden>
+              <span
+                className={`absolute left-0 top-0 h-px w-full bg-current transition-transform duration-300 ease-out ${
+                  open ? "translate-y-[7px] rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-[7px] h-px w-full bg-current transition-opacity duration-200 ${
+                  open ? "opacity-0" : ""
+                }`}
+              />
+              <span
+                className={`absolute bottom-0 left-0 h-px w-full bg-current transition-transform duration-300 ease-out ${
+                  open ? "-translate-y-[6px] -rotate-45" : ""
+                }`}
+              />
+            </span>
+          </button>
+
+          <AnimatePresence>
+            {open && (
+              <motion.div
+                className="absolute right-0 top-full z-[70] mt-3 w-48 touch-none rounded-3xl border border-rule bg-background p-1"
+                initial={reduced ? { opacity: 1 } : { opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={reduced ? { opacity: 0 } : { opacity: 0, y: -6 }}
+                transition={{ duration: 0.25, ease: EASE }}
+                onPointerDown={(e) => {
+                  slidTo.current = rowUnderPoint(e.clientY);
+                  try {
+                    e.currentTarget.setPointerCapture(e.pointerId);
+                  } catch {
+                    // pointer already gone (fast tap); click handles it
+                  }
+                }}
+                onPointerMove={(e) => {
+                  if (e.buttons) slidTo.current = rowUnderPoint(e.clientY);
+                }}
+                onPointerUp={() => {
+                  if (slidTo.current) {
+                    router.push(slidTo.current);
+                    setOpen(false);
+                  }
+                  slidTo.current = null;
+                }}
+              >
+                {items.map((item) => {
+                  const active = isActivePath(pathname, item.href);
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      data-href={item.href}
+                      onClick={() => setOpen(false)}
+                      aria-current={active ? "page" : undefined}
+                      className={`relative block rounded-full px-4 py-2.5 transition-colors duration-300 ${
+                        active ? "text-accent" : "text-muted"
+                      }`}
+                    >
+                      {active && thumb("nav-thumb-phone")}
+                      <span className="relative">{item.label}</span>
+                    </Link>
+                  );
+                })}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
         <Magnetic strength={0.3}>
           <ThemeToggle />
         </Magnetic>

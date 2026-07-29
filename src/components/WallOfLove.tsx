@@ -145,7 +145,11 @@ export default function WallOfLove({ entries }: { entries: WallEntry[] }) {
           className="inline-flex touch-none select-none items-center rounded-full border border-rule p-1"
           onPointerDown={(e) => {
             sliding.current = true;
-            e.currentTarget.setPointerCapture(e.pointerId);
+            try {
+              e.currentTarget.setPointerCapture(e.pointerId);
+            } catch {
+              // pointer already gone (fast tap); the segment click handles it
+            }
             selectFromPoint(e.clientX);
           }}
           onPointerMove={(e) => {
