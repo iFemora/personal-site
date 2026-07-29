@@ -1,5 +1,45 @@
 [
   {
+    "id": "for-the-love-of-flowers-and-nature",
+    "src": "/gallery/for-the-love-of-flowers-and-nature.jpg",
+    "alt": "White daisies and their yellow centres growing among deep green leaves",
+    "caption": "For the love of flowers and nature",
+    "date": "2026",
+    "width": 1500,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "when-you-are-stressed-you-sleep",
+    "src": "/gallery/when-you-are-stressed-you-sleep.jpg",
+    "alt": "A person asleep beneath a dark blanket on a couch",
+    "caption": "When you are stressed, you sleep",
+    "date": "2026",
+    "width": 1500,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "dont-you-love-the-greens",
+    "src": "/gallery/dont-you-love-the-greens.jpg",
+    "alt": "Dense clusters of green flower buds and leaves",
+    "caption": "Don't you love the greens?",
+    "date": "2026",
+    "width": 1500,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "my-bad-back-hand-made-me-sit-tennis-out-on-this-day",
+    "src": "/gallery/my-bad-back-hand-made-me-sit-tennis-out-on-this-day.jpg",
+    "alt": "A tennis player sitting on a park bench beneath tall trees",
+    "caption": "My bad back hand made me sit tennis out on this day",
+    "date": "2026",
+    "width": 1500,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
     "id": "lonely-path",
     "src": "/gallery/lonely-path.jpg",
     "alt": "A lone hiker on a dirt trail winding toward distant peaks under a big cloudy sky",
@@ -274,6 +314,156 @@
     "note": "Don Norman",
     "status": "queued",
     "width": 322,
+    "height": 500,
+    "kind": "book"
+  },
+  {
+    "id": "book-build",
+    "src": "/gallery/books/build.jpg",
+    "alt": "Cover of Build by Tony Fadell",
+    "caption": "Build",
+    "note": "Tony Fadell",
+    "width": 327,
+    "height": 500,
+    "kind": "book"
+  },
+  {
+    "id": "book-hooked",
+    "src": "/gallery/books/hooked.jpg",
+    "alt": "Cover of Hooked by Nir Eyal",
+    "caption": "Hooked",
+    "note": "Nir Eyal",
+    "width": 320,
+    "height": 500,
+    "kind": "book"
+  },
+  {
+    "id": "book-lean-product-playbook",
+    "src": "/gallery/books/lean-product-playbook.jpg",
+    "alt": "Cover of The Lean Product Playbook by Dan Olsen",
+    "caption": "The Lean Product Playbook",
+    "note": "Dan Olsen",
+    "width": 335,
+    "height": 500,
+    "kind": "book"
+  },
+  {
+    "id": "book-crossing-the-chasm",
+    "src": "/gallery/books/crossing-the-chasm.jpg",
+    "alt": "Cover of Crossing the Chasm by Geoffrey A. Moore",
+    "caption": "Crossing the Chasm",
+    "note": "Geoffrey A. Moore",
+    "width": 313,
+    "height": 475,
+    "kind": "book"
+  },
+  {
+    "id": "book-hacking-growth",
+    "src": "/gallery/books/hacking-growth.jpg",
+    "alt": "Cover of Hacking Growth by Sean Ellis and Morgan Brown",
+    "caption": "Hacking Growth",
+    "note": "Sean Ellis & Morgan Brown",
+    "width": 303,
+    "height": 500,
+    "kind": "book"
+  },
+  {
+    "id": "book-creativity-inc",
+    "src": "/gallery/books/creativity-inc.jpg",
+    "alt": "Cover of Creativity, Inc. by Ed Catmull",
+    "caption": "Creativity, Inc.",
+    "note": "Ed Catmull",
+    "width": 329,
+    "height": 500,
+    "kind": "book"
+  },
+  {
+    "id": "book-sprint",
+    "src": "/gallery/books/sprint.jpg",
+    "alt": "Cover of Sprint by Jake Knapp",
+    "caption": "Sprint",
+    "note": "Jake Knapp",
+    "width": 331,
+    "height": 499,
+    "kind": "book"
+  },
+  {
+    "id": "book-dont-make-me-think-revisited",
+    "src": "/gallery/books/dont-make-me-think-revisited.jpg",
+    "alt": "Cover of Don't Make Me Think, Revisited by Steve Krug",
+    "caption": "Don't Make Me Think, Revisited",
+    "note": "Steve Krug",
+    "width": 311,
+    "height": 400,
+    "kind": "book"
+  },
+  {
+    "id": "book-change-by-design",
+    "src": "/gallery/books/change-by-design.jpg",
+    "alt": "Cover of Change by Design by Tim Brown",
+    "caption": "Change by Design",
+    "note": "Tim Brown",
+    "width": 333,
+    "height": 500,
+    "kind": "book"
+  },
+  {
+    "id": "book-hard-thing-about-hard-things",
+    "src": "/gallery/books/hard-thing-about-hard-things.jpg",
+    "alt": "Cover of The Hard Thing About Hard Things by Ben Horowitz",
+    "caption": "The Hard Thing About Hard Things",
+    "note": "Ben Horowitz",
+    "width": 301,
+    "height": 500,
+    "kind": "book"
+  },
+  {
+    "id": "book-zero-to-one",
+    "src": "/gallery/books/zero-to-one.jpg",
+    "alt": "Cover of Zero to One by Peter Thiel",
+    "caption": "Zero to One",
+    "note": "Peter Thiel",
+    "width": 342,
+    "height": 500,
+    "kind": "book"
+  },
+  {
+    "id": "book-user-story-mapping",
+    "src": "/gallery/books/user-story-mapping.jpg",
+    "alt": "Cover of User Story Mapping by Jeff Patton",
+    "caption": "User Story Mapping",
+    "note": "Jeff Patton",
+    "width": 333,
+    "height": 499,
+    "kind": "book"
+  },
+  {
+    "id": "book-obviously-awesome",
+    "src": "/gallery/books/obviously-awesome.jpg",
+    "alt": "Cover of Obviously Awesome by April Dunford",
+    "caption": "Obviously Awesome",
+    "note": "April Dunford",
+    "width": 324,
+    "height": 500,
+    "kind": "book"
+  },
+  {
+    "id": "book-value-proposition-design",
+    "src": "/gallery/books/value-proposition-design.jpg",
+    "alt": "Cover of Value Proposition Design by Alexander Osterwalder, Yves Pigneur, Gregory Bernarda, and Alan Smith",
+    "caption": "Value Proposition Design",
+    "note": "Alexander Osterwalder, Yves Pigneur, Gregory Bernarda & Alan Smith",
+    "width": 500,
+    "height": 394,
+    "kind": "book"
+  },
+  {
+    "id": "book-innovators-dilemma",
+    "src": "/gallery/books/innovators-dilemma.jpg",
+    "alt": "Cover of The Innovator's Dilemma by Clayton M. Christensen",
+    "caption": "The Innovator's Dilemma",
+    "note": "Clayton M. Christensen",
+    "width": 329,
     "height": 500,
     "kind": "book"
   }
