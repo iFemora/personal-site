@@ -3,57 +3,128 @@
    These raw custom properties work anywhere (with or without Tailwind).
    The `@theme inline` block maps them onto Tailwind v4 utilities
    (text-accent, bg-background, font-serif, …) when processed by Tailwind;
-   plain browsers ignore that block and read the variables directly. */
+   plain browsers ignore that block and read the variables directly.
+
+   HOW DARK MODE WORKS HERE — read this before editing.
+
+   Dark mode arrives two ways: the visitor's OS prefers dark, or they
+   forced it with the nav toggle (html[data-theme]). Rather than write
+   every dark value twice (once per condition) and keep the copies in
+   sync by hand, each value is declared ONCE as a light/dark pair
+   (--l-* / --d-*), and the two "resolve" blocks below decide which half
+   of every pair is live. Those blocks contain no values at all, only
+   var() references, so a mistyped hex can no longer disagree with
+   itself across conditions.
+
+   To change a colour: edit the pair. To add a token that differs
+   between light and dark: add a pair AND add one line to all three
+   resolve lists. Guest palettes (src/app/palettes.css) only override
+   pairs — they never touch the resolve logic. */
 
 :root {
-  --background: #faf7f0;
-  --foreground: #1f1b16;
-  --muted: #6f675c;
-  --rule: #e2dccf;
+  /* Tells the browser both schemes are supported, so native scrollbars,
+     form controls, and caret colours follow the theme too. The toggle
+     narrows this to a single scheme further down. */
+  color-scheme: light dark;
 
-  --accent-home: #9a3b1e; /* rust */
-  --accent-work: #2f5d62; /* slate teal */
-  --accent-writing: #5f6e3d; /* moss */
-  --accent-notes: #a4731f; /* ochre */
-  --accent-tennis: #7d8c26; /* optic chartreuse, muted to clay-court light */
-  --accent-gallery: #6e5747; /* umber — darkroom sepia */
-  --accent-love: #8f4249; /* madder rose */
+  /* ── the pairs: the only place values live ─────────────────────────── */
+  --l-background: #faf7f0;
+  --d-background: #16120e;
+  --l-foreground: #1f1b16;
+  --d-foreground: #ece6da;
+  --l-muted: #6f675c;
+  --d-muted: #9a9183;
+  --l-rule: #e2dccf;
+  --d-rule: #2e2920;
+
+  --l-accent-home: #9a3b1e; /* rust */
+  --d-accent-home: #e8997b;
+  --l-accent-work: #2f5d62; /* slate teal */
+  --d-accent-work: #8fc1c6;
+  --l-accent-writing: #5f6e3d; /* moss */
+  --d-accent-writing: #b9c98b;
+  --l-accent-notes: #a4731f; /* ochre */
+  --d-accent-notes: #ddb56e;
+  --l-accent-tennis: #7d8c26; /* clay-court chartreuse */
+  --d-accent-tennis: #d6e25e; /* ball under floodlights */
+  --l-accent-gallery: #6e5747; /* umber — darkroom sepia */
+  --d-accent-gallery: #c9ae96;
+  --l-accent-love: #8f4249; /* madder rose */
+  --d-accent-love: #e2a1a6;
+
+  /* Not colours, but they still differ by scheme: how strong the accent
+     wash sits on the paper, and how the grain blends into it. A palette
+     can set the wash to 0% to keep its paper clean. */
+  --l-wash: 10%;
+  --d-wash: 14%;
+  --l-grain-blend: overlay;
+  --d-grain-blend: soft-light;
+  --l-grain-opacity: 0.5;
+  --d-grain-opacity: 0.65;
+
+  /* ── resolve: light (the default) ──────────────────────────────────── */
+  --background: var(--l-background);
+  --foreground: var(--l-foreground);
+  --muted: var(--l-muted);
+  --rule: var(--l-rule);
+  --accent-home: var(--l-accent-home);
+  --accent-work: var(--l-accent-work);
+  --accent-writing: var(--l-accent-writing);
+  --accent-notes: var(--l-accent-notes);
+  --accent-tennis: var(--l-accent-tennis);
+  --accent-gallery: var(--l-accent-gallery);
+  --accent-love: var(--l-accent-love);
+  --wash: var(--l-wash);
+  --grain-blend: var(--l-grain-blend);
+  --grain-opacity: var(--l-grain-opacity);
+
   --accent: var(--accent-home);
 }
 
-/* Dark palette applies two ways:
-   1. the system prefers dark and the visitor hasn't forced light, or
-   2. the visitor forced dark via the theme toggle (html[data-theme]).
-   The token values are duplicated across both selectors on purpose —
-   keep them in sync when editing. */
+/* ── resolve: dark, because the OS asks and nobody forced light ─────── */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --background: #16120e;
-    --foreground: #ece6da;
-    --muted: #9a9183;
-    --rule: #2e2920;
-    --accent-home: #e8997b;
-    --accent-work: #8fc1c6;
-    --accent-writing: #b9c98b;
-    --accent-notes: #ddb56e;
-    --accent-tennis: #d6e25e; /* ball under floodlights */
-    --accent-gallery: #c9ae96;
-    --accent-love: #e2a1a6;
+    --background: var(--d-background);
+    --foreground: var(--d-foreground);
+    --muted: var(--d-muted);
+    --rule: var(--d-rule);
+    --accent-home: var(--d-accent-home);
+    --accent-work: var(--d-accent-work);
+    --accent-writing: var(--d-accent-writing);
+    --accent-notes: var(--d-accent-notes);
+    --accent-tennis: var(--d-accent-tennis);
+    --accent-gallery: var(--d-accent-gallery);
+    --accent-love: var(--d-accent-love);
+    --wash: var(--d-wash);
+    --grain-blend: var(--d-grain-blend);
+    --grain-opacity: var(--d-grain-opacity);
   }
 }
 
+/* ── resolve: dark, because the visitor asked ──────────────────────── */
 :root[data-theme="dark"] {
-  --background: #16120e;
-  --foreground: #ece6da;
-  --muted: #9a9183;
-  --rule: #2e2920;
-  --accent-home: #e8997b;
-  --accent-work: #8fc1c6;
-  --accent-writing: #b9c98b;
-  --accent-notes: #ddb56e;
-  --accent-tennis: #d6e25e; /* ball under floodlights */
-  --accent-gallery: #c9ae96;
-  --accent-love: #e2a1a6;
+  --background: var(--d-background);
+  --foreground: var(--d-foreground);
+  --muted: var(--d-muted);
+  --rule: var(--d-rule);
+  --accent-home: var(--d-accent-home);
+  --accent-work: var(--d-accent-work);
+  --accent-writing: var(--d-accent-writing);
+  --accent-notes: var(--d-accent-notes);
+  --accent-tennis: var(--d-accent-tennis);
+  --accent-gallery: var(--d-accent-gallery);
+  --accent-love: var(--d-accent-love);
+  --wash: var(--d-wash);
+  --grain-blend: var(--d-grain-blend);
+  --grain-opacity: var(--d-grain-opacity);
+}
+
+/* Forcing a theme also pins the native UI to it. */
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
 }
 
 html[data-accent="work"] {
@@ -107,12 +178,16 @@ body {
   }
 }
 
+/* Paper is always paper in print. !important because the resolve blocks
+   and the palette selectors are more specific than :root alone — without
+   it, printing while in dark mode (or a guest palette) printed the dark
+   palette. */
 @media print {
   :root {
-    --background: #ffffff;
-    --foreground: #000000;
-    --muted: #555555;
-    --rule: #cccccc;
+    --background: #ffffff !important;
+    --foreground: #000000 !important;
+    --muted: #555555 !important;
+    --rule: #cccccc !important;
   }
   body {
     background: #ffffff;
