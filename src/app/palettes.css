@@ -1,0 +1,244 @@
+/* Pick Your Palette — guest palettes.
+   The house palette (earthy rust on warm paper) lives in
+   packages/femora-ds/tokens.css and applies when html has no
+   data-palette. Each guest palette below overrides the same custom
+   properties, so everything downstream (accents, washes, grain,
+   Tailwind utilities) follows automatically.
+
+   All values come from Radix Colors v3 scales, always the same steps:
+   step 2 background · step 6 rule · step 11 muted + accents · step 12
+   foreground. Step 11 is Radix's contrast-guaranteed text step, which
+   keeps every accent readable as link text in both modes. When tuning,
+   swap hues, never steps.
+
+   Dark values are duplicated across the media-query selector and the
+   forced [data-theme="dark"] selector on purpose, matching tokens.css —
+   keep them in sync when editing. */
+
+/* Ink — letterpress monochrome. Sand neutrals; every accent is the ink. */
+html[data-palette="ink"] {
+  --background: #f9f9f8;
+  --foreground: #21201c;
+  --muted: #63635e;
+  --rule: #dad9d6;
+  --accent-home: #21201c;
+  --accent-work: #21201c;
+  --accent-writing: #21201c;
+  --accent-notes: #21201c;
+  --accent-tennis: #21201c;
+  --accent-gallery: #21201c;
+  --accent-love: #21201c;
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-palette="ink"]:not([data-theme="light"]) {
+    --background: #191918;
+    --foreground: #eeeeec;
+    --muted: #b5b3ad;
+    --rule: #3b3a37;
+    --accent-home: #eeeeec;
+    --accent-work: #eeeeec;
+    --accent-writing: #eeeeec;
+    --accent-notes: #eeeeec;
+    --accent-tennis: #eeeeec;
+    --accent-gallery: #eeeeec;
+    --accent-love: #eeeeec;
+  }
+}
+:root[data-palette="ink"][data-theme="dark"] {
+  --background: #191918;
+  --foreground: #eeeeec;
+  --muted: #b5b3ad;
+  --rule: #3b3a37;
+  --accent-home: #eeeeec;
+  --accent-work: #eeeeec;
+  --accent-writing: #eeeeec;
+  --accent-notes: #eeeeec;
+  --accent-tennis: #eeeeec;
+  --accent-gallery: #eeeeec;
+  --accent-love: #eeeeec;
+}
+
+/* Ember — the house warmth turned up. Bronze neutrals (blush paper,
+   brown ink), accents from the fire end of the wheel. */
+html[data-palette="ember"] {
+  --background: #fdf7f5;
+  --foreground: #43302b;
+  --muted: #7d5e54;
+  --rule: #dfcdc5;
+  --accent-home: #d13415; /* tomato */
+  --accent-work: #815e46; /* brown */
+  --accent-writing: #71624b; /* gold olive */
+  --accent-notes: #ab6400; /* amber */
+  --accent-tennis: #cc4e00; /* orange */
+  --accent-gallery: #815e46; /* brown */
+  --accent-love: #ca244d; /* ruby */
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-palette="ember"]:not([data-theme="light"]) {
+    --background: #1c1917;
+    --foreground: #ede0d9;
+    --muted: #d4b3a5;
+    --rule: #493e3a;
+    --accent-home: #ff977d;
+    --accent-work: #dbb594;
+    --accent-writing: #cbb99f;
+    --accent-notes: #ffca16;
+    --accent-tennis: #ffa057;
+    --accent-gallery: #dbb594;
+    --accent-love: #ff949d;
+  }
+}
+:root[data-palette="ember"][data-theme="dark"] {
+  --background: #1c1917;
+  --foreground: #ede0d9;
+  --muted: #d4b3a5;
+  --rule: #493e3a;
+  --accent-home: #ff977d;
+  --accent-work: #dbb594;
+  --accent-writing: #cbb99f;
+  --accent-notes: #ffca16;
+  --accent-tennis: #ffa057;
+  --accent-gallery: #dbb594;
+  --accent-love: #ff949d;
+}
+
+/* Riso — saturated print inks on plain paper, for the colour lovers. */
+html[data-palette="riso"] {
+  --background: #f9f9f8;
+  --foreground: #21201c;
+  --muted: #63635e;
+  --rule: #dad9d6;
+  --accent-home: #cb1d63; /* crimson */
+  --accent-work: #0d74ce; /* blue */
+  --accent-writing: #218358; /* green */
+  --accent-notes: #cc4e00; /* orange */
+  --accent-tennis: #6550b9; /* violet */
+  --accent-gallery: #008573; /* teal */
+  --accent-love: #c2298a; /* pink */
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-palette="riso"]:not([data-theme="light"]) {
+    --background: #191918;
+    --foreground: #eeeeec;
+    --muted: #b5b3ad;
+    --rule: #3b3a37;
+    --accent-home: #ff92ad;
+    --accent-work: #70b8ff;
+    --accent-writing: #3dd68c;
+    --accent-notes: #ffa057;
+    --accent-tennis: #baa7ff;
+    --accent-gallery: #0bd8b6;
+    --accent-love: #ff8dcc;
+  }
+}
+:root[data-palette="riso"][data-theme="dark"] {
+  --background: #191918;
+  --foreground: #eeeeec;
+  --muted: #b5b3ad;
+  --rule: #3b3a37;
+  --accent-home: #ff92ad;
+  --accent-work: #70b8ff;
+  --accent-writing: #3dd68c;
+  --accent-notes: #ffa057;
+  --accent-tennis: #baa7ff;
+  --accent-gallery: #0bd8b6;
+  --accent-love: #ff8dcc;
+}
+
+/* Chalk — powdery pastel. Sand paper by day, mauve dusk by night. */
+html[data-palette="chalk"] {
+  --background: #f9f9f8;
+  --foreground: #21201c;
+  --muted: #63635e;
+  --rule: #dad9d6;
+  --accent-home: #c2298a; /* pink */
+  --accent-work: #5753c6; /* iris */
+  --accent-writing: #2a7e3b; /* grass */
+  --accent-notes: #ab6400; /* amber */
+  --accent-tennis: #5c7c2f; /* lime */
+  --accent-gallery: #7d5e54; /* bronze */
+  --accent-love: #953ea3; /* plum */
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-palette="chalk"]:not([data-theme="light"]) {
+    --background: #1a191b;
+    --foreground: #eeeef0;
+    --muted: #b5b2bc;
+    --rule: #3c393f;
+    --accent-home: #ff8dcc;
+    --accent-work: #b1a9ff;
+    --accent-writing: #71d083;
+    --accent-notes: #ffca16;
+    --accent-tennis: #bde56c;
+    --accent-gallery: #d4b3a5;
+    --accent-love: #e796f3;
+  }
+}
+:root[data-palette="chalk"][data-theme="dark"] {
+  --background: #1a191b;
+  --foreground: #eeeef0;
+  --muted: #b5b2bc;
+  --rule: #3c393f;
+  --accent-home: #ff8dcc;
+  --accent-work: #b1a9ff;
+  --accent-writing: #71d083;
+  --accent-notes: #ffca16;
+  --accent-tennis: #bde56c;
+  --accent-gallery: #d4b3a5;
+  --accent-love: #e796f3;
+}
+
+/* Tide — cool water and overcast light. Slate neutrals, blue-green accents. */
+html[data-palette="tide"] {
+  --background: #f9f9fb;
+  --foreground: #1c2024;
+  --muted: #60646c;
+  --rule: #d9d9e0;
+  --accent-home: #0d74ce; /* blue */
+  --accent-work: #008573; /* teal */
+  --accent-writing: #208368; /* jade */
+  --accent-notes: #107d98; /* cyan */
+  --accent-tennis: #027864; /* mint */
+  --accent-gallery: #3a5bc7; /* indigo */
+  --accent-love: #6550b9; /* violet */
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-palette="tide"]:not([data-theme="light"]) {
+    --background: #18191b;
+    --foreground: #edeef0;
+    --muted: #b0b4ba;
+    --rule: #363a3f;
+    --accent-home: #70b8ff;
+    --accent-work: #0bd8b6;
+    --accent-writing: #1fd8a4;
+    --accent-notes: #4ccce6;
+    --accent-tennis: #58d5ba;
+    --accent-gallery: #9eb1ff;
+    --accent-love: #baa7ff;
+  }
+}
+:root[data-palette="tide"][data-theme="dark"] {
+  --background: #18191b;
+  --foreground: #edeef0;
+  --muted: #b0b4ba;
+  --rule: #363a3f;
+  --accent-home: #70b8ff;
+  --accent-work: #0bd8b6;
+  --accent-writing: #1fd8a4;
+  --accent-notes: #4ccce6;
+  --accent-tennis: #58d5ba;
+  --accent-gallery: #9eb1ff;
+  --accent-love: #baa7ff;
+}
+
+/* Print always gets plain ink on white, whatever palette is active
+   (the palette selectors above would otherwise outrank the tokens.css
+   print reset). */
+@media print {
+  html[data-palette] {
+    --background: #ffffff;
+    --foreground: #000000;
+    --muted: #555555;
+    --rule: #cccccc;
+  }
+}

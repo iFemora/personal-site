@@ -4,3 +4,7 @@
    Fonts are loaded by next/font in layout.tsx (so this skips fonts.css). */
 @import "../../packages/femora-ds/tokens.css";
 @import "../../packages/femora-ds/utilities.css";
+
+/* Guest palettes for the Pick Your Palette nav control. Site-level on
+   purpose: the design-system tokens stay the locked house palette. */
+@import "./palettes.css";

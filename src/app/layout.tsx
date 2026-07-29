@@ -118,12 +118,13 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col">
-        {/* Apply the saved theme before anything paints, so a reload never
-            flashes the wrong palette. Runs synchronously, fails silently. */}
+        {/* Apply the saved theme and palette before anything paints, so a
+            reload never flashes the wrong colors. Runs synchronously,
+            fails silently. */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              'try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}',
+              'try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;var p=localStorage.getItem("palette");if(["ink","ember","riso","chalk","tide"].indexOf(p)>-1)document.documentElement.dataset.palette=p}catch(e){}',
           }}
         />
         <CursorFieldProvider>

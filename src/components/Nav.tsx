@@ -8,6 +8,8 @@ import { Magnetic } from "@femora/design-system";
 import { EASE } from "@femora/design-system/ease";
 import { spiralPath } from "@femora/design-system/spiral-path";
 import ThemeToggle from "@/components/ThemeToggle";
+import PalettePicker, { PaletteRows } from "@/components/PalettePicker";
+import { applyPalette, isPaletteId } from "@/lib/palettes";
 
 const items = [
   { href: "/about", label: "About" },
@@ -28,6 +30,7 @@ export default function Nav() {
   const reduced = useReducedMotion();
   const isHome = pathname === "/";
   const [open, setOpen] = useState(false);
+  const [panel, setPanel] = useState<"menu" | "palette">("menu");
   const menuRef = useRef<HTMLDivElement>(null);
   const slidTo = useRef<string | null>(null);
 
@@ -48,15 +51,34 @@ export default function Nav() {
   }, [open]);
 
   // Slide-through selection: drag along the open stack, release to go.
+  // Rows carry data-href (navigate) or data-action (panel swaps, palette
+  // picks) — pointer capture on the menu means row onClick never fires,
+  // so every row goes through this.
   const rowUnderPoint = (clientY: number): string | null => {
-    const rows = menuRef.current?.querySelectorAll<HTMLElement>("[data-href]");
+    const rows = menuRef.current?.querySelectorAll<HTMLElement>(
+      "[data-href], [data-action]"
+    );
     if (!rows) return null;
     for (const r of rows) {
       const rect = r.getBoundingClientRect();
       if (clientY >= rect.top && clientY <= rect.bottom)
-        return r.dataset.href ?? null;
+        return r.dataset.href ?? r.dataset.action ?? null;
     }
     return null;
+  };
+
+  const releaseRow = (value: string) => {
+    if (value.startsWith("/")) {
+      router.push(value);
+      setOpen(false);
+    } else if (value === "panel:palette") {
+      setPanel("palette");
+    } else if (value === "panel:menu") {
+      setPanel("menu");
+    } else if (value.startsWith("palette:")) {
+      const id = value.slice("palette:".length);
+      if (isPaletteId(id)) applyPalette(id);
+    }
   };
 
   const thumb = (layoutId: string) =>
@@ -76,30 +98,33 @@ export default function Nav() {
 
   return (
     <nav className="relative flex items-center justify-between gap-3 font-mono text-xs uppercase tracking-[0.18em] sm:gap-6">
-      <Magnetic strength={0.35}>
-        <Link
-          href="/"
-          aria-label="Home"
-          aria-current={isHome ? "page" : undefined}
-          className="group inline-flex h-9 w-9 items-center justify-center text-accent"
-        >
-          <svg
-            width="30"
-            height="30"
-            viewBox="0 0 100 100"
-            fill="none"
-            aria-hidden
-            className="transition-transform duration-700 ease-out group-hover:rotate-180"
+      <div className="flex items-center gap-3 sm:gap-5">
+        <Magnetic strength={0.35}>
+          <Link
+            href="/"
+            aria-label="Home"
+            aria-current={isHome ? "page" : undefined}
+            className="group inline-flex h-9 w-9 items-center justify-center text-accent"
           >
-            <path
-              d={spiralPath()}
-              stroke="currentColor"
-              strokeWidth={5}
-              strokeLinecap="round"
-            />
-          </svg>
-        </Link>
-      </Magnetic>
+            <svg
+              width="30"
+              height="30"
+              viewBox="0 0 100 100"
+              fill="none"
+              aria-hidden
+              className="transition-transform duration-700 ease-out group-hover:rotate-180"
+            >
+              <path
+                d={spiralPath()}
+                stroke="currentColor"
+                strokeWidth={5}
+                strokeLinecap="round"
+              />
+            </svg>
+          </Link>
+        </Magnetic>
+        <PalettePicker />
+      </div>
 
       <div className="flex items-center gap-3 sm:gap-5">
         {/* Desktop: the pill inline. */}
@@ -128,7 +153,10 @@ export default function Nav() {
             type="button"
             aria-expanded={open}
             aria-label={open ? "Close menu" : "Open menu"}
-            onClick={() => setOpen((o) => !o)}
+            onClick={() => {
+              setPanel("menu");
+              setOpen((o) => !o);
+            }}
             className="inline-flex h-9 w-9 items-center justify-center text-muted transition-colors hover:text-foreground"
           >
             <span className="relative block h-3.5 w-5" aria-hidden>
@@ -153,7 +181,9 @@ export default function Nav() {
           <AnimatePresence>
             {open && (
               <motion.div
-                className="absolute right-0 top-full z-[70] mt-3 w-48 touch-none rounded-3xl border border-rule bg-background p-1"
+                className={`absolute right-0 top-full z-[70] mt-3 touch-none rounded-3xl border border-rule bg-background p-1 ${
+                  panel === "palette" ? "w-60" : "w-52"
+                }`}
                 initial={reduced ? { opacity: 1 } : { opacity: 0, y: -6 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={reduced ? { opacity: 0 } : { opacity: 0, y: -6 }}
@@ -170,31 +200,54 @@ export default function Nav() {
                   if (e.buttons) slidTo.current = rowUnderPoint(e.clientY);
                 }}
                 onPointerUp={() => {
-                  if (slidTo.current) {
-                    router.push(slidTo.current);
-                    setOpen(false);
-                  }
+                  if (slidTo.current) releaseRow(slidTo.current);
                   slidTo.current = null;
                 }}
               >
-                {items.map((item) => {
-                  const active = isActivePath(pathname, item.href);
-                  return (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      data-href={item.href}
-                      onClick={() => setOpen(false)}
-                      aria-current={active ? "page" : undefined}
-                      className={`relative block rounded-full px-4 py-2.5 transition-colors duration-300 ${
-                        active ? "text-accent" : "text-muted"
-                      }`}
+                {panel === "menu" ? (
+                  <>
+                    {items.map((item) => {
+                      const active = isActivePath(pathname, item.href);
+                      return (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          data-href={item.href}
+                          onClick={() => setOpen(false)}
+                          aria-current={active ? "page" : undefined}
+                          className={`relative block rounded-full px-4 py-2.5 transition-colors duration-300 ${
+                            active ? "text-accent" : "text-muted"
+                          }`}
+                        >
+                          {active && thumb("nav-thumb-phone")}
+                          <span className="relative">{item.label}</span>
+                        </Link>
+                      );
+                    })}
+                    <div className="mx-4 my-1 border-t border-rule" />
+                    <button
+                      type="button"
+                      data-action="panel:palette"
+                      onClick={() => setPanel("palette")}
+                      className="block w-full whitespace-nowrap rounded-full px-4 py-2.5 text-left uppercase text-muted transition-colors duration-300 hover:text-foreground"
                     >
-                      {active && thumb("nav-thumb-phone")}
-                      <span className="relative">{item.label}</span>
-                    </Link>
-                  );
-                })}
+                      Pick Your Palette
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      type="button"
+                      data-action="panel:menu"
+                      onClick={() => setPanel("menu")}
+                      className="block w-full rounded-full px-4 py-2.5 text-left uppercase text-muted transition-colors duration-300 hover:text-foreground"
+                    >
+                      ← Menu
+                    </button>
+                    <div className="mx-4 my-1 border-t border-rule" />
+                    <PaletteRows />
+                  </>
+                )}
               </motion.div>
             )}
           </AnimatePresence>
