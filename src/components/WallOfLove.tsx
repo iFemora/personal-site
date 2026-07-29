@@ -2,7 +2,7 @@
 
 import { Fragment, useEffect, useState } from "react";
 import Image from "next/image";
-import { motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Highlight } from "@femora/design-system";
 import { EASE } from "@femora/design-system/ease";
 import type { WallEntry } from "@/lib/wallOfLove";
@@ -21,6 +21,13 @@ function quoteSize(quote: string): string {
   if (quote.length < 220) return "text-2xl leading-snug sm:text-[1.75rem]";
   if (quote.length < 480) return "text-xl leading-snug";
   return "text-lg leading-relaxed";
+}
+
+/** The centred view speaks a size louder than the wall. */
+function stageQuoteSize(quote: string): string {
+  if (quote.length < 220) return "text-3xl leading-snug sm:text-4xl";
+  if (quote.length < 480) return "text-2xl leading-snug sm:text-3xl";
+  return "text-xl leading-relaxed sm:text-2xl";
 }
 
 /** Wraps every highlight phrase found in the paragraph, staggering the swipes. */
@@ -48,22 +55,53 @@ function markParagraph(
   ];
 }
 
+function Paragraphs({ entry, className }: { entry: WallEntry; className: string }) {
+  const paragraphs = entry.quote.split("\n\n");
+  let order = 0;
+  const nextOrder = () => order++;
+  return (
+    <blockquote className={className}>
+      {paragraphs.map((para, p) => (
+        <p key={p} className={p === 0 ? "" : "mt-4"}>
+          {p === 0 && "“"}
+          {markParagraph(para, entry.highlights ?? [], nextOrder)}
+          {p === paragraphs.length - 1 && "”"}
+        </p>
+      ))}
+    </blockquote>
+  );
+}
+
 export default function WallOfLove({ entries }: { entries: WallEntry[] }) {
   const reduced = useReducedMotion();
   const [filter, setFilter] = useState<FilterKey>("all");
-  const [focusedId, setFocusedId] = useState<string | null>(null);
+  const [openId, setOpenId] = useState<string | null>(null);
+  const [photoZoom, setPhotoZoom] = useState(false);
+
+  const open = openId === null ? null : entries.find((e) => e.id === openId);
 
   useEffect(() => {
-    if (focusedId === null) return;
+    if (!openId) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setFocusedId(null);
+      if (e.key !== "Escape") return;
+      if (photoZoom) setPhotoZoom(false);
+      else setOpenId(null);
     };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [focusedId]);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [openId, photoZoom]);
 
   const shown =
     filter === "all" ? entries : entries.filter((e) => e.kind === filter);
+
+  const openEntry = (id: string) => {
+    setPhotoZoom(false);
+    setOpenId(id);
+  };
 
   return (
     <>
@@ -80,10 +118,7 @@ export default function WallOfLove({ entries }: { entries: WallEntry[] }) {
               <button
                 type="button"
                 aria-pressed={active}
-                onClick={() => {
-                  setFilter(f.key);
-                  setFocusedId(null);
-                }}
+                onClick={() => setFilter(f.key)}
                 className={`relative ${
                   active
                     ? "text-accent"
@@ -117,112 +152,211 @@ export default function WallOfLove({ entries }: { entries: WallEntry[] }) {
         </p>
       ) : (
         <div key={filter} className="columns-1 gap-12 sm:columns-2">
-          {shown.map((entry, i) => {
-            const paragraphs = entry.quote.split("\n\n");
-            let order = 0;
-            const nextOrder = () => order++;
-            const focused = focusedId === entry.id;
-            const dimmed = focusedId !== null && !focused;
-            const toggle = () =>
-              setFocusedId(focused ? null : entry.id);
-            return (
-              <motion.figure
-                key={entry.id}
-                className="mb-14 break-inside-avoid sm:mb-16"
-                initial={reduced ? { opacity: 1 } : { opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "0px 0px -8% 0px" }}
-                transition={{ duration: 0.7, ease: EASE, delay: (i % 2) * 0.08 }}
+          {shown.map((entry, i) => (
+            <motion.figure
+              key={entry.id}
+              className="mb-14 break-inside-avoid sm:mb-16"
+              initial={reduced ? { opacity: 1 } : { opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "0px 0px -8% 0px" }}
+              transition={{ duration: 0.7, ease: EASE, delay: (i % 2) * 0.08 }}
+            >
+              <div
+                className="group cursor-pointer"
+                onClick={() => {
+                  if (window.getSelection()?.toString()) return;
+                  openEntry(entry.id);
+                }}
               >
-                {/* Spotlight lives on this wrapper so it never fights the
-                    entrance animation's inline styles. */}
-                <div
-                  className={`group cursor-pointer transition-[filter,opacity] duration-500 ease-out ${
-                    dimmed ? "opacity-40 blur-[2px]" : ""
-                  }`}
-                  onClick={() => {
-                    if (window.getSelection()?.toString()) return;
-                    toggle();
+                {entry.how && (
+                  <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
+                    {entry.how}
+                  </p>
+                )}
+
+                <Paragraphs
+                  entry={entry}
+                  className={`mt-4 font-serif tracking-tight ${quoteSize(entry.quote)}`}
+                />
+
+                <figcaption className="mt-6">
+                  <button
+                    type="button"
+                    aria-haspopup="dialog"
+                    aria-label={`Open ${entry.name}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openEntry(entry.id);
+                    }}
+                    className="flex items-center gap-4 text-left"
+                  >
+                    {entry.image && (
+                      <span className="block h-14 w-14 shrink-0 overflow-hidden rounded-sm">
+                        <Image
+                          src={entry.image.src}
+                          alt={entry.image.alt}
+                          width={112}
+                          height={112}
+                          sizes="56px"
+                          className="h-full w-full object-cover grayscale-[0.85] sepia-[0.12] transition-[filter] duration-500 ease-out group-hover:grayscale-0 group-hover:sepia-0"
+                          style={
+                            entry.image.position
+                              ? { objectPosition: entry.image.position }
+                              : undefined
+                          }
+                        />
+                      </span>
+                    )}
+                    <span className="min-w-0">
+                      <span className="block font-mono text-xs uppercase tracking-[0.15em]">
+                        {entry.name}
+                      </span>
+                      {(entry.role || entry.company) && (
+                        <span className="mt-0.5 block text-sm text-muted">
+                          {[entry.role, entry.company]
+                            .filter(Boolean)
+                            .join(" · ")}
+                        </span>
+                      )}
+                    </span>
+                  </button>
+                </figcaption>
+              </div>
+            </motion.figure>
+          ))}
+        </div>
+      )}
+
+      {/* Centre stage: the clicked voice comes out of the wall. A second
+          click on the portrait zooms the photo itself; clicks step back
+          one layer at a time. */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            className="fixed inset-0 z-[80] overflow-y-auto bg-background/95 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            onClick={() => (photoZoom ? setPhotoZoom(false) : setOpenId(null))}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${open.name} on the wall`}
+          >
+            <div className="flex min-h-full items-center justify-center px-6 py-14 sm:py-20">
+              {photoZoom && open.image ? (
+                <motion.figure
+                  key={`photo-${open.id}`}
+                  className="flex flex-col items-center"
+                  initial={
+                    reduced
+                      ? { opacity: 1, filter: "grayscale(0) sepia(0)" }
+                      : {
+                          opacity: 0,
+                          scale: 0.97,
+                          filter: "grayscale(0.85) sepia(0.12)",
+                        }
+                  }
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                    filter: "grayscale(0) sepia(0)",
+                  }}
+                  transition={{
+                    duration: 0.35,
+                    ease: EASE,
+                    filter: { duration: 0.9, ease: EASE, delay: 0.1 },
                   }}
                 >
-                  {entry.how && (
-                    <p
-                      className={`font-mono text-[11px] uppercase tracking-[0.15em] transition-colors duration-500 ${
-                        focused ? "text-accent" : "text-muted"
-                      }`}
+                  <Image
+                    src={open.image.src}
+                    alt={open.image.alt}
+                    width={open.image.width}
+                    height={open.image.height}
+                    sizes="90vw"
+                    quality={85}
+                    className="max-h-[68vh] w-auto max-w-full cursor-zoom-out rounded-sm object-contain"
+                  />
+                  <figcaption className="mt-5 font-mono text-xs uppercase tracking-[0.15em] text-muted">
+                    {open.name}
+                  </figcaption>
+                </motion.figure>
+              ) : (
+                <motion.div
+                  key={`entry-${open.id}`}
+                  className="w-full max-w-[640px]"
+                  initial={reduced ? { opacity: 1 } : { opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, ease: EASE }}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {open.image && (
+                    <button
+                      type="button"
+                      aria-label={`See ${open.name}'s photo`}
+                      onClick={() => setPhotoZoom(true)}
+                      className="block h-24 w-24 cursor-zoom-in overflow-hidden rounded-sm sm:h-28 sm:w-28"
                     >
-                      {entry.how}
+                      <motion.span
+                        className="block h-full w-full"
+                        initial={
+                          reduced
+                            ? { filter: "grayscale(0) sepia(0)" }
+                            : { filter: "grayscale(0.85) sepia(0.12)" }
+                        }
+                        animate={{ filter: "grayscale(0) sepia(0)" }}
+                        transition={{ duration: 0.9, ease: EASE, delay: 0.15 }}
+                      >
+                        <Image
+                          src={open.image.src}
+                          alt={open.image.alt}
+                          width={224}
+                          height={224}
+                          sizes="112px"
+                          className="h-full w-full object-cover"
+                          style={
+                            open.image.position
+                              ? { objectPosition: open.image.position }
+                              : undefined
+                          }
+                        />
+                      </motion.span>
+                    </button>
+                  )}
+
+                  {open.how && (
+                    <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.15em] text-accent">
+                      {open.how}
                     </p>
                   )}
 
-                  <blockquote
-                    className={`mt-4 font-serif tracking-tight ${quoteSize(entry.quote)}`}
-                  >
-                    {paragraphs.map((para, p) => (
-                      <p key={p} className={p === 0 ? "" : "mt-4"}>
-                        {p === 0 && "“"}
-                        {markParagraph(para, entry.highlights ?? [], nextOrder)}
-                        {p === paragraphs.length - 1 && "”"}
-                      </p>
-                    ))}
-                  </blockquote>
+                  <Paragraphs
+                    entry={open}
+                    className={`mt-4 font-serif tracking-tight ${stageQuoteSize(open.quote)}`}
+                  />
 
-                  <figcaption className="mt-6">
-                    <button
-                      type="button"
-                      aria-pressed={focused}
-                      aria-label={`Spotlight ${entry.name}`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggle();
-                      }}
-                      className="flex items-center gap-4 text-left"
-                    >
-                      {entry.image && (
-                        <span className="block h-14 w-14 shrink-0 overflow-hidden rounded-sm">
-                          <Image
-                            src={entry.image.src}
-                            alt={entry.image.alt}
-                            width={112}
-                            height={112}
-                            sizes="56px"
-                            className={`h-full w-full object-cover transition-[filter,transform] duration-500 ease-out ${
-                              focused
-                                ? "scale-[1.04] grayscale-0 sepia-0"
-                                : "grayscale-[0.85] sepia-[0.12] group-hover:grayscale-0 group-hover:sepia-0"
-                            }`}
-                            style={
-                              entry.image.position
-                                ? { objectPosition: entry.image.position }
-                                : undefined
-                            }
-                          />
-                        </span>
-                      )}
-                      <span className="min-w-0">
-                        <span
-                          className={`block font-mono text-xs uppercase tracking-[0.15em] transition-colors duration-500 ${
-                            focused ? "text-accent" : ""
-                          }`}
-                        >
-                          {entry.name}
-                        </span>
-                        {(entry.role || entry.company) && (
-                          <span className="mt-0.5 block text-sm text-muted">
-                            {[entry.role, entry.company]
-                              .filter(Boolean)
-                              .join(" · ")}
-                          </span>
-                        )}
-                      </span>
-                    </button>
-                  </figcaption>
-                </div>
-              </motion.figure>
-            );
-          })}
-        </div>
-      )}
+                  <p className="mt-8 font-mono text-xs uppercase tracking-[0.15em]">
+                    {open.name}
+                  </p>
+                  {(open.role || open.company) && (
+                    <p className="mt-1 text-sm text-muted">
+                      {[open.role, open.company].filter(Boolean).join(" · ")}
+                    </p>
+                  )}
+
+                  <button
+                    type="button"
+                    onClick={() => setOpenId(null)}
+                    className="mt-10 font-mono text-xs uppercase tracking-[0.18em] text-muted transition-colors hover:text-accent"
+                  >
+                    Close
+                  </button>
+                </motion.div>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
