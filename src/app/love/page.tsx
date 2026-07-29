@@ -47,7 +47,7 @@ export default function WallOfLovePage() {
 
       <DrawnRule className="mt-4 sm:mt-8" />
       <p className="mt-6 font-serif text-sm italic text-muted">
-        Their words, verbatim. I only fixed the typos.
+        Their words. I know they can&rsquo;t do without typos, so I fixed them.
       </p>
     </main>
   );
