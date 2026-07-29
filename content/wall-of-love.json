@@ -197,5 +197,47 @@
       "width": 640,
       "height": 800
     }
+  },
+  {
+    "id": "2026-07-29-opeyemi-balogun",
+    "name": "Ọpẹ́yẹmí Balógun",
+    "role": "Strategist & Project Manager",
+    "company": "Planet Echo Omnimedia",
+    "how": "We were coursemates and roommates in university",
+    "date": "2026-07-29",
+    "kind": "character",
+    "quote": "Femi is driven by a sense of ambition that keeps him going hard at any task he sets his mind on, whether that’s public speaking, political strategy, or being a fan of certain hip-hop musicians. That ethos shows up in his personal and professional life. He also consistently leans into expanding his knowledge, skills and abilities if that would allow him to be better at the things he’s passionate about.",
+    "highlights": [
+      "a sense of ambition that keeps him going hard at any task he sets his mind on",
+      "consistently leans into expanding his knowledge"
+    ],
+    "image": {
+      "src": "/wall-of-love/opeyemi-balogun.jpg",
+      "alt": "Ọpẹ́yẹmí Balógun",
+      "width": 798,
+      "height": 800
+    }
+  },
+  {
+    "id": "2026-07-29-rafael-chisom",
+    "name": "Rafael Chisom",
+    "role": "Lead AI Engineer",
+    "company": "SmartSearch",
+    "how": "Met through a mutual friend",
+    "date": "2026-07-29",
+    "kind": "love",
+    "quote": "Femi is a brilliant human being with a bag full of opinions on just about everything, and once he believes in something, he’s ready to defend it with his whole chest. He loves sports, lives for music, and is the undisputed king of games. Whether it’s competition, conversation, or good vibes, he always shows up. All in all, he’s a well-rounded, outstanding human being who brings energy, passion, and authenticity everywhere he goes.",
+    "highlights": [
+      "ready to defend it with his whole chest",
+      "the undisputed king of games",
+      "he always shows up"
+    ],
+    "image": {
+      "src": "/wall-of-love/rafael-chisom.jpg",
+      "alt": "Rafael Chisom",
+      "width": 600,
+      "height": 800,
+      "position": "50% 40%"
+    }
   }
 ]

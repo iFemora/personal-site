@@ -1,5 +1,145 @@
 [
   {
+    "id": "her-again-stealing-my-shirt",
+    "src": "/gallery/her-again-stealing-my-shirt.jpg",
+    "alt": "Mirror selfie of a woman in an oversized white tee, framed by a round mirror and trailing green plants",
+    "caption": "Her again, stealing my shirt.",
+    "date": "2026",
+    "width": 1500,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "her",
+    "src": "/gallery/her.jpg",
+    "alt": "A close selfie of a woman with gold earrings and a septum ring in warm light",
+    "caption": "Her 🧡",
+    "date": "2026",
+    "width": 1500,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "for-the-love-of-tennis",
+    "src": "/gallery/for-the-love-of-tennis.jpg",
+    "alt": "Elevator mirror selfie of a couple in tennis kit, drinks in hand",
+    "caption": "For the love of Tennis 😛",
+    "date": "2026",
+    "width": 1500,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "keep-your-eyes-on-the-ball",
+    "src": "/gallery/keep-your-eyes-on-the-ball.jpg",
+    "alt": "A tennis player in ready position on a blue court, racket up, watching the ball",
+    "caption": "Keep your eyes on the ball",
+    "date": "2026",
+    "width": 1499,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "more-proof-of-the-server",
+    "src": "/gallery/more-proof-of-the-server.jpg",
+    "alt": "Mid-serve on an outdoor court, ball tossed high, fully extended",
+    "caption": "More proof of the server. Shelton, you have 34 hrs to respond",
+    "date": "2026",
+    "width": 1500,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "i-may-have-a-bad-back-hand-but-dont-try-my-serve",
+    "src": "/gallery/i-may-have-a-bad-back-hand-but-dont-try-my-serve.jpg",
+    "alt": "Serving on an outdoor club court, ball floating above the clubhouse rail",
+    "caption": "I may have a bad back-hand but don't try my serve",
+    "date": "2026",
+    "width": 1500,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "training-day",
+    "src": "/gallery/training-day.jpg",
+    "alt": "Standing beside a green Playmate ball machine on an indoor court",
+    "caption": "Training day",
+    "date": "2026",
+    "width": 1500,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "part-time-pm-full-time-tennis-enthusiast-and-player",
+    "src": "/gallery/part-time-pm-full-time-tennis-enthusiast-and-player.jpg",
+    "alt": "Re-wrapping a racket grip at the net in a pink striped polo",
+    "caption": "Part time PM, Full time tennis enthusiast & player",
+    "date": "2026",
+    "width": 1500,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "on-top-of-the-world",
+    "src": "/gallery/on-top-of-the-world.jpg",
+    "alt": "Posing with a walking stick on an alpine meadow beneath a grey peak",
+    "caption": "On top of the world",
+    "date": "2026",
+    "width": 1500,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "whats-that-saying-about-partners-who-hike-together",
+    "src": "/gallery/whats-that-saying-about-partners-who-hike-together.jpg",
+    "alt": "Two hikers pausing on a rocky alpine trail beneath a wall of cloud",
+    "caption": "What's that saying about partners who hike together? 🤔",
+    "date": "2026",
+    "width": 922,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "reading-and-nature",
+    "src": "/gallery/reading-and-nature.jpg",
+    "alt": "Sitting against a chain-link fence at the park, writing on a tablet",
+    "caption": "Reading 🤝🏾 Nature",
+    "date": "2026",
+    "width": 1500,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "home-is-where-the-heart-lives",
+    "src": "/gallery/home-is-where-the-heart-lives.jpg",
+    "alt": "Black-and-white photo of a smiling man in a hoodie in a kitchen",
+    "caption": "Home is where the heart lives",
+    "date": "2026",
+    "width": 1500,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "because-everyone-counts",
+    "src": "/gallery/because-everyone-counts.jpg",
+    "alt": "A giant rainbow letter C installation glowing inside a bank hall",
+    "caption": "Because everyone counts",
+    "date": "2026",
+    "width": 1500,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "messi-may-have-been-robbed-of-mvp-but-not-me",
+    "src": "/gallery/messi-may-have-been-robbed-of-mvp-but-not-me.jpg",
+    "alt": "Posing with the FIFA World Cup trophy display at the FIFA 26 Toronto exhibit",
+    "caption": "Messi may have been robbed of MVP but not me.",
+    "date": "2026",
+    "width": 1500,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
     "id": "for-the-love-of-flowers-and-nature",
     "src": "/gallery/for-the-love-of-flowers-and-nature.jpg",
     "alt": "White daisies and their yellow centres growing among deep green leaves",
@@ -840,6 +980,28 @@
     "note": "Geoff White & Bernard P. Achampong",
     "width": 800,
     "height": 800,
+    "kind": "book",
+    "category": "others"
+  },
+  {
+    "id": "book-thou-shalt-read-the-bible",
+    "src": "/gallery/books/thou-shalt-read-the-bible.jpg",
+    "alt": "Cover of Thou Shalt Read the Bible by Suresh Paul",
+    "caption": "Thou Shalt Read the Bible",
+    "note": "Suresh Paul",
+    "width": 500,
+    "height": 800,
+    "kind": "book",
+    "category": "faith"
+  },
+  {
+    "id": "book-men-with-adult-adhd",
+    "src": "/gallery/books/men-with-adult-adhd.jpg",
+    "alt": "Cover of Men with Adult ADHD by Lucas Walter",
+    "caption": "Men with Adult ADHD",
+    "note": "Lucas Walter",
+    "width": 500,
+    "height": 500,
     "kind": "book",
     "category": "others"
   }
