@@ -96,5 +96,105 @@
       "height": 800,
       "position": "50% 28%"
     }
+  },
+  {
+    "id": "2026-07-29-ayo-lahanmi",
+    "name": "Ayo Lahanmi",
+    "role": "PM",
+    "company": "TD America",
+    "how": "Back in Uni days",
+    "date": "2026-07-29",
+    "kind": "character",
+    "quote": "Nice person and always stands on business.",
+    "highlights": [
+      "always stands on business"
+    ],
+    "image": {
+      "src": "/wall-of-love/ayo-lahanmi.jpg",
+      "alt": "Ayo Lahanmi",
+      "width": 609,
+      "height": 800,
+      "position": "50% 30%"
+    }
+  },
+  {
+    "id": "2026-07-29-mabel-sontan",
+    "name": "Mabel Sontan",
+    "role": "Healthcare personnel & content creator, United Kingdom",
+    "how": "From Nigeria",
+    "date": "2026-07-29",
+    "kind": "character",
+    "quote": "What stands out most is Femi’s character - he’s upright, the kind of person who does the right thing even when no one’s checking. That matters more than people realise in business.\n\nHe’s also detail-oriented and objective - he tells you the truth, even when it’s inconvenient, because he genuinely wants the best outcome for you, not just a sale. That kind of honesty is rare.\n\nIf you’re looking for someone driven by excellence, who pays attention to the small things and won’t cut corners on the truth, Femi is that person.",
+    "highlights": [
+      "does the right thing even when no one’s checking",
+      "won’t cut corners on the truth"
+    ],
+    "image": {
+      "src": "/wall-of-love/mabel-sontan.jpg",
+      "alt": "Mabel Sontan",
+      "width": 800,
+      "height": 800
+    }
+  },
+  {
+    "id": "2026-07-29-ayodele-adeyemo",
+    "name": "Ayodele Adeyemo",
+    "role": "Product Lead",
+    "company": "HSMA",
+    "how": "Ecosystem colleagues",
+    "date": "2026-07-29",
+    "kind": "work",
+    "quote": "Femi is a professional with great communication and interpersonal skills that allows him to build trust with partners and colleagues. On a personal level, his ability to remain dedicated and focused on a desired outcome is quite enviable.",
+    "highlights": [
+      "build trust with partners and colleagues",
+      "his ability to remain dedicated and focused on a desired outcome is quite enviable"
+    ],
+    "image": {
+      "src": "/wall-of-love/ayodele-adeyemo.jpg",
+      "alt": "Ayodele Adeyemo",
+      "width": 800,
+      "height": 600
+    }
+  },
+  {
+    "id": "2026-07-29-abimbola-sani",
+    "name": "Abimbola Sani",
+    "role": "Fraud Operations Specialist",
+    "company": "Paystack",
+    "how": "We worked together and maintained a friendship alongside!",
+    "date": "2026-07-29",
+    "kind": "character",
+    "quote": "My favorite thing about you is how you balanced your kindness and joviality with actual helpful feedback (constructive in some ways). You said some of the kindest things to me while also giving me advice that has helped me to this day and I’m grateful. Truly a 10/10 friend 🤍",
+    "highlights": [
+      "balanced your kindness and joviality with actual helpful feedback",
+      "Truly a 10/10 friend"
+    ],
+    "image": {
+      "src": "/wall-of-love/abimbola-sani.jpg",
+      "alt": "Abimbola Sani",
+      "width": 600,
+      "height": 800,
+      "position": "50% 60%"
+    }
+  },
+  {
+    "id": "2026-07-29-jesunifemi-tenten",
+    "name": "Jesunifemi Tenten",
+    "role": "Programs Manager",
+    "company": "Nigerian American Football Association",
+    "how": "Pathshapers Project, Ikirun. 2024",
+    "date": "2026-07-29",
+    "kind": "work",
+    "quote": "Femi is genuinely one of the most amazing speakers I’ve met. I watched him train a group of teenagers to become more confident speakers in just three days, and the growth was incredible.\n\nI also really admire the way he loves and honors his wife. It says a lot about the kind of man he is.",
+    "highlights": [
+      "one of the most amazing speakers I’ve met",
+      "the way he loves and honors his wife"
+    ],
+    "image": {
+      "src": "/wall-of-love/jesunifemi-tenten.jpg",
+      "alt": "Jesunifemi Tenten",
+      "width": 640,
+      "height": 800
+    }
   }
 ]
