@@ -25,7 +25,7 @@ export default function ResolveCaseStudy() {
         {
           label: "Discovery",
           paras: [
-            "I listened to agent calls from across the programs, then sat beside agents and watched them work. Coinbase had the highest call volume, so I started there. The same problems appeared across other programs. The requested feature list was far too large for a first release. I narrowed it to the workflows behind the most calls and the longest handling times: transactions cardholders didn't recognize, transactions that hadn't completed, card status and activation, payments, account closure, and their neighbours. That scope gave us a first release we could ship in five months and measure against handle time.",
+            "I listened to agent calls from across the programs, then sat beside agents and watched them work. One program carried the highest call volume, so I started there. The same problems appeared across other programs. The requested feature list was far too large for a first release. I narrowed it to the workflows behind the most calls and the longest handling times: transactions cardholders didn't recognize, transactions that hadn't completed, card status and activation, payments, account closure, and their neighbours. That scope gave us a first release we could ship in five months and measure against handle time.",
           ],
           artifact: <ResolveReleaseArtifact />,
         },
