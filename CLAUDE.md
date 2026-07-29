@@ -96,7 +96,7 @@ deliberately; don't reintroduce.
 
 Locked. Don't change tokens without confirming first.
 
-**Colors** (in `packages/femora-ds/tokens.css` `:root` + `prefers-color-scheme: dark`):
+**Colors** (in `packages/femora-ds/tokens.css`, as `--l-*` / `--d-*` pairs — see Theme below):
 - Light: bg `#faf7f0`, text `#1f1b16`, muted `#6f675c`, accent `#9a3b1e` (rust, home), rule `#e2dccf`
 - Dark: bg `#16120e`, text `#ece6da`, muted `#9a9183`, accent `#e8997b`, rule `#2e2920`
 - Each section has its own accent pair (see per-page accents above); `--accent` swaps via `html[data-accent]`
@@ -125,11 +125,33 @@ Locked. Don't change tokens without confirming first.
   `html[data-theme="light"|"dark"]`, persisted in `localStorage.theme`,
   applied pre-paint by an inline script in `layout.tsx` (html has
   `suppressHydrationWarning` for that attribute).
-- Dark styles live in TWO selectors that must stay in sync:
-  `@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) … }`
-  and `:root[data-theme="dark"] …` — in `packages/femora-ds/tokens.css`
-  (palette) and `utilities.css` (.grain, .accent-wash). Never add a dark
-  style with only the media query or the toggle will miss it.
+- **Every scheme-dependent value is declared ONCE as a light/dark pair**
+  (`--l-background` / `--d-background`) in `tokens.css`. Two "resolve"
+  blocks there — one per media query, one per `[data-theme="dark"]` —
+  point the real tokens at the right half. Those blocks hold only
+  `var()` references, never values, so the copies can't disagree.
+  - To change a colour: edit the pair.
+  - To add a scheme-dependent token: add the pair, then add one line to
+    all three resolve lists (light default, media dark, forced dark).
+  - Non-colours use this too (`--wash`, `--grain-blend`,
+    `--grain-opacity`), which is why `utilities.css` has no dark
+    selectors at all.
+  - NEVER reintroduce a `prefers-color-scheme` block outside those
+    resolve blocks; it defeats the whole arrangement.
+
+**Palettes** (Pick Your Palette, `src/app/palettes.css` + `src/lib/palettes.ts`):
+- Eight palettes: house (default, in `tokens.css`) plus ink, ember,
+  riso, chalk, tide, grove, cobalt as `html[data-palette="…"]`.
+- A palette overrides **only pairs**, never resolve logic, so light and
+  dark both follow for free. Values come from Radix Colors v3 at fixed
+  steps: 2 background, 6 rule, 11 muted + accents, 12 foreground. Step
+  11 is the contrast-guaranteed text step — **swap hues, never steps.**
+- A palette can set `--l-wash`/`--d-wash` to `0%` for clean paper (ink
+  does, because a wash of near-black is a grey smudge; it also hides
+  `.accent-wash` so the empty layer stops compositing).
+- Adding one means: pairs in `palettes.css`, an entry with swatch dots
+  in `palettes.ts`, and the id in the pre-paint allowlist in
+  `layout.tsx`. Choice persists in `localStorage.palette`.
 
 **Motion system** (built on `motion/react`; primitives live in
 `packages/femora-ds/src/components/`, exported from `@femora/design-system`;
