@@ -38,7 +38,21 @@ const sections = [
       <>
         The light palette uses warm paper tones, teal, muted gold, rust, and
         ink. Dark mode uses a separate palette rather than reversing the light
-        one.
+        one. Each section claims one accent as its own, and its title sets in
+        that colour.
+      </>
+    ),
+  },
+  {
+    label: "Palettes",
+    body: (
+      <>
+        The nav lets you repaint the whole site: ten palettes, from
+        letterpress monochrome to loud print inks. This is a personality
+        site, and people read me in different ways, so the site can be read
+        in different colours too. Every guest palette keeps the same contrast
+        discipline as the house one, in light and in dark. The earthy default
+        is still how I pour it.
       </>
     ),
   },
@@ -50,6 +64,27 @@ const sections = [
         no scroll hijacking. Rules and headings animate on entry, while gallery
         images reveal colour on hover. The site disables these effects when
         reduced motion is enabled.
+      </>
+    ),
+  },
+  {
+    label: "Liveness",
+    body: (
+      <>
+        The gallery deals itself a fresh order on every visit. A contact
+        sheet that always hangs the same way stops being looked at, so the
+        frames, the shelf, and the drawings reshuffle each time; a second
+        visit is never quite the first.
+      </>
+    ),
+  },
+  {
+    label: "The wall",
+    body: (
+      <>
+        The wall of love is the one page that is not about output. People see
+        more of me than the work, and I wanted that on record in other
+        people&apos;s words rather than mine.
       </>
     ),
   },
