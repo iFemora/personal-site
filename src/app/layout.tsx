@@ -124,7 +124,7 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html:
-              'try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;var p=localStorage.getItem("palette");if(["ink","ember","riso","chalk","tide","grove","orchid","cobalt","terminal"].indexOf(p)>-1)document.documentElement.dataset.palette=p}catch(e){}',
+              'try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;var p=localStorage.getItem("palette");if(["ink","ember","riso","chalk","tide","grove","cobalt"].indexOf(p)>-1)document.documentElement.dataset.palette=p}catch(e){}',
           }}
         />
         <CursorFieldProvider>

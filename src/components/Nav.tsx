@@ -2,14 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Magnetic } from "@femora/design-system";
 import { EASE } from "@femora/design-system/ease";
 import { spiralPath } from "@femora/design-system/spiral-path";
 import ThemeToggle from "@/components/ThemeToggle";
 import PalettePicker, { PaletteRows } from "@/components/PalettePicker";
-import { applyPalette, isPaletteId } from "@/lib/palettes";
 
 const items = [
   { href: "/about", label: "About" },
@@ -26,13 +25,11 @@ function isActivePath(pathname: string, href: string): boolean {
 
 export default function Nav() {
   const pathname = usePathname();
-  const router = useRouter();
   const reduced = useReducedMotion();
   const isHome = pathname === "/";
   const [open, setOpen] = useState(false);
   const [panel, setPanel] = useState<"menu" | "palette">("menu");
   const menuRef = useRef<HTMLDivElement>(null);
-  const slidTo = useRef<string | null>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -49,37 +46,6 @@ export default function Nav() {
       window.removeEventListener("pointerdown", onDown);
     };
   }, [open]);
-
-  // Slide-through selection: drag along the open stack, release to go.
-  // Rows carry data-href (navigate) or data-action (panel swaps, palette
-  // picks) — pointer capture on the menu means row onClick never fires,
-  // so every row goes through this.
-  const rowUnderPoint = (clientY: number): string | null => {
-    const rows = menuRef.current?.querySelectorAll<HTMLElement>(
-      "[data-href], [data-action]"
-    );
-    if (!rows) return null;
-    for (const r of rows) {
-      const rect = r.getBoundingClientRect();
-      if (clientY >= rect.top && clientY <= rect.bottom)
-        return r.dataset.href ?? r.dataset.action ?? null;
-    }
-    return null;
-  };
-
-  const releaseRow = (value: string) => {
-    if (value.startsWith("/")) {
-      router.push(value);
-      setOpen(false);
-    } else if (value === "panel:palette") {
-      setPanel("palette");
-    } else if (value === "panel:menu") {
-      setPanel("menu");
-    } else if (value.startsWith("palette:")) {
-      const id = value.slice("palette:".length);
-      if (isPaletteId(id)) applyPalette(id);
-    }
-  };
 
   const thumb = (layoutId: string) =>
     reduced ? (
@@ -181,28 +147,13 @@ export default function Nav() {
           <AnimatePresence>
             {open && (
               <motion.div
-                className={`absolute right-0 top-full z-[70] mt-3 touch-none rounded-3xl border border-rule bg-background p-1 ${
+                className={`absolute right-0 top-full z-[70] mt-3 rounded-3xl border border-rule bg-background p-1 ${
                   panel === "palette" ? "w-60" : "w-52"
                 }`}
                 initial={reduced ? { opacity: 1 } : { opacity: 0, y: -6 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={reduced ? { opacity: 0 } : { opacity: 0, y: -6 }}
                 transition={{ duration: 0.25, ease: EASE }}
-                onPointerDown={(e) => {
-                  slidTo.current = rowUnderPoint(e.clientY);
-                  try {
-                    e.currentTarget.setPointerCapture(e.pointerId);
-                  } catch {
-                    // pointer already gone (fast tap); click handles it
-                  }
-                }}
-                onPointerMove={(e) => {
-                  if (e.buttons) slidTo.current = rowUnderPoint(e.clientY);
-                }}
-                onPointerUp={() => {
-                  if (slidTo.current) releaseRow(slidTo.current);
-                  slidTo.current = null;
-                }}
               >
                 {panel === "menu" ? (
                   <>
@@ -212,7 +163,6 @@ export default function Nav() {
                         <Link
                           key={item.href}
                           href={item.href}
-                          data-href={item.href}
                           onClick={() => setOpen(false)}
                           aria-current={active ? "page" : undefined}
                           className={`relative block rounded-full px-4 py-2.5 transition-colors duration-300 ${
@@ -227,7 +177,6 @@ export default function Nav() {
                     <div className="mx-4 my-1 border-t border-rule" />
                     <button
                       type="button"
-                      data-action="panel:palette"
                       onClick={() => setPanel("palette")}
                       className="block w-full whitespace-nowrap rounded-full px-4 py-2.5 text-left uppercase text-muted transition-colors duration-300 hover:text-foreground"
                     >
@@ -238,7 +187,6 @@ export default function Nav() {
                   <>
                     <button
                       type="button"
-                      data-action="panel:menu"
                       onClick={() => setPanel("menu")}
                       className="block w-full rounded-full px-4 py-2.5 text-left uppercase text-muted transition-colors duration-300 hover:text-foreground"
                     >

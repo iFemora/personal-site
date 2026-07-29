@@ -6,9 +6,7 @@ export type PaletteId =
   | "chalk"
   | "tide"
   | "grove"
-  | "orchid"
-  | "cobalt"
-  | "terminal";
+  | "cobalt";
 
 export type Palette = {
   id: PaletteId;
@@ -85,30 +83,12 @@ export const PALETTES: Palette[] = [
     },
   },
   {
-    id: "orchid",
-    label: "Orchid",
-    note: "The violet hour",
-    swatches: {
-      light: ["#8145b5", "#5753c6", "#c2298a", "#cb1d63"],
-      dark: ["#d19dff", "#b1a9ff", "#ff8dcc", "#ff92ad"],
-    },
-  },
-  {
     id: "cobalt",
     label: "Cobalt",
     note: "Swiss and electric",
     swatches: {
       light: ["#0d74ce", "#60646c", "#d9d9e0", "#f9f9fb"],
       dark: ["#70b8ff", "#b0b4ba", "#363a3f", "#18191b"],
-    },
-  },
-  {
-    id: "terminal",
-    label: "Terminal",
-    note: "Phosphor on glass",
-    swatches: {
-      light: ["#218358", "#5f6563", "#d7dad9", "#f7f9f8"],
-      dark: ["#3dd68c", "#adb5b2", "#373b39", "#171918"],
     },
   },
 ];

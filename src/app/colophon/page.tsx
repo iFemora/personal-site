@@ -47,7 +47,7 @@ const sections = [
     label: "Palettes",
     body: (
       <>
-        The nav lets you repaint the whole site: ten palettes, from
+        The nav lets you repaint the whole site: eight palettes, from
         letterpress monochrome to loud print inks. This is a personality
         site, and people read me in different ways, so the site can be read
         in different colours too. Every guest palette keeps the same contrast
@@ -62,8 +62,9 @@ const sections = [
       <>
         Motion is deliberately small: short distances, one easing curve, and
         no scroll hijacking. Rules and headings animate on entry, while gallery
-        images reveal colour on hover. The site disables these effects when
-        reduced motion is enabled.
+        images reveal colour on hover. Nothing loops forever in the
+        background. The site disables these effects when reduced motion is
+        enabled.
       </>
     ),
   },
@@ -71,10 +72,11 @@ const sections = [
     label: "Liveness",
     body: (
       <>
-        The gallery deals itself a fresh order on every visit. A contact
+        The photo wall deals itself a fresh order on every visit. A contact
         sheet that always hangs the same way stops being looked at, so the
-        frames, the shelf, and the drawings reshuffle each time; a second
-        visit is never quite the first.
+        frames move; a second visit is never quite the first. The shelf and
+        the drawings keep their order, because what I am reading now should
+        stay where you can find it.
       </>
     ),
   },

@@ -74,7 +74,6 @@ export function PaletteRows() {
             type="button"
             title={p.note}
             aria-pressed={active}
-            data-action={`palette:${p.id}`}
             onClick={() => applyPalette(p.id)}
             className={`flex w-full items-center justify-between gap-4 rounded-full px-4 py-2.5 text-left uppercase transition-colors duration-300 ${
               active ? "bg-accent/10 text-accent" : "text-muted hover:text-foreground"

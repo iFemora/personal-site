@@ -12,8 +12,7 @@ export const metadata: Metadata = {
   description: "Photographs, artwork, and the bookshelf of Femi Siji-Kenneth.",
 };
 
-// Rendered per request so every visit reshuffles the frames — the
-// contact sheet should never hang the same way twice.
+// Rendered per request so the contact sheet reshuffles on every visit.
 export const dynamic = "force-dynamic";
 
 function shuffle<T>(items: T[]): T[] {
@@ -26,9 +25,14 @@ function shuffle<T>(items: T[]): T[] {
 }
 
 export default function GalleryPage() {
+  // Only the photo wall shuffles. The shelf and the drawings keep their
+  // authored order — what I'm reading now should stay findable.
   const photos = shuffle(getPhotos());
-  const art = shuffle(getArt());
-  const books = shuffle(getBooks());
+  const art = getArt();
+  const books = [...getBooks()].sort(
+    (a, b) =>
+      Number(b.status === "reading") - Number(a.status === "reading")
+  );
 
   return (
     <main className="mx-auto w-full max-w-[1100px] px-6 py-16 sm:py-24">
