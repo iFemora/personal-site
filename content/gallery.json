@@ -773,5 +773,74 @@
     "height": 800,
     "kind": "book",
     "category": "others"
+  },
+  {
+    "id": "book-take-control-of-your-life",
+    "src": "/gallery/books/take-control-of-your-life.jpg",
+    "alt": "Cover of Take Control of Your Life by Mel Robbins",
+    "caption": "Take Control of Your Life",
+    "note": "Mel Robbins",
+    "width": 800,
+    "height": 800,
+    "kind": "book",
+    "category": "others"
+  },
+  {
+    "id": "book-the-homefront",
+    "src": "/gallery/books/the-homefront.jpg",
+    "alt": "Cover of The Homefront: Life in America During World War II by Dan Gediman & Martha C. Little",
+    "caption": "The Homefront: Life in America During World War II",
+    "note": "Dan Gediman & Martha C. Little",
+    "width": 800,
+    "height": 800,
+    "kind": "book",
+    "category": "others"
+  },
+  {
+    "id": "book-press-pause",
+    "src": "/gallery/books/press-pause.jpg",
+    "alt": "Cover of Press Pause by Catherine Siphron",
+    "caption": "Press Pause",
+    "note": "Catherine Siphron",
+    "width": 800,
+    "height": 800,
+    "kind": "book",
+    "category": "others"
+  },
+  {
+    "id": "book-entp-the-inventor",
+    "src": "/gallery/books/entp-the-inventor.jpg",
+    "alt": "Cover of ENTP: Understanding & Relating with the Inventor by Clayton Geoffreys",
+    "caption": "ENTP: Understanding & Relating with the Inventor",
+    "note": "Clayton Geoffreys",
+    "width": 800,
+    "height": 800,
+    "kind": "book",
+    "category": "others"
+  },
+  {
+    "id": "book-how-to-outperform",
+    "src": "/gallery/books/how-to-outperform.jpg",
+    "alt": "Cover of How to Outperform by Lisa Mainwaring",
+    "caption": "How to Outperform",
+    "note": "Lisa Mainwaring",
+    "width": 800,
+    "height": 800,
+    "kind": "book",
+    "category": [
+      "others",
+      "product"
+    ]
+  },
+  {
+    "id": "book-the-dark-web",
+    "src": "/gallery/books/the-dark-web.jpg",
+    "alt": "Cover of The Dark Web by Geoff White & Bernard P. Achampong",
+    "caption": "The Dark Web",
+    "note": "Geoff White & Bernard P. Achampong",
+    "width": 800,
+    "height": 800,
+    "kind": "book",
+    "category": "others"
   }
 ]
