@@ -8,7 +8,10 @@ import { Magnetic } from "@femora/design-system";
 import { EASE } from "@femora/design-system/ease";
 import { spiralPath } from "@femora/design-system/spiral-path";
 import ThemeToggle from "@/components/ThemeToggle";
-import PalettePicker, { PaletteRows } from "@/components/PalettePicker";
+import PalettePicker, {
+  ActiveDot,
+  PaletteRows,
+} from "@/components/PalettePicker";
 
 const items = [
   { href: "/about", label: "About" },
@@ -178,8 +181,9 @@ export default function Nav() {
                     <button
                       type="button"
                       onClick={() => setPanel("palette")}
-                      className="block w-full whitespace-nowrap rounded-full px-4 py-2.5 text-left uppercase text-muted transition-colors duration-300 hover:text-foreground"
+                      className="flex w-full items-center gap-2 whitespace-nowrap rounded-full px-4 py-2.5 text-left uppercase text-muted transition-colors duration-300 hover:text-foreground"
                     >
+                      <ActiveDot />
                       Pick Your Palette
                     </button>
                   </>

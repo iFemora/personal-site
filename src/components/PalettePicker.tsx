@@ -59,6 +59,18 @@ function SwatchDots({ id, mode }: { id: PaletteId; mode: Mode }) {
   );
 }
 
+/** A dot in the live accent, so the control reads as state and not just
+    an invitation — a visitor returning to a palette they chose months ago
+    can see the site is painted in their choice, not repainted in mine. */
+export function ActiveDot() {
+  return (
+    <span
+      aria-hidden
+      className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+    />
+  );
+}
+
 /** The palette rows themselves — shared between the desktop dropdown
     and the phone menu's palette panel in Nav. */
 export function PaletteRows() {
@@ -118,12 +130,13 @@ export default function PalettePicker() {
         aria-expanded={open}
         aria-haspopup="true"
         onClick={() => setOpen((o) => !o)}
-        className={`whitespace-nowrap rounded-full border border-rule px-4 py-2 text-[11px] uppercase transition-colors duration-300 ${
+        className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-rule px-4 py-2 text-[11px] uppercase transition-colors duration-300 ${
           open
             ? "bg-accent/10 text-accent"
             : "text-muted hover:text-foreground"
         }`}
       >
+        <ActiveDot />
         Pick Your Palette
       </button>
       <AnimatePresence>
