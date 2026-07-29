@@ -57,7 +57,7 @@ const entries: WorkEntry[] = [
   {
     id: "this-site",
     title: "This website, designed and built end to end in Claude Code.",
-    body: "I designed and built this site in Claude Code. It includes an MDX writing system and iPhone Shortcuts that publish voice notes and photos. I built it the same way I build products: one small release at a time.",
+    body: "A visitor can repaint the whole thing and it remembers: eight palettes, letterpress monochrome through to loud print inks, each one contrast-checked in light and dark so no choice I offer is unreadable. Every colour is declared once and resolved in a single place, which is what keeps eight of them cheap to maintain. The gallery deals itself a fresh order on every visit, and voice notes publish straight from my phone. I built it the way I build products: one small release at a time.",
     meta: "ifemora.dev · 2026",
     caseStudy: { href: "/colophon", label: "Read the colophon →" },
   },
