@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Highlight } from "@femora/design-system";
@@ -8,10 +8,10 @@ import { EASE } from "@femora/design-system/ease";
 import type { WallEntry } from "@/lib/wallOfLove";
 
 const FILTERS = [
-  { key: "all", label: "everything" },
-  { key: "work", label: "for the work" },
-  { key: "character", label: "for the character" },
-  { key: "love", label: "just love" },
+  { key: "all", label: "everything", short: "all" },
+  { key: "work", label: "for the work", short: "work" },
+  { key: "character", label: "for the character", short: "character" },
+  { key: "love", label: "just love", short: "love" },
 ] as const;
 
 type FilterKey = (typeof FILTERS)[number]["key"];
@@ -77,6 +77,24 @@ export default function WallOfLove({ entries }: { entries: WallEntry[] }) {
   const [filter, setFilter] = useState<FilterKey>("all");
   const [openId, setOpenId] = useState<string | null>(null);
   const [photoZoom, setPhotoZoom] = useState(false);
+  const toggleRef = useRef<HTMLDivElement>(null);
+  const sliding = useRef(false);
+
+  // The toggle is slidable: dragging across it moves the selection to
+  // whichever segment sits under the pointer.
+  const selectFromPoint = (clientX: number) => {
+    const buttons = toggleRef.current?.querySelectorAll<HTMLButtonElement>(
+      "button[data-filter]"
+    );
+    if (!buttons) return;
+    for (const b of buttons) {
+      const r = b.getBoundingClientRect();
+      if (clientX >= r.left && clientX <= r.right) {
+        setFilter(b.dataset.filter as FilterKey);
+        return;
+      }
+    }
+  };
 
   const open = openId === null ? null : entries.find((e) => e.id === openId);
 
@@ -105,45 +123,60 @@ export default function WallOfLove({ entries }: { entries: WallEntry[] }) {
 
   return (
     <>
-      <div className="mb-12 flex flex-wrap items-baseline gap-x-3 gap-y-2 font-mono text-xs uppercase tracking-[0.18em] sm:mb-16 sm:gap-x-4">
-        {FILTERS.map((f, i) => {
-          const active = filter === f.key;
-          return (
-            <Fragment key={f.key}>
-              {i > 0 && (
-                <span aria-hidden className="text-rule">
-                  ·
-                </span>
-              )}
+      <div className="mb-12 sm:mb-16">
+        <div
+          ref={toggleRef}
+          className="inline-flex touch-none select-none items-center rounded-full border border-rule p-1"
+          onPointerDown={(e) => {
+            sliding.current = true;
+            e.currentTarget.setPointerCapture(e.pointerId);
+            selectFromPoint(e.clientX);
+          }}
+          onPointerMove={(e) => {
+            if (sliding.current) selectFromPoint(e.clientX);
+          }}
+          onPointerUp={() => {
+            sliding.current = false;
+          }}
+          onPointerCancel={() => {
+            sliding.current = false;
+          }}
+        >
+          {FILTERS.map((f) => {
+            const active = filter === f.key;
+            return (
               <button
+                key={f.key}
                 type="button"
+                data-filter={f.key}
                 aria-pressed={active}
                 onClick={() => setFilter(f.key)}
-                className={`relative ${
-                  active
-                    ? "text-accent"
-                    : "text-muted transition-colors hover:text-foreground"
+                className={`relative rounded-full px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.15em] transition-colors duration-300 sm:px-4 ${
+                  active ? "text-accent" : "text-muted hover:text-foreground"
                 }`}
               >
-                {f.label}
                 {active &&
                   (reduced ? (
                     <span
                       aria-hidden
-                      className="absolute -bottom-1 left-0 h-px w-full bg-current"
+                      className="absolute inset-0 rounded-full bg-accent/10"
                     />
                   ) : (
                     <motion.span
-                      layoutId="wall-filter-active"
+                      layoutId="wall-filter-thumb"
                       aria-hidden
-                      className="absolute -bottom-1 left-0 h-px w-full bg-current"
-                      transition={{ duration: 0.45, ease: EASE }}
+                      className="absolute inset-0 rounded-full bg-accent/10"
+                      transition={{ duration: 0.35, ease: EASE }}
                     />
                   ))}
+                <span className="relative">
+                  <span className="sm:hidden">{f.short}</span>
+                  <span className="hidden sm:inline">{f.label}</span>
+                </span>
               </button>
-            </Fragment>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
 
       {shown.length === 0 ? (
