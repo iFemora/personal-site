@@ -1,8 +1,11 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion, useReducedMotion } from "motion/react";
 import { Magnetic } from "@femora/design-system";
+import { EASE } from "@femora/design-system/ease";
 import { spiralPath } from "@femora/design-system/spiral-path";
 import ThemeToggle from "@/components/ThemeToggle";
 
@@ -17,10 +20,20 @@ const items = [
 
 export default function Nav() {
   const pathname = usePathname();
+  const reduced = useReducedMotion();
   const isHome = pathname === "/";
+  const pillRef = useRef<HTMLDivElement>(null);
+
+  // On narrow screens the pill scrolls; keep the current page in view.
+  useEffect(() => {
+    const active = pillRef.current?.querySelector<HTMLElement>(
+      '[aria-current="page"]'
+    );
+    active?.scrollIntoView({ inline: "center", block: "nearest" });
+  }, [pathname]);
 
   return (
-    <nav className="flex items-center justify-between gap-6 font-mono text-xs uppercase tracking-[0.18em]">
+    <nav className="flex items-center justify-between gap-3 font-mono text-xs uppercase tracking-[0.18em] sm:gap-6">
       <Magnetic strength={0.35}>
         <Link
           href="/"
@@ -46,34 +59,40 @@ export default function Nav() {
         </Link>
       </Magnetic>
 
-      <div className="flex items-center gap-x-4 sm:gap-x-6">
-        <div className="flex flex-wrap gap-x-4 gap-y-1 sm:gap-x-6">
+      <div className="flex min-w-0 items-center gap-3 sm:gap-5">
+        <div
+          ref={pillRef}
+          className="no-scrollbar flex min-w-0 items-center overflow-x-auto rounded-full border border-rule p-1"
+        >
           {items.map((item) => {
-          const isActive =
-            pathname === item.href || pathname.startsWith(`${item.href}/`);
-          return (
-            <Magnetic key={item.href} strength={0.25}>
+            const isActive =
+              pathname === item.href || pathname.startsWith(`${item.href}/`);
+            return (
               <Link
+                key={item.href}
                 href={item.href}
                 aria-current={isActive ? "page" : undefined}
-                className={`group relative ${
-                  isActive
-                    ? "text-foreground"
-                    : "text-muted transition-colors hover:text-foreground"
+                className={`relative whitespace-nowrap rounded-full px-3 py-2 text-[11px] transition-colors duration-300 sm:px-3.5 sm:py-1.5 ${
+                  isActive ? "text-accent" : "text-muted hover:text-foreground"
                 }`}
               >
-                {item.label}
-                <span
-                  aria-hidden
-                  className={`absolute -bottom-1 left-0 h-px w-full origin-left bg-current transition-transform duration-300 ease-out ${
-                    isActive
-                      ? "scale-x-100"
-                      : "scale-x-0 group-hover:scale-x-100"
-                  }`}
-                />
+                {isActive &&
+                  (reduced ? (
+                    <span
+                      aria-hidden
+                      className="absolute inset-0 rounded-full bg-accent/10"
+                    />
+                  ) : (
+                    <motion.span
+                      layoutId="nav-active-thumb"
+                      aria-hidden
+                      className="absolute inset-0 rounded-full bg-accent/10"
+                      transition={{ duration: 0.45, ease: EASE }}
+                    />
+                  ))}
+                <span className="relative">{item.label}</span>
               </Link>
-            </Magnetic>
-          );
+            );
           })}
         </div>
         <Magnetic strength={0.3}>

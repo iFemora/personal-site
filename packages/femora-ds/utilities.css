@@ -147,6 +147,14 @@
   -webkit-text-stroke: 1px color-mix(in srgb, var(--muted) 55%, transparent);
 }
 
+/* Scrollable rows that hide their scrollbar (e.g. the nav pill on phones). */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 @media print {
   .grain {
     display: none;
