@@ -219,6 +219,9 @@ content:
       - name: role
         label: What they do
         type: string
+      - name: company
+        label: Where they work
+        type: string
       - name: how
         label: How we know each other
         type: string
@@ -240,9 +243,10 @@ content:
         label: Testimonial (double newline = new paragraph)
         type: text
         required: true
-      - name: highlight
-        label: Highlight (exact phrase from the quote)
+      - name: highlights
+        label: Highlights (exact phrases from the quote)
         type: string
+        list: true
       - name: image
         type: object
         fields:
@@ -255,6 +259,9 @@ content:
             type: number
           - name: height
             type: number
+          - name: position
+            label: Face position (CSS object-position, e.g. "50% 28%")
+            type: string
       - name: featured
         label: Feature on /work testimonials
         type: boolean
