@@ -262,6 +262,9 @@ content:
           - name: position
             label: Face position (CSS object-position, e.g. "50% 28%")
             type: string
+          - name: zoom
+            label: Face zoom (e.g. 2.4, for full-body shots)
+            type: number
       - name: featured
         label: Feature on /work testimonials
         type: boolean

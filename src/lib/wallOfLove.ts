@@ -23,6 +23,8 @@ export type WallEntry = {
     height: number;
     /** CSS object-position for the avatar crop, e.g. "50% 28%" to keep a face in frame. */
     position?: string;
+    /** Magnifies the avatar crop around `position` — for full-body shots where the face is small. Full photo stays untouched in the photo view. */
+    zoom?: number;
   };
   /** Hand-picked for the /work page testimonial strip. */
   featured?: boolean;

@@ -55,6 +55,22 @@ function markParagraph(
   ];
 }
 
+/** Frames the avatar on the face: object-position picks the spot, zoom magnifies around it. */
+function avatarStyle(
+  image: NonNullable<WallEntry["image"]>
+): React.CSSProperties | undefined {
+  if (!image.position && !image.zoom) return undefined;
+  return {
+    objectPosition: image.position,
+    ...(image.zoom
+      ? {
+          transform: `scale(${image.zoom})`,
+          transformOrigin: image.position ?? "50% 50%",
+        }
+      : {}),
+  };
+}
+
 function Paragraphs({ entry, className }: { entry: WallEntry; className: string }) {
   const paragraphs = entry.quote.split("\n\n");
   let order = 0;
@@ -232,11 +248,7 @@ export default function WallOfLove({ entries }: { entries: WallEntry[] }) {
                           height={112}
                           sizes="56px"
                           className="h-full w-full object-cover grayscale-[0.85] sepia-[0.12] transition-[filter] duration-500 ease-out group-hover:grayscale-0 group-hover:sepia-0"
-                          style={
-                            entry.image.position
-                              ? { objectPosition: entry.image.position }
-                              : undefined
-                          }
+                          style={avatarStyle(entry.image)}
                         />
                       </span>
                     )}
@@ -347,11 +359,7 @@ export default function WallOfLove({ entries }: { entries: WallEntry[] }) {
                           height={224}
                           sizes="112px"
                           className="h-full w-full object-cover"
-                          style={
-                            open.image.position
-                              ? { objectPosition: open.image.position }
-                              : undefined
-                          }
+                          style={avatarStyle(open.image)}
                         />
                       </motion.span>
                     </button>

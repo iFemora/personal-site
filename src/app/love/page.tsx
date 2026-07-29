@@ -24,7 +24,7 @@ export default function WallOfLovePage() {
       />
       <MaskedLines
         as="p"
-        lines={["Kind words from people who know me. Lightly solicited."]}
+        lines={["Kind words from people who know me."]}
         delay={0.18}
         className="mt-6 font-serif text-xl italic text-muted sm:text-2xl"
       />
