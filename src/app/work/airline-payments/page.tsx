@@ -18,7 +18,7 @@ export default function AirlinePaymentsCaseStudy() {
         {
           label: "Scope",
           paras: [
-            "Terminal expansion into airline ticketing, then insurance. Airlines, the airports authority, and insurers as counterparties. The work supported a $7M revenue campaign and put Qatar Airways on Paystack for both online and terminal payments.",
+            "Terminal expansion into airline ticketing, then insurance. Airlines, the airports authority, and insurers as counterparties. The work supported a $7M revenue campaign.",
           ],
         },
         {
@@ -40,14 +40,8 @@ export default function AirlinePaymentsCaseStudy() {
           label: "Access before product",
           paras: [
             "The opening came from a different job. We built tap-to-pay for the Federal Airports Authority of Nigeria, for the toll gates at airport entry. I was not on that build. I was on the strategy and the pitch, and the pitch is where I earned a relationship with the authority's managing director.",
-            "So instead of selling airline by airline, I organised a conference and asked her to speak. The airlines came for her, not for us. They came because the body that governs them was in the room and they had things they needed heard, and they used the day to raise those things.",
+            "So instead of selling airline by airline, I organised a conference and asked her to speak. The airlines came for her, not for us: local carriers and international ones, Qatar Airways among them. They came because the body that governs them was in the room and they had things they needed heard, and they used the day to raise those things.",
             "We convened it. That was the whole play. By the time we showed the terminal product to that room, we were not a vendor cold-calling an industry. We were the people who had got everyone around one table, and the trust that came from facilitating was what made the sale possible. Most of the room adopted.",
-          ],
-        },
-        {
-          label: "Qatar Airways",
-          paras: [
-            "The signature was Qatar Airways, and it did not stay inside terminals. They moved their online payments to Paystack as well. One relationship, both channels.",
           ],
         },
         {
@@ -55,12 +49,6 @@ export default function AirlinePaymentsCaseStudy() {
           paras: [
             "Insurers had the same shape of problem in different clothes. A policyholder could pay at the insurer's office or on the insurer's website, and nowhere else. Premiums went unpaid for want of a counter.",
             "We integrated the terminals with the insurers in our database. Hand your policy number to anyone with a Paystack terminal, including a shop or a betting outlet, and it resolves the insurer, the cover, and the premium due. You pay there. I signed the first one, Leadway Insurance, and it moved out into the industry from there.",
-          ],
-        },
-        {
-          label: "What I would still add",
-          paras: [
-            "The $7M figure sits mostly on the Qatar outcome. The number I would rather publish is terminal volume growth attributable to pay-by-reference across both industries, which is the honest measure of whether the pattern worked. I am still gathering it.",
           ],
         },
       ]}

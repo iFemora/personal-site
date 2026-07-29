@@ -12,7 +12,7 @@ export type CaseStudyFigure = {
 
 export type CaseStudySection = {
   label: string;
-  paras: string[];
+  paras: React.ReactNode[];
   artifact?: React.ReactNode;
   figures?: CaseStudyFigure[];
 };

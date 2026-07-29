@@ -27,7 +27,7 @@ export default function OperatingModelArtifact() {
     <DecisionArtifact
       label="Installing a pipeline"
       title="The company did not need a process document. It needed a gate somebody enforced."
-      caption="The group CEO backing the gate is what turned a set of rituals into how the company works."
+      caption="The group COO backing the gate is what turned a set of rituals into how the company works."
     >
       <div className="grid gap-9 lg:grid-cols-[1fr_1fr] lg:gap-12">
         <div>
