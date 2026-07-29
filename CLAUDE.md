@@ -81,11 +81,14 @@ empty state until the first photo lands.
 **Gallery publishing (manual):** add to `content/gallery.json` —
 `{ id, src, alt, caption?, location?, date?, width, height, kind? }`. Image
 files go in `public/gallery/` (book covers in `public/gallery/books/`).
-`kind` is `"photo"` (default), `"art"`, or `"book"` — sections "Contact
-sheet" / "Made" / "Shelf"; every kind renders duotone until hover. For books:
-caption = title, note = author, plus optional `status`
-("reading" | "queued" | "finished") and `verdict` (a one-line marginalia
-quote in Femi's words — never invent these).
+`kind` is `"photo"` (default), `"art"`, or `"book"` — the gallery is a
+single toggled view (photos / art / books, the sliding pill); every kind
+renders duotone until hover. For books: caption = title, note = author,
+plus optional `status` ("reading" | "queued" | "finished"), `category`
+("faith" | "product" | "others" — powers the shelf sub-toggle) and
+`verdict` (a one-line marginalia quote in Femi's words — never invent
+these). No serial labels anywhere (FR-001 etc.) — Femi removed them
+deliberately; don't reintroduce.
 
 ---
 

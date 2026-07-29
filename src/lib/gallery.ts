@@ -17,6 +17,8 @@ export type GalleryFrame = {
   note?: string;
   /** Shelf only: where the book sits in the reading life. */
   status?: "reading" | "queued" | "finished";
+  /** Shelf only: which shelf it belongs to — powers the sub-toggle. */
+  category?: "faith" | "product" | "others";
   /** Shelf only: a one-line marginalia verdict, rendered beneath the note. */
   verdict?: string;
 };

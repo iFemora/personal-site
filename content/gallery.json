@@ -160,7 +160,8 @@
     "note": "Norman L. Geisler & Frank Turek",
     "width": 304,
     "height": 500,
-    "kind": "book"
+    "kind": "book",
+    "category": "faith"
   },
   {
     "id": "book-atomic-habits",
@@ -170,7 +171,8 @@
     "note": "James Clear",
     "width": 331,
     "height": 500,
-    "kind": "book"
+    "kind": "book",
+    "category": "others"
   },
   {
     "id": "book-tactics",
@@ -180,7 +182,8 @@
     "note": "Gregory Koukl",
     "width": 330,
     "height": 500,
-    "kind": "book"
+    "kind": "book",
+    "category": "faith"
   },
   {
     "id": "book-inspired",
@@ -190,7 +193,8 @@
     "note": "Marty Cagan",
     "width": 332,
     "height": 494,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-high-growth-handbook",
@@ -200,7 +204,8 @@
     "note": "Elad Gil",
     "width": 338,
     "height": 500,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-empowered",
@@ -210,7 +215,8 @@
     "note": "Marty Cagan with Chris Jones",
     "width": 337,
     "height": 500,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-transformed",
@@ -220,7 +226,8 @@
     "note": "Marty Cagan",
     "width": 316,
     "height": 466,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-loved",
@@ -230,7 +237,8 @@
     "note": "Martina Lauchengco",
     "width": 338,
     "height": 500,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-steal-like-an-artist",
@@ -240,7 +248,8 @@
     "note": "Austin Kleon",
     "width": 318,
     "height": 318,
-    "kind": "book"
+    "kind": "book",
+    "category": "others"
   },
   {
     "id": "book-show-your-work",
@@ -250,7 +259,8 @@
     "note": "Austin Kleon",
     "width": 260,
     "height": 260,
-    "kind": "book"
+    "kind": "book",
+    "category": "others"
   },
   {
     "id": "book-keep-going",
@@ -260,7 +270,8 @@
     "note": "Austin Kleon",
     "width": 500,
     "height": 500,
-    "kind": "book"
+    "kind": "book",
+    "category": "others"
   },
   {
     "id": "book-continuous-discovery-habits",
@@ -271,7 +282,8 @@
     "status": "queued",
     "width": 333,
     "height": 500,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-the-mom-test",
@@ -282,7 +294,8 @@
     "status": "queued",
     "width": 324,
     "height": 500,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-escaping-the-build-trap",
@@ -293,7 +306,8 @@
     "status": "queued",
     "width": 333,
     "height": 500,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-creative-selection",
@@ -304,7 +318,8 @@
     "status": "queued",
     "width": 326,
     "height": 500,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-design-of-everyday-things",
@@ -315,7 +330,8 @@
     "status": "queued",
     "width": 322,
     "height": 500,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-build",
@@ -325,7 +341,8 @@
     "note": "Tony Fadell",
     "width": 327,
     "height": 500,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-hooked",
@@ -335,7 +352,8 @@
     "note": "Nir Eyal",
     "width": 320,
     "height": 500,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-lean-product-playbook",
@@ -345,7 +363,8 @@
     "note": "Dan Olsen",
     "width": 335,
     "height": 500,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-crossing-the-chasm",
@@ -355,7 +374,8 @@
     "note": "Geoffrey A. Moore",
     "width": 313,
     "height": 475,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-hacking-growth",
@@ -365,7 +385,8 @@
     "note": "Sean Ellis & Morgan Brown",
     "width": 303,
     "height": 500,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-creativity-inc",
@@ -375,7 +396,8 @@
     "note": "Ed Catmull",
     "width": 329,
     "height": 500,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-sprint",
@@ -385,7 +407,8 @@
     "note": "Jake Knapp",
     "width": 331,
     "height": 499,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-dont-make-me-think-revisited",
@@ -395,7 +418,8 @@
     "note": "Steve Krug",
     "width": 311,
     "height": 400,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-change-by-design",
@@ -405,7 +429,8 @@
     "note": "Tim Brown",
     "width": 333,
     "height": 500,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-hard-thing-about-hard-things",
@@ -415,7 +440,8 @@
     "note": "Ben Horowitz",
     "width": 301,
     "height": 500,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-zero-to-one",
@@ -425,7 +451,8 @@
     "note": "Peter Thiel",
     "width": 342,
     "height": 500,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-user-story-mapping",
@@ -435,7 +462,8 @@
     "note": "Jeff Patton",
     "width": 333,
     "height": 499,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-obviously-awesome",
@@ -445,7 +473,8 @@
     "note": "April Dunford",
     "width": 324,
     "height": 500,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-value-proposition-design",
@@ -455,7 +484,8 @@
     "note": "Alexander Osterwalder, Yves Pigneur, Gregory Bernarda & Alan Smith",
     "width": 500,
     "height": 394,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   },
   {
     "id": "book-innovators-dilemma",
@@ -465,6 +495,7 @@
     "note": "Clayton M. Christensen",
     "width": 329,
     "height": 500,
-    "kind": "book"
+    "kind": "book",
+    "category": "product"
   }
 ]

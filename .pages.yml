@@ -198,6 +198,14 @@ content:
             - reading
             - queued
             - finished
+      - name: category
+        label: Shelf (books only)
+        type: select
+        options:
+          values:
+            - faith
+            - product
+            - others
       - name: verdict
         label: One-line verdict (books only)
         type: string

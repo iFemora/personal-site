@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { getPhotos, getArt, getBooks } from "@/lib/gallery";
-import GalleryGrid from "@/components/GalleryGrid";
+import GalleryBrowser from "@/components/GalleryBrowser";
 import {
-  Reveal,
   DrawnRule,
   MaskedLines,
   ProximityType,
@@ -33,77 +32,7 @@ export default function GalleryPage() {
 
       <DrawnRule className="my-14 sm:my-20" immediate delay={0.35} />
 
-      {/* Contact sheet — photographs */}
-      <section className="mb-14 grid gap-6 sm:mb-16 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12">
-        <Reveal immediate delay={0.45}>
-          <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
-            <span className="text-accent">Contact sheet</span> —{" "}
-            {photos.length === 0
-              ? "in the darkroom"
-              : `${photos.length} frames`}
-          </p>
-        </Reveal>
-        <Reveal immediate delay={0.5}>
-          <p className="text-lg leading-relaxed">
-            {photos.length === 0 ? (
-              <>
-                The prints are still drying. Photographs land here soon
-                &mdash; the good ones, eventually, once I stop second-guessing
-                which are the good ones.
-              </>
-            ) : (
-              <>
-                Photos start in monochrome. Hover to restore colour; click to
-                open one.
-              </>
-            )}
-          </p>
-        </Reveal>
-      </section>
-
-      {photos.length > 0 && <GalleryGrid frames={photos} prefix="FR" />}
-
-      {/* Made — artwork */}
-      {art.length > 0 && (
-        <>
-          <DrawnRule className="my-14 sm:my-20" />
-          <section className="mb-14 grid gap-6 sm:mb-16 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12">
-            <Reveal delay={0.05}>
-              <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
-                <span className="text-accent">Made</span> — {art.length} pieces
-              </p>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <p className="text-lg leading-relaxed">
-                Artwork starts in monochrome too. Hover to restore the colour.
-              </p>
-            </Reveal>
-          </section>
-          <GalleryGrid frames={art} prefix="MADE" />
-        </>
-      )}
-
-      {/* Shelf — books, current and queued */}
-      {books.length > 0 && (
-        <>
-          <DrawnRule className="my-14 sm:my-20" />
-          <section className="mb-14 grid gap-6 sm:mb-16 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12">
-            <Reveal delay={0.05}>
-              <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
-                <span className="text-accent">Shelf</span> — {books.length}{" "}
-                spines
-              </p>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <p className="text-lg leading-relaxed">
-                Books I&apos;m reading, or circling before I commit. Covers
-                for now; arguments about them later.
-              </p>
-            </Reveal>
-          </section>
-          <GalleryGrid frames={books} prefix="BK" dense />
-        </>
-      )}
+      <GalleryBrowser photos={photos} art={art} books={books} />
     </main>
   );
 }

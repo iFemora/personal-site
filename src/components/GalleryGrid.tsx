@@ -9,21 +9,11 @@ import { EASE } from "@femora/design-system/ease";
 
 type Props = {
   frames: GalleryFrame[];
-  /** Serial prefix so each section numbers independently. */
-  prefix?: string;
   /** Denser columns for small sources (book covers) so they render at or below native size. */
   dense?: boolean;
 };
 
-function frameNumber(prefix: string, i: number): string {
-  return `${prefix}-${String(i + 1).padStart(3, "0")}`;
-}
-
-export default function GalleryGrid({
-  frames,
-  prefix = "FR",
-  dense = false,
-}: Props) {
+export default function GalleryGrid({ frames, dense = false }: Props) {
   const reduced = useReducedMotion();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -104,26 +94,25 @@ export default function GalleryGrid({
                   className={imgClass}
                 />
               </span>
-              <figcaption className="mt-2 flex items-baseline justify-between gap-4 font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
-                <span className="text-accent">{frameNumber(prefix, i)}</span>
-                {frame.status ? (
-                  <span
-                    className={
-                      frame.status === "reading" ? "text-accent" : undefined
-                    }
-                  >
-                    {frame.status}
-                  </span>
-                ) : (
-                  (frame.location || frame.date) && (
+              {(frame.status || frame.location || frame.date) && (
+                <figcaption className="mt-2 font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
+                  {frame.status ? (
+                    <span
+                      className={
+                        frame.status === "reading" ? "text-accent" : undefined
+                      }
+                    >
+                      {frame.status}
+                    </span>
+                  ) : (
                     <span>
                       {[frame.location, frame.date]
                         .filter(Boolean)
                         .join(" · ")}
                     </span>
-                  )
-                )}
-              </figcaption>
+                  )}
+                </figcaption>
+              )}
             </button>
             {(frame.caption || frame.note || frame.href) && (
               <div className="mt-1.5 px-0.5">
@@ -213,9 +202,6 @@ export default function GalleryGrid({
               className="mt-5 flex w-full max-w-[720px] items-baseline justify-between gap-6 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"
               onClick={(e) => e.stopPropagation()}
             >
-              <span className="text-accent">
-                {frameNumber(prefix, openIndex)}
-              </span>
               <span className="truncate">
                 {open.href ? (
                   <a
