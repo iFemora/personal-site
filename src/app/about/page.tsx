@@ -22,7 +22,7 @@ export default function AboutPage() {
     <main className="mx-auto w-full max-w-[1100px] px-6 py-16 sm:py-24">
       <ProximityType
         lines={[{ text: "About", className: "wonk" }]}
-        className="font-serif text-[clamp(3.5rem,11vw,8rem)] font-medium leading-[0.95] tracking-tight"
+        className="font-serif text-[clamp(3.5rem,11vw,8rem)] font-medium leading-[0.95] tracking-tight text-accent"
       />
       <MaskedLines
         as="p"

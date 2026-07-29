@@ -20,7 +20,7 @@ export default function WallOfLovePage() {
     <main className="mx-auto w-full max-w-[1100px] px-6 py-16 sm:py-24">
       <ProximityType
         lines={[{ text: "Wall of Love", className: "wonk" }]}
-        className="font-serif text-[clamp(2.75rem,9vw,6.5rem)] font-medium leading-[0.95] tracking-tight"
+        className="font-serif text-[clamp(2.75rem,9vw,6.5rem)] font-medium leading-[0.95] tracking-tight text-accent"
       />
       <MaskedLines
         as="p"
