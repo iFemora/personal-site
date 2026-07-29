@@ -119,8 +119,10 @@ export default function PalettePicker() {
         aria-expanded={open}
         aria-haspopup="true"
         onClick={() => setOpen((o) => !o)}
-        className={`whitespace-nowrap uppercase transition-colors duration-300 ${
-          open ? "text-foreground" : "text-muted hover:text-foreground"
+        className={`whitespace-nowrap rounded-full border border-rule px-4 py-2 text-[11px] uppercase transition-colors duration-300 ${
+          open
+            ? "bg-accent/10 text-accent"
+            : "text-muted hover:text-foreground"
         }`}
       >
         Pick Your Palette
