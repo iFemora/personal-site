@@ -120,14 +120,17 @@ export default function GalleryBrowser({ photos, art, books }: Props) {
     ...(books.length > 0 ? [{ key: "books" as const, label: "books" }] : []),
   ];
 
+  const shelvesOf = (b: GalleryFrame): string[] => {
+    const c = b.category ?? "others";
+    return Array.isArray(c) ? c : [c];
+  };
   const shelves = SHELVES.filter(
-    (s) =>
-      s.key === "all" || books.some((b) => (b.category ?? "others") === s.key)
+    (s) => s.key === "all" || books.some((b) => shelvesOf(b).includes(s.key))
   );
   const shownBooks =
     shelf === "all"
       ? books
-      : books.filter((b) => (b.category ?? "others") === shelf);
+      : books.filter((b) => shelvesOf(b).includes(shelf));
 
   const intro: Record<SectionKey, { eyebrow: string; body: string }> = {
     photos: {

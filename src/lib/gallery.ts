@@ -1,5 +1,7 @@
 import galleryData from "@/../content/gallery.json";
 
+export type BookCategory = "faith" | "product" | "others";
+
 export type GalleryFrame = {
   id: string;
   src: string; // under /public/gallery/
@@ -17,8 +19,8 @@ export type GalleryFrame = {
   note?: string;
   /** Shelf only: where the book sits in the reading life. */
   status?: "reading" | "queued" | "finished";
-  /** Shelf only: which shelf it belongs to — powers the sub-toggle. */
-  category?: "faith" | "product" | "others";
+  /** Shelf only: which shelf (or shelves) it belongs to — powers the sub-toggle. */
+  category?: BookCategory | BookCategory[];
   /** Shelf only: a one-line marginalia verdict, rendered beneath the note. */
   verdict?: string;
 };

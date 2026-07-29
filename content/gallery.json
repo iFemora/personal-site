@@ -339,8 +339,8 @@
     "alt": "Cover of Build by Tony Fadell",
     "caption": "Build",
     "note": "Tony Fadell",
-    "width": 327,
-    "height": 500,
+    "width": 530,
+    "height": 800,
     "kind": "book",
     "category": "product"
   },
@@ -350,8 +350,8 @@
     "alt": "Cover of Hooked by Nir Eyal",
     "caption": "Hooked",
     "note": "Nir Eyal",
-    "width": 320,
-    "height": 500,
+    "width": 529,
+    "height": 800,
     "kind": "book",
     "category": "product"
   },
@@ -394,8 +394,8 @@
     "alt": "Cover of Creativity, Inc. by Ed Catmull",
     "caption": "Creativity, Inc.",
     "note": "Ed Catmull",
-    "width": 329,
-    "height": 500,
+    "width": 523,
+    "height": 800,
     "kind": "book",
     "category": "product"
   },
@@ -405,8 +405,8 @@
     "alt": "Cover of Sprint by Jake Knapp",
     "caption": "Sprint",
     "note": "Jake Knapp",
-    "width": 331,
-    "height": 499,
+    "width": 526,
+    "height": 800,
     "kind": "book",
     "category": "product"
   },
@@ -449,8 +449,8 @@
     "alt": "Cover of Zero to One by Peter Thiel",
     "caption": "Zero to One",
     "note": "Peter Thiel",
-    "width": 342,
-    "height": 500,
+    "width": 533,
+    "height": 800,
     "kind": "book",
     "category": "product"
   },
@@ -460,8 +460,8 @@
     "alt": "Cover of User Story Mapping by Jeff Patton",
     "caption": "User Story Mapping",
     "note": "Jeff Patton",
-    "width": 333,
-    "height": 499,
+    "width": 533,
+    "height": 800,
     "kind": "book",
     "category": "product"
   },
@@ -497,5 +497,281 @@
     "height": 500,
     "kind": "book",
     "category": "product"
+  },
+  {
+    "id": "book-islamic-dilemma",
+    "src": "/gallery/books/islamic-dilemma.jpg",
+    "alt": "Cover of The Islamic Dilemma by Christopher W. Frost",
+    "caption": "The Islamic Dilemma",
+    "note": "Christopher W. Frost",
+    "width": 529,
+    "height": 800,
+    "kind": "book",
+    "category": "faith"
+  },
+  {
+    "id": "book-reasoning-from-the-scriptures-with-muslims",
+    "src": "/gallery/books/reasoning-from-the-scriptures-with-muslims.jpg",
+    "alt": "Cover of Reasoning from the Scriptures with Muslims by Ron Rhodes",
+    "caption": "Reasoning from the Scriptures with Muslims",
+    "note": "Ron Rhodes",
+    "width": 525,
+    "height": 800,
+    "kind": "book",
+    "category": "faith"
+  },
+  {
+    "id": "book-seeking-allah-finding-jesus",
+    "src": "/gallery/books/seeking-allah-finding-jesus.jpg",
+    "alt": "Cover of Seeking Allah, Finding Jesus by Nabeel Qureshi",
+    "caption": "Seeking Allah, Finding Jesus",
+    "note": "Nabeel Qureshi",
+    "width": 523,
+    "height": 800,
+    "kind": "book",
+    "category": "faith"
+  },
+  {
+    "id": "book-man-in-the-mirror",
+    "src": "/gallery/books/man-in-the-mirror.jpg",
+    "alt": "Cover of The Man in the Mirror by Patrick Morley",
+    "caption": "The Man in the Mirror",
+    "note": "Patrick Morley",
+    "width": 524,
+    "height": 800,
+    "kind": "book",
+    "category": "faith"
+  },
+  {
+    "id": "book-driven-to-distraction",
+    "src": "/gallery/books/driven-to-distraction.jpg",
+    "alt": "Cover of Driven to Distraction by Edward M. Hallowell & John J. Ratey",
+    "caption": "Driven to Distraction",
+    "note": "Edward M. Hallowell & John J. Ratey",
+    "width": 520,
+    "height": 800,
+    "kind": "book",
+    "category": "others"
+  },
+  {
+    "id": "book-48-laws-of-power",
+    "src": "/gallery/books/48-laws-of-power.jpg",
+    "alt": "Cover of The 48 Laws of Power by Robert Greene",
+    "caption": "The 48 Laws of Power",
+    "note": "Robert Greene",
+    "width": 562,
+    "height": 800,
+    "kind": "book",
+    "category": "others"
+  },
+  {
+    "id": "book-find-your-why",
+    "src": "/gallery/books/find-your-why.jpg",
+    "alt": "Cover of Find Your Why by Simon Sinek",
+    "caption": "Find Your Why",
+    "note": "Simon Sinek",
+    "width": 646,
+    "height": 800,
+    "kind": "book",
+    "category": [
+      "product",
+      "others"
+    ]
+  },
+  {
+    "id": "book-crushing-it",
+    "src": "/gallery/books/crushing-it.jpg",
+    "alt": "Cover of Crushing It! by Gary Vaynerchuk",
+    "caption": "Crushing It!",
+    "note": "Gary Vaynerchuk",
+    "width": 530,
+    "height": 800,
+    "kind": "book",
+    "category": [
+      "product",
+      "others"
+    ]
+  },
+  {
+    "id": "book-taking-charge-of-adult-adhd",
+    "src": "/gallery/books/taking-charge-of-adult-adhd.jpg",
+    "alt": "Cover of Taking Charge of Adult ADHD by Russell A. Barkley & Christine M. Benton",
+    "caption": "Taking Charge of Adult ADHD",
+    "note": "Russell A. Barkley & Christine M. Benton",
+    "width": 539,
+    "height": 800,
+    "kind": "book",
+    "category": "others"
+  },
+  {
+    "id": "book-richest-man-in-babylon",
+    "src": "/gallery/books/richest-man-in-babylon.jpg",
+    "alt": "Cover of The Richest Man in Babylon by George S. Clason",
+    "caption": "The Richest Man in Babylon",
+    "note": "George S. Clason",
+    "width": 501,
+    "height": 800,
+    "kind": "book",
+    "category": "others"
+  },
+  {
+    "id": "book-art-of-seduction",
+    "src": "/gallery/books/art-of-seduction.jpg",
+    "alt": "Cover of The Art of Seduction by Robert Greene",
+    "caption": "The Art of Seduction",
+    "note": "Robert Greene",
+    "width": 562,
+    "height": 800,
+    "kind": "book",
+    "category": "others"
+  },
+  {
+    "id": "book-lean-startup",
+    "src": "/gallery/books/lean-startup.jpg",
+    "alt": "Cover of The Lean Startup by Eric Ries",
+    "caption": "The Lean Startup",
+    "note": "Eric Ries",
+    "width": 529,
+    "height": 800,
+    "kind": "book",
+    "category": "product"
+  },
+  {
+    "id": "book-what-women-want-when-they-test-men",
+    "src": "/gallery/books/what-women-want-when-they-test-men.jpg",
+    "alt": "Cover of What Women Want When They Test Men by Bruce Bryans",
+    "caption": "What Women Want When They Test Men",
+    "note": "Bruce Bryans",
+    "width": 501,
+    "height": 800,
+    "kind": "book",
+    "category": "others"
+  },
+  {
+    "id": "book-radical-candor",
+    "src": "/gallery/books/radical-candor.jpg",
+    "alt": "Cover of Radical Candor by Kim Scott",
+    "caption": "Radical Candor",
+    "note": "Kim Scott",
+    "width": 526,
+    "height": 800,
+    "kind": "book",
+    "category": "product"
+  },
+  {
+    "id": "book-risk-and-return",
+    "src": "/gallery/books/risk-and-return.jpg",
+    "alt": "Cover of Risk and Return by Yomi Jemibewon",
+    "caption": "Risk and Return",
+    "note": "Yomi Jemibewon",
+    "width": 800,
+    "height": 800,
+    "kind": "book",
+    "category": [
+      "product",
+      "others"
+    ]
+  },
+  {
+    "id": "book-grit",
+    "src": "/gallery/books/grit.jpg",
+    "alt": "Cover of Grit by Angela Duckworth",
+    "caption": "Grit",
+    "note": "Angela Duckworth",
+    "width": 529,
+    "height": 800,
+    "kind": "book",
+    "category": "others"
+  },
+  {
+    "id": "book-range",
+    "src": "/gallery/books/range.jpg",
+    "alt": "Cover of Range by David Epstein",
+    "caption": "Range",
+    "note": "David Epstein",
+    "width": 535,
+    "height": 800,
+    "kind": "book",
+    "category": "others"
+  },
+  {
+    "id": "book-compound-effect",
+    "src": "/gallery/books/compound-effect.jpg",
+    "alt": "Cover of The Compound Effect by Darren Hardy",
+    "caption": "The Compound Effect",
+    "note": "Darren Hardy",
+    "width": 577,
+    "height": 800,
+    "kind": "book",
+    "category": "others"
+  },
+  {
+    "id": "book-mastery",
+    "src": "/gallery/books/mastery.jpg",
+    "alt": "Cover of Mastery by Robert Greene",
+    "caption": "Mastery",
+    "note": "Robert Greene",
+    "width": 562,
+    "height": 800,
+    "kind": "book",
+    "category": [
+      "product",
+      "others"
+    ]
+  },
+  {
+    "id": "book-subtle-art",
+    "src": "/gallery/books/subtle-art.jpg",
+    "alt": "Cover of The Subtle Art of Not Giving a F*ck by Mark Manson",
+    "caption": "The Subtle Art of Not Giving a F*ck",
+    "note": "Mark Manson",
+    "width": 534,
+    "height": 800,
+    "kind": "book",
+    "category": "others"
+  },
+  {
+    "id": "book-mountain-is-you",
+    "src": "/gallery/books/mountain-is-you.jpg",
+    "alt": "Cover of The Mountain Is You by Brianna Wiest",
+    "caption": "The Mountain Is You",
+    "note": "Brianna Wiest",
+    "width": 533,
+    "height": 800,
+    "kind": "book",
+    "category": "others"
+  },
+  {
+    "id": "book-stop-letting-everything-affect-you",
+    "src": "/gallery/books/stop-letting-everything-affect-you.jpg",
+    "alt": "Cover of Stop Letting Everything Affect You by Daniel Chidiac",
+    "caption": "Stop Letting Everything Affect You",
+    "note": "Daniel Chidiac",
+    "width": 533,
+    "height": 800,
+    "kind": "book",
+    "category": "others"
+  },
+  {
+    "id": "book-this-naked-mind",
+    "src": "/gallery/books/this-naked-mind.jpg",
+    "alt": "Cover of This Naked Mind by Annie Grace",
+    "caption": "This Naked Mind",
+    "note": "Annie Grace",
+    "width": 533,
+    "height": 800,
+    "kind": "book",
+    "category": "others"
+  },
+  {
+    "id": "book-five-second-rule",
+    "src": "/gallery/books/five-second-rule.jpg",
+    "alt": "Cover of The 5 Second Rule by Mel Robbins",
+    "caption": "The 5 Second Rule",
+    "note": "Mel Robbins",
+    "width": 564,
+    "height": 800,
+    "kind": "book",
+    "category": "others"
   }
 ]
