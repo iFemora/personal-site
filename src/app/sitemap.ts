@@ -12,6 +12,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/work/resolve",
     "/work/corporate-banking",
     "/work/farmcrowdy",
+    "/work/airline-payments",
+    "/work/product-team",
     "/writing",
     "/cv",
     "/field-notes",
