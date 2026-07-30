@@ -79,7 +79,7 @@ function SceneGlyph({ kind }: { kind: string }) {
     fill: "none",
   };
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden>
+    <svg width="30" height="30" viewBox="0 0 24 24" aria-hidden>
       {kind === "tap" && (
         <>
           {[4.5, 8, 11.5].map((r) => (
@@ -212,7 +212,7 @@ export default function SettlementTimeline() {
 
   const axisPos = (i: number) => posPercent(i);
   const dotFrames = SCENE_AT.map((_, i) =>
-    isWide ? `calc(${axisPos(i)}% - 4px)` : `calc(${4 + (i / (SCENES.length - 1)) * 88}%)`
+    isWide ? `calc(${axisPos(i)}% - 6px)` : `calc(${4 + (i / (SCENES.length - 1)) * 88}%)`
   );
   const trailFramesWide = SCENE_AT.map((_, i) => `${axisPos(i) - 10}%`);
   const trailFramesNarrow = SCENE_AT.map(
@@ -235,12 +235,12 @@ export default function SettlementTimeline() {
       <div className="relative mt-9">
         {isWide ? (
           <div className="relative pb-2 pt-1">
-            <div className="absolute left-[10%] right-[10%] top-[14px] h-px bg-rule" />
+            <div className="absolute left-[10%] right-[10%] top-[17px] h-[2px] bg-rule" />
             {playing && !reduced && (
               <motion.div
                 key={`ntrail-${playId}`}
                 aria-hidden
-                className="absolute left-[10%] top-[14px] h-px bg-accent"
+                className="absolute left-[10%] top-[17px] h-[2px] bg-accent"
                 initial={{ width: trailFramesWide[0] }}
                 animate={{ width: trailFramesWide }}
                 transition={{
@@ -251,13 +251,13 @@ export default function SettlementTimeline() {
               />
             )}
             {done && (
-              <div aria-hidden className="absolute left-[10%] top-[14px] h-px w-[80%] bg-accent" />
+              <div aria-hidden className="absolute left-[10%] top-[17px] h-[2px] w-[80%] bg-accent" />
             )}
             {playing && !reduced && (
               <motion.div
                 key={`ndot-${playId}`}
                 aria-hidden
-                className="absolute top-[10px] z-10 h-[9px] w-[9px] rounded-full bg-accent"
+                className="absolute top-[12px] z-10 h-3 w-3 rounded-full bg-accent"
                 initial={{ left: dotFrames[0], opacity: 0 }}
                 animate={{ left: dotFrames, opacity: 1 }}
                 transition={{
@@ -276,20 +276,20 @@ export default function SettlementTimeline() {
                 return (
                   <div key={scene.key} className="flex flex-1 flex-col items-center gap-2 text-center">
                     <span
-                      className={`flex h-[28px] items-center bg-background px-1.5 transition-colors duration-300 ${
+                      className={`flex h-[36px] items-center bg-background px-2 transition-colors duration-300 ${
                         on ? "text-accent" : "text-muted"
                       }`}
                     >
                       <SceneGlyph kind={scene.key} />
                     </span>
                     <span
-                      className={`font-mono text-[10px] uppercase tracking-[0.14em] transition-colors duration-300 ${
+                      className={`font-mono text-[11px] uppercase tracking-[0.14em] transition-colors duration-300 ${
                         on ? "text-accent" : "text-muted"
                       }`}
                     >
                       {scene.time}
                     </span>
-                    <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
                       {scene.name}
                     </span>
                     <AnimatePresence>
@@ -298,7 +298,7 @@ export default function SettlementTimeline() {
                           initial={reduced ? { opacity: 1 } : { opacity: 0, y: 5 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.45, ease: EASE }}
-                          className="max-w-40 text-xs leading-snug text-muted"
+                          className="max-w-48 text-[13px] leading-snug text-muted"
                         >
                           {scene.line}
                         </motion.span>
@@ -311,12 +311,12 @@ export default function SettlementTimeline() {
           </div>
         ) : (
           <div className="relative">
-            <div className="absolute bottom-3 left-[11px] top-3 w-px bg-rule" />
+            <div className="absolute bottom-3 left-[14px] top-3 w-[2px] bg-rule" />
             {playing && !reduced && (
               <motion.div
                 key={`ntrail-v-${playId}`}
                 aria-hidden
-                className="absolute left-[11px] top-3 w-px bg-accent"
+                className="absolute left-[14px] top-3 w-[2px] bg-accent"
                 initial={{ height: trailFramesNarrow[0] }}
                 animate={{ height: trailFramesNarrow }}
                 transition={{
@@ -327,13 +327,13 @@ export default function SettlementTimeline() {
               />
             )}
             {done && (
-              <div aria-hidden className="absolute left-[11px] top-3 h-[88%] w-px bg-accent" />
+              <div aria-hidden className="absolute left-[14px] top-3 h-[88%] w-[2px] bg-accent" />
             )}
             {playing && !reduced && (
               <motion.div
                 key={`ndot-v-${playId}`}
                 aria-hidden
-                className="absolute left-[7.5px] z-10 h-[9px] w-[9px] rounded-full bg-accent"
+                className="absolute left-[9px] z-10 h-3 w-3 rounded-full bg-accent"
                 initial={{ top: dotFrames[0], opacity: 0 }}
                 animate={{ top: dotFrames, opacity: 1 }}
                 transition={{
@@ -346,7 +346,7 @@ export default function SettlementTimeline() {
                 }}
               />
             )}
-            <div className="flex flex-col gap-7">
+            <div className="flex flex-col gap-8">
               {SCENES.map((scene, i) => {
                 const on = i <= reached;
                 return (
@@ -360,7 +360,7 @@ export default function SettlementTimeline() {
                     </span>
                     <div>
                       <p
-                        className={`font-mono text-[10px] uppercase tracking-[0.14em] transition-colors duration-300 ${
+                        className={`font-mono text-[11px] uppercase tracking-[0.14em] transition-colors duration-300 ${
                           on ? "text-accent" : "text-muted"
                         }`}
                       >
@@ -372,7 +372,7 @@ export default function SettlementTimeline() {
                             initial={reduced ? { opacity: 1 } : { opacity: 0, y: 5 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.45, ease: EASE }}
-                            className="mt-1 text-xs leading-snug text-muted"
+                            className="mt-1 text-[13px] leading-snug text-muted"
                           >
                             {scene.line}
                           </motion.p>

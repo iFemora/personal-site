@@ -82,7 +82,7 @@ const TOTAL_MS = 1800;
 /* The natural pace: simulated milliseconds run at half speed so the eye
    can ride along (Femi's call after living with real time). Real time
    and quarter speed stay one tap away. */
-const NATURAL = 0.5;
+const NATURAL = 0.4;
 const REALTIME = 1;
 const SLOW = 0.25;
 
@@ -128,7 +128,7 @@ function Glyph({ kind }: { kind: string }) {
     fill: "none",
   };
   return (
-    <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden>
+    <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden>
       {kind === "terminal" && (
         <>
           <rect x="5.5" y="2.5" width="13" height="19" rx="2" {...stroke} />
@@ -169,7 +169,20 @@ function Glyph({ kind }: { kind: string }) {
 function useBeep(muted: boolean) {
   const ctxRef = useRef<AudioContext | null>(null);
 
-  return (approved: boolean) => {
+  /* iPhones only allow audio to start inside a touch. The tap that
+     starts the run warms the context; the beep at the end then plays
+     from an already-running engine instead of asking permission from a
+     timer, which iOS refuses. This was the phone's inconsistent sound. */
+  const warm = () => {
+    try {
+      ctxRef.current ??= new AudioContext();
+      if (ctxRef.current.state === "suspended") ctxRef.current.resume();
+    } catch {
+      /* no audio available */
+    }
+  };
+
+  const play = (approved: boolean) => {
     if (muted) return;
     try {
       ctxRef.current ??= new AudioContext();
@@ -199,6 +212,8 @@ function useBeep(muted: boolean) {
       /* no audio — the run still plays */
     }
   };
+
+  return { warm, play };
 }
 
 /* ── the clock: its own island, so sixty ticks a second never touch
@@ -294,7 +309,7 @@ export default function PaymentStage() {
   const [isWide, setIsWide] = useState(true);
   const [openActor, setOpenActor] = useState<"issuer" | null>(null);
   const timers = useRef<number[]>([]);
-  const beep = useBeep(muted);
+  const { warm: warmAudio, play: beep } = useBeep(muted);
 
   useEffect(() => {
     const media = window.matchMedia("(min-width: 640px)");
@@ -319,6 +334,8 @@ export default function PaymentStage() {
   function run(factor = NATURAL) {
     if (phase === "running") return;
     clearTimers();
+    // Inside the user's tap: the only moment iOS lets audio start.
+    warmAudio();
     if (!everRan) {
       setEverRan(true);
       anatomyEvent("anatomy_card_tapped");
@@ -391,7 +408,7 @@ export default function PaymentStage() {
      and the dot begin at the terminal and end at the issuer — exactly. */
   const axisPercent = (pos: number) =>
     isWide
-      ? `calc(${12.5 + (pos / 3) * 75}% - 4px)`
+      ? `calc(${12.5 + (pos / 3) * 75}% - 6px)`
       : `calc(${4 + (pos / 3) * 88}%)`;
   const pulseFrames = PULSE_KEYFRAMES.map((k) => axisPercent(k.pos));
 
@@ -524,13 +541,13 @@ export default function PaymentStage() {
           <div className="relative pb-2 pt-1">
             {/* The wire: terminal center to issuer center, through the
                 glyphs' vertical middle. */}
-            <div className="absolute left-[12.5%] right-[12.5%] top-[15px] h-px bg-rule" />
+            <div className="absolute left-[12.5%] right-[12.5%] top-[18px] h-[2px] bg-rule" />
             {/* The lit trail the pulse leaves behind. */}
             {running && !reduced && (
               <motion.div
                 key={`trail-${runId}`}
                 aria-hidden
-                className="absolute left-[12.5%] top-[15px] h-px bg-accent"
+                className="absolute left-[12.5%] top-[18px] h-[2px] bg-accent"
                 initial={{ width: trailWide[0] }}
                 animate={{ width: trailWide }}
                 transition={{
@@ -543,14 +560,14 @@ export default function PaymentStage() {
             {done && (
               <div
                 aria-hidden
-                className="absolute left-[12.5%] top-[15px] h-px w-[75%] bg-accent"
+                className="absolute left-[12.5%] top-[18px] h-[2px] w-[75%] bg-accent"
               />
             )}
             {running && !reduced && (
               <motion.div
                 key={`pulse-${runId}`}
                 aria-hidden
-                className="absolute top-[11px] z-10 h-[9px] w-[9px] rounded-full bg-accent"
+                className="absolute top-[13px] z-10 h-3 w-3 rounded-full bg-accent"
                 initial={{ left: pulseFrames[0], opacity: 0 }}
                 animate={{ left: pulseFrames, opacity: 1 }}
                 transition={{
@@ -585,7 +602,7 @@ export default function PaymentStage() {
                           : { scale: on ? 1.12 : 1 }
                       }
                       transition={{ duration: 0.35, ease: EASE }}
-                      className={`flex h-[30px] items-center bg-background px-1.5 transition-colors duration-300 ${
+                      className={`flex h-[38px] items-center bg-background px-2 transition-colors duration-300 ${
                         lit(i) || (isIssuer && openActor === "issuer")
                           ? "text-accent"
                           : isIssuer
@@ -596,7 +613,7 @@ export default function PaymentStage() {
                       <Glyph kind={node.key} />
                     </motion.span>
                     <span
-                      className={`font-mono text-[10px] uppercase tracking-[0.14em] transition-colors duration-300 ${
+                      className={`font-mono text-[11px] uppercase tracking-[0.14em] transition-colors duration-300 ${
                         lit(i) || (isIssuer && openActor === "issuer")
                           ? "text-accent"
                           : "text-muted"
@@ -605,12 +622,12 @@ export default function PaymentStage() {
                       {node.name}
                     </span>
                     <StatusLine
-                      className="min-h-9 max-w-36 text-xs leading-snug text-muted"
+                      className="min-h-10 max-w-44 text-[13px] leading-snug text-muted"
                       text={on ? issuerStatus(i) : done ? `~${node.ms} ms` : ""}
                     />
                     {isIssuer && (
                       <span
-                        className={`-mt-1 font-mono text-[10px] uppercase tracking-[0.14em] underline underline-offset-4 transition-colors duration-300 ${
+                        className={`-mt-1 font-mono text-[11px] uppercase tracking-[0.14em] underline underline-offset-4 transition-colors duration-300 ${
                           openActor === "issuer"
                             ? "text-accent"
                             : "text-muted group-hover:text-accent"
@@ -626,12 +643,12 @@ export default function PaymentStage() {
           </div>
         ) : (
           <div className="relative">
-            <div className="absolute bottom-3 left-[12px] top-3 w-px bg-rule" />
+            <div className="absolute bottom-3 left-[16px] top-3 w-[2px] bg-rule" />
             {running && !reduced && (
               <motion.div
                 key={`trail-v-${runId}`}
                 aria-hidden
-                className="absolute left-[12px] top-3 w-px bg-accent"
+                className="absolute left-[16px] top-3 w-[2px] bg-accent"
                 initial={{ height: trailNarrow[0] }}
                 animate={{ height: trailNarrow }}
                 transition={{
@@ -644,14 +661,14 @@ export default function PaymentStage() {
             {done && (
               <div
                 aria-hidden
-                className="absolute left-[12px] top-3 h-[88%] w-px bg-accent"
+                className="absolute left-[16px] top-3 h-[88%] w-[2px] bg-accent"
               />
             )}
             {running && !reduced && (
               <motion.div
                 key={`pulse-v-${runId}`}
                 aria-hidden
-                className="absolute left-[8.5px] z-10 h-[9px] w-[9px] rounded-full bg-accent"
+                className="absolute left-[11px] z-10 h-3 w-3 rounded-full bg-accent"
                 initial={{ top: pulseFrames[0], opacity: 0 }}
                 animate={{ top: pulseFrames, opacity: 1 }}
                 transition={{
@@ -664,7 +681,7 @@ export default function PaymentStage() {
                 }}
               />
             )}
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-9">
               {NODES.map((node, i) => {
                 const on = speaking === i;
                 const isIssuer = node.key === "issuer";
@@ -675,12 +692,12 @@ export default function PaymentStage() {
                     type={isIssuer ? "button" : undefined}
                     onClick={isIssuer ? toggleIssuer : undefined}
                     aria-expanded={isIssuer ? openActor === "issuer" : undefined}
-                    className={`flex items-start gap-4 pl-8 text-left ${
+                    className={`flex items-start gap-4 pl-10 text-left ${
                       isIssuer ? "group cursor-pointer" : ""
                     }`}
                   >
                     <span
-                      className={`-ml-8 bg-background py-1 transition-colors duration-300 ${
+                      className={`-ml-10 bg-background py-1 transition-colors duration-300 ${
                         lit(i) || (isIssuer && openActor === "issuer")
                           ? "text-accent"
                           : "text-muted"
@@ -690,7 +707,7 @@ export default function PaymentStage() {
                     </span>
                     <div>
                       <p
-                        className={`font-mono text-[10px] uppercase tracking-[0.14em] transition-colors duration-300 ${
+                        className={`font-mono text-[11px] uppercase tracking-[0.14em] transition-colors duration-300 ${
                           lit(i) || (isIssuer && openActor === "issuer")
                             ? "text-accent"
                             : "text-muted"
@@ -705,7 +722,7 @@ export default function PaymentStage() {
                         )}
                       </p>
                       <StatusLine
-                        className="mt-1 min-h-4 text-xs leading-snug text-muted"
+                        className="mt-1 min-h-4 text-[13px] leading-snug text-muted"
                         text={on ? issuerStatus(i) : ""}
                       />
                     </div>
@@ -716,7 +733,7 @@ export default function PaymentStage() {
           </div>
         )}
         <StatusLine
-          className="mt-4 min-h-4 font-mono text-[10px] uppercase tracking-[0.14em] text-muted"
+          className="mt-4 min-h-4 font-mono text-[11px] uppercase tracking-[0.14em] text-muted"
           text={
             returning
               ? "The answer races home…"
