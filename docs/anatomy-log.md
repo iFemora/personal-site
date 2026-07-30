@@ -89,3 +89,15 @@ hours in ten seconds — tap 5:03 PM, batch close 10:14 PM, netting
 2:00 AM, settlement 9:00 AM, arrival 11:30 AM — same grammar as the
 two seconds (rail, travelling light, scenes stay lit), wall-clock
 readout with a "next day" marker, scene lines in place of prose.
+
+## 2026-08-02 — the fix that never shipped
+
+Femi reported nothing changed. He was right: the rail-geometry + Act II
+push never got a Vercel deployment (webhook missed it), so production
+sat on the previous build while we discussed fixes he could not see.
+Lesson recorded into practice: a push is not a release — verify the
+deployment reaches READY and the production HTML serves the new markers
+before reporting anything as live. Also fixed for real this round: the
+iPhone sound (beep fired from a timer, which iOS refuses; the tap now
+warms the audio engine), everything on both rails sized up, and the
+default pace eased to 0.4x so the trail lighting is watchable.
