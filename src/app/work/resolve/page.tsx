@@ -16,6 +16,12 @@ export default function ResolveCaseStudy() {
       standfirst="We shipped the first version in under five months and have expanded it in small releases since."
       sections={[
         {
+          label: "Scope",
+          paras: [
+            "Resolve is the deepest of four product areas I carry at Marqeta. The others: the Marqeta Dashboard, the program-management tool I also own day to day, including customer issues, bulk-fix tickets, and QA; identity and access management across the platform; and the telephony suite behind Marqeta's IVR, including custom call flows, customer integrations, and containment and drop-off reporting. This case study covers Resolve, because it is the one I took from concept to production.",
+          ],
+        },
+        {
           label: "The problem",
           paras: [
             "Marqeta's contact center supports dozens of card programs, and agents worked out of the Marqeta Dashboard: a program-management tool built to serve many jobs at once. Program management, BIN management, card issuing, transaction management, disputes, fraud reporting. Internal teams and external customers, all in one interface. Agents had to work through functions meant for program managers to answer basic cardholder questions. They clicked through layer after layer, and handle time showed it.",

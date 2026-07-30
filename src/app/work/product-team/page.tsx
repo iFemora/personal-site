@@ -76,7 +76,21 @@ export default function ProductTeamCaseStudy() {
         {
           label: "Where it stands",
           paras: [
-            "The company is product-led today. Payroll and FX and trade were ready but had not gone to market when I left, and ROVA Business launched after my last day, on the launch artefacts I had already written. Developer documentation, which I packaged their API to make possible, still has not shipped.",
+            <>
+              The company is product-led today. Payroll and FX and trade were
+              ready but had not gone to market when I left, and{" "}
+              <a
+                href="https://www.rovabusiness.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-swipe text-accent"
+              >
+                ROVA Business
+              </a>{" "}
+              launched after my last day, on the launch artefacts I had
+              already written. Developer documentation, which I packaged
+              their API to make possible, still has not shipped.
+            </>,
           ],
         },
       ]}
