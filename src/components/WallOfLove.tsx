@@ -16,6 +16,27 @@ const FILTERS = [
 
 type FilterKey = (typeof FILTERS)[number]["key"];
 
+/** Fold case and diacritics so "opeyemi" finds Ọpẹ́yẹmí and "hes family"
+    finds "He's family". Thirteen entries need a filter, not a search engine. */
+function fold(text: string): string {
+  return text
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[’']/g, "")
+    .toLowerCase();
+}
+
+function matchesQuery(entry: WallEntry, query: string): boolean {
+  const q = fold(query.trim());
+  if (!q) return true;
+  const haystack = fold(
+    [entry.name, entry.role, entry.company, entry.how, entry.quote]
+      .filter(Boolean)
+      .join(" ")
+  );
+  return q.split(/\s+/).every((word) => haystack.includes(word));
+}
+
 /** Shorter notes read bigger, like a real wall of pinned-up praise. */
 function quoteSize(quote: string): string {
   if (quote.length < 220) return "text-2xl leading-snug sm:text-[1.75rem]";
@@ -91,6 +112,7 @@ function Paragraphs({ entry, className }: { entry: WallEntry; className: string 
 export default function WallOfLove({ entries }: { entries: WallEntry[] }) {
   const reduced = useReducedMotion();
   const [filter, setFilter] = useState<FilterKey>("all");
+  const [query, setQuery] = useState("");
   const [openId, setOpenId] = useState<string | null>(null);
   const [photoZoom, setPhotoZoom] = useState(false);
   const toggleRef = useRef<HTMLDivElement>(null);
@@ -129,10 +151,11 @@ export default function WallOfLove({ entries }: { entries: WallEntry[] }) {
     };
   }, [openId, photoZoom]);
 
-  const shown =
+  const byKind =
     filter === "all"
       ? entries
       : entries.filter((e) => e.kinds?.includes(filter));
+  const shown = byKind.filter((e) => matchesQuery(e, query));
 
   const openEntry = (id: string) => {
     setPhotoZoom(false);
@@ -141,7 +164,7 @@ export default function WallOfLove({ entries }: { entries: WallEntry[] }) {
 
   return (
     <>
-      <div className="mb-12 sm:mb-16">
+      <div className="mb-12 flex flex-wrap items-center gap-x-8 gap-y-5 sm:mb-16">
         <div
           ref={toggleRef}
           className="inline-flex touch-none select-none items-center rounded-full border border-rule p-1"
@@ -199,11 +222,45 @@ export default function WallOfLove({ entries }: { entries: WallEntry[] }) {
             );
           })}
         </div>
+
+        {/* Find yourself: folds case and diacritics, matches name, role,
+            or anything you wrote. A filter over what's already on the
+            page — no index, no network. */}
+        <div className="relative flex-1 basis-56">
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Escape" && query) {
+                e.stopPropagation();
+                setQuery("");
+              }
+            }}
+            aria-label="Find your name or your words on the wall"
+            placeholder="Find your name, or your words…"
+            autoComplete="off"
+            spellCheck={false}
+            className="w-full appearance-none border-b border-rule bg-transparent py-1.5 font-serif text-base italic text-foreground placeholder:text-muted/70 focus:border-accent focus:outline-none [&::-webkit-search-cancel-button]:hidden"
+          />
+          {query && (
+            <button
+              type="button"
+              onClick={() => setQuery("")}
+              aria-label="Clear search"
+              className="absolute right-0 top-1/2 -translate-y-1/2 font-mono text-xs text-muted transition-colors hover:text-accent"
+            >
+              ✕
+            </button>
+          )}
+        </div>
       </div>
 
       {shown.length === 0 ? (
         <p className="font-serif text-lg italic leading-relaxed text-muted">
-          Nothing filed under this yet.
+          {query.trim()
+            ? "No one on the wall says that yet."
+            : "Nothing filed under this yet."}
         </p>
       ) : (
         <div key={filter} className="columns-1 gap-12 sm:columns-2">
