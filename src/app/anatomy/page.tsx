@@ -120,6 +120,10 @@ export default function AnatomyPage() {
               </Link>{" "}
               is here.
             </p>
+            <p className="mt-8 font-mono text-[11px] uppercase leading-relaxed tracking-[0.15em] text-muted">
+              Further reading: The Anatomy of the Swipe, Ahmed Siddiqui —
+              the book that maps this territory in full.
+            </p>
           </Reveal>
         </section>
       </div>

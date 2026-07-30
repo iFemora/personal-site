@@ -59,3 +59,15 @@ to here, to here" / "it says beep everywhere but there's no beep."
 - Prose demoted to supporting acts: economics slider and the settlement
   epilogue stay, everything the stage now embodies is cut.
 - Mobile is the primary layout: the rail runs vertical on phones.
+
+## 2026-08-01 — book study + Act I greenlit
+
+Mapped The Anatomy of the Swipe (Siddiqui) as the depth benchmark. Rule
+agreed: recreate the territory, never the book — facts and lifecycle in
+Femi's own words, zero reuse of its text or examples, with a courteous
+further-reading credit on the page. Four-act product: I the two seconds
+(clickable actors), II clearing + settlement, III the dispute, IV where
+cards come from. Femi greenlit Act I starting with the issuer panel.
+New requirement, his words: the flow must be smooth "like the about
+page" — smoother than v2. Smoothness is now an explicit quality bar for
+every anatomy interaction.

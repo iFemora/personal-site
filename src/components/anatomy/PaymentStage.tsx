@@ -5,6 +5,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { EASE } from "@femora/design-system/ease";
 import { spiralPath } from "@femora/design-system/spiral-path";
 import { anatomyEvent } from "@/lib/anatomyTrack";
+import { ACTOR_DEPTH } from "@/lib/anatomyDepth";
 
 /* ── the script ─────────────────────────────────────────────────────── */
 
@@ -78,37 +79,29 @@ const NODES = [
 const RETURN_MS = 450;
 const TOTAL_MS = 1800;
 
-/* Where the pulse is at time t: [ms, position 0..3] waypoints —
-   dwell at each stop, crawl into the issuer, sweep home. */
-const WAYPOINTS: [number, number][] = [
-  [0, 0],
-  [150, 0],
-  [210, 1],
-  [270, 1],
-  [310, 2],
-  [350, 2],
-  [450, 3],
-  [1350, 3],
-  [1800, 0],
+/* The pulse's journey as declarative keyframes: dwell at each stop,
+   crawl into the issuer, sweep home. Times are fractions of the run. */
+const PULSE_KEYFRAMES: { at: number; pos: number }[] = [
+  { at: 0, pos: 0 },
+  { at: 150, pos: 0 },
+  { at: 210, pos: 1 },
+  { at: 270, pos: 1 },
+  { at: 310, pos: 2 },
+  { at: 350, pos: 2 },
+  { at: 450, pos: 3 },
+  { at: 1350, pos: 3 },
+  { at: 1800, pos: 0 },
 ];
+const PULSE_TIMES = PULSE_KEYFRAMES.map((k) => k.at / TOTAL_MS);
 
-function pulsePosition(t: number): number {
-  for (let i = 1; i < WAYPOINTS.length; i++) {
-    const [t1, p1] = WAYPOINTS[i - 1];
-    const [t2, p2] = WAYPOINTS[i];
-    if (t <= t2) return p1 + ((t - t1) / (t2 - t1)) * (p2 - p1);
-  }
-  return 0;
-}
-
-/* Which node is "speaking" at time t. */
-function activeNode(t: number): number | null {
-  if (t < 150) return 0;
-  if (t < 270) return 1;
-  if (t < 350) return 2;
-  if (t < 1350) return 3;
-  return null; // the way home
-}
+/* Which node speaks, and when it starts. */
+const SPEAK_SCHEDULE: { at: number; node: number | null }[] = [
+  { at: 0, node: 0 },
+  { at: 150, node: 1 },
+  { at: 270, node: 2 },
+  { at: 350, node: 3 },
+  { at: 1350, node: null }, // the way home
+];
 
 /* ── small glyphs, one per institution ──────────────────────────────── */
 
@@ -194,6 +187,81 @@ function useBeep(muted: boolean) {
   };
 }
 
+/* ── the clock: its own island, so sixty ticks a second never touch
+      the rest of the stage ─────────────────────────────────────────── */
+
+function ClockReadout({
+  running,
+  factor,
+  done,
+  approved,
+}: {
+  running: boolean;
+  factor: number;
+  done: boolean;
+  approved: boolean;
+}) {
+  // Fresh-mounted per run (key={runId} at the call site), so the clock
+  // starts at zero without a reset that would cascade renders.
+  const [ms, setMs] = useState(0);
+
+  useEffect(() => {
+    if (!running) return;
+    let raf = 0;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const t = Math.min(TOTAL_MS, (now - start) * factor);
+      setMs(t);
+      if (t < TOTAL_MS) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [running, factor]);
+
+  return (
+    <p aria-live="polite" className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
+      {running ? (
+        <span className="text-accent">
+          {String(Math.round(ms)).padStart(4, "0")} ms
+        </span>
+      ) : done ? (
+        <span>
+          {TOTAL_MS} ms · {approved ? "approved" : "declined"}
+        </span>
+      ) : (
+        <span>Then tap the card</span>
+      )}
+    </p>
+  );
+}
+
+/* ── status line with a soft crossfade ──────────────────────────────── */
+
+function StatusLine({
+  text,
+  className,
+}: {
+  text: string;
+  className: string;
+}) {
+  return (
+    <span className={`relative block ${className}`}>
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.span
+          key={text || "empty"}
+          initial={{ opacity: 0, y: 3 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -3 }}
+          transition={{ duration: 0.22, ease: EASE }}
+          className="block"
+        >
+          {text}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  );
+}
+
 /* ── the stage ──────────────────────────────────────────────────────── */
 
 type Phase = "idle" | "running" | "done";
@@ -202,13 +270,16 @@ export default function PaymentStage() {
   const reduced = useReducedMotion();
   const [scenario, setScenario] = useState<Scenario>(SCENARIOS[0]);
   const [phase, setPhase] = useState<Phase>("idle");
-  const [clock, setClock] = useState(0);
+  const [runId, setRunId] = useState(0);
+  const [runFactor, setRunFactor] = useState(1);
+  const [speaking, setSpeaking] = useState<number | null>(null);
+  const [returning, setReturning] = useState(false);
   const [slow, setSlow] = useState(false);
   const [muted, setMuted] = useState(false);
   const [everRan, setEverRan] = useState(false);
   const [isWide, setIsWide] = useState(true);
-  const raf = useRef(0);
-  const timer = useRef(0);
+  const [openActor, setOpenActor] = useState<"issuer" | null>(null);
+  const timers = useRef<number[]>([]);
   const beep = useBeep(muted);
 
   useEffect(() => {
@@ -221,29 +292,33 @@ export default function PaymentStage() {
 
   useEffect(
     () => () => {
-      cancelAnimationFrame(raf.current);
-      window.clearTimeout(timer.current);
+      timers.current.forEach((t) => window.clearTimeout(t));
     },
     []
   );
 
+  function clearTimers() {
+    timers.current.forEach((t) => window.clearTimeout(t));
+    timers.current = [];
+  }
+
   function run(asSlow = slow) {
     if (phase === "running") return;
-    cancelAnimationFrame(raf.current);
-    window.clearTimeout(timer.current);
+    clearTimers();
     if (!everRan) {
       setEverRan(true);
       anatomyEvent("anatomy_card_tapped");
     }
+    const factor = asSlow ? 0.25 : 1;
+    setRunFactor(factor);
     setPhase("running");
-    setClock(0);
+    setReturning(false);
+    setRunId((r) => r + 1);
 
-    let finished = false;
     const finish = () => {
-      if (finished) return;
-      finished = true;
-      cancelAnimationFrame(raf.current);
-      setClock(TOTAL_MS);
+      clearTimers();
+      setSpeaking(null);
+      setReturning(false);
       setPhase("done");
       beep(scenario.approved);
       anatomyEvent("anatomy_run_complete", {
@@ -253,40 +328,50 @@ export default function PaymentStage() {
     };
 
     if (reduced) {
-      timer.current = window.setTimeout(finish, 250);
+      timers.current.push(window.setTimeout(finish, 250));
       return;
     }
 
-    const factor = asSlow ? 0.25 : 1;
-    // The timer owns completion (it survives a backgrounded tab, where
-    // rAF is paused); frames only paint the clock in between.
-    timer.current = window.setTimeout(finish, TOTAL_MS / factor);
-    const start = performance.now();
-    const tick = (now: number) => {
-      const t = (now - start) * factor;
-      if (t >= TOTAL_MS) return;
-      setClock(t);
-      raf.current = requestAnimationFrame(tick);
-    };
-    raf.current = requestAnimationFrame(tick);
+    // The speaking schedule and completion are timer-owned: they survive
+    // a backgrounded tab, and the stage re-renders five times per run
+    // instead of sixty times a second.
+    for (const step of SPEAK_SCHEDULE) {
+      timers.current.push(
+        window.setTimeout(() => {
+          setSpeaking(step.node);
+          setReturning(step.node === null);
+        }, step.at / factor)
+      );
+    }
+    timers.current.push(window.setTimeout(finish, TOTAL_MS / factor));
   }
 
   function pickScenario(s: Scenario) {
     if (phase === "running") return;
     setScenario(s);
     setPhase("idle");
-    setClock(0);
     anatomyEvent("anatomy_scenario", { scenario: s.key });
+  }
+
+  function toggleIssuer() {
+    setOpenActor((cur) => {
+      const next = cur === "issuer" ? null : "issuer";
+      if (next) anatomyEvent("anatomy_actor_opened", { actor: "issuer" });
+      return next;
+    });
   }
 
   const running = phase === "running";
   const done = phase === "done";
-  const speaking = running ? activeNode(clock) : null;
-  const pos = running ? pulsePosition(clock) : 0;
-  const returning = running && clock >= 1350;
+  const depth = ACTOR_DEPTH.issuer!;
 
   const issuerStatus = (i: number) =>
     i === 3 ? scenario.issuerLine : NODES[i].active;
+
+  /* Pulse keyframes for the current orientation. */
+  const axisPercent = (pos: number) =>
+    isWide ? `calc(${7 + (pos / 3) * 86}% - 4px)` : `calc(${4 + (pos / 3) * 88}%)`;
+  const pulseFrames = PULSE_KEYFRAMES.map((k) => axisPercent(k.pos));
 
   return (
     <section className="mt-10">
@@ -303,13 +388,21 @@ export default function PaymentStage() {
               type="button"
               aria-pressed={on}
               onClick={() => pickScenario(s)}
-              className={`rounded-full border px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.15em] transition-colors duration-300 ${
+              className={`relative rounded-full border px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.15em] transition-colors duration-300 ${
                 on
-                  ? "border-accent bg-accent/10 text-accent"
+                  ? "border-accent text-accent"
                   : "border-rule text-muted hover:text-foreground"
               }`}
             >
-              {s.label}
+              {on && (
+                <motion.span
+                  layoutId="anatomy-scenario-thumb"
+                  aria-hidden
+                  className="absolute inset-0 rounded-full bg-accent/10"
+                  transition={{ duration: 0.35, ease: EASE }}
+                />
+              )}
+              <span className="relative">{s.label}</span>
             </button>
           );
         })}
@@ -320,12 +413,15 @@ export default function PaymentStage() {
         <button
           type="button"
           onClick={() => run()}
-          aria-label={running ? "Payment in flight" : "Tap the card to run the payment"}
+          aria-label={
+            running ? "Payment in flight" : "Tap the card to run the payment"
+          }
           className="group relative block w-72 select-none rounded-2xl border border-rule bg-background p-5 text-left transition-colors duration-300 hover:border-accent sm:w-80"
           style={{ aspectRatio: "1.586" }}
         >
           {running && !reduced && (
             <motion.span
+              key={runId}
               aria-hidden
               className="absolute inset-0 rounded-2xl border border-accent"
               initial={{ opacity: 0.8, scale: 1 }}
@@ -349,7 +445,6 @@ export default function PaymentStage() {
               ))}
             </svg>
           </div>
-          {/* Chip */}
           <svg width="34" height="26" viewBox="0 0 34 26" aria-hidden className="mt-2 text-muted">
             <rect x="1" y="1" width="32" height="24" rx="5" fill="none" stroke="currentColor" strokeWidth="1.3" />
             <path d="M1 9h10M1 17h10M23 9h10M23 17h10M17 1v8M17 17v8M11 9c2 2 10 2 12 0M11 17c2-2 10-2 12 0" fill="none" stroke="currentColor" strokeWidth="1.1" />
@@ -374,15 +469,13 @@ export default function PaymentStage() {
         </button>
 
         <div className="flex items-baseline gap-5">
-          <p aria-live="polite" className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
-            {running ? (
-              <span className="text-accent">{String(Math.round(clock)).padStart(4, "0")} ms</span>
-            ) : done ? (
-              <span>{TOTAL_MS} ms · {scenario.approved ? "approved" : "declined"}</span>
-            ) : (
-              <span>Then tap the card</span>
-            )}
-          </p>
+          <ClockReadout
+            key={runId}
+            running={running}
+            factor={runFactor}
+            done={done}
+            approved={scenario.approved}
+          />
           <button
             type="button"
             onClick={() => {
@@ -399,37 +492,84 @@ export default function PaymentStage() {
       </div>
 
       {/* The route */}
-      <div className={`relative mt-10 ${isWide ? "" : "ml-1"}`}>
+      <div className="relative mt-10">
         {isWide ? (
           <div className="relative pb-2 pt-1">
             <div className="absolute left-[7%] right-[7%] top-[13px] h-px bg-rule" />
-            {(running || done) && !reduced && (
+            {running && !reduced && (
               <motion.div
+                key={`pulse-${runId}`}
                 aria-hidden
                 className="absolute top-[9px] z-10 h-[9px] w-[9px] rounded-full bg-accent"
-                animate={{ left: `calc(${7 + (pos / 3) * 86}% - 4px)`, opacity: running ? 1 : 0 }}
-                transition={{ duration: 0.05, ease: "linear" }}
+                initial={{ left: pulseFrames[0], opacity: 0 }}
+                animate={{ left: pulseFrames, opacity: 1 }}
+                transition={{
+                  left: {
+                    duration: TOTAL_MS / 1000 / runFactor,
+                    times: PULSE_TIMES,
+                    ease: "linear",
+                  },
+                  opacity: { duration: 0.2 },
+                }}
               />
             )}
             <div className="relative flex">
               {NODES.map((node, i) => {
                 const on = speaking === i;
+                const isIssuer = node.key === "issuer";
+                const NodeTag = isIssuer ? "button" : "div";
                 return (
-                  <div key={node.key} className="flex flex-1 flex-col items-center gap-2 text-center">
-                    <span className={`transition-colors duration-300 ${on ? "text-accent" : "text-muted"}`}>
+                  <NodeTag
+                    key={node.key}
+                    type={isIssuer ? "button" : undefined}
+                    onClick={isIssuer ? toggleIssuer : undefined}
+                    aria-expanded={isIssuer ? openActor === "issuer" : undefined}
+                    className={`flex flex-1 flex-col items-center gap-2 text-center ${
+                      isIssuer ? "group cursor-pointer" : ""
+                    }`}
+                  >
+                    <motion.span
+                      animate={
+                        reduced
+                          ? undefined
+                          : { scale: on ? 1.12 : 1 }
+                      }
+                      transition={{ duration: 0.35, ease: EASE }}
+                      className={`transition-colors duration-300 ${
+                        on || (isIssuer && openActor === "issuer")
+                          ? "text-accent"
+                          : isIssuer
+                            ? "text-muted group-hover:text-accent"
+                            : "text-muted"
+                      }`}
+                    >
                       <Glyph kind={node.key} />
-                    </span>
-                    <span className={`font-mono text-[10px] uppercase tracking-[0.14em] ${on ? "text-accent" : "text-muted"}`}>
+                    </motion.span>
+                    <span
+                      className={`font-mono text-[10px] uppercase tracking-[0.14em] transition-colors duration-300 ${
+                        on || (isIssuer && openActor === "issuer")
+                          ? "text-accent"
+                          : "text-muted"
+                      }`}
+                    >
                       {node.name}
                     </span>
-                    <span className="min-h-9 max-w-36 text-xs leading-snug text-muted">
-                      {on
-                        ? issuerStatus(i)
-                        : done
-                          ? `~${node.ms} ms`
-                          : ""}
-                    </span>
-                  </div>
+                    <StatusLine
+                      className="min-h-9 max-w-36 text-xs leading-snug text-muted"
+                      text={on ? issuerStatus(i) : done ? `~${node.ms} ms` : ""}
+                    />
+                    {isIssuer && (
+                      <span
+                        className={`-mt-1 font-mono text-[10px] uppercase tracking-[0.14em] underline underline-offset-4 transition-colors duration-300 ${
+                          openActor === "issuer"
+                            ? "text-accent"
+                            : "text-muted group-hover:text-accent"
+                        }`}
+                      >
+                        {openActor === "issuer" ? "close −" : "go deeper +"}
+                      </span>
+                    )}
+                  </NodeTag>
                 );
               })}
             </div>
@@ -437,45 +577,143 @@ export default function PaymentStage() {
         ) : (
           <div className="relative">
             <div className="absolute bottom-3 left-[12px] top-3 w-px bg-rule" />
-            {(running || done) && !reduced && (
+            {running && !reduced && (
               <motion.div
+                key={`pulse-v-${runId}`}
                 aria-hidden
                 className="absolute left-[8.5px] z-10 h-[9px] w-[9px] rounded-full bg-accent"
-                animate={{ top: `calc(${4 + (pos / 3) * 88}% )`, opacity: running ? 1 : 0 }}
-                transition={{ duration: 0.05, ease: "linear" }}
+                initial={{ top: pulseFrames[0], opacity: 0 }}
+                animate={{ top: pulseFrames, opacity: 1 }}
+                transition={{
+                  top: {
+                    duration: TOTAL_MS / 1000 / runFactor,
+                    times: PULSE_TIMES,
+                    ease: "linear",
+                  },
+                  opacity: { duration: 0.2 },
+                }}
               />
             )}
             <div className="flex flex-col gap-8">
               {NODES.map((node, i) => {
                 const on = speaking === i;
+                const isIssuer = node.key === "issuer";
+                const NodeTag = isIssuer ? "button" : "div";
                 return (
-                  <div key={node.key} className="flex items-start gap-4 pl-8">
-                    <span className={`-ml-8 bg-background py-1 transition-colors duration-300 ${on ? "text-accent" : "text-muted"}`}>
+                  <NodeTag
+                    key={node.key}
+                    type={isIssuer ? "button" : undefined}
+                    onClick={isIssuer ? toggleIssuer : undefined}
+                    aria-expanded={isIssuer ? openActor === "issuer" : undefined}
+                    className={`flex items-start gap-4 pl-8 text-left ${
+                      isIssuer ? "group cursor-pointer" : ""
+                    }`}
+                  >
+                    <span
+                      className={`-ml-8 bg-background py-1 transition-colors duration-300 ${
+                        on || (isIssuer && openActor === "issuer")
+                          ? "text-accent"
+                          : "text-muted"
+                      }`}
+                    >
                       <Glyph kind={node.key} />
                     </span>
                     <div>
-                      <p className={`font-mono text-[10px] uppercase tracking-[0.14em] ${on ? "text-accent" : "text-muted"}`}>
+                      <p
+                        className={`font-mono text-[10px] uppercase tracking-[0.14em] transition-colors duration-300 ${
+                          on || (isIssuer && openActor === "issuer")
+                            ? "text-accent"
+                            : "text-muted"
+                        }`}
+                      >
                         {node.name}
                         {done && <span className="ml-3">~{node.ms} ms</span>}
+                        {isIssuer && (
+                          <span className="ml-3 underline underline-offset-4">
+                            {openActor === "issuer" ? "close −" : "go deeper +"}
+                          </span>
+                        )}
                       </p>
-                      <p className="mt-1 min-h-4 text-xs leading-snug text-muted">
-                        {on ? issuerStatus(i) : ""}
-                      </p>
+                      <StatusLine
+                        className="mt-1 min-h-4 text-xs leading-snug text-muted"
+                        text={on ? issuerStatus(i) : ""}
+                      />
                     </div>
-                  </div>
+                  </NodeTag>
                 );
               })}
             </div>
           </div>
         )}
-        <p className="mt-4 min-h-4 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
-          {returning
-            ? "The answer races home…"
-            : done
-              ? `…and ~${RETURN_MS} ms for the way home.`
-              : ""}
-        </p>
+        <StatusLine
+          className="mt-4 min-h-4 font-mono text-[10px] uppercase tracking-[0.14em] text-muted"
+          text={
+            returning
+              ? "The answer races home…"
+              : done
+                ? `…and ~${RETURN_MS} ms for the way home.`
+                : ""
+          }
+        />
       </div>
+
+      {/* Depth on demand: inside the issuer */}
+      <AnimatePresence initial={false}>
+        {openActor === "issuer" && (
+          <motion.div
+            key="issuer-depth"
+            initial={reduced ? { opacity: 0 } : { height: 0, opacity: 0 }}
+            animate={
+              reduced ? { opacity: 1 } : { height: "auto", opacity: 1 }
+            }
+            exit={reduced ? { opacity: 0 } : { height: 0, opacity: 0 }}
+            transition={{ duration: 0.6, ease: EASE }}
+            className="overflow-hidden"
+          >
+            <div className="mt-8 border-y border-rule py-8">
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
+                Going deeper · the issuer
+              </p>
+              <h3 className="mt-3 font-serif text-xl leading-snug tracking-tight sm:text-2xl">
+                {depth.title}
+              </h3>
+              <p className="mt-4 max-w-[560px] font-serif italic leading-relaxed text-muted">
+                {depth.intro}
+              </p>
+              <motion.dl
+                className="mt-7 space-y-6"
+                initial={reduced ? undefined : "hidden"}
+                animate={reduced ? undefined : "show"}
+                variants={{
+                  hidden: {},
+                  show: { transition: { staggerChildren: 0.09, delayChildren: 0.25 } },
+                }}
+              >
+                {depth.sections.map((s) => (
+                  <motion.div
+                    key={s.label}
+                    variants={{
+                      hidden: { opacity: 0, y: 10 },
+                      show: {
+                        opacity: 1,
+                        y: 0,
+                        transition: { duration: 0.55, ease: EASE },
+                      },
+                    }}
+                  >
+                    <dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                      {s.label}
+                    </dt>
+                    <dd className="mt-2 max-w-[560px] text-[15px] leading-relaxed">
+                      {s.body}
+                    </dd>
+                  </motion.div>
+                ))}
+              </motion.dl>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* The verdict */}
       <AnimatePresence>
@@ -490,7 +728,9 @@ export default function PaymentStage() {
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
               What the terminal shows
             </p>
-            <p className={`mt-3 font-mono text-xl tracking-[0.08em] ${scenario.approved ? "text-accent" : "text-foreground"}`}>
+            <p
+              className={`mt-3 font-mono text-xl tracking-[0.08em] ${scenario.approved ? "text-accent" : "text-foreground"}`}
+            >
               {scenario.receipt}
             </p>
             <p className="mt-4 border-t border-rule pt-4 text-sm leading-relaxed text-muted">

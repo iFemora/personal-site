@@ -8,6 +8,7 @@ export function anatomyEvent(
     | "anatomy_chapter"
     | "anatomy_scenario"
     | "anatomy_run_complete"
+    | "anatomy_actor_opened"
     | "anatomy_slider_used"
     | "anatomy_sound"
     | "anatomy_complete",
