@@ -239,5 +239,27 @@
       "height": 800,
       "position": "50% 40%"
     }
+  },
+  {
+    "id": "2026-07-29-morakinyo-adejare",
+    "name": "Morakinyo Adejare",
+    "role": "Lead Product Designer",
+    "company": "FCMB",
+    "how": "NUTM (Postgrad)",
+    "date": "2026-07-29",
+    "kind": "character",
+    "quote": "This “brief” constraint is tough, but I’ll try 😂\n\nFemi is one of the most well-rounded people I know, deeply knowledgeable in his areas of expertise, yet endlessly curious about the things he isn’t. Come to any conversation with facts, because he’ll debate you fairly on anything. He’s also refreshingly self-aware: quick to admit what he doesn’t know, open to feedback, and just as quick to give you his honest take.\n\nThere are no half-measures with this guy, he’s hardworking, objective, and genuinely fascinating to watch when he’s passionate about something. He also got me into tennis, so I owe him for that too.\n\nMore to say, just because...\n\nI met Femi at NUTM, and within what felt like five minutes, he’d already given me at least 4 nicknames, all of which he still calls me to this day. But jokes aside, that program is really where it started — we learned together, worked on projects together, and just... became close. Somewhere along the way we went from friends to groomsmen at each other’s weddings, and honestly, from there to brothers. At this point I don’t even introduce him as a friend. He’s family.",
+    "highlights": [
+      "endlessly curious about the things he isn’t",
+      "no half-measures",
+      "He’s family"
+    ],
+    "image": {
+      "src": "/wall-of-love/morakinyo-adejare.jpg",
+      "alt": "Morakinyo Adejare",
+      "width": 544,
+      "height": 800,
+      "position": "50% 30%"
+    }
   }
 ]
