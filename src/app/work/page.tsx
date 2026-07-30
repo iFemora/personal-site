@@ -30,14 +30,15 @@ const entries: WorkEntry[] = [
   },
   {
     id: "airline-payments",
-    title: "Expanded a payment platform into airline ticketing.",
-    body: "Expanded Paystack into airline ticketing. I built the changes needed for high-volume airline payments and managed the relationships with airlines and industry partners. The work supported a $7M revenue campaign.",
+    title: "Turned a reconciliation gap into a payment channel.",
+    body: "Paystack already owned airline payments online. What nobody could do was book online and pay later, because nothing turned a booking reference into an amount owed at a terminal. We built that, sold it to an industry I convened rather than cold-called, and then ran the same rail through insurance premiums. The work supported a $7M revenue campaign.",
     meta: "Paystack · 2021–2024",
+    caseStudy: { href: "/work/airline-payments" },
   },
   {
     id: "cardholder-support",
     title: "Took a cardholder support platform from concept to production in under five months.",
-    body: "I designed Resolve by sitting with BPO agents and watching them work. It now supports debit, credit, and prepaid programs across payments, collections, disputes, fraud, and sub-status management. I also built its automated testing workflow in Claude Code and Playwright.",
+    body: "I designed Resolve by sitting with BPO agents and watching them work. It now supports debit, credit, and prepaid programs across payments, collections, disputes, fraud, and sub-status management. I also built its automated testing workflow in Claude Code and Playwright. Resolve is one of four areas I carry: the program-management dashboard, identity and access management, and the telephony suite behind our IVR are the others.",
     meta: "Marqeta · 2025",
     caseStudy: { href: "/work/resolve" },
   },
@@ -50,9 +51,10 @@ const entries: WorkEntry[] = [
   },
   {
     id: "product-team",
-    title: "Built and grew a five-person product team across three time zones.",
-    body: "Five PMs at varying levels. Mentored APMs into PMs, recruited Senior PMs who became Leads. One mentee eventually became Head of Products for the Retail Banking division.",
+    title: "Made a sales-driven bank product-led.",
+    body: "First product hire at a company with no product function: five PMs from APM to Senior across Nigeria, the UK, and Canada, over four product lines. I installed the discovery framework, the templates, the rituals, and a design system, and the group COO backed the pipeline until it became how the company works. One Senior PM I grew is now Head of Products for retail.",
     meta: "FCMB · 2024–25",
+    caseStudy: { href: "/work/product-team" },
   },
   {
     id: "this-site",
