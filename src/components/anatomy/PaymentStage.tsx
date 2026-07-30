@@ -79,6 +79,13 @@ const NODES = [
 const RETURN_MS = 450;
 const TOTAL_MS = 1800;
 
+/* The natural pace: simulated milliseconds run at half speed so the eye
+   can ride along (Femi's call after living with real time). Real time
+   and quarter speed stay one tap away. */
+const NATURAL = 0.5;
+const REALTIME = 1;
+const SLOW = 0.25;
+
 /* The pulse's journey as declarative keyframes: dwell at each stop,
    crawl into the issuer, sweep home. Times are fractions of the run. */
 const PULSE_KEYFRAMES: { at: number; pos: number }[] = [
@@ -93,6 +100,13 @@ const PULSE_KEYFRAMES: { at: number; pos: number }[] = [
   { at: 1800, pos: 0 },
 ];
 const PULSE_TIMES = PULSE_KEYFRAMES.map((k) => k.at / TOTAL_MS);
+
+/* The lit trail is monotonic: once traversed, the wire stays lit,
+   holding through the way home. */
+const TRAIL_POS = PULSE_KEYFRAMES.reduce<number[]>((acc, k) => {
+  acc.push(Math.max(acc.length ? acc[acc.length - 1] : 0, k.pos));
+  return acc;
+}, []);
 
 /* Which node speaks, and when it starts. */
 const SPEAK_SCHEDULE: { at: number; node: number | null }[] = [
@@ -271,10 +285,10 @@ export default function PaymentStage() {
   const [scenario, setScenario] = useState<Scenario>(SCENARIOS[0]);
   const [phase, setPhase] = useState<Phase>("idle");
   const [runId, setRunId] = useState(0);
-  const [runFactor, setRunFactor] = useState(1);
+  const [runFactor, setRunFactor] = useState(NATURAL);
   const [speaking, setSpeaking] = useState<number | null>(null);
+  const [reached, setReached] = useState(-1);
   const [returning, setReturning] = useState(false);
-  const [slow, setSlow] = useState(false);
   const [muted, setMuted] = useState(false);
   const [everRan, setEverRan] = useState(false);
   const [isWide, setIsWide] = useState(true);
@@ -302,28 +316,29 @@ export default function PaymentStage() {
     timers.current = [];
   }
 
-  function run(asSlow = slow) {
+  function run(factor = NATURAL) {
     if (phase === "running") return;
     clearTimers();
     if (!everRan) {
       setEverRan(true);
       anatomyEvent("anatomy_card_tapped");
     }
-    const factor = asSlow ? 0.25 : 1;
     setRunFactor(factor);
     setPhase("running");
     setReturning(false);
+    setReached(-1);
     setRunId((r) => r + 1);
 
     const finish = () => {
       clearTimers();
       setSpeaking(null);
       setReturning(false);
+      setReached(3);
       setPhase("done");
       beep(scenario.approved);
       anatomyEvent("anatomy_run_complete", {
         scenario: scenario.key,
-        speed: asSlow ? "slow" : "real",
+        speed: factor === REALTIME ? "real" : factor === SLOW ? "slow" : "natural",
       });
     };
 
@@ -340,6 +355,8 @@ export default function PaymentStage() {
         window.setTimeout(() => {
           setSpeaking(step.node);
           setReturning(step.node === null);
+          // Once the pulse reaches an actor it stays lit for the run.
+          setReached((r) => (step.node === null ? 3 : Math.max(r, step.node)));
         }, step.at / factor)
       );
     }
@@ -350,6 +367,7 @@ export default function PaymentStage() {
     if (phase === "running") return;
     setScenario(s);
     setPhase("idle");
+    setReached(-1);
     anatomyEvent("anatomy_scenario", { scenario: s.key });
   }
 
@@ -368,10 +386,19 @@ export default function PaymentStage() {
   const issuerStatus = (i: number) =>
     i === 3 ? scenario.issuerLine : NODES[i].active;
 
-  /* Pulse keyframes for the current orientation. */
+  /* Pulse keyframes for the current orientation. On desktop the four
+     actor centers sit at 12.5 / 37.5 / 62.5 / 87.5 percent, so the rail
+     and the dot begin at the terminal and end at the issuer — exactly. */
   const axisPercent = (pos: number) =>
-    isWide ? `calc(${7 + (pos / 3) * 86}% - 4px)` : `calc(${4 + (pos / 3) * 88}%)`;
+    isWide
+      ? `calc(${12.5 + (pos / 3) * 75}% - 4px)`
+      : `calc(${4 + (pos / 3) * 88}%)`;
   const pulseFrames = PULSE_KEYFRAMES.map((k) => axisPercent(k.pos));
+
+  const trailWide = TRAIL_POS.map((p) => `${(p / 3) * 75}%`);
+  const trailNarrow = TRAIL_POS.map((p) => `${(p / 3) * 88}%`);
+
+  const lit = (i: number) => i <= reached || speaking === i;
 
   return (
     <section className="mt-10">
@@ -495,12 +522,35 @@ export default function PaymentStage() {
       <div className="relative mt-10">
         {isWide ? (
           <div className="relative pb-2 pt-1">
-            <div className="absolute left-[7%] right-[7%] top-[13px] h-px bg-rule" />
+            {/* The wire: terminal center to issuer center, through the
+                glyphs' vertical middle. */}
+            <div className="absolute left-[12.5%] right-[12.5%] top-[15px] h-px bg-rule" />
+            {/* The lit trail the pulse leaves behind. */}
+            {running && !reduced && (
+              <motion.div
+                key={`trail-${runId}`}
+                aria-hidden
+                className="absolute left-[12.5%] top-[15px] h-px bg-accent"
+                initial={{ width: trailWide[0] }}
+                animate={{ width: trailWide }}
+                transition={{
+                  duration: TOTAL_MS / 1000 / runFactor,
+                  times: PULSE_TIMES,
+                  ease: "linear",
+                }}
+              />
+            )}
+            {done && (
+              <div
+                aria-hidden
+                className="absolute left-[12.5%] top-[15px] h-px w-[75%] bg-accent"
+              />
+            )}
             {running && !reduced && (
               <motion.div
                 key={`pulse-${runId}`}
                 aria-hidden
-                className="absolute top-[9px] z-10 h-[9px] w-[9px] rounded-full bg-accent"
+                className="absolute top-[11px] z-10 h-[9px] w-[9px] rounded-full bg-accent"
                 initial={{ left: pulseFrames[0], opacity: 0 }}
                 animate={{ left: pulseFrames, opacity: 1 }}
                 transition={{
@@ -535,8 +585,8 @@ export default function PaymentStage() {
                           : { scale: on ? 1.12 : 1 }
                       }
                       transition={{ duration: 0.35, ease: EASE }}
-                      className={`transition-colors duration-300 ${
-                        on || (isIssuer && openActor === "issuer")
+                      className={`flex h-[30px] items-center bg-background px-1.5 transition-colors duration-300 ${
+                        lit(i) || (isIssuer && openActor === "issuer")
                           ? "text-accent"
                           : isIssuer
                             ? "text-muted group-hover:text-accent"
@@ -547,7 +597,7 @@ export default function PaymentStage() {
                     </motion.span>
                     <span
                       className={`font-mono text-[10px] uppercase tracking-[0.14em] transition-colors duration-300 ${
-                        on || (isIssuer && openActor === "issuer")
+                        lit(i) || (isIssuer && openActor === "issuer")
                           ? "text-accent"
                           : "text-muted"
                       }`}
@@ -577,6 +627,26 @@ export default function PaymentStage() {
         ) : (
           <div className="relative">
             <div className="absolute bottom-3 left-[12px] top-3 w-px bg-rule" />
+            {running && !reduced && (
+              <motion.div
+                key={`trail-v-${runId}`}
+                aria-hidden
+                className="absolute left-[12px] top-3 w-px bg-accent"
+                initial={{ height: trailNarrow[0] }}
+                animate={{ height: trailNarrow }}
+                transition={{
+                  duration: TOTAL_MS / 1000 / runFactor,
+                  times: PULSE_TIMES,
+                  ease: "linear",
+                }}
+              />
+            )}
+            {done && (
+              <div
+                aria-hidden
+                className="absolute left-[12px] top-3 h-[88%] w-px bg-accent"
+              />
+            )}
             {running && !reduced && (
               <motion.div
                 key={`pulse-v-${runId}`}
@@ -611,7 +681,7 @@ export default function PaymentStage() {
                   >
                     <span
                       className={`-ml-8 bg-background py-1 transition-colors duration-300 ${
-                        on || (isIssuer && openActor === "issuer")
+                        lit(i) || (isIssuer && openActor === "issuer")
                           ? "text-accent"
                           : "text-muted"
                       }`}
@@ -621,7 +691,7 @@ export default function PaymentStage() {
                     <div>
                       <p
                         className={`font-mono text-[10px] uppercase tracking-[0.14em] transition-colors duration-300 ${
-                          on || (isIssuer && openActor === "issuer")
+                          lit(i) || (isIssuer && openActor === "issuer")
                             ? "text-accent"
                             : "text-muted"
                         }`}
@@ -739,21 +809,24 @@ export default function PaymentStage() {
             <div className="mt-5 flex flex-wrap gap-2">
               <button
                 type="button"
-                onClick={() => run(false)}
+                onClick={() => run(NATURAL)}
                 className="rounded-full border border-rule px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-muted transition-colors duration-300 hover:border-accent hover:text-accent"
               >
                 Run it again
               </button>
               <button
                 type="button"
-                aria-pressed={slow}
-                onClick={() => {
-                  setSlow(true);
-                  run(true);
-                }}
+                onClick={() => run(REALTIME)}
                 className="rounded-full border border-rule px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-muted transition-colors duration-300 hover:border-accent hover:text-accent"
               >
-                Slow motion · ¼ speed
+                Real time · 1.8 s
+              </button>
+              <button
+                type="button"
+                onClick={() => run(SLOW)}
+                className="rounded-full border border-rule px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-muted transition-colors duration-300 hover:border-accent hover:text-accent"
+              >
+                Slow motion · ¼
               </button>
             </div>
           </motion.div>

@@ -9,6 +9,7 @@ import {
 import ChapterMark from "@/components/anatomy/ChapterMark";
 import PaymentStage from "@/components/anatomy/PaymentStage";
 import InterchangeSlider from "@/components/anatomy/InterchangeSlider";
+import SettlementTimeline from "@/components/anatomy/SettlementTimeline";
 
 export const metadata: Metadata = {
   title: "The Anatomy of a Payment",
@@ -79,28 +80,23 @@ export default function AnatomyPage() {
           <ChapterMark chapter="settlement" />
           <Reveal>
             <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
-              <span className="text-accent">03</span> · The epilogue
+              <span className="text-accent">03</span> · That night, and the
+              next day
             </p>
             <h2 className="mt-4 font-serif text-2xl leading-snug tracking-tight sm:text-3xl">
               No money moved today.
             </h2>
           </Reveal>
           <Reveal delay={0.08}>
-            <div className="mt-5 space-y-5">
-              <p className="text-lg leading-relaxed">
-                Here is the part almost nobody knows: at the moment of
-                approval, not one naira or cent has moved. The approval was a
-                promise, the issuer saying I am good for this, hold my word.
-              </p>
-              <p className="text-lg leading-relaxed">
-                The money moves later, quietly and in bulk. Tonight the
-                terminal batches the day&apos;s promises and submits them; the
-                networks total up what every bank owes every other bank and
-                settle the difference. A day or two after your two seconds,
-                the money arrives where you thought you had already sent it.
-              </p>
-            </div>
+            <p className="mt-5 text-lg leading-relaxed">
+              Here is the part almost nobody knows: at the moment of
+              approval, not one naira or cent has moved. The approval was a
+              promise, the issuer saying I am good for this, hold my word.
+              The money keeps that promise overnight — press play and watch
+              eighteen hours in ten seconds.
+            </p>
           </Reveal>
+          <SettlementTimeline />
         </section>
 
         <DrawnRule className="my-14 sm:my-20" />

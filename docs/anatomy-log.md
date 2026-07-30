@@ -71,3 +71,21 @@ cards come from. Femi greenlit Act I starting with the issuer panel.
 New requirement, his words: the flow must be smooth "like the about
 page" — smoother than v2. Smoothness is now an explicit quality bar for
 every anatomy interaction.
+
+## 2026-08-01 — rail geometry feedback + Act II built
+
+Femi's screenshot showed the desktop rail lying: line from 7% to 93%
+while actor centers sit at 12.5% and 87.5%, so the dot began before the
+terminal and died past the issuer, and the line missed the glyphs'
+vertical middle. Fixed exactly: rail runs center-to-center through the
+glyph middles, and the pulse now leaves a lit trail — each actor lights
+as reached and stays lit, per his description. Default pace slowed to
+half speed ("a little bit slower naturally"), clock still counts the
+true 1800 ms; real time and quarter speed are one tap away.
+
+Act II greenlit and shipped same day: "That night, and the next day."
+The settlement prose became a player: press play, eighteen and a half
+hours in ten seconds — tap 5:03 PM, batch close 10:14 PM, netting
+2:00 AM, settlement 9:00 AM, arrival 11:30 AM — same grammar as the
+two seconds (rail, travelling light, scenes stay lit), wall-clock
+readout with a "next day" marker, scene lines in place of prose.
