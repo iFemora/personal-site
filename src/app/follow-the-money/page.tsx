@@ -10,14 +10,15 @@ import ChapterMark from "@/components/anatomy/ChapterMark";
 import PaymentStage from "@/components/anatomy/PaymentStage";
 import InterchangeSlider from "@/components/anatomy/InterchangeSlider";
 import SettlementTimeline from "@/components/anatomy/SettlementTimeline";
+import DisputeCase from "@/components/anatomy/DisputeCase";
 
 export const metadata: Metadata = {
-  title: "The Anatomy of a Payment",
+  title: "Follow the Money",
   description:
-    "Tap, swipe, or insert a card and watch the two seconds run: terminal, acquirer, network, issuer, and home again.",
+    "Tap, swipe, or insert a card and follow it: the two seconds, the night the money actually moves, and the fight when it goes wrong.",
 };
 
-export default function AnatomyPage() {
+export default function FollowTheMoneyPage() {
   return (
     <main className="mx-auto w-full max-w-[1100px] px-6 py-16 sm:py-24">
       <Reveal immediate>
@@ -28,8 +29,8 @@ export default function AnatomyPage() {
       </Reveal>
       <ProximityType
         lines={[
-          { text: "The anatomy", className: "wonk" },
-          { text: "of a payment" },
+          { text: "Follow", className: "wonk" },
+          { text: "the money" },
         ]}
         className="mt-6 font-serif text-[clamp(2.75rem,9vw,6.5rem)] font-medium leading-[0.95] tracking-tight text-accent"
       />
@@ -84,7 +85,7 @@ export default function AnatomyPage() {
               next day
             </p>
             <h2 className="mt-4 font-serif text-2xl leading-snug tracking-tight sm:text-3xl">
-              No money moved today.
+              No money moved when you paid.
             </h2>
           </Reveal>
           <Reveal delay={0.08}>
@@ -97,6 +98,29 @@ export default function AnatomyPage() {
             </p>
           </Reveal>
           <SettlementTimeline />
+        </section>
+
+        <DrawnRule className="my-14 sm:my-20" />
+
+        <section id="dispute">
+          <ChapterMark chapter="dispute" />
+          <Reveal>
+            <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
+              <span className="text-accent">04</span> · When it goes wrong
+            </p>
+            <h2 className="mt-4 font-serif text-2xl leading-snug tracking-tight sm:text-3xl">
+              The charge you didn&apos;t make.
+            </h2>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <p className="mt-5 text-lg leading-relaxed">
+              Disputes are the part of payments people feel the most and
+              understand the least. So this act is a case, not a diagram:
+              a $120 charge you never made, and the argument that follows
+              it back down the wire. You will make the calls.
+            </p>
+          </Reveal>
+          <DisputeCase />
         </section>
 
         <DrawnRule className="my-14 sm:my-20" />

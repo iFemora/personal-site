@@ -114,3 +114,21 @@ the ending gains its "And". Night rail breathes to 880px on desktop
 (mobile untouched, per Femi). Verdict panel sits lower to clear the
 doors. And Act I completes: terminal, acquirer, and network get their
 go-deeper chapters beside the issuer's.
+
+## 2026-08-02 — named, sticky, and the case file opens
+
+The page is named: Follow the Money (Femi's pick over When You Pay,
+How Money Moves, The Two Seconds). Route /follow-the-money with a
+permanent redirect from /anatomy; nav joins as MONEY, short form like
+Notes, between Work and Writing. The nav itself now sticks sitewide,
+translucent paper over blur. The "No money moved today" heading he
+caught becomes "No money moved when you paid."
+
+Act III ships in a third grammar, chosen because a dispute is an
+argument you sit inside, not a journey you watch: a case file that
+unfolds at the reader's pace, filings attributed to actors, the reader
+making the two calls that matter (the merchant's fight-or-fold, then
+the issuer's ruling from the chair Femi used to build for), three
+endings, and a sticky ledger always showing whose money the $120 is
+right now. Fast-tap double-advance guarded; the action area keeps no
+exit animations so the next tap is never dead.

@@ -10,6 +10,9 @@ export function anatomyEvent(
     | "anatomy_run_complete"
     | "anatomy_actor_opened"
     | "anatomy_night_played"
+    | "anatomy_dispute_opened"
+    | "anatomy_dispute_choice"
+    | "anatomy_dispute_end"
     | "anatomy_slider_used"
     | "anatomy_sound"
     | "anatomy_complete",

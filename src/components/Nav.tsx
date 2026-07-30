@@ -16,6 +16,8 @@ import PalettePicker, {
 const items = [
   { href: "/about", label: "About" },
   { href: "/work", label: "Work" },
+  // Short nav form of Follow the Money, same pattern as Field Notes → Notes.
+  { href: "/follow-the-money", label: "Money" },
   { href: "/writing", label: "Writing" },
   { href: "/field-notes", label: "Notes" },
   { href: "/gallery", label: "Gallery" },
