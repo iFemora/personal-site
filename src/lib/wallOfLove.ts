@@ -10,8 +10,10 @@ export type WallEntry = {
   /** "How do we know each other?", verbatim from the form. */
   how?: string;
   date?: string; // YYYY-MM-DD, from the form timestamp
-  /** Why they love me: the work, the character, or just love. Work entries feed the /work testimonials later. */
-  kind?: "work" | "character" | "love";
+  /** Why they love me — people aren't monotone, so a quote can be about
+      the work AND the character AND just love. An entry appears under
+      every kind it carries. Work entries feed the /work testimonials later. */
+  kinds?: ("work" | "character" | "love")[];
   /** Double newlines break into paragraphs. */
   quote: string;
   /** Exact substrings of the quote that get the marker swipe. */

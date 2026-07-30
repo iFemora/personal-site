@@ -236,9 +236,10 @@ content:
       - name: date
         label: Date (YYYY-MM-DD)
         type: string
-      - name: kind
-        label: Why they love me
+      - name: kinds
+        label: Why they love me (pick every one that fits)
         type: select
+        list: true
         options:
           values:
             - value: work

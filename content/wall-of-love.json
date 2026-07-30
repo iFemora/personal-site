@@ -5,7 +5,6 @@
     "role": "Costume designer, Film & TV",
     "how": "Friend / family",
     "date": "2026-07-27",
-    "kind": "character",
     "quote": "Femi is an exceptional individual. Extremely smart, compassionate and passionate with everything he does & to the people around him.\n\nHe pours himself into everything he does, from his career, friendships and hobbies. He’s someone you can’t leave a conversation with without being better than you came.\n\nHappy to know him.",
     "highlights": [
       "Extremely smart, compassionate and passionate",
@@ -16,7 +15,11 @@
       "alt": "Praise-Fred Kareem",
       "width": 640,
       "height": 800
-    }
+    },
+    "kinds": [
+      "character",
+      "love"
+    ]
   },
   {
     "id": "2026-07-27-abidemi-adesokan",
@@ -25,7 +28,6 @@
     "company": "Nomba",
     "how": "Unilag, Mass Communication",
     "date": "2026-07-27",
-    "kind": "work",
     "quote": "Femi was never someone you could keep down. He had a strong drive to get things done, and that was one of the qualities I connected with most. Back in Uni, he was one of the student leaders and was always committed to standing for what he believed was right. You could tell he was a serious, no-nonsense person who became deeply invested in every idea he pursued. Looking at him now, it’s clear that same determination has shaped him into someone who is truly living life to the fullest and relentlessly chasing his dreams.",
     "highlights": [
       "never someone you could keep down",
@@ -36,7 +38,10 @@
       "alt": "Abidemi Adesokan",
       "width": 800,
       "height": 800
-    }
+    },
+    "kinds": [
+      "character"
+    ]
   },
   {
     "id": "2026-07-28-oge-nelson",
@@ -44,7 +49,6 @@
     "role": "PR professional, Reneé PR",
     "how": "The universe did its thing!",
     "date": "2026-07-28",
-    "kind": "character",
     "quote": "Femi is one person I know who is very passionate and dedicated to whatever cause he commits to. He’s absolutely brilliant and he always inspires me. A badass tennis player too!",
     "highlights": [
       "very passionate and dedicated to whatever cause he commits to",
@@ -55,7 +59,11 @@
       "alt": "Oge Nelson",
       "width": 600,
       "height": 800
-    }
+    },
+    "kinds": [
+      "character",
+      "love"
+    ]
   },
   {
     "id": "2026-07-28-ayoola-awodein",
@@ -63,7 +71,6 @@
     "role": "Writer",
     "how": "We met on Twitter",
     "date": "2026-07-28",
-    "kind": "love",
     "quote": "When people say someone is truly inspirational, I hear it but in a detached way. After we met, you quickly became that person for me, because I’m fascinated by how you make things come together.\n\nYou’re easily one of the most interesting people in a room (in a positive way). The way you love your partner inspires people to love her more. Watching your mind at work? Brilliant. But my favourite thing about you is how you drilled considering myself into my head. I’ll never forget that, I remember that conversation more often than you would imagine.\n\nWe miss you everyday! Thank you so much for being you, you really are a light to us all. 🫶🏾",
     "highlights": [
       "one of the most interesting people in a room",
@@ -75,7 +82,11 @@
       "alt": "Ayoola Awodein",
       "width": 450,
       "height": 800
-    }
+    },
+    "kinds": [
+      "character",
+      "love"
+    ]
   },
   {
     "id": "2026-07-28-jade",
@@ -83,7 +94,6 @@
     "role": "Team Lead, Techelevate and Management Services Ltd",
     "how": "Long time friends",
     "date": "2026-07-28",
-    "kind": "love",
     "quote": "Well I can say you are a very passionate person who holds friendship in a high regard (although we have lost touch for a while) and also a very focused person.",
     "highlights": [
       "holds friendship in a high regard",
@@ -95,7 +105,11 @@
       "width": 293,
       "height": 800,
       "position": "50% 28%"
-    }
+    },
+    "kinds": [
+      "character",
+      "love"
+    ]
   },
   {
     "id": "2026-07-29-ayo-lahanmi",
@@ -104,7 +118,6 @@
     "company": "TD America",
     "how": "Back in Uni days",
     "date": "2026-07-29",
-    "kind": "character",
     "quote": "Nice person and always stands on business.",
     "highlights": [
       "always stands on business"
@@ -116,7 +129,10 @@
       "height": 800,
       "position": "48% 31%",
       "zoom": 2.4
-    }
+    },
+    "kinds": [
+      "character"
+    ]
   },
   {
     "id": "2026-07-29-mabel-sontan",
@@ -124,7 +140,6 @@
     "role": "Healthcare personnel & content creator, United Kingdom",
     "how": "Friends from Nigeria",
     "date": "2026-07-29",
-    "kind": "character",
     "quote": "What stands out most is Femi’s character - he’s upright, the kind of person who does the right thing even when no one’s checking. That matters more than people realise in business.\n\nHe’s also detail-oriented and objective - he tells you the truth, even when it’s inconvenient, because he genuinely wants the best outcome for you, not just a sale. That kind of honesty is rare.\n\nIf you’re looking for someone driven by excellence, who pays attention to the small things and won’t cut corners on the truth, Femi is that person.",
     "highlights": [
       "does the right thing even when no one’s checking",
@@ -135,7 +150,11 @@
       "alt": "Mabel Sontan",
       "width": 800,
       "height": 800
-    }
+    },
+    "kinds": [
+      "work",
+      "character"
+    ]
   },
   {
     "id": "2026-07-29-ayodele-adeyemo",
@@ -144,7 +163,6 @@
     "company": "HSMA",
     "how": "Ecosystem colleagues",
     "date": "2026-07-29",
-    "kind": "work",
     "quote": "Femi is a professional with great communication and interpersonal skills that allows him to build trust with partners and colleagues. On a personal level, his ability to remain dedicated and focused on a desired outcome is quite enviable.",
     "highlights": [
       "build trust with partners and colleagues",
@@ -155,7 +173,11 @@
       "alt": "Ayodele Adeyemo",
       "width": 800,
       "height": 600
-    }
+    },
+    "kinds": [
+      "work",
+      "character"
+    ]
   },
   {
     "id": "2026-07-29-abimbola-sani",
@@ -164,7 +186,6 @@
     "company": "Paystack",
     "how": "We worked together and maintained a friendship alongside!",
     "date": "2026-07-29",
-    "kind": "character",
     "quote": "My favorite thing about you is how you balanced your kindness and joviality with actual helpful feedback (constructive in some ways). You said some of the kindest things to me while also giving me advice that has helped me to this day and I’m grateful. Truly a 10/10 friend 🤍",
     "highlights": [
       "balanced your kindness and joviality with actual helpful feedback",
@@ -176,7 +197,11 @@
       "width": 600,
       "height": 800,
       "position": "50% 60%"
-    }
+    },
+    "kinds": [
+      "work",
+      "love"
+    ]
   },
   {
     "id": "2026-07-29-jesunifemi-tenten",
@@ -185,7 +210,6 @@
     "company": "Nigerian American Football Association",
     "how": "Pathshapers Project, Ikirun. 2024",
     "date": "2026-07-29",
-    "kind": "work",
     "quote": "Femi is genuinely one of the most amazing speakers I’ve met. I watched him train a group of teenagers to become more confident speakers in just three days, and the growth was incredible.\n\nI also really admire the way he loves and honors his wife. It says a lot about the kind of man he is.",
     "highlights": [
       "one of the most amazing speakers I’ve met",
@@ -196,7 +220,11 @@
       "alt": "Jesunifemi Tenten",
       "width": 640,
       "height": 800
-    }
+    },
+    "kinds": [
+      "work",
+      "love"
+    ]
   },
   {
     "id": "2026-07-29-opeyemi-balogun",
@@ -205,7 +233,6 @@
     "company": "Planet Echo Omnimedia",
     "how": "We were coursemates and roommates in university",
     "date": "2026-07-29",
-    "kind": "character",
     "quote": "Femi is driven by a sense of ambition that keeps him going hard at any task he sets his mind on, whether that’s public speaking, political strategy, or being a fan of certain hip-hop musicians. That ethos shows up in his personal and professional life. He also consistently leans into expanding his knowledge, skills and abilities if that would allow him to be better at the things he’s passionate about.",
     "highlights": [
       "a sense of ambition that keeps him going hard at any task he sets his mind on",
@@ -216,7 +243,10 @@
       "alt": "Ọpẹ́yẹmí Balógun",
       "width": 798,
       "height": 800
-    }
+    },
+    "kinds": [
+      "character"
+    ]
   },
   {
     "id": "2026-07-29-rafael-chisom",
@@ -225,7 +255,6 @@
     "company": "SmartSearch",
     "how": "Met through a mutual friend",
     "date": "2026-07-29",
-    "kind": "love",
     "quote": "Femi is a brilliant human being with a bag full of opinions on just about everything, and once he believes in something, he’s ready to defend it with his whole chest. He loves sports, lives for music, and is the undisputed king of games. Whether it’s competition, conversation, or good vibes, he always shows up. All in all, he’s a well-rounded, outstanding human being who brings energy, passion, and authenticity everywhere he goes.",
     "highlights": [
       "ready to defend it with his whole chest",
@@ -238,7 +267,11 @@
       "width": 600,
       "height": 800,
       "position": "50% 40%"
-    }
+    },
+    "kinds": [
+      "character",
+      "love"
+    ]
   },
   {
     "id": "2026-07-29-morakinyo-adejare",
@@ -247,7 +280,6 @@
     "company": "FCMB",
     "how": "NUTM (Postgrad)",
     "date": "2026-07-29",
-    "kind": "character",
     "quote": "This “brief” constraint is tough, but I’ll try 😂\n\nFemi is one of the most well-rounded people I know, deeply knowledgeable in his areas of expertise, yet endlessly curious about the things he isn’t. Come to any conversation with facts, because he’ll debate you fairly on anything. He’s also refreshingly self-aware: quick to admit what he doesn’t know, open to feedback, and just as quick to give you his honest take.\n\nThere are no half-measures with this guy, he’s hardworking, objective, and genuinely fascinating to watch when he’s passionate about something. He also got me into tennis, so I owe him for that too.\n\nMore to say, just because...\n\nI met Femi at NUTM, and within what felt like five minutes, he’d already given me at least 4 nicknames, all of which he still calls me to this day. But jokes aside, that program is really where it started — we learned together, worked on projects together, and just... became close. Somewhere along the way we went from friends to groomsmen at each other’s weddings, and honestly, from there to brothers. At this point I don’t even introduce him as a friend. He’s family.",
     "highlights": [
       "endlessly curious about the things he isn’t",
@@ -260,6 +292,11 @@
       "width": 544,
       "height": 800,
       "position": "50% 30%"
-    }
+    },
+    "kinds": [
+      "work",
+      "character",
+      "love"
+    ]
   }
 ]

@@ -130,7 +130,9 @@ export default function WallOfLove({ entries }: { entries: WallEntry[] }) {
   }, [openId, photoZoom]);
 
   const shown =
-    filter === "all" ? entries : entries.filter((e) => e.kind === filter);
+    filter === "all"
+      ? entries
+      : entries.filter((e) => e.kinds?.includes(filter));
 
   const openEntry = (id: string) => {
     setPhotoZoom(false);
