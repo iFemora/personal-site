@@ -5,7 +5,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { EASE } from "@femora/design-system/ease";
 import { spiralPath } from "@femora/design-system/spiral-path";
 import { anatomyEvent } from "@/lib/anatomyTrack";
-import { ACTOR_DEPTH } from "@/lib/anatomyDepth";
+import { ACTOR_DEPTH, type ActorKey } from "@/lib/anatomyDepth";
 
 /* ── the script ─────────────────────────────────────────────────────── */
 
@@ -54,7 +54,12 @@ const SCENARIOS = [
 
 type Scenario = (typeof SCENARIOS)[number];
 
-const NODES = [
+const NODES: {
+  key: ActorKey;
+  name: string;
+  ms: number;
+  active: string;
+}[] = [
   {
     key: "terminal",
     name: "Terminal",
@@ -74,48 +79,101 @@ const NODES = [
     active: "reads the first digits, routes to your bank",
   },
   { key: "issuer", name: "Issuer", ms: 900, active: "" },
-] as const;
+];
 
 const RETURN_MS = 450;
-const TOTAL_MS = 1800;
+const SIM_TOTAL = 1800;
 
-/* The natural pace: simulated milliseconds run at half speed so the eye
-   can ride along (Femi's call after living with real time). Real time
-   and quarter speed stay one tap away. */
-const NATURAL = 0.4;
-const REALTIME = 1;
-const SLOW = 0.25;
+/* ── two paces, one truth ───────────────────────────────────────────────
+   Real time honors the true 1.8 s, where the terminal gets 150 ms and no
+   human can read a word. Story pace is the default: the pulse dwells at
+   each actor long enough to read its line, while the clock still travels
+   through the true milliseconds for that stop, mapped piecewise. */
 
-/* The pulse's journey as declarative keyframes: dwell at each stop,
-   crawl into the issuer, sweep home. Times are fractions of the run. */
-const PULSE_KEYFRAMES: { at: number; pos: number }[] = [
-  { at: 0, pos: 0 },
-  { at: 150, pos: 0 },
-  { at: 210, pos: 1 },
-  { at: 270, pos: 1 },
-  { at: 310, pos: 2 },
-  { at: 350, pos: 2 },
-  { at: 450, pos: 3 },
-  { at: 1350, pos: 3 },
-  { at: 1800, pos: 0 },
-];
-const PULSE_TIMES = PULSE_KEYFRAMES.map((k) => k.at / TOTAL_MS);
+type Mode = "story" | "real";
 
-/* The lit trail is monotonic: once traversed, the wire stays lit,
-   holding through the way home. */
-const TRAIL_POS = PULSE_KEYFRAMES.reduce<number[]>((acc, k) => {
-  acc.push(Math.max(acc.length ? acc[acc.length - 1] : 0, k.pos));
-  return acc;
-}, []);
+type Timeline = {
+  duration: number;
+  pulse: { at: number; pos: number }[];
+  speak: { at: number; node: number | null }[];
+  clock: { wall: number; sim: number }[];
+};
 
-/* Which node speaks, and when it starts. */
-const SPEAK_SCHEDULE: { at: number; node: number | null }[] = [
-  { at: 0, node: 0 },
-  { at: 150, node: 1 },
-  { at: 270, node: 2 },
-  { at: 350, node: 3 },
-  { at: 1350, node: null }, // the way home
-];
+const TIMELINES: Record<Mode, Timeline> = {
+  story: {
+    duration: 12000,
+    pulse: [
+      { at: 0, pos: 0 },
+      { at: 2000, pos: 0 },
+      { at: 2600, pos: 1 },
+      { at: 4600, pos: 1 },
+      { at: 5200, pos: 2 },
+      { at: 7200, pos: 2 },
+      { at: 7900, pos: 3 },
+      { at: 10500, pos: 3 },
+      { at: 12000, pos: 0 },
+    ],
+    speak: [
+      { at: 0, node: 0 },
+      { at: 2600, node: 1 },
+      { at: 5200, node: 2 },
+      { at: 7900, node: 3 },
+      { at: 10500, node: null },
+    ],
+    clock: [
+      { wall: 0, sim: 0 },
+      { wall: 2000, sim: 150 },
+      { wall: 2600, sim: 210 },
+      { wall: 4600, sim: 270 },
+      { wall: 5200, sim: 310 },
+      { wall: 7200, sim: 350 },
+      { wall: 7900, sim: 450 },
+      { wall: 10500, sim: 1350 },
+      { wall: 12000, sim: 1800 },
+    ],
+  },
+  real: {
+    duration: 1800,
+    pulse: [
+      { at: 0, pos: 0 },
+      { at: 150, pos: 0 },
+      { at: 210, pos: 1 },
+      { at: 270, pos: 1 },
+      { at: 310, pos: 2 },
+      { at: 350, pos: 2 },
+      { at: 450, pos: 3 },
+      { at: 1350, pos: 3 },
+      { at: 1800, pos: 0 },
+    ],
+    speak: [
+      { at: 0, node: 0 },
+      { at: 150, node: 1 },
+      { at: 270, node: 2 },
+      { at: 350, node: 3 },
+      { at: 1350, node: null },
+    ],
+    clock: [
+      { wall: 0, sim: 0 },
+      { wall: 1800, sim: 1800 },
+    ],
+  },
+};
+
+function monotonic(pulse: Timeline["pulse"]): number[] {
+  const out: number[] = [];
+  for (const k of pulse) out.push(Math.max(out.length ? out[out.length - 1] : 0, k.pos));
+  return out;
+}
+
+function interpolate(points: { wall: number; sim: number }[], wall: number): number {
+  for (let i = 1; i < points.length; i++) {
+    const a = points[i - 1];
+    const b = points[i];
+    if (wall <= b.wall)
+      return a.sim + ((wall - a.wall) / (b.wall - a.wall)) * (b.sim - a.sim);
+  }
+  return points[points.length - 1].sim;
+}
 
 /* ── small glyphs, one per institution ──────────────────────────────── */
 
@@ -172,7 +230,7 @@ function useBeep(muted: boolean) {
   /* iPhones only allow audio to start inside a touch. The tap that
      starts the run warms the context; the beep at the end then plays
      from an already-running engine instead of asking permission from a
-     timer, which iOS refuses. This was the phone's inconsistent sound. */
+     timer, which iOS refuses. */
   const warm = () => {
     try {
       ctxRef.current ??= new AudioContext();
@@ -216,22 +274,22 @@ function useBeep(muted: boolean) {
   return { warm, play };
 }
 
-/* ── the clock: its own island, so sixty ticks a second never touch
-      the rest of the stage ─────────────────────────────────────────── */
+/* ── the clock: its own island, mapping wall time to simulated
+      milliseconds so story pace still tells the truth ───────────────── */
 
 function ClockReadout({
   running,
-  factor,
   done,
   approved,
+  clock,
+  duration,
 }: {
   running: boolean;
-  factor: number;
   done: boolean;
   approved: boolean;
+  clock: { wall: number; sim: number }[];
+  duration: number;
 }) {
-  // Fresh-mounted per run (key={runId} at the call site), so the clock
-  // starts at zero without a reset that would cascade renders.
   const [ms, setMs] = useState(0);
 
   useEffect(() => {
@@ -239,13 +297,13 @@ function ClockReadout({
     let raf = 0;
     const start = performance.now();
     const tick = (now: number) => {
-      const t = Math.min(TOTAL_MS, (now - start) * factor);
-      setMs(t);
-      if (t < TOTAL_MS) raf = requestAnimationFrame(tick);
+      const wall = Math.min(duration, now - start);
+      setMs(interpolate(clock, wall));
+      if (wall < duration) raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [running, factor]);
+  }, [running, clock, duration]);
 
   return (
     <p aria-live="polite" className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
@@ -255,7 +313,7 @@ function ClockReadout({
         </span>
       ) : done ? (
         <span>
-          {TOTAL_MS} ms · {approved ? "approved" : "declined"}
+          {SIM_TOTAL} ms · {approved ? "approved" : "declined"}
         </span>
       ) : (
         <span>Then tap the card</span>
@@ -300,14 +358,14 @@ export default function PaymentStage() {
   const [scenario, setScenario] = useState<Scenario>(SCENARIOS[0]);
   const [phase, setPhase] = useState<Phase>("idle");
   const [runId, setRunId] = useState(0);
-  const [runFactor, setRunFactor] = useState(NATURAL);
+  const [runMode, setRunMode] = useState<Mode>("story");
   const [speaking, setSpeaking] = useState<number | null>(null);
   const [reached, setReached] = useState(-1);
   const [returning, setReturning] = useState(false);
   const [muted, setMuted] = useState(false);
   const [everRan, setEverRan] = useState(false);
   const [isWide, setIsWide] = useState(true);
-  const [openActor, setOpenActor] = useState<"issuer" | null>(null);
+  const [openActor, setOpenActor] = useState<ActorKey | null>(null);
   const timers = useRef<number[]>([]);
   const { warm: warmAudio, play: beep } = useBeep(muted);
 
@@ -331,7 +389,7 @@ export default function PaymentStage() {
     timers.current = [];
   }
 
-  function run(factor = NATURAL) {
+  function run(mode: Mode = "story") {
     if (phase === "running") return;
     clearTimers();
     // Inside the user's tap: the only moment iOS lets audio start.
@@ -340,7 +398,8 @@ export default function PaymentStage() {
       setEverRan(true);
       anatomyEvent("anatomy_card_tapped");
     }
-    setRunFactor(factor);
+    const tl = TIMELINES[mode];
+    setRunMode(mode);
     setPhase("running");
     setReturning(false);
     setReached(-1);
@@ -355,7 +414,7 @@ export default function PaymentStage() {
       beep(scenario.approved);
       anatomyEvent("anatomy_run_complete", {
         scenario: scenario.key,
-        speed: factor === REALTIME ? "real" : factor === SLOW ? "slow" : "natural",
+        speed: mode,
       });
     };
 
@@ -364,20 +423,18 @@ export default function PaymentStage() {
       return;
     }
 
-    // The speaking schedule and completion are timer-owned: they survive
-    // a backgrounded tab, and the stage re-renders five times per run
-    // instead of sixty times a second.
-    for (const step of SPEAK_SCHEDULE) {
+    // Timer-owned schedule: survives a backgrounded tab, and the stage
+    // re-renders a handful of times per run instead of per frame.
+    for (const step of tl.speak) {
       timers.current.push(
         window.setTimeout(() => {
           setSpeaking(step.node);
           setReturning(step.node === null);
-          // Once the pulse reaches an actor it stays lit for the run.
           setReached((r) => (step.node === null ? 3 : Math.max(r, step.node)));
-        }, step.at / factor)
+        }, step.at)
       );
     }
-    timers.current.push(window.setTimeout(finish, TOTAL_MS / factor));
+    timers.current.push(window.setTimeout(finish, tl.duration));
   }
 
   function pickScenario(s: Scenario) {
@@ -388,34 +445,36 @@ export default function PaymentStage() {
     anatomyEvent("anatomy_scenario", { scenario: s.key });
   }
 
-  function toggleIssuer() {
+  function toggleActor(actor: ActorKey) {
     setOpenActor((cur) => {
-      const next = cur === "issuer" ? null : "issuer";
-      if (next) anatomyEvent("anatomy_actor_opened", { actor: "issuer" });
+      const next = cur === actor ? null : actor;
+      if (next) anatomyEvent("anatomy_actor_opened", { actor });
       return next;
     });
   }
 
   const running = phase === "running";
   const done = phase === "done";
-  const depth = ACTOR_DEPTH.issuer!;
+  const depth = openActor ? ACTOR_DEPTH[openActor] : null;
+
+  const tl = TIMELINES[runMode];
+  const times = tl.pulse.map((k) => k.at / tl.duration);
+  const trailPos = monotonic(tl.pulse);
 
   const issuerStatus = (i: number) =>
     i === 3 ? scenario.issuerLine : NODES[i].active;
 
-  /* Pulse keyframes for the current orientation. On desktop the four
-     actor centers sit at 12.5 / 37.5 / 62.5 / 87.5 percent, so the rail
-     and the dot begin at the terminal and end at the issuer — exactly. */
+  /* Actor centers: 12.5 / 37.5 / 62.5 / 87.5 percent on desktop. */
   const axisPercent = (pos: number) =>
     isWide
       ? `calc(${12.5 + (pos / 3) * 75}% - 6px)`
       : `calc(${4 + (pos / 3) * 88}%)`;
-  const pulseFrames = PULSE_KEYFRAMES.map((k) => axisPercent(k.pos));
-
-  const trailWide = TRAIL_POS.map((p) => `${(p / 3) * 75}%`);
-  const trailNarrow = TRAIL_POS.map((p) => `${(p / 3) * 88}%`);
+  const pulseFrames = tl.pulse.map((k) => axisPercent(k.pos));
+  const trailWide = trailPos.map((p) => `${(p / 3) * 75}%`);
+  const trailNarrow = trailPos.map((p) => `${(p / 3) * 88}%`);
 
   const lit = (i: number) => i <= reached || speaking === i;
+  const open = (key: ActorKey) => openActor === key;
 
   return (
     <section className="mt-10">
@@ -516,9 +575,10 @@ export default function PaymentStage() {
           <ClockReadout
             key={runId}
             running={running}
-            factor={runFactor}
             done={done}
             approved={scenario.approved}
+            clock={tl.clock}
+            duration={tl.duration}
           />
           <button
             type="button"
@@ -539,10 +599,7 @@ export default function PaymentStage() {
       <div className="relative mt-10">
         {isWide ? (
           <div className="relative pb-2 pt-1">
-            {/* The wire: terminal center to issuer center, through the
-                glyphs' vertical middle. */}
             <div className="absolute left-[12.5%] right-[12.5%] top-[18px] h-[2px] bg-rule" />
-            {/* The lit trail the pulse leaves behind. */}
             {running && !reduced && (
               <motion.div
                 key={`trail-${runId}`}
@@ -551,8 +608,8 @@ export default function PaymentStage() {
                 initial={{ width: trailWide[0] }}
                 animate={{ width: trailWide }}
                 transition={{
-                  duration: TOTAL_MS / 1000 / runFactor,
-                  times: PULSE_TIMES,
+                  duration: tl.duration / 1000,
+                  times,
                   ease: "linear",
                 }}
               />
@@ -572,8 +629,8 @@ export default function PaymentStage() {
                 animate={{ left: pulseFrames, opacity: 1 }}
                 transition={{
                   left: {
-                    duration: TOTAL_MS / 1000 / runFactor,
-                    times: PULSE_TIMES,
+                    duration: tl.duration / 1000,
+                    times,
                     ease: "linear",
                   },
                   opacity: { duration: 0.2 },
@@ -583,40 +640,28 @@ export default function PaymentStage() {
             <div className="relative flex">
               {NODES.map((node, i) => {
                 const on = speaking === i;
-                const isIssuer = node.key === "issuer";
-                const NodeTag = isIssuer ? "button" : "div";
                 return (
-                  <NodeTag
+                  <button
                     key={node.key}
-                    type={isIssuer ? "button" : undefined}
-                    onClick={isIssuer ? toggleIssuer : undefined}
-                    aria-expanded={isIssuer ? openActor === "issuer" : undefined}
-                    className={`flex flex-1 flex-col items-center gap-2 text-center ${
-                      isIssuer ? "group cursor-pointer" : ""
-                    }`}
+                    type="button"
+                    onClick={() => toggleActor(node.key)}
+                    aria-expanded={open(node.key)}
+                    className="group flex flex-1 cursor-pointer flex-col items-center gap-2 text-center"
                   >
                     <motion.span
-                      animate={
-                        reduced
-                          ? undefined
-                          : { scale: on ? 1.12 : 1 }
-                      }
+                      animate={reduced ? undefined : { scale: on ? 1.12 : 1 }}
                       transition={{ duration: 0.35, ease: EASE }}
                       className={`flex h-[38px] items-center bg-background px-2 transition-colors duration-300 ${
-                        lit(i) || (isIssuer && openActor === "issuer")
+                        lit(i) || open(node.key)
                           ? "text-accent"
-                          : isIssuer
-                            ? "text-muted group-hover:text-accent"
-                            : "text-muted"
+                          : "text-muted group-hover:text-accent"
                       }`}
                     >
                       <Glyph kind={node.key} />
                     </motion.span>
                     <span
                       className={`font-mono text-[11px] uppercase tracking-[0.14em] transition-colors duration-300 ${
-                        lit(i) || (isIssuer && openActor === "issuer")
-                          ? "text-accent"
-                          : "text-muted"
+                        lit(i) || open(node.key) ? "text-accent" : "text-muted"
                       }`}
                     >
                       {node.name}
@@ -625,18 +670,16 @@ export default function PaymentStage() {
                       className="min-h-10 max-w-44 text-[13px] leading-snug text-muted"
                       text={on ? issuerStatus(i) : done ? `~${node.ms} ms` : ""}
                     />
-                    {isIssuer && (
-                      <span
-                        className={`-mt-1 font-mono text-[11px] uppercase tracking-[0.14em] underline underline-offset-4 transition-colors duration-300 ${
-                          openActor === "issuer"
-                            ? "text-accent"
-                            : "text-muted group-hover:text-accent"
-                        }`}
-                      >
-                        {openActor === "issuer" ? "close −" : "go deeper +"}
-                      </span>
-                    )}
-                  </NodeTag>
+                    <span
+                      className={`-mt-1 font-mono text-[11px] uppercase tracking-[0.14em] underline underline-offset-4 transition-colors duration-300 ${
+                        open(node.key)
+                          ? "text-accent"
+                          : "text-muted group-hover:text-accent"
+                      }`}
+                    >
+                      {open(node.key) ? "close −" : "go deeper +"}
+                    </span>
+                  </button>
                 );
               })}
             </div>
@@ -652,8 +695,8 @@ export default function PaymentStage() {
                 initial={{ height: trailNarrow[0] }}
                 animate={{ height: trailNarrow }}
                 transition={{
-                  duration: TOTAL_MS / 1000 / runFactor,
-                  times: PULSE_TIMES,
+                  duration: tl.duration / 1000,
+                  times,
                   ease: "linear",
                 }}
               />
@@ -673,8 +716,8 @@ export default function PaymentStage() {
                 animate={{ top: pulseFrames, opacity: 1 }}
                 transition={{
                   top: {
-                    duration: TOTAL_MS / 1000 / runFactor,
-                    times: PULSE_TIMES,
+                    duration: tl.duration / 1000,
+                    times,
                     ease: "linear",
                   },
                   opacity: { duration: 0.2 },
@@ -684,23 +727,17 @@ export default function PaymentStage() {
             <div className="flex flex-col gap-9">
               {NODES.map((node, i) => {
                 const on = speaking === i;
-                const isIssuer = node.key === "issuer";
-                const NodeTag = isIssuer ? "button" : "div";
                 return (
-                  <NodeTag
+                  <button
                     key={node.key}
-                    type={isIssuer ? "button" : undefined}
-                    onClick={isIssuer ? toggleIssuer : undefined}
-                    aria-expanded={isIssuer ? openActor === "issuer" : undefined}
-                    className={`flex items-start gap-4 pl-10 text-left ${
-                      isIssuer ? "group cursor-pointer" : ""
-                    }`}
+                    type="button"
+                    onClick={() => toggleActor(node.key)}
+                    aria-expanded={open(node.key)}
+                    className="group flex cursor-pointer items-start gap-4 pl-10 text-left"
                   >
                     <span
                       className={`-ml-10 bg-background py-1 transition-colors duration-300 ${
-                        lit(i) || (isIssuer && openActor === "issuer")
-                          ? "text-accent"
-                          : "text-muted"
+                        lit(i) || open(node.key) ? "text-accent" : "text-muted"
                       }`}
                     >
                       <Glyph kind={node.key} />
@@ -708,25 +745,27 @@ export default function PaymentStage() {
                     <div>
                       <p
                         className={`font-mono text-[11px] uppercase tracking-[0.14em] transition-colors duration-300 ${
-                          lit(i) || (isIssuer && openActor === "issuer")
+                          lit(i) || open(node.key)
                             ? "text-accent"
                             : "text-muted"
                         }`}
                       >
                         {node.name}
                         {done && <span className="ml-3">~{node.ms} ms</span>}
-                        {isIssuer && (
-                          <span className="ml-3 underline underline-offset-4">
-                            {openActor === "issuer" ? "close −" : "go deeper +"}
-                          </span>
-                        )}
+                        <span
+                          className={`ml-3 underline underline-offset-4 ${
+                            open(node.key) ? "text-accent" : ""
+                          }`}
+                        >
+                          {open(node.key) ? "close −" : "go deeper +"}
+                        </span>
                       </p>
                       <StatusLine
                         className="mt-1 min-h-4 text-[13px] leading-snug text-muted"
                         text={on ? issuerStatus(i) : ""}
                       />
                     </div>
-                  </NodeTag>
+                  </button>
                 );
               })}
             </div>
@@ -744,22 +783,20 @@ export default function PaymentStage() {
         />
       </div>
 
-      {/* Depth on demand: inside the issuer */}
-      <AnimatePresence initial={false}>
-        {openActor === "issuer" && (
+      {/* Depth on demand: one door per actor */}
+      <AnimatePresence initial={false} mode="wait">
+        {depth && (
           <motion.div
-            key="issuer-depth"
+            key={depth.actor}
             initial={reduced ? { opacity: 0 } : { height: 0, opacity: 0 }}
-            animate={
-              reduced ? { opacity: 1 } : { height: "auto", opacity: 1 }
-            }
+            animate={reduced ? { opacity: 1 } : { height: "auto", opacity: 1 }}
             exit={reduced ? { opacity: 0 } : { height: 0, opacity: 0 }}
             transition={{ duration: 0.6, ease: EASE }}
             className="overflow-hidden"
           >
             <div className="mt-8 border-y border-rule py-8">
               <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
-                Going deeper · the issuer
+                Going deeper · the {depth.actor}
               </p>
               <h3 className="mt-3 font-serif text-xl leading-snug tracking-tight sm:text-2xl">
                 {depth.title}
@@ -773,7 +810,9 @@ export default function PaymentStage() {
                 animate={reduced ? undefined : "show"}
                 variants={{
                   hidden: {},
-                  show: { transition: { staggerChildren: 0.09, delayChildren: 0.25 } },
+                  show: {
+                    transition: { staggerChildren: 0.09, delayChildren: 0.25 },
+                  },
                 }}
               >
                 {depth.sections.map((s) => (
@@ -802,7 +841,7 @@ export default function PaymentStage() {
         )}
       </AnimatePresence>
 
-      {/* The verdict */}
+      {/* The verdict — held a little lower so the doors above can breathe */}
       <AnimatePresence>
         {done && (
           <motion.div
@@ -810,7 +849,7 @@ export default function PaymentStage() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, ease: EASE }}
-            className="mt-8 max-w-[480px] border border-rule p-5"
+            className="mt-12 max-w-[480px] border border-rule p-5 sm:mt-16"
           >
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
               What the terminal shows
@@ -826,24 +865,17 @@ export default function PaymentStage() {
             <div className="mt-5 flex flex-wrap gap-2">
               <button
                 type="button"
-                onClick={() => run(NATURAL)}
+                onClick={() => run("story")}
                 className="rounded-full border border-rule px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-muted transition-colors duration-300 hover:border-accent hover:text-accent"
               >
                 Run it again
               </button>
               <button
                 type="button"
-                onClick={() => run(REALTIME)}
+                onClick={() => run("real")}
                 className="rounded-full border border-rule px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-muted transition-colors duration-300 hover:border-accent hover:text-accent"
               >
                 Real time · 1.8 s
-              </button>
-              <button
-                type="button"
-                onClick={() => run(SLOW)}
-                className="rounded-full border border-rule px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-muted transition-colors duration-300 hover:border-accent hover:text-accent"
-              >
-                Slow motion · ¼
               </button>
             </div>
           </motion.div>

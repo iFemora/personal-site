@@ -16,7 +16,7 @@ const SCENES = [
     time: "5:03 PM",
     minutes: 17 * 60 + 3,
     name: "The tap",
-    line: "Your approval, a promise on file. No money has moved.",
+    line: "Your approval, a promise on file. No money moved when you paid.",
   },
   {
     key: "batch",
@@ -44,7 +44,7 @@ const SCENES = [
     time: "11:30 AM",
     minutes: 35 * 60 + 30,
     name: "Arrival",
-    line: "The merchant's account receives yesterday — minus the fees you watched above.",
+    line: "The merchant's account receives yesterday, minus the fees you watched above.",
   },
 ] as const;
 
@@ -232,7 +232,9 @@ export default function SettlementTimeline() {
         <NightClock key={playId} playing={playing} done={done} />
       </div>
 
-      <div className="relative mt-9">
+      {/* On desktop the night breathes wider than the reading column, so
+          five scenes' captions stop crowding each other. */}
+      <div className="relative mt-9 sm:w-[min(880px,calc(100vw-3rem))]">
         {isWide ? (
           <div className="relative pb-2 pt-1">
             <div className="absolute left-[10%] right-[10%] top-[17px] h-[2px] bg-rule" />
@@ -274,7 +276,7 @@ export default function SettlementTimeline() {
               {SCENES.map((scene, i) => {
                 const on = i <= reached;
                 return (
-                  <div key={scene.key} className="flex flex-1 flex-col items-center gap-2 text-center">
+                  <div key={scene.key} className="flex flex-1 flex-col items-center gap-2 px-2 text-center">
                     <span
                       className={`flex h-[36px] items-center bg-background px-2 transition-colors duration-300 ${
                         on ? "text-accent" : "text-muted"
@@ -397,7 +399,7 @@ export default function SettlementTimeline() {
             className="mt-7 max-w-[480px] font-serif italic leading-relaxed text-muted"
           >
             Eighteen and a half hours after your two seconds, the promise
-            became money. You were already home.
+            became money. And you were already home.
           </motion.p>
         )}
       </AnimatePresence>

@@ -14,7 +14,7 @@ import SettlementTimeline from "@/components/anatomy/SettlementTimeline";
 export const metadata: Metadata = {
   title: "The Anatomy of a Payment",
   description:
-    "Tap a card and watch the two seconds run: terminal, acquirer, network, issuer, and home again, at real speed.",
+    "Tap, swipe, or insert a card and watch the two seconds run: terminal, acquirer, network, issuer, and home again.",
 };
 
 export default function AnatomyPage() {
@@ -36,8 +36,8 @@ export default function AnatomyPage() {
       <MaskedLines
         as="p"
         lines={[
-          "You tap. It beeps. This is everything",
-          "that happens in between — live.",
+          "You tap, you swipe, or you insert the card.",
+          "This is everything that happens next, live.",
         ]}
         delay={0.18}
         className="mt-6 max-w-[680px] font-serif text-xl italic leading-snug text-muted sm:text-2xl"

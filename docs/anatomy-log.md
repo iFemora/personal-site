@@ -101,3 +101,16 @@ before reporting anything as live. Also fixed for real this round: the
 iPhone sound (beep fired from a timer, which iOS refuses; the tap now
 warms the audio engine), everything on both rails sized up, and the
 default pace eased to 0.4x so the trail lighting is watchable.
+
+## 2026-08-02 — story pace, four doors, night polish
+
+The uniform-slowdown insight from Femi's review: no factor makes a
+150 ms terminal readable, so story pace (the new default) gives every
+actor a readable dwell while the clock advances through the true
+milliseconds for that stop, piecewise. Real time stays one tap away;
+the quarter-speed button retired. Copy: tap or swipe or insert; the
+night's first scene pins "no money moved" to the moment of payment;
+the ending gains its "And". Night rail breathes to 880px on desktop
+(mobile untouched, per Femi). Verdict panel sits lower to clear the
+doors. And Act I completes: terminal, acquirer, and network get their
+go-deeper chapters beside the issuer's.
