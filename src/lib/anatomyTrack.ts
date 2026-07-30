@@ -6,8 +6,10 @@ export function anatomyEvent(
   name:
     | "anatomy_card_tapped"
     | "anatomy_chapter"
-    | "anatomy_decline_flipped"
+    | "anatomy_scenario"
+    | "anatomy_run_complete"
     | "anatomy_slider_used"
+    | "anatomy_sound"
     | "anatomy_complete",
   data?: Record<string, string | number>
 ) {

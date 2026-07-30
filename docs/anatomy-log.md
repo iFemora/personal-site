@@ -36,3 +36,26 @@ Femi before launch announcement.
 **Build notes:** static route, no backend, existing design system and
 motion primitives only, accent borrowed from work (slate teal) until
 the page earns its own. All copy shipped as DRAFT for Femi's voice pass.
+
+## 2026-07-31 — first user test (Femi, on phone), same day as v1
+
+**Verdict: the idea works, the execution is prose.** Direct quotes worth
+keeping: "the idea here is to take people on a journey, not writing
+prose" / "show it in real time — 1.8 seconds, how it moves from here,
+to here, to here" / "it says beep everywhere but there's no beep."
+
+**V2 decisions from the feedback:**
+- Rebuild around one real-time simulator (the stage): choose a fate,
+  tap the card, watch the request run the actual route at actual speed
+  with a live millisecond clock, then get the explanation after the
+  run, in context. Replay by tapping the card again; slow motion for
+  following the pulse.
+- Every stop becomes its own visual actor (terminal, acquirer, network,
+  issuer: own glyph, own live status line, own timing) instead of
+  paragraphs about stops.
+- A real beep. Approvals and declines sound different. Mutable.
+- The card gets real furniture: chip, contactless arcs, scheme roundel,
+  number line, valid-thru.
+- Prose demoted to supporting acts: economics slider and the settlement
+  epilogue stay, everything the stage now embodies is cut.
+- Mobile is the primary layout: the rail runs vertical on phones.
