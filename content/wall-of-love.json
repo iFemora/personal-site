@@ -298,5 +298,75 @@
       "character",
       "love"
     ]
+  },
+  {
+    "id": "2026-07-30-kelvinmary-ndukwe",
+    "name": "Kelvinmary Ndukwe",
+    "role": "Director",
+    "company": "1000 Stories Production Ltd",
+    "how": "Hehehe - Uni days",
+    "date": "2026-07-30",
+    "quote": "Great guy!\n\nYou’ve always had your eyes on the prize and you’re very dogged. I admire your tenacity and diligence.\n\nI look back at radio days and seeing you now, the growth is incredible. A good good human.\n\nGlad our paths crossed man.",
+    "highlights": [
+      "I admire your tenacity and diligence",
+      "A good good human"
+    ],
+    "image": {
+      "src": "/wall-of-love/kelvinmary-ndukwe.jpg",
+      "alt": "Kelvinmary Ndukwe",
+      "width": 592,
+      "height": 800,
+      "position": "50% 30%"
+    },
+    "kinds": [
+      "character"
+    ]
+  },
+  {
+    "id": "2026-07-31-ebunoluwa",
+    "name": "Ebunoluwa",
+    "role": "Product Manager",
+    "company": "ServiceNow",
+    "how": "Co-founded Sharenergy in 2020 & Postgrad colleagues",
+    "date": "2026-07-31",
+    "quote": "Femi has always been a passionate and curious individual, working with him was refining in many ways and posed a challenge that fostered self improvement. I’ve been inspired by Femi’s drive and passion to work.\n\nAt the time, we were working on a startup idea in a field Femi was not necessarily conversant with, but I watched him grow, research aggressively and also humbly ask for help when necessary. I find that Femi has the perfect balance of a visionary and an empathetic leader that can inspire and drive people to achieve results.\n\nOver the years I’ve been very proud of how Femi has evolved as a product leader, managing teams, delivering products while keeping overall business objective in mind. The future is bright and anything Femi decides to do I know he would give the best of himself.",
+    "highlights": [
+      "the perfect balance of a visionary and an empathetic leader",
+      "anything Femi decides to do I know he would give the best of himself"
+    ],
+    "image": {
+      "src": "/wall-of-love/ebunoluwa.jpg",
+      "alt": "Ebunoluwa",
+      "width": 600,
+      "height": 800
+    },
+    "kinds": [
+      "work",
+      "character"
+    ]
+  },
+  {
+    "id": "2026-07-31-keyukemi-ubi",
+    "name": "Keyukemi Ubi",
+    "role": "Support Engineer",
+    "company": "OpenRouter",
+    "how": "Post-Grad School",
+    "date": "2026-07-31",
+    "quote": "Femi is an awesome friend who always shows up for his people. Having him in my corner is reassuring. He is pretty funny too (sometimes 😜)",
+    "highlights": [
+      "always shows up for his people",
+      "Having him in my corner is reassuring"
+    ],
+    "image": {
+      "src": "/wall-of-love/keyukemi-ubi.jpg",
+      "alt": "Keyukemi Ubi",
+      "width": 600,
+      "height": 800,
+      "position": "50% 32%"
+    },
+    "kinds": [
+      "character",
+      "love"
+    ]
   }
 ]
