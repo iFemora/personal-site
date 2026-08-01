@@ -48,6 +48,11 @@ operations (deleting files, rewriting history, changing DNS).
 /writing                Unified index of Medium pieces + on-site MDX posts
 /writing/[slug]         Individual MDX post
 /field-notes            Short observations + voice memos
+/follow-the-money       Interactive payments explainer (nav: MONEY) — Femi's
+                        product proof. BEFORE touching it, read
+                        docs/follow-the-money-playbook.md (pattern + status)
+                        and docs/anatomy-log.md (dated decision log).
+                        /anatomy 308-redirects here.
 /tennis                 Tennis log — match notes, photos, video clips
 /gallery                Contact-sheet photo gallery (duotone → color hover, lightbox)
 /colophon               How the site is made — mark, type, colour, motion, build
@@ -59,8 +64,13 @@ operations (deleting files, rewriting history, changing DNS).
 
 **Per-page accents** (html[data-accent], set by `AccentController`):
 home rust · work/cv slate-teal · writing moss · notes ochre · tennis muted
-chartreuse · gallery umber. New sections claim the next sibling from the
-earthy family in `packages/femora-ds/tokens.css`.
+chartreuse · gallery umber · follow-the-money borrows slate-teal for now.
+New sections claim the next sibling from the earthy family in
+`packages/femora-ds/tokens.css`.
+
+**The nav is sticky sitewide** (`layout.tsx` header: translucent
+`bg-background/85` + blur, z-40). Anything else that sticks must sit
+below it (the dispute ledger uses `top-[72px] sm:top-[76px]`).
 
 **Tennis log publishing:** prepend to `content/tennis.json` —
 `{ id, date, title?, body?, image?: {src, alt, caption?, width, height}, video?: {src, poster?, caption?} }`.
