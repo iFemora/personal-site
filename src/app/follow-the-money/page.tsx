@@ -109,15 +109,18 @@ export default function FollowTheMoneyPage() {
               <span className="text-accent">04</span> · When it goes wrong
             </p>
             <h2 className="mt-4 font-serif text-2xl leading-snug tracking-tight sm:text-3xl">
-              The charge you didn&apos;t make.
+              The argument after the money moved.
             </h2>
           </Reveal>
           <Reveal delay={0.08}>
             <p className="mt-5 text-lg leading-relaxed">
               Disputes are the part of payments people feel the most and
-              understand the least. So this act is a case, not a diagram:
-              a $120 charge you never made, and the argument that follows
-              it back down the wire. You will make the calls.
+              understand the least, and they are not one thing. A stolen
+              card, an order that never came, a subscription you cancelled
+              twice, a charge that only looks doubled: same rail, four
+              different arguments. So this act is a case file rather than a
+              diagram. Pick one, and it plays out a filing at a time. You
+              will make the calls.
             </p>
           </Reveal>
           <DisputeCase />

@@ -65,10 +65,13 @@ export const metadata: Metadata = {
 
 function SiteHeader() {
   // Sticky sitewide: the nav (and the palette picker) stay reachable
-  // however deep the page goes. Translucent paper + blur so content
-  // slides beneath it in every palette and both schemes.
+  // however deep the page goes. The header itself carries no surface, so
+  // the page reads as one uninterrupted sheet; each control wears its own
+  // frosted backing instead, which is what keeps them legible as content
+  // scrolls underneath. pointer-events are handed back per control so the
+  // empty space between them stays clickable.
   return (
-    <header className="sticky top-0 z-40 mx-auto w-full max-w-[1100px] bg-background/85 px-6 pb-4 pt-5 backdrop-blur-md print:hidden">
+    <header className="pointer-events-none sticky top-0 z-40 mx-auto w-full max-w-[1100px] px-6 pb-4 pt-5 print:hidden">
       <Nav />
     </header>
   );

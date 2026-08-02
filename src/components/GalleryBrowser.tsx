@@ -149,7 +149,7 @@ export default function GalleryBrowser({ photos, art, books }: Props) {
     },
     books: {
       eyebrow: `Shelf — ${shownBooks.length} spines`,
-      body: "Books I'm reading, or circling before I commit. Covers for now; arguments about them later.",
+      body: "Books I have on my shelf. I have read some, not all. Covers for now; arguments about them later.",
     },
   };
 

@@ -79,7 +79,7 @@ export default function WritingPage() {
       <MaskedLines
         as="p"
         lines={[
-          "Essays on software, cities, tennis, religion, and whatever else I cannot leave alone.",
+          "Essays on software, cities, tennis, and whatever else I cannot leave alone.",
         ]}
         delay={0.18}
         className="mt-6 font-serif text-xl italic text-muted sm:text-2xl"

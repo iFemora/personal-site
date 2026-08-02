@@ -73,7 +73,7 @@ export default function ThemeToggle() {
       }
       aria-pressed={isDark}
       title={isDark ? "Lights on" : "Lights off"}
-      className="group inline-flex h-8 w-8 items-center justify-center text-muted transition-colors hover:text-accent"
+      className="group inline-flex h-8 w-8 items-center justify-center rounded-full bg-background/85 text-muted backdrop-blur-md transition-colors hover:text-accent"
       style={{ opacity: theme === null ? 0 : 1, transition: "opacity 0.3s" }}
     >
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden>

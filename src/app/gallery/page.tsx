@@ -42,7 +42,9 @@ export default function GalleryPage() {
       />
       <MaskedLines
         as="p"
-        lines={["Proof I go outside — and, occasionally, stay in and draw."]}
+        lines={[
+          "Proof I go outside, and occasionally stay in to draw, read, or do nothing at all.",
+        ]}
         delay={0.18}
         className="mt-6 font-serif text-xl italic text-muted sm:text-2xl"
       />
