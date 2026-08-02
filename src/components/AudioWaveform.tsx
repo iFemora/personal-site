@@ -8,6 +8,9 @@ type Props = {
   src: string;
 };
 
+// Only one note plays at a time; starting one pauses whichever was running.
+let playing: WaveSurfer | null = null;
+
 function formatTime(seconds: number): string {
   if (!isFinite(seconds) || seconds < 0) return "0:00";
   const m = Math.floor(seconds / 60);
@@ -59,6 +62,12 @@ export default function AudioWaveform({ src }: Props) {
     ws.on("audioprocess", () => setCurrentTime(ws.getCurrentTime()));
     ws.on("seeking", () => setCurrentTime(ws.getCurrentTime()));
     ws.on("play", () => {
+      // Claim the slot first so the outgoing note's pause handler, which fires
+      // synchronously below, doesn't clear it back out.
+      const previous = playing;
+      playing = ws;
+      if (previous && previous !== ws) previous.pause();
+
       setIsPlaying(true);
       // First play only — resumes after pause shouldn't recount.
       if (!playTrackedRef.current) {
@@ -66,14 +75,19 @@ export default function AudioWaveform({ src }: Props) {
         sendGAEvent("event", "field_note_play", { label: src });
       }
     });
-    ws.on("pause", () => setIsPlaying(false));
+    ws.on("pause", () => {
+      if (playing === ws) playing = null;
+      setIsPlaying(false);
+    });
     ws.on("finish", () => {
+      if (playing === ws) playing = null;
       setIsPlaying(false);
       setCurrentTime(0);
     });
 
     wsRef.current = ws;
     return () => {
+      if (playing === ws) playing = null;
       ws.destroy();
       wsRef.current = null;
     };
