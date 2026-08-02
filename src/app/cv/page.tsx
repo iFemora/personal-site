@@ -53,14 +53,15 @@ const experiences: Experience[] = [
   },
   {
     company: "Paystack (a Stripe company, YC alum)",
-    role: "Senior Product Manager, Key & Strategic Accounts",
+    role: "Product Specialist (Product Management), Key & Strategic Accounts",
     dates: "Jun 2021 – Jan 2025",
     location: "Lagos, Nigeria",
     summary:
       "Managed core payment methods and strategic merchant solutions for Africa's leading payment gateway.",
     bullets: [
+      "Managed the development of specialized solutions for Paystack's largest merchants, driving year-on-year 14% revenue growth and 5% net revenue growth.",
       "Conceptualized the \"Pay with Airtime\" micro-transactions product and drove it to ₦14B (~$30M USD) in annualized transaction volume within 12 months. Payment-flow conversion +17%.",
-      "Led the launch of Direct Debit for recurring revenue collection, including Central Bank compliance and UX improvements for high-frequency transactions.",
+      "Collaborated on the launch of Direct Debit for recurring revenue collection, including Central Bank compliance and UX improvements for high-frequency transactions.",
       "Expanded Paystack into airline ticketing, supporting a $7M revenue campaign. Built product changes for high-volume ticket purchases and managed relationships with airlines and industry partners.",
       "Reduced merchant support tickets by 13% by improving product flows and documentation.",
     ],
