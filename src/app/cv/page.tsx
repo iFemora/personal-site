@@ -5,7 +5,7 @@ import PrintButton from "@/components/PrintButton";
 export const metadata: Metadata = {
   title: "CV",
   description:
-    "The long form: roles, dates, and detail. The conventional view of a decade of product work in payments and fintech.",
+    "The long form: roles, dates, and detail. The conventional view of a decade of product leadership across regulated markets.",
 };
 
 type Experience = {
@@ -144,7 +144,8 @@ export default function CVPage() {
           Femi Siji-Kenneth
         </h1>
         <p className="mt-2 font-serif text-xl italic text-muted print:text-base">
-          Group Product Manager · Payments & Fintech
+          Product Leader · Product Teams, Digital Experiences & Regulated
+          Markets
         </p>
         <p className="mt-4 font-mono text-sm text-muted">
           Toronto, ON · oluwafemiakinseye@gmail.com · linkedin.com/in/ifemora
@@ -162,15 +163,16 @@ export default function CVPage() {
           Summary
         </h2>
         <p className="mt-4 leading-relaxed print:mt-2 print:leading-snug">
-          I have spent ten years building payment products across card issuing,
-          gateways, corporate banking, and the operational tools behind them. I
-          have hired product teams and coached product managers from associate
-          to lead level. My approach is consistent: meet customers where they
+          Ten years leading product in regulated, operationally messy markets:
+          card issuing, corporate banking, agriculture, and the tools that keep
+          them running. I have built and led PM teams, coaching product
+          managers from associate to lead, and taken products from concept to
+          national scale. My approach is consistent: meet customers where they
           work, partner closely with design, and ship in small releases. That
           has taken me from farms in 29 Nigerian states to contact centres
           supporting global card programmes. I also build working prototypes in
-          Claude Code so I can test product ideas before asking a team to commit
-          to them.
+          Claude Code so I can test product ideas before asking a team to
+          commit to them.
         </p>
       </section>
 
