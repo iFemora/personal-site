@@ -368,5 +368,52 @@
       "character",
       "love"
     ]
+  },
+  {
+    "id": "2026-08-01-kenny-adebiyi",
+    "name": "Kenny Adebiyi",
+    "role": "Scientist",
+    "company": "Indiana University, Bloomington",
+    "how": "Colleagues at NUTM Scholars Program",
+    "date": "2026-08-01",
+    "quote": "Femi has a remarkable way of bringing substance into every room he enters. His presence is unmistakable - not because he seeks to dominate the conversation, but because he consistently offers fresh perspectives that ground ideas in practical reality without sacrificing innovation. That quality proved invaluable during the many teams and projects we worked on together. Your ability to challenge thinking, bring clarity, and move conversations toward meaningful outcomes is something I’ve always admired.",
+    "highlights": [
+      "a remarkable way of bringing substance into every room he enters",
+      "challenge thinking, bring clarity, and move conversations toward meaningful outcomes"
+    ],
+    "image": {
+      "src": "/wall-of-love/kenny-adebiyi.jpg",
+      "alt": "Kenny Adebiyi",
+      "width": 478,
+      "height": 800,
+      "position": "50% 28%"
+    },
+    "kinds": [
+      "work",
+      "character"
+    ]
+  },
+  {
+    "id": "2026-08-02-laide",
+    "name": "Laide",
+    "role": "Automation Engineer",
+    "company": "Paystack",
+    "how": "Colleagues From Paystack",
+    "date": "2026-08-02",
+    "quote": "Hahaha please don’t flog me for being late. Femora is awesome, scary strong face when not in the mood but such a sweet smile. I also love how you put me on to Precious’ profile, I enjoy seeing you guys’ contents. ❤️❤️ Always love here",
+    "highlights": [
+      "scary strong face when not in the mood but such a sweet smile",
+      "Always love here"
+    ],
+    "image": {
+      "src": "/wall-of-love/laide.jpg",
+      "alt": "Laide",
+      "width": 450,
+      "height": 800
+    },
+    "kinds": [
+      "work",
+      "love"
+    ]
   }
 ]
