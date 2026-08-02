@@ -62,8 +62,8 @@ const experiences: Experience[] = [
       "Managed the development of specialized solutions for Paystack's largest merchants, driving year-on-year 14% revenue growth and 5% net revenue growth.",
       "Expanded Paystack into airline ticketing, supporting a $7M revenue campaign. Built product changes for high-volume ticket purchases and managed relationships with airlines and industry partners.",
       "Collaborated on the launch of Direct Debit for recurring revenue collection, including Central Bank compliance and UX improvements for high-frequency transactions.",
-      "Conceptualized the \"Pay with Airtime\" micro-transactions product and drove it to ₦14B (~$30M USD) in annualized transaction volume within 12 months. Payment-flow conversion +17%.",
-      "Reduced merchant support tickets by 13% by improving product flows and documentation, and through strategic long-term collaboration with key merchants' product teams to co-build or co-integrate solutions.",
+      "Conceptualized a micro-transactions product and drove it to ₦14B (~$30M USD) in annualized transaction volume within 12 months. Payment-flow conversion +17%.",
+      "Reduced merchant support tickets by 13% through improved product flows, clearer documentation, and long-term collaboration with key merchants' product teams to co-build and co-integrate solutions.",
     ],
   },
   {
