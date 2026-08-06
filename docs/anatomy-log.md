@@ -132,3 +132,63 @@ the issuer's ruling from the chair Femi used to build for), three
 endings, and a sticky ledger always showing whose money the $120 is
 right now. Fast-tap double-advance guarded; the action area keeps no
 exit animations so the next tap is never dead.
+
+## 2026-08-02 — one dispute becomes four (backfilled 2026-08-06)
+
+Femi, from the bug-dump review: "right now it's only fraud cases... I
+want them to be able to sort of role-play different kinds of cases."
+Act III's single fraud case became a four-case file behind the same
+"Open the case" door: fraud ($120), goods not received ($240, teaches
+the contact-the-merchant-first rule and the delivered-vs-received gap),
+cancelled subscription ($14.99, turns on fee economics and the
+charge-vs-mandate distinction), and duplicate charge ($68, the only
+case that can end with no dispute filed — reading pending vs posted).
+Each case keeps its own steps graph, ledger amount, and closing coda;
+endings offer rerun or switch. All branch graphs validated
+exhaustively (20 complete paths, all endings reachable). Copy DRAFT.
+
+## 2026-08-06 — external feedback: three seats and an objective
+
+First outside review, from a colleague who is an accessibility PM,
+reading on her phone. The sharp lines, verbatim: "took a few seconds
+to understand the interaction and what I was clicking and why" / "as a
+user of payment cards or methods I wasn't sure why or what to do with
+the information. I think card operators will definitely understand" /
+"wondering whether tying the flow to an objective will bring the
+pipeline knowledge and maybe optimization ideas forward" / "if the
+case/simulation starts with a question or big idea/hypothesis it helps
+the reader engage" / "Perhaps I should be asking who the intended
+audience is."
+
+**Femi's audience ruling:** three seats, all first-class — card
+carriers learning how money moves, small merchants understanding what
+integration means, and payments professionals reading for competence.
+"That part has to really work for all three."
+
+**Shipped (copy DRAFT for his voice pass):**
+- Hero orientation: names the three seats, says the page is playable,
+  and hands the reader the carried question — where is the money right
+  now, and who is on the hook if this step fails? (Act III answers it.)
+- Question-led intros for economics ("So who pays for the two
+  seconds?") and settlement ("when does the shop actually get the
+  money?"). The dispute act already opened with tension.
+- Three-seat takeaways after the interchange slider: what the split
+  means if you carry the card (rewards are funded by interchange, why
+  card minimums exist), run the shop (most of the fee is
+  non-negotiable; the acquirer margin is what you shop around on), or
+  build the rails (interchange as the system's gravity).
+
+**Refused:** an audience toggle / per-seat content filter. Three static
+paragraphs serve the lens without a state machine to maintain; revisit
+only if funnel data says the page still loses one of the seats.
+
+## 2026-08-06 — the accessibility floor (site-wide, logged here
+because her feedback triggered it)
+
+Her line: "conformance requires all themes to be accessible." Femi's
+scope: WCAG 2.2 AA as the minimum, pragmatic, "not necessarily
+everything." Shipped: `npm run audit:contrast` (all 8 palettes x 2
+schemes, 550 checks), 12 failing light-scheme accents darkened 2–10%
+hue-preserved (house ochre and chartreuse among them), one house
+:focus-visible style, wash overlaps accepted as WARN by policy. Full
+standard in docs/accessibility.md; short rules in CLAUDE.md.

@@ -11,9 +11,14 @@ Femi's product proof: one concept taken from idea to production solo,
 documented and instrumented so it generates its own case study. The
 product is an interactive explanation of card payments at
 `/follow-the-money` (named by Femi; permanent redirect from the old
-`/anatomy`; nav label MONEY, short form like Notes). The audience is
-lay people; the standard is education done properly, beautifully, in
-the site's design language.
+`/anatomy`; nav label MONEY, short form like Notes). Three audiences,
+named by Femi (2026-08-06) and all first-class: people who carry cards
+(learn how money moves), small merchants (what integrating actually
+costs and means), and payments professionals (the competence signal).
+The standard is education done properly, beautifully, in the site's
+design language. The page opens by naming the three seats and hands the
+reader one question to carry through every act: where is the money
+right now, and who is on the hook if this step fails?
 
 Inspiration benchmark is Siddiqui's *The Anatomy of the Swipe*.
 **Hard rule: recreate the territory, never the book.** All copy is
@@ -92,8 +97,11 @@ funnel events telling us where curiosity goes).
   card, rail, timelines, sound, doors, verdict).
 - `src/components/anatomy/SettlementTimeline.tsx` — Act II night
   player (desktop rail breathes to 880px; mobile approved as-is).
-- `src/components/anatomy/DisputeCase.tsx` — Act III case file
-  (steps graph in `STEPS`, branch via `choice.options[].to`).
+- `src/components/anatomy/DisputeCase.tsx` — Act III case file. FOUR
+  cases since 2026-08-02 (fraud, non-delivery, cancelled subscription,
+  duplicate charge) in a `CASES` array; each carries its own steps
+  graph (branch via `choice.options[].to`), amount, and closing coda.
+  A picker opens the act; endings offer rerun or switch-case.
 - `src/lib/anatomyDepth.ts` — go-deeper chapters per actor.
 - `src/lib/anatomyTrack.ts` — the only place event names exist.
 - `src/components/anatomy/ChapterMark.tsx` — in-view funnel beacons.
@@ -108,10 +116,15 @@ funnel events telling us where curiosity goes).
 ## Status and what's next
 
 Done: Acts I–III live and verified in production; named; in the nav;
-sticky nav sitewide; funnel armed.
+sticky nav sitewide; funnel armed; Act III expanded to four dispute
+cases (2026-08-02); three-audience framing, question-led act intros,
+and the three-seat economics takeaways (2026-08-06, from external
+accessibility-PM feedback — quotes in the log); site-wide WCAG 2.2 AA
+contrast baseline (`npm run audit:contrast`, docs/accessibility.md).
 
 Open, roughly in order:
-1. **Femi's voice pass** over all copy (Act III most sensitive).
+1. **Femi's voice pass** over all copy (Act III most sensitive; the
+   2026-08-06 orientation + seat-takeaway copy is DRAFT too).
 2. **Act IV — where cards come from**: the issuing side (network,
    sponsor bank, issuer processor, program manager; how a company
    ships a card). His Marqeta chapter and the strongest authority

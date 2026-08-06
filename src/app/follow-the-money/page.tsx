@@ -45,6 +45,17 @@ export default function FollowTheMoneyPage() {
       />
 
       <div className="max-w-[680px]">
+        <Reveal immediate delay={0.3}>
+          <p className="mt-8 text-lg leading-relaxed">
+            Three people live inside every card payment: the one who taps, the
+            shop that accepts, and the people who build the rails between
+            them. This page works from any of those seats. Everything below is
+            playable, so tap what invites tapping, and carry one question
+            through all four acts: where is the money right now, and who is on
+            the hook if this step fails?
+          </p>
+        </Reveal>
+
         <ChapterMark chapter="stage" />
         <Reveal immediate delay={0.4}>
           <PaymentStage />
@@ -64,15 +75,56 @@ export default function FollowTheMoneyPage() {
           </Reveal>
           <Reveal delay={0.08}>
             <p className="mt-5 text-lg leading-relaxed">
-              The merchant receives slightly less than you paid, and the
-              difference is divided among everyone who carried the question:
-              the issuer&apos;s share is called interchange, the network takes
-              its fee, the acquirer keeps a margin. Drag the amount and watch
-              the split — this small arithmetic is the business model of every
-              card on earth.
+              So who pays for the two seconds? Not you, at least not
+              directly. The merchant receives slightly less than you paid,
+              and the difference is divided among everyone who carried the
+              question: the issuer&apos;s share is called interchange, the
+              network takes its fee, the acquirer keeps a margin. Drag the
+              amount and watch the split — this small arithmetic is the
+              business model of every card on earth.
             </p>
           </Reveal>
           <InterchangeSlider />
+          <Reveal delay={0.08}>
+            <dl className="mt-9 space-y-6">
+              <div>
+                <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+                  If you carry the card
+                </dt>
+                <dd className="mt-2 text-[15px] leading-relaxed">
+                  Your rewards are not a gift. Points and cash-back are paid
+                  out of interchange, which means the shop just funded your
+                  miles. It is also why the corner store sets a card minimum:
+                  on a small ticket, the fixed part of the fee eats the
+                  margin.
+                </dd>
+              </div>
+              <div>
+                <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+                  If you run the shop
+                </dt>
+                <dd className="mt-2 text-[15px] leading-relaxed">
+                  This split is what card acceptance actually costs you, and
+                  most of it is set by the networks and not up for
+                  discussion. The acquirer margin is the one line you can
+                  shop around on. That is what you are really comparing when
+                  you compare processors.
+                </dd>
+              </div>
+              <div>
+                <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+                  If you build the rails
+                </dt>
+                <dd className="mt-2 text-[15px] leading-relaxed">
+                  Interchange is the gravity of the whole system. It funds
+                  card programs, decides which products issuers push, and
+                  explains why every fintech eventually wants to issue a
+                  card. Follow it and most strategy in this industry starts
+                  to make sense.
+                </dd>
+              </div>
+            </dl>
+          </Reveal>
         </section>
 
         <DrawnRule className="my-14 sm:my-20" />
@@ -90,11 +142,12 @@ export default function FollowTheMoneyPage() {
           </Reveal>
           <Reveal delay={0.08}>
             <p className="mt-5 text-lg leading-relaxed">
-              Here is the part almost nobody knows: at the moment of
-              approval, not one naira or cent has moved. The approval was a
-              promise, the issuer saying I am good for this, hold my word.
-              The money keeps that promise overnight — press play and watch
-              eighteen hours in ten seconds.
+              If the approval took two seconds, when does the shop actually
+              get the money? Here is the part almost nobody knows: at the
+              moment of approval, not one naira or cent has moved. The
+              approval was a promise, the issuer saying I am good for this,
+              hold my word. The money keeps that promise overnight — press
+              play and watch eighteen hours in ten seconds.
             </p>
           </Reveal>
           <SettlementTimeline />
