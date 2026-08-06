@@ -187,6 +187,23 @@ site-specific pieces — `BackgroundSpiral`, `CursorDot`, `CursorField` — stay
 
 ---
 
+# Accessibility
+
+Target: **WCAG 2.2 AA, pragmatic** — full rationale, rules, and scope in
+`docs/accessibility.md`. The parts that bite during everyday changes:
+
+- **Any color-pair or palette change must pass `npm run audit:contrast`**
+  (checks all 8 palettes x 2 schemes; conformance applies to every theme,
+  not just the house palette). FAILs block; WARNs are the accent wash,
+  accepted by policy.
+- Keyboard focus has one house style (`:focus-visible` in
+  `packages/femora-ds/utilities.css`). Never `outline-none` without an
+  equal replacement.
+- Interactive elements are native (`button`/`a`/`input`), icon buttons
+  get `aria-label`, motion respects `prefers-reduced-motion`.
+
+---
+
 # How to publish — three paths
 
 ## 1. New on-site essay (preferred for new writing)

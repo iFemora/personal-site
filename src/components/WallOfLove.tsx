@@ -241,7 +241,7 @@ export default function WallOfLove({ entries }: { entries: WallEntry[] }) {
             placeholder="Find your name, or your words…"
             autoComplete="off"
             spellCheck={false}
-            className="w-full appearance-none border-b border-rule bg-transparent py-1.5 font-serif text-base italic text-foreground placeholder:text-muted/70 focus:border-accent focus:outline-none [&::-webkit-search-cancel-button]:hidden"
+            className="w-full appearance-none border-b border-rule bg-transparent py-1.5 font-serif text-base italic text-foreground placeholder:text-muted/70 focus:border-accent [&::-webkit-search-cancel-button]:hidden"
           />
           {query && (
             <button

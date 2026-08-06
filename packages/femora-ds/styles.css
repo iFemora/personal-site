@@ -41,9 +41,9 @@
   --d-accent-work: #8fc1c6;
   --l-accent-writing: #5f6e3d; /* moss */
   --d-accent-writing: #b9c98b;
-  --l-accent-notes: #a4731f; /* ochre */
+  --l-accent-notes: #94681c; /* ochre */
   --d-accent-notes: #ddb56e;
-  --l-accent-tennis: #7d8c26; /* clay-court chartreuse */
+  --l-accent-tennis: #6a7720; /* clay-court chartreuse */
   --d-accent-tennis: #d6e25e; /* ball under floodlights */
   --l-accent-gallery: #6e5747; /* umber — darkroom sepia */
   --d-accent-gallery: #c9ae96;
@@ -235,6 +235,15 @@ body {
   mix-blend-mode: var(--grain-blend);
   opacity: var(--grain-opacity);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Keyboard focus: one house style everywhere. :focus-visible fires for
+   keyboard (and other non-pointer) focus only, so mouse users never see
+   it. The accent always clears 3:1 against the paper — enforced by
+   `npm run audit:contrast` (see docs/accessibility.md). */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* Ghost wordmark in the footer: outlined type, no fill. */
