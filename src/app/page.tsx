@@ -145,7 +145,7 @@ export default function Home() {
             small releases. Twice, that became{" "}
             <Highlight order={1}>a company of my own</Highlight>. Off the clock I
             play <Highlight order={2}>a lot of tennis</Highlight>, badly and
-            often, read too much religion and philosophy, and write for minds
+            often, read too much philosophy, and write for minds
             that <Highlight order={3}>think in spirals</Highlight>.
           </p>
         </Reveal>

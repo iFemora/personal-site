@@ -70,7 +70,7 @@ export default function AboutPage() {
           <p className="mt-5 text-lg leading-relaxed">
             Work is not the whole story. I play a lot of tennis, badly, often,
             and happily. I write for minds that think in spirals. I read more
-            religion and philosophy than is strictly useful, make a little art,
+            philosophy than is strictly useful, make a little art,
             and will still debate almost anything to the ground. I came up as a
             debater and never quite stopped. The tidy version is on the{" "}
             <a href="/cv" className="link-swipe text-accent">

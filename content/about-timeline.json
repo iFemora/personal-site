@@ -24,12 +24,6 @@
     "caption": "A year at Livingstone Model College, then Lagos State Model College Igbonla. Wanted to draw buildings for a living; landed in arts class studying to be a lawyer. Graduated at fifteen."
   },
   {
-    "id": "aunts-house",
-    "year": "2007",
-    "title": "A year at my aunt's.",
-    "caption": "She and her husband were pastors. My mother taught me to pray; that house taught me to study the word. The apologetics started here, long before it had a name."
-  },
-  {
     "id": "unilag-one",
     "year": "2008",
     "title": "University of Lagos, round one.",
@@ -120,15 +114,9 @@
     "caption": "Landed in Calgary in March, Toronto by November. Lead PM on a card-issuing platform that moves billions. I kept building prototypes myself because that is still how I understand a product."
   },
   {
-    "id": "apologetics",
-    "year": "2026",
-    "title": "The apologetics journey begins.",
-    "caption": "Officially since May — though really since my aunt's living room in 2007. The questions finally got a study plan."
-  },
-  {
     "id": "now",
     "year": "Now",
     "title": "Toronto. Married. Still chasing a clean backhand.",
-    "caption": "Writing essays for minds that think in spirals, making a little art, arguing about religion, and losing to better players on weekends."
+    "caption": "Writing essays for minds that think in spirals, making a little art, and losing to better players on weekends."
   }
 ]

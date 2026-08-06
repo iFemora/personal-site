@@ -83,7 +83,7 @@ function SiteFooter() {
       <p className="max-w-[680px] font-serif text-2xl leading-snug tracking-tight sm:text-3xl">
         Building something <s className="text-muted">in payments</s>{" "}
         <span className="italic text-accent">genuinely good</span>? Or just
-        want to debate tennis or religion?{" "}
+        want to debate tennis?{" "}
         <a
           href="mailto:oluwafemiakinseye@gmail.com"
           className="link-swipe whitespace-nowrap text-accent"

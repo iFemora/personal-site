@@ -13,7 +13,7 @@ import ExternalArrow from "@/components/ExternalArrow";
 export const metadata: Metadata = {
   title: "Writing",
   description:
-    "Essays from the long way around. Pieces published on this site and on Medium.",
+    "Essays from the long way around. Pieces published on this site and on Substack.",
 };
 
 function WritingRow({ item }: { item: WritingItem }) {
@@ -95,8 +95,8 @@ export default function WritingPage() {
         </Reveal>
         <Reveal immediate delay={0.5}>
           <p className="text-lg leading-relaxed">
-            Some pieces are published here and others on Medium. Medium links
-            open in a new tab.
+            Some pieces are published here and others on Substack. Substack
+            links open in a new tab.
           </p>
         </Reveal>
       </section>

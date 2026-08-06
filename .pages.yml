@@ -55,7 +55,7 @@ content:
         type: string
         required: true
       - name: source
-        label: Source (e.g. Medium)
+        label: Source (e.g. Substack)
         type: string
         required: true
       - name: title

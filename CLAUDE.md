@@ -4,13 +4,13 @@
 
 This is the source of **[ifemora.dev](https://ifemora.dev)** — Femi Siji-Kenneth's
 personal website. Femi is a Lead Product Manager at Marqeta (payments / fintech),
-based in Toronto. He writes essays on Medium (handle `@iFemora`), plays tennis,
+based in Toronto. He writes essays on Substack (`ifemora.substack.com`), plays tennis,
 and signs the site "Thinker. Tinkerer."
 
 When Femi opens this repo in Claude Code, his typical request is one of:
 
 - "Publish this essay" (he pastes content)
-- "Add this Medium link" (URL of a new post)
+- "Add this Substack link" (URL of a new post)
 - "Change X on the site" (copy tweak, layout fix, new section)
 - "Why is Y broken" (debugging the deployed site)
 
@@ -45,7 +45,7 @@ operations (deleting files, rewriting history, changing DNS).
 /about                  Life timeline — "how I got here", dated beats, duotone-ready photos
 /work                   5 artifact-first case cards
 /cv                     Long-form designed résumé with print-to-PDF button
-/writing                Unified index of Medium pieces + on-site MDX posts
+/writing                Unified index of Substack pieces + on-site MDX posts
 /writing/[slug]         Individual MDX post
 /field-notes            Short observations + voice memos
 /follow-the-money       Interactive payments explainer (nav: MONEY) — Femi's
@@ -216,27 +216,33 @@ with `_` are skipped). Optional frontmatter: `homepageHidden: true`, `image:
 **Note:** `content/writing/_template.mdx` is a build-only file. Do not delete it.
 Turbopack's dynamic-import glob needs at least one `.mdx` in the folder to resolve.
 
-## 2. New Medium / external piece
+## 2. New Substack / external piece
 
 Prepend to the array in `content/writing/external.json` (no `type` field —
 the loader adds it):
 
 ```json
 {
-  "href": "https://medium.com/@iFemora/...",
-  "source": "Medium",
+  "href": "https://ifemora.substack.com/p/...",
+  "source": "Substack",
   "title": "Post title",
   "date": "YYYY-MM-DD",
   "description": "One-sentence description.",
   "image": {
-    "src": "https://cdn-images-1.medium.com/...",
+    "src": "https://substackcdn.com/image/fetch/...",
     "alt": "Hero image for <title>"
   }
 }
 ```
 
-To get the image URL, fetch Medium's RSS at `https://medium.com/feed/@iFemora`
-and pull the first `<img src>` from the matching `<content:encoded>` block.
+To get the image URL and date, fetch the post page and read `og:image` and
+the JSON-LD `datePublished`. Substack blocks default curl — send a browser
+User-Agent (`curl -A "Mozilla/5.0 ..."`).
+
+NOTE (2026-08): Medium links were deliberately removed sitewide — Femi keeps
+Medium separate from this site. Religion content is also scrubbed from this
+site on purpose; it lives on his separate religion project. Don't reintroduce
+either.
 
 Commit (`new post: <title>`) and push.
 
@@ -310,5 +316,5 @@ to offer; never assume a tagline or paragraph is what he'd actually write.
   treat errors from generated worktree files as site-code failures.
 - **Tailwind v4** uses `@theme inline` in CSS, not `tailwind.config.ts`. Adding a new color token means editing `packages/femora-ds/tokens.css` (and mirroring it in the flattened `packages/femora-ds/styles.css`).
 - **Dynamic MDX import** (`src/app/writing/[slug]/page.tsx`) requires at least one `.mdx` file in `content/writing/`. `_template.mdx` exists for this reason.
-- **`next/image` remote patterns** in `next.config.ts` must list any new image host. Currently allows `cdn-images-1.medium.com` and `miro.medium.com`.
+- **`next/image` remote patterns** in `next.config.ts` must list any new image host. Currently allows `substackcdn.com`.
 - **`metadataBase`** in `src/app/layout.tsx` reads `NEXT_PUBLIC_SITE_URL` env var. Production value is `https://ifemora.dev`.

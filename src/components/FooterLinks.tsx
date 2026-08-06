@@ -7,7 +7,6 @@ const links = [
   { label: "email", href: "mailto:oluwafemiakinseye@gmail.com" },
   { label: "linkedin", href: "https://linkedin.com/in/ifemora" },
   { label: "x", href: "https://x.com/iFemora" },
-  { label: "medium", href: "https://medium.com/@iFemora" },
   { label: "substack", href: "https://substack.com/@ifemora" },
   { label: "colophon", href: "/colophon" },
 ];
