@@ -415,5 +415,29 @@
       "work",
       "love"
     ]
+  },
+  {
+    "id": "2026-08-06-loretta-adamu",
+    "name": "Loretta O. Adamu",
+    "role": "Program Director",
+    "company": "Adaba TechNest",
+    "how": "Colleagues at Paystack and over time, we became good friends.",
+    "date": "2026-08-06",
+    "quote": "Femi is honest, dependable, and genuinely kind. He takes his work seriously while making the people around him feel supported and valued. I enjoyed working with him at Paystack and would confidently recommend him as a trustworthy professional.",
+    "highlights": [
+      "honest, dependable, and genuinely kind",
+      "making the people around him feel supported and valued"
+    ],
+    "image": {
+      "src": "/wall-of-love/loretta-adamu.jpg",
+      "alt": "Loretta O. Adamu",
+      "width": 590,
+      "height": 800,
+      "position": "50% 30%"
+    },
+    "kinds": [
+      "work",
+      "character"
+    ]
   }
 ]
