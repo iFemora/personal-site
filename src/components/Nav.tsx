@@ -68,14 +68,14 @@ export default function Nav() {
     );
 
   return (
-    <nav className="pointer-events-none relative flex items-center justify-between gap-3 font-mono text-xs uppercase tracking-[0.18em] sm:gap-6">
-      <div className="pointer-events-auto flex items-center gap-3 sm:gap-5">
+    <nav className="relative flex items-center justify-between gap-3 font-mono text-xs uppercase tracking-[0.18em] sm:gap-6">
+      <div className="flex items-center gap-3 sm:gap-5">
         <Magnetic strength={0.35}>
           <Link
             href="/"
             aria-label="Home"
             aria-current={isHome ? "page" : undefined}
-            className="group inline-flex h-9 w-9 items-center justify-center rounded-full bg-background/85 text-accent backdrop-blur-md"
+            className="group inline-flex h-9 w-9 items-center justify-center text-accent"
           >
             <svg
               width="30"
@@ -97,9 +97,9 @@ export default function Nav() {
         <PalettePicker />
       </div>
 
-      <div className="pointer-events-auto flex items-center gap-3 sm:gap-5">
+      <div className="flex items-center gap-3 sm:gap-5">
         {/* Desktop: the pill inline. */}
-        <div className="hidden items-center rounded-full border border-rule bg-background/85 p-1 backdrop-blur-md sm:flex">
+        <div className="hidden items-center rounded-full border border-rule p-1 sm:flex">
           {items.map((item) => {
             const active = isActivePath(pathname, item.href);
             return (
@@ -128,7 +128,7 @@ export default function Nav() {
               setPanel("menu");
               setOpen((o) => !o);
             }}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-background/85 text-muted backdrop-blur-md transition-colors hover:text-foreground"
+            className="inline-flex h-9 w-9 items-center justify-center text-muted transition-colors hover:text-foreground"
           >
             <span className="relative block h-3.5 w-5" aria-hidden>
               <span

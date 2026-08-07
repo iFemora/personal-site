@@ -130,10 +130,10 @@ export default function PalettePicker() {
         aria-expanded={open}
         aria-haspopup="true"
         onClick={() => setOpen((o) => !o)}
-        className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-rule px-4 py-2 text-[11px] uppercase backdrop-blur-md transition-colors duration-300 ${
+        className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-rule px-4 py-2 text-[11px] uppercase transition-colors duration-300 ${
           open
             ? "bg-accent/10 text-accent"
-            : "bg-background/85 text-muted hover:text-foreground"
+            : "text-muted hover:text-foreground"
         }`}
       >
         <ActiveDot />

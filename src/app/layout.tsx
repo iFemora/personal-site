@@ -64,15 +64,16 @@ export const metadata: Metadata = {
 };
 
 function SiteHeader() {
-  // Sticky sitewide: the nav (and the palette picker) stay reachable
-  // however deep the page goes. The header itself carries no surface, so
-  // the page reads as one uninterrupted sheet; each control wears its own
-  // frosted backing instead, which is what keeps them legible as content
-  // scrolls underneath. pointer-events are handed back per control so the
-  // empty space between them stays clickable.
+  // Sticky sitewide: one full-bleed sheet of frosted paper (Femi: "liquid
+  // glass") spanning the whole viewport at every size, so content scrolls
+  // under glass instead of appearing between floating controls. Strong
+  // blur + a touch of saturation keep it feeling like part of the page
+  // rather than a lid on it; the hairline is the surface's bottom edge.
   return (
-    <header className="pointer-events-none sticky top-0 z-40 mx-auto w-full max-w-[1100px] px-6 pb-4 pt-5 print:hidden">
-      <Nav />
+    <header className="sticky top-0 z-40 w-full border-b border-rule/60 bg-background/70 backdrop-blur-xl backdrop-saturate-150 print:hidden">
+      <div className="mx-auto w-full max-w-[1100px] px-6 pb-4 pt-5">
+        <Nav />
+      </div>
     </header>
   );
 }

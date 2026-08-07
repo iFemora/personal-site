@@ -68,9 +68,12 @@ chartreuse · gallery umber · follow-the-money borrows slate-teal for now.
 New sections claim the next sibling from the earthy family in
 `packages/femora-ds/tokens.css`.
 
-**The nav is sticky sitewide** (`layout.tsx` header: translucent
-`bg-background/85` + blur, z-40). Anything else that sticks must sit
-below it (the dispute ledger uses `top-[72px] sm:top-[76px]`).
+**The nav is sticky sitewide** (`layout.tsx` header: a full-bleed
+"liquid glass" bar — full viewport width at every size, translucent
+`bg-background/70` + heavy blur + saturate, bottom hairline, z-40; the
+1100px constraint lives on the inner wrapper). Anything else that
+sticks must sit below it (the dispute ledger uses
+`top-[72px] sm:top-[76px]`).
 
 **Tennis log publishing:** prepend to `content/tennis.json` —
 `{ id, date, title?, body?, image?: {src, alt, caption?, width, height}, video?: {src, poster?, caption?} }`.
