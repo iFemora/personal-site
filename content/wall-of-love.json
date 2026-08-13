@@ -439,5 +439,75 @@
       "work",
       "character"
     ]
+  },
+  {
+    "id": "2026-08-10-nimota-ashimi-ukaigwe",
+    "name": "Nimota Ashimi-Ukaigwe",
+    "role": "Civil Engineer, Germany",
+    "how": "Friends from Lagos",
+    "date": "2026-08-10",
+    "quote": "Femi loves engaging with ideas and he has a unique way of interpreting them.\n\nEvery conversation with Femi is one you won’t forget easily.",
+    "highlights": [
+      "a unique way of interpreting them",
+      "one you won’t forget easily"
+    ],
+    "image": {
+      "src": "/wall-of-love/nimota-ashimi-ukaigwe.jpg",
+      "alt": "Nimota Ashimi-Ukaigwe",
+      "width": 800,
+      "height": 576,
+      "position": "57% 40%"
+    },
+    "kinds": [
+      "character"
+    ]
+  },
+  {
+    "id": "2026-08-10-ejiro-esigbone",
+    "name": "Ejiro Esigbone",
+    "role": "Consultant (about to be MBA student at Rotman)",
+    "company": "BCG",
+    "how": "Paystack",
+    "date": "2026-08-10",
+    "quote": "Passion. That is the word I associate most with Femi; he does his work with passion. This translates to great energy as a teammate, willingness to always improve and an “it can be done” approach to difficulty.",
+    "highlights": [
+      "he does his work with passion",
+      "an “it can be done” approach to difficulty"
+    ],
+    "image": {
+      "src": "/wall-of-love/ejiro-esigbone.jpg",
+      "alt": "Ejiro Esigbone",
+      "width": 756,
+      "height": 800
+    },
+    "kinds": [
+      "work",
+      "character"
+    ]
+  },
+  {
+    "id": "2026-08-13-okechukwu-ukaigwe",
+    "name": "Okechukwu Ukaigwe",
+    "role": "Demand Generation & Integrated Campaign Senior Manager",
+    "company": "NavVis",
+    "how": "Former manager at Farmcrowdy",
+    "date": "2026-08-13",
+    "quote": "Femi is the kind of person you want on your team. From the first time I worked with him, he stood out as someone who doesn’t just bring ideas to the table, but helps move things forward.\n\nHe is incredibly creative, driven, and thoughtful about every aspect of a project. Even when things start to feel misaligned or difficult, Femi is often the person keeping the energy and hope alive, making sure no important detail is overlooked and finding new ways to get things back on track.\n\nI’ve seen his talent shine in so many ways over the years. From our Farmcrowdy days, where he brought communities and growth ideas to life, to the many times he has pushed himself to experiment, innovate, and try something new, Femi has always had a special ability to turn ideas into momentum.\n\nHe’s genuine, deeply innovative, and brings the kind of energy every team needs. I genuinely miss working with him and would gladly do it again.",
+    "highlights": [
+      "the kind of person you want on your team",
+      "keeping the energy and hope alive",
+      "a special ability to turn ideas into momentum"
+    ],
+    "image": {
+      "src": "/wall-of-love/okechukwu-ukaigwe.jpg",
+      "alt": "Okechukwu Ukaigwe",
+      "width": 600,
+      "height": 800,
+      "position": "62% 42%"
+    },
+    "kinds": [
+      "work",
+      "character"
+    ]
   }
 ]
