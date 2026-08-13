@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Field-service software, learned in the field",
   description:
     "Three mobile apps and a web platform for farmers, technicians, and buyers, researched in person across 29 Nigerian states.",
+  alternates: { canonical: "/work/farmcrowdy" },
 };
 
 export default function FarmcrowdyCaseStudy() {

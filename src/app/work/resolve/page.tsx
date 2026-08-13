@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Resolve, a case study",
   description:
     "A cardholder support platform for a global card issuer, shipped in under five months and expanded through small releases.",
+  alternates: { canonical: "/work/resolve" },
 };
 
 export default function ResolveCaseStudy() {

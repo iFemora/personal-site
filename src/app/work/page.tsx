@@ -10,6 +10,7 @@ import {
 export const metadata: Metadata = {
   title: "Work",
   description: "Selected products and teams built by Femi Siji-Kenneth.",
+  alternates: { canonical: "/work" },
 };
 
 type WorkEntry = {

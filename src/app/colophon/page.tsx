@@ -9,6 +9,7 @@ import {
 export const metadata: Metadata = {
   title: "Colophon",
   description: "How ifemora.dev is made, and why it looks the way it does.",
+  alternates: { canonical: "/colophon" },
 };
 
 const sections = [

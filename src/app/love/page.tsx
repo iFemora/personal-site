@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Wall of Love",
   description:
     "Kind words from friends, family, and colleagues, on the record.",
+  alternates: { canonical: "/love" },
 };
 
 export default function WallOfLovePage() {

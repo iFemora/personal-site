@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   title: "Notes",
   description:
     "Short observations and the occasional voice memo. Lower bar than essays; higher than X.",
+  alternates: { canonical: "/field-notes" },
 };
 
 export default function FieldNotesPage() {

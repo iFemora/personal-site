@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: "Tennis",
   description:
     "A tennis log — match notes, clips, and photographs from the court.",
+  alternates: { canonical: "/tennis" },
 };
 
 export default function TennisPage() {

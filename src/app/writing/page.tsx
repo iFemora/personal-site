@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   title: "Writing",
   description:
     "Essays from the long way around. Pieces published on this site and on Substack.",
+  alternates: { canonical: "/writing" },
 };
 
 function WritingRow({ item }: { item: WritingItem }) {

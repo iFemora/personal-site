@@ -10,6 +10,7 @@ import {
 export const metadata: Metadata = {
   title: "Gallery",
   description: "Photographs, artwork, and the bookshelf of Femi Siji-Kenneth.",
+  alternates: { canonical: "/gallery" },
 };
 
 // Rendered per request so the contact sheet reshuffles on every visit.

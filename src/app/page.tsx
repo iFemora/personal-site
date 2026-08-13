@@ -1,7 +1,9 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { getHomepageWriting } from "@/lib/writing";
 import { getDesk } from "@/lib/desk";
+import { siteUrl, serializeJsonLd } from "@/lib/seo";
 import ExternalArrow from "@/components/ExternalArrow";
 import {
   Reveal,
@@ -71,12 +73,34 @@ function SectionLabel({ index, label }: { index: string; label: string }) {
   );
 }
 
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Femi Siji-Kenneth",
+  jobTitle: "Lead Product Manager",
+  url: siteUrl,
+  sameAs: [
+    "https://linkedin.com/in/ifemora",
+    "https://x.com/iFemora",
+    "https://ifemora.substack.com",
+    "https://substack.com/@ifemora",
+  ],
+};
+
 export default function Home() {
   const writingItems = getHomepageWriting(3);
   const desk = getDesk();
 
   return (
     <main className="mx-auto w-full max-w-[1100px] px-6 py-16 sm:py-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(personJsonLd) }}
+      />
       {/* Hero */}
       <div className="relative isolate min-h-[540px] overflow-hidden sm:min-h-[410px] sm:overflow-visible">
         <div

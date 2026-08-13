@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Pay by reference, a case study",
   description:
     "Turning a reconciliation gap into a payment channel: airline ticketing at the terminal, then insurance premiums on the same rail.",
+  alternates: { canonical: "/work/airline-payments" },
 };
 
 export default function AirlinePaymentsCaseStudy() {

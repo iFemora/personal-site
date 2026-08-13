@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "CV",
   description:
     "The long form: roles, dates, and detail. The conventional view of a decade of product leadership across regulated markets.",
+  alternates: { canonical: "/cv" },
 };
 
 type Experience = {

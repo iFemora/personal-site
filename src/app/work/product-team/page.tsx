@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Making a bank product-led, a case study",
   description:
     "First product hire at a sales-driven bank: five product managers across three time zones, and a pipeline the group CEO came to enforce.",
+  alternates: { canonical: "/work/product-team" },
 };
 
 export default function ProductTeamCaseStudy() {

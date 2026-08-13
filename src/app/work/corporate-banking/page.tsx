@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Corporate banking, from scratch",
   description:
     "A corporate internet banking platform for Nigeria and the UK, serving 50,000+ SME and enterprise clients.",
+  alternates: { canonical: "/work/corporate-banking" },
 };
 
 export default function CorporateBankingCaseStudy() {

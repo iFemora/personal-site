@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   title: "Follow the Money",
   description:
     "Tap, swipe, or insert a card and follow it: the two seconds, the night the money actually moves, and the fight when it goes wrong.",
+  alternates: { canonical: "/follow-the-money" },
 };
 
 export default function FollowTheMoneyPage() {

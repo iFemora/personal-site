@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/writing",
     "/cv",
     "/field-notes",
+    "/tennis",
     "/gallery",
     "/love",
     "/colophon",

@@ -13,6 +13,7 @@ import {
 export const metadata: Metadata = {
   title: "About",
   description: "How Femi Siji-Kenneth got here — the long way, with detours.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
