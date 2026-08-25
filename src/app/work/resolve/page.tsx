@@ -19,7 +19,7 @@ export default function ResolveCaseStudy() {
         {
           label: "Scope",
           paras: [
-            "Resolve is the deepest of four product areas I carry at Marqeta. The others: the Marqeta Dashboard, the program-management tool I also own day to day, including customer issues, bulk-fix tickets, and QA; identity and access management across the platform; and the telephony suite behind Marqeta's IVR, including custom call flows, customer integrations, and containment and drop-off reporting. This case study covers Resolve, because it is the one I took from concept to production.",
+            "Resolve is the deepest of four product areas I carry at Marqeta. The others: the Marqeta Dashboard, the program-management tool for 400+ businesses and 17,000+ users that I also own day to day, including customer issues, bulk-fix tickets, and QA; identity and access management across the platform; and the telephony suite behind Marqeta's IVR, including custom call flows, customer integrations, and containment and drop-off reporting. This case study covers Resolve, because it is the one I took from concept to production.",
           ],
         },
         {

@@ -78,8 +78,11 @@ export default function ProductTeamCaseStudy() {
           label: "Where it stands",
           paras: [
             <>
-              The company is product-led today. Payroll and FX and trade were
-              ready but had not gone to market when I left, and{" "}
+              The company is product-led today. Two of the PMs I grew were
+              promoted within three months of my leaving, one to Head of
+              Products for the retail division and one to Product Lead for
+              wealth management. Payroll and FX and trade were ready but had
+              not gone to market when I left, and{" "}
               <a
                 href="https://www.rovabusiness.com/"
                 target="_blank"

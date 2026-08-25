@@ -5,7 +5,7 @@ import BankingSystemMap from "@/components/work/BankingSystemMap";
 export const metadata: Metadata = {
   title: "Corporate banking, from scratch",
   description:
-    "A corporate internet banking platform for Nigeria and the UK, serving 50,000+ SME and enterprise clients.",
+    "A corporate internet banking platform for Nigeria and the UK, serving 200,000+ SME and enterprise clients.",
   alternates: { canonical: "/work/corporate-banking" },
 };
 
@@ -14,7 +14,7 @@ export default function CorporateBankingCaseStudy() {
     <CaseStudy
       eyebrow="First City Monument Bank · 2024 to 2025"
       title={["Corporate banking,", "from scratch"]}
-      standfirst="A corporate internet banking platform for Nigeria and the UK, serving 50,000+ SME and enterprise clients."
+      standfirst="A corporate internet banking platform for Nigeria and the UK, serving 200,000+ SME and enterprise clients."
       sections={[
         {
           label: "The start",
@@ -34,7 +34,7 @@ export default function CorporateBankingCaseStudy() {
         {
           label: "What we built",
           paras: [
-            "Corporate internet banking across two markets, from scratch: digital onboarding that removed the branch visit, TOTP authentication in place of hardware tokens, transfers with multi-party approval, bulk payments, payroll, FX and trade management, and team management for the people who actually operate a company's money. Onboarding time-to-value fell by 40%.",
+            "Corporate internet banking across two markets, from scratch: digital onboarding that removed the branch visit, TOTP authentication in place of hardware tokens, transfers with multi-party approval, bulk payments, payroll, FX and trade management, and team management for the people who actually operate a company's money. Onboarding time-to-value fell by 40%, and monthly transaction volume scaled from ₦200M at alpha to over ₦70B (about US$45M) within months of launch.",
           ],
           artifact: <BankingSystemMap />,
           figures: [

@@ -25,16 +25,17 @@ const experiences: Experience[] = [
     dates: "Sep 2025 – Present",
     location: "Toronto, ON (Remote)",
     summary:
-      "Owns a four-product portfolio (Resolve, the contact-center support platform; Marqeta Dashboard; Marqeta IVR; and Identity & Access Management) for a global card-issuing platform processing billions in payment volume.",
+      "Owns a four-product portfolio (Resolve, the contact-center support platform; Marqeta Dashboard; Marqeta IVR; and Identity & Access Management) for a global card-issuing platform processing billions in annual payment volume.",
     bullets: [
       "Led Resolve from concept to production in under five months: a purpose-built cardholder support portal designed side by side with the design team, informed by direct observation of agent workflows during Coinbase program support.",
       "Expanded Resolve after its first release to support debit, credit, and prepaid programs across payments, collections, disputes, fraud management, and account sub-status management.",
       "Leading Resolve's credit expansion across FCRA disputes, collections and delinquency workflows, credit bureau reporting, and TCPA compliance.",
       "Built the automated testing workflow exclusively using Claude Code and Playwright in Terminal.",
       "Presented Resolve's product vision and roadmap to cross-functional leadership across Credit, Operations, and Engineering. Created demo content for BPO transition stakeholders.",
-      "Redesigning the Marqeta Dashboard for enterprise program managers and defining KPIs for cardholder lifecycle management and settlement tracking.",
+      "Lead two cross-functional engineering pods across North America and India; earned an internal impact award within four months of joining.",
+      "Manage the Marqeta Dashboard, the primary program-management tool for 400+ businesses and 17,000+ users, including programs run by Uber, Square, Klarna, and Coinbase. Redesigning it for enterprise program managers and defining KPIs for cardholder lifecycle management and settlement tracking.",
       "Leading the design of a central, immutable audit log for use across the platform, compliant with PCI DSS, GLBA, and SOC 2.",
-      "Owning Identity & Access Management on Auth0 for program administrators, developers, and support agents. The work includes user-access tooling, Self-Service Credential API provisioning, and IVR improvements, including AI agent management.",
+      "Owning Identity & Access Management on Auth0: a unified access-management platform with federated identity across Marqeta products, single sign-on, and just-in-time provisioning for program administrators, developers, and support agents. The work includes user-access tooling, Self-Service Credential API provisioning, and IVR improvements, including AI agent management.",
     ],
   },
   {
@@ -45,9 +46,9 @@ const experiences: Experience[] = [
     summary:
       "Led digital transformation of corporate banking across Nigeria and the UK: corporate internet banking, admin tools, core banking (Finacle/Fineract), API architecture, payroll, remittances, FX/trade management. Managed five direct reports across multiple product lines.",
     bullets: [
-      "Built and led a team of five PMs: hiring APMs and scoping their features to grow them into full PMs, recruiting Senior PMs who advanced to Lead. One mentee eventually became Head of Products for the Retail Banking division.",
-      "Led the design and launch of the CIB platform from scratch, serving 50,000+ SME and enterprise clients across both markets. Streamlined bulk transfers, bill payments, payroll, and FX operations.",
-      "Launched payroll management, FX & trade management, and Rova Business, a business remittance platform serving SME cross-border payments and the gig economy.",
+      "Built and led a team of five PMs: hiring APMs and scoping their features to grow them into full PMs, recruiting Senior PMs who advanced to Lead. Two mentees were promoted within three months of the engagement ending: one to Head of Products for the Retail Banking division, the other to Product Lead for Wealth Management.",
+      "Led the design and launch of the CIB platform from scratch, serving 200,000+ SME and enterprise clients across both markets. Streamlined bulk transfers, bill payments, payroll, and FX operations. Monthly transaction volume scaled from ₦200M at alpha to over ₦70B (~$45M USD) within months of launch.",
+      "Launched payroll management, FX & trade management, and Rova Business, a business remittance platform serving SME cross-border payments and the gig economy. Built the volume and unit-economics models that underpinned Rova's business case.",
       "Redesigned corporate client onboarding based on drop-off analysis and direct feedback from enterprise treasurers, achieving a 40% reduction in time-to-value. Managed KYC/AML integrations and regulatory compliance across both markets.",
       "Introduced real-time analytics dashboards so corporate treasurers could monitor activity more easily, improving client retention while meeting banking regulations.",
     ],
@@ -61,7 +62,7 @@ const experiences: Experience[] = [
       "Managed core payment methods and strategic merchant solutions for Africa's leading payment gateway.",
     bullets: [
       "Managed the development of specialized solutions for Paystack's largest merchants, driving year-on-year 14% revenue growth and 5% net revenue growth.",
-      "Expanded Paystack into airline ticketing, supporting a $7M revenue campaign. Built product changes for high-volume ticket purchases and managed relationships with airlines and industry partners.",
+      "Expanded Paystack into airline ticketing, contributing to a $7M year-over-year revenue uplift. Built product changes for high-volume ticket purchases and managed relationships with airlines and industry partners.",
       "Collaborated on the launch of Direct Debit for recurring revenue collection, including Central Bank compliance and UX improvements for high-frequency transactions.",
       "Conceptualized a micro-transactions product and drove it to ₦14B (~$30M USD) in annualized transaction volume within 12 months. Payment-flow conversion +17%.",
       "Reduced merchant support tickets by 13% through improved product flows, clearer documentation, and long-term collaboration with key merchants' product teams to co-build and co-integrate solutions.",
@@ -86,8 +87,8 @@ const education = [
   {
     school: "Nigerian University of Technology and Management",
     detail:
-      "Post-Graduate Diploma, Technology, Design & Entrepreneurship · MasterCard Foundation Scholar",
-    year: "2021",
+      "NUTM Scholars Program · Technology, Entrepreneurship and Design · MasterCard Foundation Scholar",
+    year: "2020–2021",
   },
   {
     school: "University of Lagos",
@@ -240,7 +241,8 @@ export default function CVPage() {
           Certifications
         </h2>
         <p className="mt-4 leading-relaxed print:mt-2">
-          Certified Scrum Product Owner (CSPO)
+          Certified Scrum Product Owner (CSPO) · Scrum Alliance · May 2025 –
+          May 2027
         </p>
       </section>
 

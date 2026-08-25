@@ -76,16 +76,24 @@ export default function BankingSystemMap() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-6 border-t border-rule pt-5">
+        <div className="grid grid-cols-1 gap-5 border-t border-rule pt-5 sm:grid-cols-3 sm:gap-4">
           <div>
             <p className="wonk font-serif text-3xl italic leading-none text-accent">
-              50,000+
+              200,000+
             </p>
             <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.15em] text-muted">
               SME + enterprise clients
             </p>
           </div>
-          <div className="text-right">
+          <div className="sm:text-center">
+            <p className="wonk font-serif text-3xl italic leading-none text-accent">
+              ₦70B+
+            </p>
+            <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.15em] text-muted">
+              Monthly volume at scale
+            </p>
+          </div>
+          <div className="sm:text-right">
             <p className="wonk font-serif text-3xl italic leading-none text-accent">
               −40%
             </p>

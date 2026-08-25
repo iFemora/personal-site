@@ -19,7 +19,7 @@ export default function AirlinePaymentsCaseStudy() {
         {
           label: "Scope",
           paras: [
-            "Terminal expansion into airline ticketing, then insurance. Airlines, the airports authority, and insurers as counterparties. The work supported a $7M revenue campaign.",
+            "Terminal expansion into airline ticketing, then insurance. Airlines, the airports authority, and insurers as counterparties. The work contributed to a $7M year-over-year revenue uplift.",
           ],
         },
         {

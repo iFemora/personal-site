@@ -25,14 +25,14 @@ const entries: WorkEntry[] = [
   {
     id: "corporate-banking",
     title: "Built a corporate banking platform from scratch across Nigeria and the UK.",
-    body: "The platform now serves 50,000+ SME and enterprise clients across Nigeria and the UK. We cut onboarding time by 40% and shipped corporate banking, payroll, remittances, and FX and trade management.",
+    body: "The platform now serves 200,000+ SME and enterprise clients across Nigeria and the UK, and monthly transaction volume scaled from ₦200M at alpha to over ₦70B within months of launch. We cut onboarding time by 40% and shipped corporate banking, payroll, remittances, and FX and trade management.",
     meta: "FCMB · 2024–25",
     caseStudy: { href: "/work/corporate-banking" },
   },
   {
     id: "airline-payments",
     title: "Turned a reconciliation gap into a payment channel.",
-    body: "Paystack already owned airline payments online. What nobody could do was book online and pay later, because nothing turned a booking reference into an amount owed at a terminal. We built that, sold it to an industry I convened rather than cold-called, and then ran the same rail through insurance premiums. The work supported a $7M revenue campaign.",
+    body: "Paystack already owned airline payments online. What nobody could do was book online and pay later, because nothing turned a booking reference into an amount owed at a terminal. We built that, sold it to an industry I convened rather than cold-called, and then ran the same rail through insurance premiums. The work contributed to a $7M year-over-year revenue uplift.",
     meta: "Paystack · 2021–2024",
     caseStudy: { href: "/work/airline-payments" },
   },
@@ -53,7 +53,7 @@ const entries: WorkEntry[] = [
   {
     id: "product-team",
     title: "Made a sales-driven bank product-led.",
-    body: "First product hire at a company with no product function: five PMs from APM to Senior across Nigeria, the UK, and Canada, over four product lines. I installed the discovery framework, the templates, the rituals, and a design system, and the group COO backed the pipeline until it became how the company works. One Senior PM I grew is now Head of Products for retail.",
+    body: "First product hire at a company with no product function: five PMs from APM to Senior across Nigeria, the UK, and Canada, over four product lines. I installed the discovery framework, the templates, the rituals, and a design system, and the group COO backed the pipeline until it became how the company works. Two PMs I grew were promoted within three months of my leaving: one to Head of Products for retail, the other to Product Lead for wealth management.",
     meta: "FCMB · 2024–25",
     caseStudy: { href: "/work/product-team" },
   },
