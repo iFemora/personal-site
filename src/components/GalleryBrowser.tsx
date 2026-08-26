@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from "motion/react";
 import GalleryGrid from "@/components/GalleryGrid";
 import type { GalleryFrame } from "@/lib/gallery";
 import { EASE } from "@femora/design-system/ease";
+import { trackEvent } from "@/lib/track";
 
 type SectionKey = "photos" | "art" | "books";
 type ShelfKey = "all" | "faith" | "product" | "others";
@@ -114,6 +115,20 @@ export default function GalleryBrowser({ photos, art, books }: Props) {
   const [section, setSection] = useState<SectionKey>("photos");
   const [shelf, setShelf] = useState<ShelfKey>("all");
 
+  // Trailing debounce so sliding across the pill reports only where the
+  // pointer settles, and re-selecting the current segment reports nothing.
+  const lastSent = useRef("photos");
+  const sendTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const trackSelect = (params: { section: SectionKey; shelf?: ShelfKey }) => {
+    const key = `${params.section}:${params.shelf ?? ""}`;
+    if (sendTimer.current) clearTimeout(sendTimer.current);
+    sendTimer.current = setTimeout(() => {
+      if (lastSent.current === key) return;
+      lastSent.current = key;
+      trackEvent("gallery_section_select", params);
+    }, 400);
+  };
+
   const sections: { key: SectionKey; label: string }[] = [
     { key: "photos", label: "photos" },
     ...(art.length > 0 ? [{ key: "art" as const, label: "art" }] : []),
@@ -159,7 +174,10 @@ export default function GalleryBrowser({ photos, art, books }: Props) {
         <Toggle
           options={sections}
           value={section}
-          onChange={setSection}
+          onChange={(k) => {
+            setSection(k);
+            trackSelect({ section: k });
+          }}
           layoutId="gallery-section-thumb"
         />
         {section === "books" && shelves.length > 2 && (
@@ -171,7 +189,10 @@ export default function GalleryBrowser({ photos, art, books }: Props) {
             <Toggle
               options={shelves}
               value={shelf}
-              onChange={setShelf}
+              onChange={(k) => {
+                setShelf(k);
+                trackSelect({ section: "books", shelf: k });
+              }}
               layoutId="gallery-shelf-thumb"
             />
           </motion.div>

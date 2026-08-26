@@ -2,14 +2,34 @@
 
 import { motion, useReducedMotion } from "motion/react";
 import { EASE } from "@femora/design-system/ease";
+import { trackEvent } from "@/lib/track";
 
-const links = [
-  { label: "email", href: "mailto:oluwafemiakinseye@gmail.com" },
-  { label: "linkedin", href: "https://linkedin.com/in/ifemora" },
-  { label: "x", href: "https://x.com/iFemora" },
-  { label: "substack", href: "https://substack.com/@ifemora" },
+const links: { label: string; href: string; network?: string }[] = [
+  { label: "email", href: "mailto:oluwafemiakinseye@gmail.com", network: "email" },
+  { label: "linkedin", href: "https://linkedin.com/in/ifemora", network: "linkedin" },
+  { label: "x", href: "https://x.com/iFemora", network: "x" },
+  { label: "substack", href: "https://substack.com/@ifemora", network: "substack" },
   { label: "colophon", href: "/colophon" },
 ];
+
+/** The "Say hello →" mailto in the footer paragraph — a client island so
+    the click can be counted (mailto links escape GA's outbound tracking). */
+export function SayHelloLink() {
+  return (
+    <a
+      href="mailto:oluwafemiakinseye@gmail.com"
+      onClick={() =>
+        trackEvent("social_link_click", {
+          network: "email",
+          link_location: "footer_hello",
+        })
+      }
+      className="link-swipe whitespace-nowrap text-accent"
+    >
+      Say hello →
+    </a>
+  );
+}
 
 export default function FooterLinks() {
   const reduced = useReducedMotion();
@@ -38,6 +58,14 @@ export default function FooterLinks() {
         >
           <a
             href={link.href}
+            onClick={() => {
+              if (link.network) {
+                trackEvent("social_link_click", {
+                  network: link.network,
+                  link_location: "footer_links",
+                });
+              }
+            }}
             className="transition-colors hover:text-foreground"
           >
             {link.label}

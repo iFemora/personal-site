@@ -6,6 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Highlight } from "@femora/design-system";
 import { EASE } from "@femora/design-system/ease";
 import type { WallEntry } from "@/lib/wallOfLove";
+import { trackEvent } from "@/lib/track";
 
 const FILTERS = [
   { key: "all", label: "everything", short: "all" },
@@ -118,6 +119,21 @@ export default function WallOfLove({ entries }: { entries: WallEntry[] }) {
   const toggleRef = useRef<HTMLDivElement>(null);
   const sliding = useRef(false);
 
+  // Trailing debounce so a slide across the toggle reports only where it
+  // settles; re-selecting the current segment reports nothing.
+  const lastSentFilter = useRef<FilterKey>("all");
+  const filterTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const searchTracked = useRef(false);
+  const pickFilter = (k: FilterKey) => {
+    setFilter(k);
+    if (filterTimer.current) clearTimeout(filterTimer.current);
+    filterTimer.current = setTimeout(() => {
+      if (lastSentFilter.current === k) return;
+      lastSentFilter.current = k;
+      trackEvent("love_filter_select", { filter: k });
+    }, 400);
+  };
+
   // The toggle is slidable: dragging across it moves the selection to
   // whichever segment sits under the pointer.
   const selectFromPoint = (clientX: number) => {
@@ -128,7 +144,7 @@ export default function WallOfLove({ entries }: { entries: WallEntry[] }) {
     for (const b of buttons) {
       const r = b.getBoundingClientRect();
       if (clientX >= r.left && clientX <= r.right) {
-        setFilter(b.dataset.filter as FilterKey);
+        pickFilter(b.dataset.filter as FilterKey);
         return;
       }
     }
@@ -158,6 +174,7 @@ export default function WallOfLove({ entries }: { entries: WallEntry[] }) {
   const shown = byKind.filter((e) => matchesQuery(e, query));
 
   const openEntry = (id: string) => {
+    trackEvent("love_entry_open", { entry_id: id });
     setPhotoZoom(false);
     setOpenId(id);
   };
@@ -195,7 +212,7 @@ export default function WallOfLove({ entries }: { entries: WallEntry[] }) {
                 type="button"
                 data-filter={f.key}
                 aria-pressed={active}
-                onClick={() => setFilter(f.key)}
+                onClick={() => pickFilter(f.key)}
                 className={`relative rounded-full px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.15em] transition-colors duration-300 sm:px-4 ${
                   active ? "text-accent" : "text-muted hover:text-foreground"
                 }`}
@@ -230,7 +247,14 @@ export default function WallOfLove({ entries }: { entries: WallEntry[] }) {
           <input
             type="search"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => {
+              // Usage signal only — the typed text never leaves the page.
+              if (e.target.value.trim() && !searchTracked.current) {
+                searchTracked.current = true;
+                trackEvent("love_search");
+              }
+              setQuery(e.target.value);
+            }}
             onKeyDown={(e) => {
               if (e.key === "Escape" && query) {
                 e.stopPropagation();

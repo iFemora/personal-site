@@ -12,6 +12,7 @@ import PalettePicker, {
   ActiveDot,
   PaletteRows,
 } from "@/components/PalettePicker";
+import { trackEvent } from "@/lib/track";
 
 const items = [
   { href: "/about", label: "About" },
@@ -182,7 +183,10 @@ export default function Nav() {
                     <div className="mx-4 my-1 border-t border-rule" />
                     <button
                       type="button"
-                      onClick={() => setPanel("palette")}
+                      onClick={() => {
+                        trackEvent("palette_picker_open", { surface: "mobile" });
+                        setPanel("palette");
+                      }}
                       className="flex w-full items-center gap-2 whitespace-nowrap rounded-full px-4 py-2.5 text-left uppercase text-muted transition-colors duration-300 hover:text-foreground"
                     >
                       <ActiveDot />
@@ -199,7 +203,7 @@ export default function Nav() {
                       ← Menu
                     </button>
                     <div className="mx-4 my-1 border-t border-rule" />
-                    <PaletteRows />
+                    <PaletteRows surface="mobile" />
                   </>
                 )}
               </motion.div>

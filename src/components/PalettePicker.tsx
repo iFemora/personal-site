@@ -10,6 +10,7 @@ import {
   subscribePalette,
   type PaletteId,
 } from "@/lib/palettes";
+import { trackEvent } from "@/lib/track";
 
 type Mode = "light" | "dark";
 
@@ -73,7 +74,11 @@ export function ActiveDot() {
 
 /** The palette rows themselves — shared between the desktop dropdown
     and the phone menu's palette panel in Nav. */
-export function PaletteRows() {
+export function PaletteRows({
+  surface = "desktop",
+}: {
+  surface?: "desktop" | "mobile";
+}) {
   const { palette, mode } = usePaletteState();
   if (palette === null || mode === null) return null;
   return (
@@ -86,7 +91,15 @@ export function PaletteRows() {
             type="button"
             title={p.note}
             aria-pressed={active}
-            onClick={() => applyPalette(p.id)}
+            onClick={() => {
+              if (!active) {
+                trackEvent("palette_selected", {
+                  palette_name: p.id,
+                  surface,
+                });
+              }
+              applyPalette(p.id);
+            }}
             className={`flex w-full items-center justify-between gap-4 rounded-full px-4 py-2.5 text-left uppercase transition-colors duration-300 ${
               active ? "bg-accent/10 text-accent" : "text-muted hover:text-foreground"
             }`}
@@ -129,7 +142,10 @@ export default function PalettePicker() {
         type="button"
         aria-expanded={open}
         aria-haspopup="true"
-        onClick={() => setOpen((o) => !o)}
+        onClick={() => {
+          if (!open) trackEvent("palette_picker_open", { surface: "desktop" });
+          setOpen((o) => !o);
+        }}
         className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-rule px-4 py-2 text-[11px] uppercase transition-colors duration-300 ${
           open
             ? "bg-accent/10 text-accent"

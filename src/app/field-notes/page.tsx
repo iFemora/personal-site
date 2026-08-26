@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getFieldNotes, formatFieldNoteDate } from "@/lib/fieldNotes";
 import AudioWaveform from "@/components/AudioWaveform";
+import NoteTranscript from "@/components/NoteTranscript";
 import {
   Reveal,
   DrawnRule,
@@ -72,18 +73,7 @@ export default function FieldNotesPage() {
                 )}
 
                 {note.transcript && (
-                  <details className="group mt-4 text-sm text-muted">
-                    <summary className="cursor-pointer select-none underline underline-offset-4 hover:text-foreground hover:no-underline">
-                      Transcript
-                    </summary>
-                    <div className="mt-3 leading-relaxed">
-                      {note.transcript.split("\n\n").map((para, i) => (
-                        <p key={i} className={i === 0 ? "" : "mt-3"}>
-                          {para}
-                        </p>
-                      ))}
-                    </div>
-                  </details>
+                  <NoteTranscript noteId={note.id} transcript={note.transcript} />
                 )}
 
                 {note.links && note.links.length > 0 && (

@@ -3,7 +3,7 @@ import { Fraunces, Newsreader, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Nav from "@/components/Nav";
-import FooterLinks from "@/components/FooterLinks";
+import FooterLinks, { SayHelloLink } from "@/components/FooterLinks";
 import AccentController from "@/components/AccentController";
 import CursorDot from "@/components/motion/CursorDot";
 import BackgroundSpiral from "@/components/motion/BackgroundSpiral";
@@ -85,12 +85,7 @@ function SiteFooter() {
         Building something <s className="text-muted">in payments</s>{" "}
         <span className="italic text-accent">genuinely good</span>? Or just
         want to debate tennis?{" "}
-        <a
-          href="mailto:oluwafemiakinseye@gmail.com"
-          className="link-swipe whitespace-nowrap text-accent"
-        >
-          Say hello →
-        </a>
+        <SayHelloLink />
       </p>
       <hr className="mb-8 mt-12 border-t border-rule" />
       <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">

@@ -3,6 +3,7 @@
 import { useId, useSyncExternalStore } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { EASE } from "@femora/design-system/ease";
+import { trackEvent } from "@/lib/track";
 
 type Theme = "light" | "dark";
 
@@ -41,6 +42,7 @@ export default function ThemeToggle() {
   function toggle() {
     if (!theme) return;
     const next: Theme = theme === "dark" ? "light" : "dark";
+    trackEvent("theme_toggle", { theme_to: next });
     const root = document.documentElement;
     // Cross-fade the flip (skipped for reduced motion via CSS).
     root.setAttribute("data-theme-transitioning", "");

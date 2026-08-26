@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { getTennisEntries, formatTennisDate } from "@/lib/tennis";
+import TennisVideo from "@/components/TennisVideo";
 import {
   Reveal,
   DrawnRule,
@@ -105,13 +106,9 @@ export default function TennisPage() {
 
                     {entry.video && (
                       <figure className="mt-6 first:mt-0">
-                        <video
+                        <TennisVideo
                           src={entry.video.src}
                           poster={entry.video.poster}
-                          controls
-                          preload="metadata"
-                          playsInline
-                          className="w-full rounded-sm"
                         />
                         {entry.video.caption && (
                           <figcaption className="mt-3 font-mono text-xs uppercase tracking-[0.15em] text-muted">

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { sendGAEvent } from "@next/third-parties/google";
 import WaveSurfer from "wavesurfer.js";
+import { trackEvent } from "@/lib/track";
 
 type Props = {
   src: string;
@@ -30,6 +31,7 @@ export default function AudioWaveform({ src }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const wsRef = useRef<WaveSurfer | null>(null);
   const playTrackedRef = useRef(false);
+  const finishTrackedRef = useRef(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -83,6 +85,11 @@ export default function AudioWaveform({ src }: Props) {
       if (playing === ws) playing = null;
       setIsPlaying(false);
       setCurrentTime(0);
+      // First finish only — pairs with field_note_play for completion rate.
+      if (!finishTrackedRef.current) {
+        finishTrackedRef.current = true;
+        trackEvent("field_note_complete", { label: src });
+      }
     });
 
     wsRef.current = ws;
