@@ -509,5 +509,27 @@
       "work",
       "character"
     ]
+  },
+  {
+    "id": "2026-08-28-emmanuel-nwachukwu",
+    "name": "Emmanuel Nwachukwu",
+    "role": "Mechanical Engineer",
+    "company": "NLNG",
+    "how": "NUTM",
+    "date": "2026-08-28",
+    "quote": "Femi reached out to me just weeks into NUTM. He wanted to build a community of people who thought deeply and cared about the same things. That says a lot about him. He brings people together, and he does it with real intention.\n\nHe calls himself a thinker and tinkerer. True, but it undersells him. His voice carries. His questions make you pause. And everything he builds feels like it’s pointing somewhere bigger. I’m glad I get a front-row seat.",
+    "highlights": [
+      "He brings people together, and he does it with real intention",
+      "everything he builds feels like it’s pointing somewhere bigger"
+    ],
+    "image": {
+      "src": "/wall-of-love/emmanuel-nwachukwu.jpg",
+      "alt": "Emmanuel Nwachukwu",
+      "width": 800,
+      "height": 800
+    },
+    "kinds": [
+      "character"
+    ]
   }
 ]
