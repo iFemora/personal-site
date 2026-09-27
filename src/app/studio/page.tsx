@@ -7,22 +7,63 @@ import {
   ProximityType,
 } from "@femora/design-system";
 import { getStudio } from "@/lib/studio";
-import { getSeriesSummaries } from "@/lib/gallerySeries";
-import VideoEmbed from "@/components/VideoEmbed";
-import SeriesStrip from "@/components/SeriesStrip";
+import { getPhotos } from "@/lib/gallery";
+import { getHomepageWriting, formatPostDate } from "@/lib/writing";
+import Filmstrip from "@/components/Filmstrip";
+import ExternalArrow from "@/components/ExternalArrow";
 
 export const metadata: Metadata = {
   title: "Studio",
   description:
-    "Film, creative direction, and photography by Femi Siji-Kenneth: a student documentary, motion work with Addict Creative, and a photo series.",
+    "The other kind of work by Femi Siji-Kenneth: film and creative direction, essays, and photographs.",
   alternates: { canonical: "/studio" },
 };
 
+function RoomHeader({
+  index,
+  title,
+  line,
+}: {
+  index: string;
+  title: string;
+  line: string;
+}) {
+  return (
+    <Reveal>
+      <div>
+        <p
+          aria-hidden
+          className="wonk font-serif text-6xl italic leading-none text-rule sm:text-7xl"
+        >
+          {index}
+        </p>
+        <h2 className="wonk mt-4 font-serif text-3xl font-medium leading-tight tracking-tight sm:text-4xl">
+          {title}
+        </h2>
+        <p className="mt-2 font-serif text-base italic leading-snug text-muted">
+          {line}
+        </p>
+      </div>
+    </Reveal>
+  );
+}
+
 export default function StudioPage() {
   const studio = getStudio();
-  const series = getSeriesSummaries();
-  const count = studio.pieces.length + series.length;
-  const words = ["one", "two", "three", "four", "five", "six", "seven"];
+  const posters = studio.pieces.map((p) => ({ id: p.id, ...p.poster }));
+  const years = studio.pieces
+    .map((p) => parseInt(p.meta[0] ?? "", 10))
+    .filter((y) => !Number.isNaN(y));
+  const span =
+    years.length > 0
+      ? `${Math.min(...years)}–${String(Math.max(...years)).slice(-2)}`
+      : "";
+  const photos = getPhotos().slice(0, 5);
+  const photoCount = getPhotos().length;
+  const writing = getHomepageWriting(3);
+
+  const rowClass =
+    "grid scroll-mt-24 gap-6 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-12";
 
   return (
     <main className="mx-auto w-full max-w-[1100px] px-6 py-16 sm:py-24">
@@ -32,7 +73,7 @@ export default function StudioPage() {
       />
       <MaskedLines
         as="p"
-        lines={[studio.tagline]}
+        lines={["Still. In motion."]}
         delay={0.18}
         className="mt-6 font-serif text-xl italic text-muted sm:text-2xl"
       />
@@ -42,171 +83,116 @@ export default function StudioPage() {
       <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12">
         <Reveal immediate delay={0.45}>
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
-            <span className="text-accent">Index</span> — {words[count - 1] ?? count}{" "}
-            pieces
+            <span className="text-accent">Rooms</span> — three
           </p>
         </Reveal>
         <Reveal immediate delay={0.5}>
-          <div className="space-y-5">
-            {studio.intro.map((p) => (
-              <p key={p} className="text-lg leading-relaxed">
-                {p}
-              </p>
-            ))}
-            <p className="text-lg leading-relaxed">
-              The product work lives on{" "}
-              <Link href="/work" className="link-swipe text-accent">
-                Work
-              </Link>
-              . This page is the other kind.
-            </p>
-          </div>
+          <p className="text-lg leading-relaxed">
+            Film, essays, and photographs. The product work lives on{" "}
+            <Link href="/work" className="link-swipe text-accent">
+              Work
+            </Link>
+            . This is the other kind.
+          </p>
         </Reveal>
       </section>
 
       <DrawnRule className="my-14 sm:my-20" />
 
       <div className="space-y-20 sm:space-y-28">
-        {studio.pieces.map((piece, i) => (
-          <article
-            key={piece.id}
-            id={piece.id}
-            className="grid scroll-mt-24 gap-6 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-12"
-          >
-            <Reveal>
-              <div>
-                <p
-                  aria-hidden
-                  className="wonk font-serif text-6xl italic leading-none text-rule sm:text-7xl"
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </p>
-                <p className="mt-4 font-mono text-xs uppercase tracking-[0.18em] text-accent">
-                  {piece.kind}
-                </p>
-                <p className="mt-3 font-mono text-[11px] uppercase leading-relaxed tracking-[0.15em] text-muted">
-                  {piece.meta.map((m) => (
-                    <span key={m} className="block">
-                      {m}
-                    </span>
-                  ))}
-                </p>
-                <p className="mt-4 font-serif text-sm italic text-foreground">
-                  {piece.role}
-                </p>
-              </div>
-            </Reveal>
+        {/* Reel */}
+        <section id="reel" className={rowClass}>
+          <RoomHeader
+            index="01"
+            title="Reel"
+            line="Film and documentary production, creative direction, design."
+          />
+          <Filmstrip
+            href="/studio/reel"
+            frames={posters}
+            aspect="video"
+            title="Reel"
+            tagline={studio.tagline}
+            meta={`${studio.pieces.length} pieces · ${span}`}
+            event={{ name: "studio_room_open", label: "reel" }}
+            delay={0.05}
+          />
+        </section>
 
-            <div className="space-y-6">
-              <Reveal delay={0.05}>
-                <h2 className="wonk font-serif text-3xl font-medium leading-tight tracking-tight sm:text-4xl">
-                  {piece.title}
-                  {piece.subtitle && (
-                    <span className="block font-normal italic text-muted">
-                      {piece.subtitle}
+        {/* Writing */}
+        <section id="writing" className={rowClass}>
+          <RoomHeader
+            index="02"
+            title="Writing"
+            line="Essays from the long way around."
+          />
+          <Reveal delay={0.05}>
+            <ol className="border-t border-rule">
+              {writing.map((item) => {
+                const isExternal = item.type === "external";
+                const href = isExternal ? item.href : `/writing/${item.slug}`;
+                const inner = (
+                  <span className="flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+                    <span className="font-serif text-xl leading-snug tracking-tight transition-colors duration-300 group-hover:text-accent">
+                      {item.title}
+                      {isExternal && (
+                        <ExternalArrow className="ml-1 text-muted" />
+                      )}
                     </span>
-                  )}
-                </h2>
-                <p className="mt-4 max-w-[640px] text-lg leading-relaxed">
-                  {piece.body}
-                </p>
-              </Reveal>
-
-              <Reveal delay={0.1}>
-                {piece.video ? (
-                  <VideoEmbed
-                    id={piece.id}
-                    video={piece.video}
-                    title={piece.title}
-                    poster={piece.poster}
-                  />
-                ) : null}
-                <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-                  <div className="max-w-[560px]">
-                    {piece.caption && (
-                      <p className="font-serif text-sm italic leading-snug text-muted">
-                        {piece.caption}
-                      </p>
-                    )}
-                    {piece.credits && (
-                      <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
-                        {piece.credits}
-                      </p>
-                    )}
-                  </div>
-                  {piece.link && (
-                    <a
-                      href={piece.link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-mono text-[11px] uppercase tracking-[0.15em] text-accent underline underline-offset-4 hover:no-underline"
-                    >
-                      {piece.link.label} ↗
-                    </a>
-                  )}
-                </div>
-              </Reveal>
-            </div>
-          </article>
-        ))}
-
-        {series.length > 0 && (
-          <article
-            id="photography"
-            className="grid scroll-mt-24 gap-6 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-12"
-          >
-            <Reveal>
-              <div>
-                <p
-                  aria-hidden
-                  className="wonk font-serif text-6xl italic leading-none text-rule sm:text-7xl"
-                >
-                  {String(studio.pieces.length + 1).padStart(2, "0")}
-                </p>
-                <p className="mt-4 font-mono text-xs uppercase tracking-[0.18em] text-accent">
-                  Photography
-                </p>
-                <p className="mt-3 font-mono text-[11px] uppercase leading-relaxed tracking-[0.15em] text-muted">
-                  {series.map((s) => (
-                    <span key={s.slug} className="block">
-                      {s.location} · {s.date}
+                    <span className="shrink-0 font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
+                      {formatPostDate(item.date)}
                     </span>
-                  ))}
-                </p>
-              </div>
-            </Reveal>
-            <div>
-              <Reveal delay={0.05}>
-                <h2 className="wonk font-serif text-3xl font-medium leading-tight tracking-tight sm:text-4xl">
-                  Looking closer
-                  <span className="block font-normal italic text-muted">
-                    {series[0].tagline}
                   </span>
-                </h2>
-                <p className="mt-4 max-w-[640px] text-lg leading-relaxed">
-                  Leading lines, human scale and the space around a subject.
-                </p>
-              </Reveal>
-              <div className="mt-6">
-                <SeriesStrip series={series} />
-              </div>
-            </div>
-          </article>
-        )}
+                );
+                return (
+                  <li key={href} className="border-b border-rule">
+                    {isExternal ? (
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group block"
+                      >
+                        {inner}
+                      </a>
+                    ) : (
+                      <Link href={href} className="group block">
+                        {inner}
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
+            </ol>
+            <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.15em]">
+              <Link
+                href="/writing"
+                className="text-accent underline underline-offset-4 hover:no-underline"
+              >
+                All the writing →
+              </Link>
+            </p>
+          </Reveal>
+        </section>
+
+        {/* Gallery */}
+        <section id="gallery" className={rowClass}>
+          <RoomHeader
+            index="03"
+            title="Gallery"
+            line="Proof I go outside, and occasionally stay in to draw, read, or do nothing at all."
+          />
+          <Filmstrip
+            href="/gallery"
+            frames={photos}
+            title="Gallery"
+            tagline="the contact sheet, the drawings, and the shelf"
+            meta={`${photoCount} frames · fresh order on every visit`}
+            event={{ name: "studio_room_open", label: "gallery" }}
+            delay={0.05}
+          />
+        </section>
       </div>
-
-      <DrawnRule className="my-14 sm:my-20" />
-
-      <Reveal>
-        <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
-          <Link
-            href="/work"
-            className="text-accent underline underline-offset-4 hover:no-underline"
-          >
-            The product work →
-          </Link>
-        </p>
-      </Reveal>
     </main>
   );
 }

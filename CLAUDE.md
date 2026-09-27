@@ -45,10 +45,14 @@ operations (deleting files, rewriting history, changing DNS).
 /about                  Life timeline — "how I got here", dated beats, duotone-ready photos
 /work                   5 artifact-first case cards
 /cv                     Long-form designed résumé with print-to-PDF button
-/studio                 The other kind of work: film + creative direction (nav: STUDIO).
-                        Content in content/studio.json; click-to-play YouTube/Vimeo
-                        embeds (VideoEmbed), Behance case-study links, and the photo
-                        series strip. Borrows the work accent for now.
+/studio                 Umbrella hub for "the other kind of work" (nav: STUDIO, a
+                        dropdown sub-nav like Pick Your Palette). Three rooms:
+                        Reel (/studio/reel), Writing (/writing), Gallery (/gallery).
+                        The hub teases each. Borrows the work accent for now.
+/studio/reel            Film + creative direction. Content in content/studio.json;
+                        click-to-play YouTube/Vimeo embeds (VideoEmbed) behind
+                        duotone posters, Behance case-study links, Nasir Kareem
+                        credited on the Addict Creative pieces.
 /writing                Unified index of Substack pieces + on-site MDX posts
 /writing/[slug]         Individual MDX post
 /field-notes            Short observations + voice memos
@@ -74,6 +78,11 @@ chartreuse · gallery umber · follow-the-money and studio borrow slate-teal
 for now.
 New sections claim the next sibling from the earthy family in
 `packages/femora-ds/tokens.css`.
+
+**Nav order:** About · Work · Studio ▾ (Reel, Writing, Gallery) · Money ·
+Notes · Love. Writing and Gallery keep their URLs and accents; they only
+moved under the Studio dropdown to keep the pill to six words. Don't
+re-add them as top-level items.
 
 **The nav is sticky sitewide** (`layout.tsx` header: a full-bleed
 "liquid glass" bar — full viewport width at every size, translucent
