@@ -210,6 +210,112 @@ content:
         label: One-line verdict (books only)
         type: string
 
+  - name: gallery-series
+    label: Gallery — series
+    type: file
+    path: content/gallery-series.json
+    format: json
+    list: true
+    fields:
+      - name: slug
+        label: URL slug (/gallery/<slug>)
+        type: string
+        required: true
+      - name: title
+        type: string
+        required: true
+      - name: tagline
+        label: Tagline (one line under the title)
+        type: string
+        required: true
+      - name: intro
+        label: Intro sentence
+        type: text
+        required: true
+      - name: location
+        label: Location (default for every frame)
+        type: string
+        required: true
+      - name: date
+        label: Date (freeform, e.g. "2026")
+        type: string
+        required: true
+      - name: cover
+        label: Strip on /gallery (frame ids, in order)
+        type: string
+        list: true
+      - name: hero
+        label: Opening frame
+        type: object
+        fields:
+          - name: id
+            type: string
+            required: true
+          - name: src
+            label: Image
+            type: image
+            required: true
+          - name: alt
+            label: Alt text (describe the image)
+            type: string
+            required: true
+          - name: width
+            type: number
+            required: true
+          - name: height
+            type: number
+            required: true
+          - name: caption
+            type: string
+          - name: location
+            label: Location (overrides the series)
+            type: string
+          - name: date
+            label: Date (overrides the series)
+            type: string
+      - name: chapters
+        type: object
+        list: true
+        fields:
+          - name: title
+            type: string
+            required: true
+          - name: note
+            label: Line under the chapter title
+            type: string
+          - name: frames
+            type: object
+            list: true
+            fields:
+              - name: id
+                type: string
+                required: true
+              - name: src
+                label: Image
+                type: image
+                required: true
+              - name: alt
+                label: Alt text (describe the image)
+                type: string
+                required: true
+              - name: width
+                type: number
+                required: true
+              - name: height
+                type: number
+                required: true
+              - name: caption
+                type: string
+              - name: location
+                label: Location (overrides the series)
+                type: string
+              - name: date
+                label: Date (overrides the series)
+                type: string
+              - name: group
+                label: Row group (frames in a row share a letter)
+                type: string
+
   - name: wall-of-love
     label: Wall of Love
     type: file

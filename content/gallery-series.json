@@ -1,0 +1,284 @@
+[
+  {
+    "slug": "looking-closer",
+    "title": "Looking closer",
+    "tagline": "Selected photographs from British Columbia.",
+    "intro": "Leading lines, human scale and the space around a subject.",
+    "location": "British Columbia",
+    "date": "2026",
+    "cover": [
+      "breakwater-walk",
+      "blue-beetle",
+      "masts",
+      "harbour-ferry-houseboat",
+      "sidney-fish-market"
+    ],
+    "hero": {
+      "id": "breakwater-walk",
+      "src": "/gallery/looking-closer/breakwater-walk.jpg",
+      "alt": "Two women walking away down the Ogden Point breakwater, the railings curving on both sides and clouds low over the strait, in black and white",
+      "width": 2000,
+      "height": 2000,
+      "location": "Victoria, BC"
+    },
+    "chapters": [
+      {
+        "title": "Colour & character",
+        "frames": [
+          {
+            "id": "blue-beetle",
+            "src": "/gallery/looking-closer/blue-beetle.jpg",
+            "alt": "A pale blue Volkswagen Beetle seen from above in a parking bay, an orange cone beside it",
+            "width": 1500,
+            "height": 2000,
+            "group": "a"
+          },
+          {
+            "id": "harbour-ferry-houseboat",
+            "src": "/gallery/looking-closer/harbour-ferry-houseboat.jpg",
+            "alt": "A blue and orange float home at Fisherman's Wharf with a green harbour ferry moored beneath it",
+            "width": 1500,
+            "height": 2000,
+            "location": "Victoria, BC",
+            "group": "a"
+          },
+          {
+            "id": "puerto-vallarta-amigos",
+            "src": "/gallery/looking-closer/puerto-vallarta-amigos.jpg",
+            "alt": "The Puerto Vallarta Amigos sign above a row of red patio umbrellas, condos behind",
+            "width": 2000,
+            "height": 1600,
+            "location": "Victoria, BC"
+          },
+          {
+            "id": "floating-miniature-house",
+            "src": "/gallery/looking-closer/floating-miniature-house.jpg",
+            "alt": "A miniature stone cottage floating on a raft in green harbour water",
+            "width": 2000,
+            "height": 1600,
+            "location": "Victoria, BC",
+            "group": "b"
+          },
+          {
+            "id": "collie-at-the-shore",
+            "src": "/gallery/looking-closer/collie-at-the-shore.jpg",
+            "alt": "A border collie standing at the water's edge on a pebble beach",
+            "width": 2000,
+            "height": 1500,
+            "group": "b"
+          },
+          {
+            "id": "tugboat-and-float-homes",
+            "src": "/gallery/looking-closer/tugboat-and-float-homes.jpg",
+            "alt": "A red tugboat moored beside float homes and green trees",
+            "width": 2000,
+            "height": 2000,
+            "location": "Victoria, BC",
+            "group": "c"
+          },
+          {
+            "id": "harbour-beacon",
+            "src": "/gallery/looking-closer/harbour-beacon.jpg",
+            "alt": "A red and white channel marker in front of a hotel on the waterfront",
+            "width": 1600,
+            "height": 2000,
+            "location": "Victoria, BC",
+            "group": "c"
+          },
+          {
+            "id": "yellow-water-taxi",
+            "src": "/gallery/looking-closer/yellow-water-taxi.jpg",
+            "alt": "A yellow harbour ferry crossing the Inner Harbour toward the waterfront",
+            "width": 2000,
+            "height": 1601,
+            "location": "Victoria, BC"
+          },
+          {
+            "id": "float-homes-and-towers",
+            "src": "/gallery/looking-closer/float-homes-and-towers.jpg",
+            "alt": "Float homes at Fisherman's Wharf with the city towers rising behind",
+            "width": 2000,
+            "height": 1500,
+            "location": "Victoria, BC",
+            "group": "d"
+          },
+          {
+            "id": "floating-home-reflection",
+            "src": "/gallery/looking-closer/floating-home-reflection.jpg",
+            "alt": "A floating home with flower boxes reflected in still water under a blue sky",
+            "width": 2000,
+            "height": 2000,
+            "location": "Victoria, BC",
+            "group": "d"
+          },
+          {
+            "id": "wharf-under-cloud",
+            "src": "/gallery/looking-closer/wharf-under-cloud.jpg",
+            "alt": "Float homes and a condo tower under a broken cloud sky",
+            "width": 1600,
+            "height": 2000,
+            "location": "Victoria, BC",
+            "group": "e"
+          },
+          {
+            "id": "anchor-and-the-empress",
+            "src": "/gallery/looking-closer/anchor-and-the-empress.jpg",
+            "alt": "An anchor sculpture on the causeway with the Empress Hotel and harbour buildings behind",
+            "width": 2000,
+            "height": 2000,
+            "location": "Victoria, BC",
+            "group": "e"
+          },
+          {
+            "id": "seaplane-over-the-waterfront",
+            "src": "/gallery/looking-closer/seaplane-over-the-waterfront.jpg",
+            "alt": "A seaplane coming in low over waterfront townhouses as two people watch from the shore",
+            "width": 2000,
+            "height": 1499,
+            "location": "Victoria, BC"
+          }
+        ],
+        "note": "Colour studies, found in everyday scenes."
+      },
+      {
+        "title": "Line, light & structure",
+        "frames": [
+          {
+            "id": "masts",
+            "src": "/gallery/looking-closer/masts.jpg",
+            "alt": "Sailboat masts against towering cumulus, in black and white",
+            "width": 1500,
+            "height": 2000,
+            "location": "Victoria, BC",
+            "group": "a"
+          },
+          {
+            "id": "crane-and-barge",
+            "src": "/gallery/looking-closer/crane-and-barge.jpg",
+            "alt": "A construction crane and barge on the harbour, in black and white",
+            "width": 1600,
+            "height": 2000,
+            "location": "Victoria, BC",
+            "group": "a"
+          },
+          {
+            "id": "carillon-and-signals",
+            "src": "/gallery/looking-closer/carillon-and-signals.jpg",
+            "alt": "The Netherlands Centennial Carillon tower beside a traffic signal and lamp post, in black and white",
+            "width": 1600,
+            "height": 2000,
+            "location": "Victoria, BC",
+            "group": "a"
+          },
+          {
+            "id": "rocks-and-shadows",
+            "src": "/gallery/looking-closer/rocks-and-shadows.jpg",
+            "alt": "Granite blocks in hard light with tree shadows, a couple sitting at the corner of the frame, in black and white",
+            "width": 2000,
+            "height": 1500
+          },
+          {
+            "id": "buoy-and-clouds",
+            "src": "/gallery/looking-closer/buoy-and-clouds.jpg",
+            "alt": "A single buoy on a glittering sea beneath a bank of cumulus, in black and white",
+            "width": 1600,
+            "height": 2000,
+            "location": "Victoria, BC",
+            "group": "b"
+          },
+          {
+            "id": "butts-are-recyclable",
+            "src": "/gallery/looking-closer/butts-are-recyclable.jpg",
+            "alt": "Close-up of a cigarette receptacle labelled Butts are Recyclable, in black and white",
+            "width": 1600,
+            "height": 2000,
+            "group": "b"
+          },
+          {
+            "id": "parliament-square",
+            "src": "/gallery/looking-closer/parliament-square.jpg",
+            "alt": "The British Columbia Parliament Buildings from across the lawn, a few people on the steps, in black and white",
+            "width": 2000,
+            "height": 1500,
+            "location": "Victoria, BC"
+          },
+          {
+            "id": "cloud-over-the-harbour",
+            "src": "/gallery/looking-closer/cloud-over-the-harbour.jpg",
+            "alt": "A sweep of cloud over the harbour with small boats on the water, in black and white",
+            "width": 2000,
+            "height": 1500,
+            "location": "Victoria, BC"
+          }
+        ]
+      },
+      {
+        "title": "The quieter frame",
+        "frames": [
+          {
+            "id": "breakwater-and-lighthouse",
+            "src": "/gallery/looking-closer/breakwater-and-lighthouse.jpg",
+            "alt": "The breakwater curving out to a small lighthouse under a blue sky",
+            "width": 2000,
+            "height": 2000,
+            "location": "Victoria, BC",
+            "group": "a"
+          },
+          {
+            "id": "headland",
+            "src": "/gallery/looking-closer/headland.jpg",
+            "alt": "A wooded headland across calm blue water",
+            "width": 2000,
+            "height": 1500,
+            "group": "a"
+          },
+          {
+            "id": "waterfront-row",
+            "src": "/gallery/looking-closer/waterfront-row.jpg",
+            "alt": "Low apartment blocks along a seawall, railings in the foreground",
+            "width": 2000,
+            "height": 1500,
+            "location": "Victoria, BC",
+            "group": "b"
+          },
+          {
+            "id": "rusted-barge",
+            "src": "/gallery/looking-closer/rusted-barge.jpg",
+            "alt": "A rusted barge moored at a pier, clouds massing behind",
+            "width": 1500,
+            "height": 2000,
+            "location": "Victoria, BC",
+            "group": "b"
+          },
+          {
+            "id": "sidney-fish-market",
+            "src": "/gallery/looking-closer/sidney-fish-market.jpg",
+            "alt": "The blue fish market building on Sidney pier at dusk, the sky turning pink",
+            "width": 2000,
+            "height": 1333,
+            "location": "Sidney, BC"
+          },
+          {
+            "id": "pier-at-dusk",
+            "src": "/gallery/looking-closer/pier-at-dusk.jpg",
+            "alt": "A pier ramp and pilings reflected in pink evening water",
+            "width": 2000,
+            "height": 1333,
+            "location": "Sidney, BC",
+            "group": "c"
+          },
+          {
+            "id": "pink-horizon",
+            "src": "/gallery/looking-closer/pink-horizon.jpg",
+            "alt": "Pink sky over a still strait, mountains on the horizon, a floating log in the foreground",
+            "width": 2000,
+            "height": 1333,
+            "location": "Sidney, BC",
+            "group": "c"
+          }
+        ],
+        "note": "Evening light and shoreline studies."
+      }
+    ]
+  }
+]

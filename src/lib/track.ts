@@ -10,6 +10,7 @@ export function trackEvent(
     | "palette_selected"
     | "theme_toggle"
     | "gallery_section_select"
+    | "gallery_series_open"
     | "love_filter_select"
     | "love_search"
     | "love_entry_open"

@@ -55,6 +55,8 @@ operations (deleting files, rewriting history, changing DNS).
                         /anatomy 308-redirects here.
 /tennis                 Tennis log — match notes, photos, video clips
 /gallery                Contact-sheet photo gallery (duotone → color hover, lightbox)
+/gallery/[series]       Sequenced photo series (e.g. /gallery/looking-closer) — chapters,
+                        pairs/triptychs, authored order; listed as a strip above the sheet
 /colophon               How the site is made — mark, type, colour, motion, build
 /api/field-notes        POST endpoint hit by the iOS Shortcut for phone publishing
 /api/gallery            POST endpoint hit by the "Publish Photo" iOS Shortcut
@@ -102,6 +104,20 @@ plus optional `status` ("reading" | "queued" | "finished"), `category`
 `verdict` (a one-line marginalia quote in Femi's words — never invent
 these). No serial labels anywhere (FR-001 etc.) — Femi removed them
 deliberately; don't reintroduce.
+
+**Photo series (sequenced bodies of work, e.g. a trip):** these stay OUT
+of the shuffled contact sheet so they don't dilute it. Add an entry to
+`content/gallery-series.json` — `{ slug, title, tagline, intro, location,
+date, cover: [frame ids], hero: frame, chapters: [{ title, note?, frames }] }`
+where a frame is `{ id, src, alt, width, height, caption?, location?,
+date?, group? }`. Consecutive frames sharing a `group` letter render on
+one row (2 = pair, 3 = triptych); ungrouped frames stand alone (portrait
+ones capped at 640px). Images go in `public/gallery/<slug>/`, resized to
+2000px long edge, JPEG q80 (sharp is already in node_modules). Chapter
+titles and notes are Femi's words (the first series reuses his VFS deck);
+alt text is descriptive, not voice. The route is
+`src/app/gallery/[series]/page.tsx`; the strip on `/gallery` and the
+sitemap pick new series up automatically.
 
 ---
 

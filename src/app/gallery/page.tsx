@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getPhotos, getArt, getBooks } from "@/lib/gallery";
+import { getSeriesSummaries } from "@/lib/gallerySeries";
 import GalleryBrowser from "@/components/GalleryBrowser";
 import {
   DrawnRule,
@@ -52,7 +53,12 @@ export default function GalleryPage() {
 
       <DrawnRule className="my-14 sm:my-20" immediate delay={0.35} />
 
-      <GalleryBrowser photos={photos} art={art} books={books} />
+      <GalleryBrowser
+        photos={photos}
+        art={art}
+        books={books}
+        series={getSeriesSummaries()}
+      />
     </main>
   );
 }

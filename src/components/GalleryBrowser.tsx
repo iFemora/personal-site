@@ -3,7 +3,9 @@
 import { useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import GalleryGrid from "@/components/GalleryGrid";
+import SeriesStrip from "@/components/SeriesStrip";
 import type { GalleryFrame } from "@/lib/gallery";
+import type { SeriesSummary } from "@/lib/gallerySeries";
 import { EASE } from "@femora/design-system/ease";
 import { trackEvent } from "@/lib/track";
 
@@ -21,6 +23,8 @@ type Props = {
   photos: GalleryFrame[];
   art: GalleryFrame[];
   books: GalleryFrame[];
+  /** Sequenced photo series, shown above the shuffled contact sheet. */
+  series?: SeriesSummary[];
 };
 
 /** The pill toggle from the wall of love: click a segment or slide across. */
@@ -110,7 +114,12 @@ function Toggle<K extends string>({
   );
 }
 
-export default function GalleryBrowser({ photos, art, books }: Props) {
+export default function GalleryBrowser({
+  photos,
+  art,
+  books,
+  series = [],
+}: Props) {
   const reduced = useReducedMotion();
   const [section, setSection] = useState<SectionKey>("photos");
   const [shelf, setShelf] = useState<ShelfKey>("all");
@@ -208,6 +217,20 @@ export default function GalleryBrowser({ photos, art, books }: Props) {
         <p className="text-lg leading-relaxed">{intro[section].body}</p>
       </section>
 
+      {section === "photos" && series.length > 0 && (
+        <div className="mb-14 sm:mb-20">
+          <p className="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-muted">
+            <span className="text-accent">Series</span> — sequenced, not
+            shuffled
+          </p>
+          <SeriesStrip series={series} />
+          <div className="mt-14 border-t border-rule sm:mt-20" />
+          <p className="mt-5 font-mono text-xs uppercase tracking-[0.18em] text-muted">
+            <span className="text-accent">Contact sheet</span> — fresh order
+            on every visit
+          </p>
+        </div>
+      )}
       {section === "photos" && photos.length > 0 && (
         <GalleryGrid key="photos" frames={photos} />
       )}

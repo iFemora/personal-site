@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getInternalPosts } from "@/lib/writing";
+import { getSeries } from "@/lib/gallerySeries";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl =
@@ -36,5 +37,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...postRoutes];
+  const seriesRoutes = getSeries().map((s) => ({
+    url: `${siteUrl}/gallery/${s.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "yearly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...postRoutes, ...seriesRoutes];
 }
