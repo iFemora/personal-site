@@ -210,6 +210,86 @@ content:
         label: One-line verdict (books only)
         type: string
 
+  - name: studio
+    label: Studio (film + creative direction)
+    type: file
+    path: content/studio.json
+    format: json
+    fields:
+      - name: tagline
+        type: string
+        required: true
+      - name: intro
+        label: Intro paragraphs
+        type: string
+        list: true
+      - name: pieces
+        type: object
+        list: true
+        fields:
+          - name: id
+            type: string
+            required: true
+          - name: kind
+            label: Eyebrow (e.g. Documentary, Addict Creative)
+            type: string
+            required: true
+          - name: title
+            type: string
+            required: true
+          - name: subtitle
+            label: Line under the title (e.g. Promo video)
+            type: string
+          - name: meta
+            label: Meta lines (year, runtime, place)
+            type: string
+            list: true
+          - name: role
+            type: string
+            required: true
+          - name: body
+            type: text
+            required: true
+          - name: caption
+            label: One line on the craft (under the player)
+            type: string
+          - name: credits
+            label: Credits line
+            type: string
+          - name: video
+            type: object
+            fields:
+              - name: provider
+                type: select
+                options:
+                  values: [youtube, vimeo]
+              - name: id
+                label: Video id
+                type: string
+              - name: duration
+                label: Runtime shown on the play button (e.g. 1:08)
+                type: string
+          - name: poster
+            type: object
+            fields:
+              - name: src
+                label: Poster (under /studio/)
+                type: image
+              - name: alt
+                type: string
+              - name: width
+                type: number
+              - name: height
+                type: number
+          - name: link
+            type: object
+            fields:
+              - name: href
+                label: URL
+                type: string
+              - name: label
+                type: string
+
   - name: gallery-series
     label: Gallery — series
     type: file

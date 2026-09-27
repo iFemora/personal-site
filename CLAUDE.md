@@ -45,6 +45,10 @@ operations (deleting files, rewriting history, changing DNS).
 /about                  Life timeline — "how I got here", dated beats, duotone-ready photos
 /work                   5 artifact-first case cards
 /cv                     Long-form designed résumé with print-to-PDF button
+/studio                 The other kind of work: film + creative direction (nav: STUDIO).
+                        Content in content/studio.json; click-to-play YouTube/Vimeo
+                        embeds (VideoEmbed), Behance case-study links, and the photo
+                        series strip. Borrows the work accent for now.
 /writing                Unified index of Substack pieces + on-site MDX posts
 /writing/[slug]         Individual MDX post
 /field-notes            Short observations + voice memos
@@ -66,7 +70,8 @@ operations (deleting files, rewriting history, changing DNS).
 
 **Per-page accents** (html[data-accent], set by `AccentController`):
 home rust · work/cv slate-teal · writing moss · notes ochre · tennis muted
-chartreuse · gallery umber · follow-the-money borrows slate-teal for now.
+chartreuse · gallery umber · follow-the-money and studio borrow slate-teal
+for now.
 New sections claim the next sibling from the earthy family in
 `packages/femora-ds/tokens.css`.
 

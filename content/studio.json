@@ -1,0 +1,97 @@
+{
+  "tagline": "A storyteller, across mediums.",
+  "intro": [
+    "My creative work began on the radio in Lagos, Nigeria. I learned to write for an audience and tell stories through voice and sound.",
+    "At the University of Lagos, I studied Advertising and Film and directed a student documentary and a short film.",
+    "I also co-founded Addict Creative, a creative agency that focuses on brand and motion design. We have worked with multiple brands in different capacities, including Electronic Arts."
+  ],
+  "pieces": [
+    {
+      "id": "apa-kingdom",
+      "kind": "Documentary",
+      "title": "The Apa Kingdom",
+      "subtitle": "An expository documentary on the Apa Kingdom",
+      "meta": ["2018 · 14:20", "Student film", "Badagry, Lagos"],
+      "role": "Director, co-writer & narrator",
+      "body": "A portrait of a community's cultural traditions, told through location footage and interviews with its king and chiefs.",
+      "credits": "Addict Creative",
+      "video": { "provider": "youtube", "id": "kRp2nFEaXrE", "duration": "14:20" },
+      "poster": {
+        "src": "/studio/apa-kingdom.jpg",
+        "alt": "A man in a white tunic speaking to camera in front of a pink building in Badagry, a still from the documentary",
+        "width": 1280,
+        "height": 720
+      },
+      "link": {
+        "href": "https://www.youtube.com/watch?v=kRp2nFEaXrE",
+        "label": "Watch on YouTube"
+      }
+    },
+    {
+      "id": "capella-ai",
+      "kind": "Addict Creative",
+      "title": "Capella AI",
+      "subtitle": "Promo video",
+      "meta": ["2025 · 1:08", "Motion graphics"],
+      "role": "Creative & art director",
+      "body": "A motion-led introduction to a trading education platform, presenting guided lessons, AI mentorship and interactive simulations.",
+      "caption": "Luminous type and layered imagery establish a digital visual world.",
+      "credits": "Design & animation · Nasir Kareem",
+      "video": { "provider": "vimeo", "id": "1124085200", "duration": "1:08" },
+      "poster": {
+        "src": "/studio/capella-ai.jpg",
+        "alt": "Floating video panels glowing against a dark blue field, a still from the Capella AI promo",
+        "width": 1280,
+        "height": 720
+      },
+      "link": {
+        "href": "https://www.behance.net/gallery/235833059/Capella-AI-Promo-Video",
+        "label": "Case study on Behance"
+      }
+    },
+    {
+      "id": "guidely",
+      "kind": "Addict Creative",
+      "title": "Guidely",
+      "subtitle": "Explainer video",
+      "meta": ["2025 · 0:46", "Motion graphics"],
+      "role": "Creative & art director",
+      "body": "An introduction to a brand that makes AI more approachable for beginners.",
+      "caption": "Illustrated everyday scenes give an abstract subject a human presence.",
+      "credits": "Design & animation · Nasir Kareem",
+      "video": { "provider": "vimeo", "id": "1124074961", "duration": "0:46" },
+      "poster": {
+        "src": "/studio/guidely.jpg",
+        "alt": "Flat illustrated figures at desks in lilac, blue and grey panels, a still from the Guidely explainer",
+        "width": 1280,
+        "height": 720
+      },
+      "link": {
+        "href": "https://www.behance.net/gallery/235394535/Guidely-Explainer-video",
+        "label": "Case study on Behance"
+      }
+    },
+    {
+      "id": "virtual-co",
+      "kind": "Addict Creative",
+      "title": "Virtual.co",
+      "subtitle": "Promo video",
+      "meta": ["2025 · 0:30", "Motion graphics"],
+      "role": "Creative & art director",
+      "body": "A fast-paced promotional piece built around typography and the offer of hiring video editors.",
+      "caption": "Portraits, bold lettering and shifts in scale give the sequence its energy.",
+      "credits": "Design & animation · Nasir Kareem",
+      "video": { "provider": "vimeo", "id": "1052987700", "duration": "0:30" },
+      "poster": {
+        "src": "/studio/virtual-co.jpg",
+        "alt": "Portrait tiles and bold lettering on a cream background, a still from the Virtual.co promo",
+        "width": 1280,
+        "height": 720
+      },
+      "link": {
+        "href": "https://www.behance.net/gallery/219132519/Virtualco-Promo-video",
+        "label": "Case study on Behance"
+      }
+    }
+  ]
+}

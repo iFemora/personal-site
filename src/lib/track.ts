@@ -11,6 +11,7 @@ export function trackEvent(
     | "theme_toggle"
     | "gallery_section_select"
     | "gallery_series_open"
+    | "studio_video_play"
     | "love_filter_select"
     | "love_search"
     | "love_entry_open"

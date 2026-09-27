@@ -137,6 +137,7 @@ export default function Home() {
                 "Athlete.",
                 "Designer.",
                 "Photographer.",
+                "Director.",
               ]}
               className="font-serif text-xl italic text-muted sm:text-2xl"
             />

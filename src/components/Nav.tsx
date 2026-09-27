@@ -17,6 +17,7 @@ import { trackEvent } from "@/lib/track";
 const items = [
   { href: "/about", label: "About" },
   { href: "/work", label: "Work" },
+  { href: "/studio", label: "Studio" },
   // Short nav form of Follow the Money, same pattern as Field Notes → Notes.
   { href: "/follow-the-money", label: "Money" },
   { href: "/writing", label: "Writing" },
@@ -69,8 +70,8 @@ export default function Nav() {
     );
 
   return (
-    <nav className="relative flex items-center justify-between gap-3 font-mono text-xs uppercase tracking-[0.18em] sm:gap-6">
-      <div className="flex items-center gap-3 sm:gap-5">
+    <nav className="relative flex items-center justify-between gap-3 font-mono text-xs uppercase tracking-[0.18em] lg:gap-6">
+      <div className="flex items-center gap-3 lg:gap-5">
         <Magnetic strength={0.35}>
           <Link
             href="/"
@@ -98,7 +99,7 @@ export default function Nav() {
         <PalettePicker />
       </div>
 
-      <div className="flex items-center gap-3 sm:gap-5">
+      <div className="flex items-center gap-3 lg:gap-5">
         {/* Desktop: the pill inline. */}
         <div className="hidden items-center rounded-full border border-rule p-1 sm:flex">
           {items.map((item) => {
@@ -108,7 +109,7 @@ export default function Nav() {
                 key={item.href}
                 href={item.href}
                 aria-current={active ? "page" : undefined}
-                className={`relative whitespace-nowrap rounded-full px-3.5 py-1.5 text-[11px] transition-colors duration-300 ${
+                className={`relative whitespace-nowrap rounded-full px-2 py-1.5 text-[10px] tracking-[0.14em] transition-colors duration-300 lg:px-3.5 lg:text-[11px] lg:tracking-[0.18em] ${
                   active ? "text-accent" : "text-muted hover:text-foreground"
                 }`}
               >

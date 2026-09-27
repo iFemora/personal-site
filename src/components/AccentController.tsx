@@ -4,11 +4,12 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 function accentFor(pathname: string): string {
-  // Follow the Money borrows the work accent until it earns its own.
+  // Follow the Money and the Studio borrow the work accent until they earn their own.
   if (
     pathname.startsWith("/work") ||
     pathname.startsWith("/cv") ||
-    pathname.startsWith("/follow-the-money")
+    pathname.startsWith("/follow-the-money") ||
+    pathname.startsWith("/studio")
   )
     return "work";
   if (pathname.startsWith("/writing")) return "writing";

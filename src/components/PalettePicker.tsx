@@ -142,18 +142,20 @@ export default function PalettePicker() {
         type="button"
         aria-expanded={open}
         aria-haspopup="true"
+        aria-label="Pick your palette"
         onClick={() => {
           if (!open) trackEvent("palette_picker_open", { surface: "desktop" });
           setOpen((o) => !o);
         }}
-        className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-rule px-4 py-2 text-[11px] uppercase transition-colors duration-300 ${
+        className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-rule px-3 py-2 text-[11px] uppercase transition-colors duration-300 lg:px-4 ${
           open
             ? "bg-accent/10 text-accent"
             : "text-muted hover:text-foreground"
         }`}
       >
         <ActiveDot />
-        Pick Your Palette
+        {/* Below lg the pill is dot-only so the nav fits beside it. */}
+        <span className="hidden lg:inline">Pick Your Palette</span>
       </button>
       <AnimatePresence>
         {open && (
