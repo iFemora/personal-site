@@ -109,7 +109,7 @@ export default function Nav() {
     );
 
   const segmentClass = (active: boolean) =>
-    `relative inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-1.5 text-[10px] tracking-[0.14em] transition-colors duration-300 lg:px-3.5 lg:text-[11px] lg:tracking-[0.18em] ${
+    `relative inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] transition-colors duration-300 lg:px-3.5 lg:text-[11px] lg:tracking-[0.18em] ${
       active ? "text-accent" : "text-muted hover:text-foreground"
     }`;
 
