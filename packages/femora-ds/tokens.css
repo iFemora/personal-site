@@ -51,6 +51,8 @@
   --d-accent-gallery: #c9ae96;
   --l-accent-love: #8f4249; /* madder rose */
   --d-accent-love: #e2a1a6;
+  --l-accent-studio: #474b8a; /* indigo — dye vat */
+  --d-accent-studio: #a7abdc;
 
   /* Not colours, but they still differ by scheme: how strong the accent
      wash sits on the paper, and how the grain blends into it. A palette
@@ -74,6 +76,7 @@
   --accent-tennis: var(--l-accent-tennis);
   --accent-gallery: var(--l-accent-gallery);
   --accent-love: var(--l-accent-love);
+  --accent-studio: var(--l-accent-studio);
   --wash: var(--l-wash);
   --grain-blend: var(--l-grain-blend);
   --grain-opacity: var(--l-grain-opacity);
@@ -95,6 +98,7 @@
     --accent-tennis: var(--d-accent-tennis);
     --accent-gallery: var(--d-accent-gallery);
     --accent-love: var(--d-accent-love);
+    --accent-studio: var(--d-accent-studio);
     --wash: var(--d-wash);
     --grain-blend: var(--d-grain-blend);
     --grain-opacity: var(--d-grain-opacity);
@@ -114,6 +118,7 @@
   --accent-tennis: var(--d-accent-tennis);
   --accent-gallery: var(--d-accent-gallery);
   --accent-love: var(--d-accent-love);
+  --accent-studio: var(--d-accent-studio);
   --wash: var(--d-wash);
   --grain-blend: var(--d-grain-blend);
   --grain-opacity: var(--d-grain-opacity);
@@ -144,6 +149,9 @@ html[data-accent="gallery"] {
 }
 html[data-accent="love"] {
   --accent: var(--accent-love);
+}
+html[data-accent="studio"] {
+  --accent: var(--accent-studio);
 }
 
 @theme inline {

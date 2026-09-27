@@ -149,7 +149,7 @@ export default function Home() {
           <p className="absolute left-0 top-[486px] mt-0 w-[210px] font-mono text-xs uppercase tracking-[0.18em] text-muted sm:left-auto sm:right-[8%] sm:top-[356px] sm:w-[270px] sm:text-right">
             Product, payments
             <br />
-            Toronto, Canada
+            Vancouver, Canada
           </p>
         </Reveal>
       </div>

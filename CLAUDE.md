@@ -4,7 +4,7 @@
 
 This is the source of **[ifemora.dev](https://ifemora.dev)** — Femi Siji-Kenneth's
 personal website. Femi is a Lead Product Manager at Marqeta (payments / fintech),
-based in Toronto. He writes essays on Substack (`ifemora.substack.com`), plays tennis,
+based in Vancouver (moved from Toronto in 2026). He writes essays on Substack (`ifemora.substack.com`), plays tennis,
 and signs the site "Thinker. Tinkerer."
 
 When Femi opens this repo in Claude Code, his typical request is one of:
@@ -48,7 +48,7 @@ operations (deleting files, rewriting history, changing DNS).
 /studio                 Umbrella hub for "the other kind of work" (nav: STUDIO, a
                         dropdown sub-nav like Pick Your Palette). Three rooms:
                         Reel (/studio/reel), Writing (/writing), Gallery (/gallery).
-                        The hub teases each. Borrows the work accent for now.
+                        The hub teases each. Accent: indigo.
 /studio/reel            Film + creative direction. Content in content/studio.json;
                         click-to-play YouTube/Vimeo embeds (VideoEmbed) behind
                         duotone posters, Behance case-study links, Nasir Kareem
@@ -74,8 +74,10 @@ operations (deleting files, rewriting history, changing DNS).
 
 **Per-page accents** (html[data-accent], set by `AccentController`):
 home rust · work/cv slate-teal · writing moss · notes ochre · tennis muted
-chartreuse · gallery umber · follow-the-money and studio borrow slate-teal
-for now.
+chartreuse · gallery umber · love madder rose · studio indigo ·
+follow-the-money borrows slate-teal for now. Every accent has a pair in
+each of the 7 guest palettes too (`src/app/palettes.css`), so a new one
+means 8 pairs plus the audit list.
 New sections claim the next sibling from the earthy family in
 `packages/femora-ds/tokens.css`.
 

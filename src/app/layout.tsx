@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     template: "%s — Femi Siji-Kenneth",
   },
   description:
-    "Product leader in Toronto building payment platforms. Thinker. Tinkerer.",
+    "Product leader in Vancouver building payment platforms. Thinker. Tinkerer.",
   authors: [{ name: "Femi Siji-Kenneth" }],
   creator: "Femi Siji-Kenneth",
   openGraph: {
@@ -51,14 +51,14 @@ export const metadata: Metadata = {
     siteName: "Femi Siji-Kenneth",
     title: "Femi Siji-Kenneth",
     description:
-      "Product leader in Toronto building payment platforms. Thinker. Tinkerer.",
+      "Product leader in Vancouver building payment platforms. Thinker. Tinkerer.",
     locale: "en_CA",
   },
   twitter: {
     card: "summary_large_image",
     title: "Femi Siji-Kenneth",
     description:
-      "Product leader in Toronto building payment platforms. Thinker. Tinkerer.",
+      "Product leader in Vancouver building payment platforms. Thinker. Tinkerer.",
     creator: "@iFemora",
   },
 };
@@ -91,7 +91,7 @@ function SiteFooter() {
       <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <FooterLinks />
         <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
-          Toronto, Canada · 43.65°N, 79.38°W
+          Vancouver, Canada · 49.28°N, 123.12°W
         </p>
       </div>
       <p

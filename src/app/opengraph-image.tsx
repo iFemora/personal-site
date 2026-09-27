@@ -79,7 +79,7 @@ export default function OGImage() {
             gap: 16,
           }}
         >
-          <span>Toronto</span>
+          <span>Vancouver</span>
           <span>·</span>
           <span>Product · Payments · Essays</span>
         </div>

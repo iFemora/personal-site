@@ -110,13 +110,19 @@
   {
     "id": "marqeta-toronto",
     "year": "2025",
-    "title": "Moved to Toronto. Marqeta. Still here.",
+    "title": "Moved to Toronto. Marqeta.",
     "caption": "Landed in Calgary in March, Toronto by November. Lead PM on a card-issuing platform that moves billions. I kept building prototypes myself because that is still how I understand a product."
+  },
+  {
+    "id": "vancouver",
+    "year": "2026",
+    "title": "Relocated to Vancouver. No one city could hold this.",
+    "caption": "Toronto had its turn. No city can hold this much greatness for long, and Vancouver deserved a taste. Also, and this is not a small thing, it is a beautiful city."
   },
   {
     "id": "now",
     "year": "Now",
-    "title": "Toronto. Married. Still chasing a clean backhand.",
+    "title": "Vancouver. Married. Still chasing a clean backhand.",
     "caption": "Writing essays for minds that think in spirals, making a little art, and losing to better players on weekends."
   }
 ]

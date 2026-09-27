@@ -23,7 +23,7 @@ const experiences: Experience[] = [
     company: "Marqeta",
     role: "Lead Product Manager",
     dates: "Sep 2025 – Present",
-    location: "Toronto, ON (Remote)",
+    location: "Vancouver, BC (Remote)",
     summary:
       "Owns a four-product portfolio (Resolve, the contact-center support platform; Marqeta Dashboard; Marqeta IVR; and Identity & Access Management) for a global card-issuing platform processing billions in annual payment volume.",
     bullets: [
@@ -150,7 +150,7 @@ export default function CVPage() {
           Markets
         </p>
         <p className="mt-4 font-mono text-sm text-muted">
-          Toronto, ON · oluwafemiakinseye@gmail.com · linkedin.com/in/ifemora
+          Vancouver, BC · oluwafemiakinseye@gmail.com · linkedin.com/in/ifemora
         </p>
       </header>
 
