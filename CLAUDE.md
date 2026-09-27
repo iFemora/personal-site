@@ -56,11 +56,16 @@ operations (deleting files, rewriting history, changing DNS).
 /writing                Unified index of Substack pieces + on-site MDX posts
 /writing/[slug]         Individual MDX post
 /field-notes            Short observations + voice memos
-/follow-the-money       Interactive payments explainer (nav: MONEY) — Femi's
-                        product proof. BEFORE touching it, read
-                        docs/follow-the-money-playbook.md (pattern + status)
-                        and docs/anatomy-log.md (dated decision log).
-                        /anatomy 308-redirects here.
+/follow-the-money       Interactive payments explainer — Femi's product proof.
+                        UNLISTED since 2026-09-27 (live at the URL, not in the
+                        nav, like /tennis): visitors found a lone "Money" item
+                        confusing. It comes back under a future "Knowledge"
+                        nav umbrella (dropdown like Studio) once it has company:
+                        how-to-build pieces, AI agents in action, etc. Don't
+                        re-add "Money" to the nav on its own. BEFORE touching
+                        the page, read docs/follow-the-money-playbook.md
+                        (pattern + status) and docs/anatomy-log.md (dated
+                        decision log). /anatomy 308-redirects here.
 /tennis                 Tennis log — match notes, photos, video clips
 /gallery                Contact-sheet photo gallery (duotone → color hover, lightbox)
 /gallery/[series]       Sequenced photo series (e.g. /gallery/looking-closer) — chapters,
@@ -81,10 +86,11 @@ means 8 pairs plus the audit list.
 New sections claim the next sibling from the earthy family in
 `packages/femora-ds/tokens.css`.
 
-**Nav order:** About · Work · Studio ▾ (Reel, Writing, Gallery) · Money ·
-Notes · Love. Writing and Gallery keep their URLs and accents; they only
-moved under the Studio dropdown to keep the pill to six words. Don't
-re-add them as top-level items.
+**Nav order:** About · Work · Studio ▾ (Reel, Writing, Gallery) · Notes ·
+Love. Writing and Gallery keep their URLs and accents; they only moved
+under the Studio dropdown to keep the pill short. Don't re-add them as
+top-level items. Unlisted but live: /tennis, /follow-the-money, /cv,
+/colophon. Planned next umbrella: "Knowledge" (see /follow-the-money).
 
 **The nav is sticky sitewide** (`layout.tsx` header: a full-bleed
 "liquid glass" bar — full viewport width at every size, translucent

@@ -38,8 +38,9 @@ const items: NavItem[] = [
       { href: "/gallery", label: "Gallery", accent: "gallery" },
     ],
   },
-  // Short nav form of Follow the Money, same pattern as Field Notes → Notes.
-  { href: "/follow-the-money", label: "Money" },
+  // Follow the Money (/follow-the-money) is unlisted for now, like /tennis.
+  // It returns under a future "Knowledge" umbrella once there is more than
+  // one piece to put there.
   { href: "/field-notes", label: "Notes" },
   { href: "/love", label: "Love" },
 ];

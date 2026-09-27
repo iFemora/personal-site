@@ -1,5 +1,75 @@
 [
   {
+    "id": "pier-hands-in-pockets",
+    "src": "/gallery/pier-hands-in-pockets.jpg",
+    "alt": "Standing on a pier in a green quarter-zip, hands in pockets, mountains soft behind",
+    "location": "British Columbia",
+    "date": "2026",
+    "width": 1600,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "her-laughing-on-the-pier",
+    "src": "/gallery/her-laughing-on-the-pier.jpg",
+    "alt": "Sitting on a pier railing at dusk, holding her face as she laughs up at me",
+    "location": "British Columbia",
+    "date": "2026",
+    "width": 2000,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "held-at-the-railing",
+    "src": "/gallery/held-at-the-railing.jpg",
+    "alt": "Leaning on a white railing over the water while she wraps both arms around me",
+    "location": "British Columbia",
+    "date": "2026",
+    "width": 1500,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "pointing-at-the-trees",
+    "src": "/gallery/pointing-at-the-trees.jpg",
+    "alt": "Grinning over one shoulder and pointing back at a wall of green trees",
+    "location": "British Columbia",
+    "date": "2026",
+    "width": 1500,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "her-on-the-ferry",
+    "src": "/gallery/her-on-the-ferry.jpg",
+    "alt": "Her on a ferry rail in a plum windbreaker, arms folded, blue water and islands behind",
+    "location": "British Columbia",
+    "date": "2026",
+    "width": 1600,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "portrait-in-monochrome",
+    "src": "/gallery/portrait-in-monochrome.jpg",
+    "alt": "A black and white portrait in a dark tee with a crossbody strap, sky blown out behind",
+    "location": "British Columbia",
+    "date": "2026",
+    "width": 1600,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
+    "id": "her-in-the-sun",
+    "src": "/gallery/her-in-the-sun.jpg",
+    "alt": "Her turning to smile over her shoulder in a red tee, gold hoops catching the sun",
+    "location": "British Columbia",
+    "date": "2026",
+    "width": 1600,
+    "height": 2000,
+    "kind": "photo"
+  },
+  {
     "id": "her-again-stealing-my-shirt",
     "src": "/gallery/her-again-stealing-my-shirt.jpg",
     "alt": "Mirror selfie of a woman in an oversized white tee, framed by a round mirror and trailing green plants",
