@@ -103,10 +103,10 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(personJsonLd) }}
       />
       {/* Hero */}
-      <div className="relative isolate min-h-[590px] overflow-hidden sm:min-h-[410px] sm:overflow-visible">
+      <div className="relative isolate min-h-[644px] overflow-hidden sm:min-h-[410px] sm:overflow-visible">
         <div
           aria-hidden
-          className="pointer-events-none absolute left-0 top-[250px] z-0 h-[270px] w-[210px] overflow-hidden border border-rule bg-background sm:left-auto sm:right-[8%] sm:top-0 sm:h-[340px] sm:w-[270px]"
+          className="pointer-events-none absolute left-0 top-[304px] z-0 h-[270px] w-[210px] overflow-hidden border border-rule bg-background sm:left-auto sm:right-[8%] sm:top-0 sm:h-[340px] sm:w-[270px]"
         >
           <Image
             src="/about/femi-profile-2026.jpg"
@@ -149,9 +149,9 @@ export default function Home() {
         {/* Availability: the pill borrows the nav's treatment so it reads
             as part of the furniture, not a badge. */}
         <Reveal immediate delay={0.4}>
-          <div className="relative z-10 mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
-            <span className="inline-flex items-center gap-2 rounded-full border border-rule px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted">
-              <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-accent" />
+          <div className="relative z-10 mt-7 flex flex-wrap items-center gap-3">
+            <span className="inline-flex items-center gap-2.5 rounded-full border border-rule px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-foreground sm:text-xs">
+              <span aria-hidden className="h-2 w-2 rounded-full bg-accent" />
               Open to new roles
             </span>
             <BookIntroLink />
@@ -159,7 +159,7 @@ export default function Home() {
         </Reveal>
 
         <Reveal immediate delay={0.5}>
-          <p className="absolute left-0 top-[536px] mt-0 w-[210px] font-mono text-xs uppercase tracking-[0.18em] text-muted sm:left-auto sm:right-[8%] sm:top-[356px] sm:w-[270px] sm:text-right">
+          <p className="absolute left-0 top-[590px] mt-0 w-[210px] font-mono text-xs uppercase tracking-[0.18em] text-muted sm:left-auto sm:right-[8%] sm:top-[356px] sm:w-[270px] sm:text-right">
             Product, payments
             <br />
             Vancouver, Canada
@@ -245,8 +245,9 @@ export default function Home() {
         <div>
           <Reveal delay={0.05}>
             <p className="mb-10 max-w-[640px] font-serif text-xl italic leading-snug text-muted sm:text-2xl">
-              These are the principles I use when time is short, the roadmap
-              is crowded, or the evidence changes the plan.
+              These are the principles I decide by, formed in product work
+              and used well beyond it: when time is short, the roadmap is
+              crowded, or the evidence changes the plan.
             </p>
           </Reveal>
           <ol className="border-t border-rule">

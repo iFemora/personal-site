@@ -20,10 +20,10 @@ export default function BookIntroLink({
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => trackEvent("book_intro_click", { link_location: location })}
-      className="link-swipe whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.18em] text-accent"
+      className="inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-accent px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-background transition-colors duration-300 hover:bg-foreground sm:text-xs"
     >
       Book an intro
-      <ExternalArrow className="ml-1 text-accent" />
+      <ExternalArrow className="text-background" />
     </a>
   );
 }

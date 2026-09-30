@@ -28,6 +28,12 @@ Format: **what** · where · how to resolve.
   standfirst "…and expanded it in small releases after that"; "four
   product areas I carried" · `src/app/work/resolve/page.tsx`.
 - **Knowledge dropdown note.** "More soon" · `src/components/Nav.tsx`.
+- **"How I decide" intro (2026-09-30, Femi's ask).** Now reads "These
+  are the principles I decide by, formed in product work and used well
+  beyond it: when time is short, the roadmap is crowded, or the
+  evidence changes the plan." His fallback if this still feels
+  ambiguous: "These are the product principles I use when time is
+  short…" · `src/app/page.tsx` · keep, or swap to the fallback.
 - **Case study testimonial section.** Label "In their words", link
   "More on the wall of love →" · `src/components/CaseStudy.tsx`.
 - **Colophon Build sentence.** "…a design-system package inside the
