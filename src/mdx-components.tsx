@@ -57,6 +57,12 @@ const components: MDXComponents = {
     </blockquote>
   ),
   hr: () => <hr className="my-12 border-t border-rule" />,
+  img: ({ src, alt }) => (
+    // Essays are 680px wide, so a plain img sized by CSS is enough; the
+    // hairline matches the figures on the case studies.
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={src} alt={alt ?? ""} className="my-8 w-full border border-rule" loading="lazy" />
+  ),
   code: ({ children }) => (
     <code className="rounded bg-foreground/5 px-1.5 py-0.5 font-mono text-sm">
       {children}

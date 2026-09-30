@@ -304,9 +304,12 @@ User pastes the essay content. You:
    description: One-sentence description.
    ---
 
-   # The essay title
-
-   …body in Markdown…
+   …body in Markdown. No `# Title` line: the route renders the title
+   from frontmatter, so one in the body would double it. Section
+   headings start at `##`. Images live in `public/writing/<slug>/`
+   (1600px long edge, JPEG q80, sharp is in node_modules) and go in as
+   `![caption](/writing/<slug>/1.jpg)` with the caption repeated as an
+   italic line beneath.…
    ```
 3. Commit (`new post: <title>`) and push.
 
@@ -319,6 +322,16 @@ with `_` are skipped). Optional frontmatter: `homepageHidden: true`, `image:
 Turbopack's dynamic-import glob needs at least one `.mdx` in the folder to resolve.
 
 ## 2. New Substack / external piece
+
+Since 2026-09-30 every Substack essay is also published on-site as MDX
+(path 1) and the site is the canonical home; Substack stays as the
+newsletter distribution. Femi's decision from the PM audit (F8). So for
+a new essay: publish it here as MDX, and if it also goes out on
+Substack, do NOT add it to external.json too (the index would list it
+twice). external.json is for pieces that live only elsewhere. The
+Substack-to-MDX conversion is a short script (fetch with a browser UA,
+walk `div.body.markup`, strip subscribe forms and the Share tail,
+originals are URL-encoded inside the substackcdn image path).
 
 Prepend to the array in `content/writing/external.json` (no `type` field —
 the loader adds it):

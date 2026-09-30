@@ -56,7 +56,11 @@ export function getInternalPosts(): InternalPost[] {
 }
 
 export function getExternalPosts(): ExternalPost[] {
-  return externalPostsJson.map((p) => ({ type: "external" as const, ...p }));
+  // Cast because an empty JSON array infers never[], which cannot be spread.
+  return (externalPostsJson as Omit<ExternalPost, "type">[]).map((p) => ({
+    type: "external" as const,
+    ...p,
+  }));
 }
 
 export function getAllWriting(): WritingItem[] {
