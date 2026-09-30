@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { spiralPath } from "@femora/design-system/spiral-path";
+import { ogFonts } from "@/lib/ogFonts";
 import {
   getInternalPosts,
   getInternalPostBySlug,
@@ -48,7 +49,7 @@ export default async function OGImage({
           padding: "80px",
           background: "#FAF7F0",
           color: "#1F1B16",
-          fontFamily: "serif",
+          fontFamily: "Fraunces",
           position: "relative",
         }}
       >
@@ -84,7 +85,7 @@ export default async function OGImage({
           </svg>
           <div
             style={{
-              fontFamily: "monospace",
+              fontFamily: "IBM Plex Mono",
               fontSize: 22,
               letterSpacing: "0.18em",
               color: "#6F675C",
@@ -108,7 +109,7 @@ export default async function OGImage({
 
         <div
           style={{
-            fontFamily: "monospace",
+            fontFamily: "IBM Plex Mono",
             fontSize: 22,
             color: "#6F675C",
             display: "flex",
@@ -121,6 +122,6 @@ export default async function OGImage({
         </div>
       </div>
     ),
-    { ...size }
+    { ...size, fonts: await ogFonts() }
   );
 }

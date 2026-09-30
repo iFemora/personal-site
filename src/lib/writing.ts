@@ -80,6 +80,12 @@ export function getInternalPostBySlug(slug: string): InternalPost | undefined {
 }
 
 export function formatPostDate(iso: string): string {
+  // Date-only ISO strings parse as UTC midnight; format in UTC too, or a
+  // build west of Greenwich shows the previous month for the 1st.
   const d = new Date(iso);
-  return d.toLocaleString("en-US", { month: "long", year: "numeric" });
+  return d.toLocaleString("en-US", {
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
 }

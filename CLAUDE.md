@@ -30,6 +30,12 @@ removed in one sweep once he lands:
 - `metadata.description` + OG/Twitter descriptions in `src/app/layout.tsx`.
 - "CV" in the nav pill (after Work) and the footer link row.
 
+**Review queue:** anything drafted or decided on Femi's behalf that
+still needs his eyes goes in `docs/review-queue.md` (one line each:
+what, where, how to resolve). Append there rather than asking in
+chat; he works through it when he has time and deletes lines as he
+resolves them.
+
 Roadmap: a senior-PM audit (`ifemora-dev-pm-audit-roadmap.md`, kept
 outside the repo in Femi's Downloads) drove the 2026-09-30 work, all
 three phases shipped that day: Phase 0 "Hire me" (availability

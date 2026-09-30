@@ -1,11 +1,12 @@
 import { ImageResponse } from "next/og";
 import { spiralPath } from "@femora/design-system/spiral-path";
+import { ogFonts } from "@/lib/ogFonts";
 
 export const alt = "Femi Siji-Kenneth — Thinker. Tinkerer.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OGImage() {
+export default async function OGImage() {
   return new ImageResponse(
     (
       <div
@@ -18,7 +19,7 @@ export default function OGImage() {
           padding: "80px",
           background: "#FAF7F0",
           color: "#1F1B16",
-          fontFamily: "serif",
+          fontFamily: "Fraunces",
           position: "relative",
         }}
       >
@@ -72,7 +73,7 @@ export default function OGImage() {
 
         <div
           style={{
-            fontFamily: "monospace",
+            fontFamily: "IBM Plex Mono",
             fontSize: 22,
             color: "#6F675C",
             display: "flex",
@@ -85,6 +86,6 @@ export default function OGImage() {
         </div>
       </div>
     ),
-    { ...size }
+    { ...size, fonts: await ogFonts() }
   );
 }
