@@ -117,10 +117,6 @@ content:
     path: content/desk.json
     format: json
     fields:
-      - name: updated
-        label: Updated (e.g. "July 2026")
-        type: string
-        required: true
       - name: items
         label: Desk items
         type: object

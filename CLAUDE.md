@@ -3,9 +3,39 @@
 # Project context
 
 This is the source of **[ifemora.dev](https://ifemora.dev)** — Femi Siji-Kenneth's
-personal website. Femi is a Lead Product Manager at Marqeta (payments / fintech),
-based in Vancouver (moved from Toronto in 2026). He writes essays on Substack (`ifemora.substack.com`), plays tennis,
-and signs the site "Thinker. Tinkerer."
+personal website. Femi was most recently Lead Product Manager at Marqeta
+(payments / fintech); that role ended 1 September 2026. He is based in
+Vancouver (moved from Toronto in 2026). He writes essays on Substack
+(`ifemora.substack.com`), plays tennis, and signs the site "Thinker. Tinkerer."
+
+## Owner status (as of 2026-09-30): job-hunting
+
+Femi is actively looking. Target roles: Solutions Architect, Customer
+Success / Product Success, and PM roles at banks and enterprises, in
+Vancouver or remote across Canada. North-star metric for the site:
+**three recruiter conversations a day.** Weigh every change against that;
+the professional half (Work, CV, home hero) must convert, the personality
+half (Studio, Notes, Love) must make him memorable.
+
+Where the "open to work" signal lives, so it can be found and later
+removed in one sweep once he lands:
+
+- Home hero: the `● Open to new roles` pill and the `Book an intro`
+  CTA (`src/components/BookIntroLink.tsx`, which also holds the booking
+  URL: a Google Calendar appointment schedule, "Meet with Femi",
+  https://calendar.app.google/yviSTFyCSgA2VHvd8; hours and timezone are
+  managed in Google Calendar, not in code).
+- `/cv`: the Marqeta dates end "Sep 2026" and the summary carries a
+  one-line seeking sentence. Never write "Present" for an ended role.
+- `metadata.description` + OG/Twitter descriptions in `src/app/layout.tsx`.
+- "CV" in the nav pill (after Work) and the footer link row.
+
+Roadmap: a senior-PM audit (`ifemora-dev-pm-audit-roadmap.md`, kept
+outside the repo in Femi's Downloads) drives the current work. Phase 0
+("Hire me") shipped 2026-09-30. Phase 1 is conversion: the Knowledge nav
+umbrella for /follow-the-money, the colophon link check on /work, seeding
+on-site writing + RSS, log-counter framing, and testimonials on case
+studies (the last three need Femi's picks).
 
 When Femi opens this repo in Claude Code, his typical request is one of:
 
@@ -41,10 +71,15 @@ operations (deleting files, rewriting history, changing DNS).
 # Site map
 
 ```
-/                       Home — hero, bio, 3 work teasers, 3 writing teasers, footer
+/                       Home — hero (+ availability pill and booking CTA), bio,
+                        3 work teasers, "How I decide", "From the desk" (its
+                        "Updated" month is derived in src/lib/desk.ts from the
+                        freshest essay or field note; never hand-type it),
+                        3 writing teasers, footer
 /about                  Life timeline — "how I got here", dated beats, duotone-ready photos
 /work                   5 artifact-first case cards
-/cv                     Long-form designed résumé with print-to-PDF button
+/cv                     Long-form designed résumé with print-to-PDF button.
+                        In the nav (after Work) and footer while job-hunting.
 /studio                 Umbrella hub for "the other kind of work" (nav: STUDIO, a
                         dropdown sub-nav like Pick Your Palette). Three rooms:
                         Reel (/studio/reel), Writing (/writing), Gallery (/gallery).
@@ -86,10 +121,11 @@ means 8 pairs plus the audit list.
 New sections claim the next sibling from the earthy family in
 `packages/femora-ds/tokens.css`.
 
-**Nav order:** About · Work · Studio ▾ (Reel, Writing, Gallery) · Notes ·
-Love. Writing and Gallery keep their URLs and accents; they only moved
-under the Studio dropdown to keep the pill short. Don't re-add them as
-top-level items. Unlisted but live: /tennis, /follow-the-money, /cv,
+**Nav order:** About · Work · CV · Studio ▾ (Reel, Writing, Gallery) ·
+Notes · Love. Writing and Gallery keep their URLs and accents; they only
+moved under the Studio dropdown to keep the pill short. Don't re-add them
+as top-level items. CV joined the pill on 2026-09-30 for the job search
+(see Owner status). Unlisted but live: /tennis, /follow-the-money,
 /colophon. Planned next umbrella: "Knowledge" (see /follow-the-money).
 
 **The nav is sticky sitewide** (`layout.tsx` header: a full-bleed

@@ -22,20 +22,20 @@ const experiences: Experience[] = [
   {
     company: "Marqeta",
     role: "Lead Product Manager",
-    dates: "Sep 2025 – Present",
+    dates: "Sep 2025 – Sep 2026",
     location: "Vancouver, BC (Remote)",
     summary:
-      "Owns a four-product portfolio (Resolve, the contact-center support platform; Marqeta Dashboard; Marqeta IVR; and Identity & Access Management) for a global card-issuing platform processing billions in annual payment volume.",
+      "Owned a four-product portfolio (Resolve, the contact-center support platform; Marqeta Dashboard; Marqeta IVR; and Identity & Access Management) for a global card-issuing platform processing billions in annual payment volume.",
     bullets: [
       "Led Resolve from concept to production in under five months: a purpose-built cardholder support portal designed side by side with the design team, informed by direct observation of agent workflows during Coinbase program support.",
       "Expanded Resolve after its first release to support debit, credit, and prepaid programs across payments, collections, disputes, fraud management, and account sub-status management.",
-      "Leading Resolve's credit expansion across FCRA disputes, collections and delinquency workflows, credit bureau reporting, and TCPA compliance.",
+      "Led Resolve's credit expansion across FCRA disputes, collections and delinquency workflows, credit bureau reporting, and TCPA compliance.",
       "Built the automated testing workflow exclusively using Claude Code and Playwright in Terminal.",
       "Presented Resolve's product vision and roadmap to cross-functional leadership across Credit, Operations, and Engineering. Created demo content for BPO transition stakeholders.",
-      "Lead two cross-functional engineering pods across North America and India; earned an internal impact award within four months of joining.",
-      "Manage the Marqeta Dashboard, the primary program-management tool for 400+ businesses and 17,000+ users, including programs run by Uber, Square, Klarna, and Coinbase. Redesigning it for enterprise program managers and defining KPIs for cardholder lifecycle management and settlement tracking.",
-      "Leading the design of a central, immutable audit log for use across the platform, compliant with PCI DSS, GLBA, and SOC 2.",
-      "Owning Identity & Access Management on Auth0: a unified access-management platform with federated identity across Marqeta products, single sign-on, and just-in-time provisioning for program administrators, developers, and support agents. The work includes user-access tooling, Self-Service Credential API provisioning, and IVR improvements, including AI agent management.",
+      "Led two cross-functional engineering pods across North America and India; earned an internal impact award within four months of joining.",
+      "Managed the Marqeta Dashboard, the primary program-management tool for 400+ businesses and 17,000+ users, including programs run by Uber, Square, Klarna, and Coinbase. Redesigned it for enterprise program managers and defined KPIs for cardholder lifecycle management and settlement tracking.",
+      "Led the design of a central, immutable audit log for use across the platform, compliant with PCI DSS, GLBA, and SOC 2.",
+      "Owned Identity & Access Management on Auth0: a unified access-management platform with federated identity across Marqeta products, single sign-on, and just-in-time provisioning for program administrators, developers, and support agents. The work included user-access tooling, Self-Service Credential API provisioning, and IVR improvements, including AI agent management.",
     ],
   },
   {
@@ -175,6 +175,10 @@ export default function CVPage() {
           supporting global card programmes. I also build working prototypes in
           Claude Code so I can test product ideas before asking a team to
           commit to them.
+        </p>
+        <p className="mt-4 leading-relaxed print:mt-2 print:leading-snug">
+          I am now open to Solutions Architect, Customer Success, and Product
+          leadership roles, in Vancouver or remote across Canada.
         </p>
       </section>
 

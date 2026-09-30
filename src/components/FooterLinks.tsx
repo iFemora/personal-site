@@ -9,6 +9,7 @@ const links: { label: string; href: string; network?: string }[] = [
   { label: "linkedin", href: "https://linkedin.com/in/ifemora", network: "linkedin" },
   { label: "x", href: "https://x.com/iFemora", network: "x" },
   { label: "substack", href: "https://substack.com/@ifemora", network: "substack" },
+  { label: "cv", href: "/cv" },
   { label: "colophon", href: "/colophon" },
 ];
 

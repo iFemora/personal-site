@@ -15,7 +15,8 @@ export type TrackedEvent =
   | "social_link_click"
   | "field_note_complete"
   | "field_note_transcript_open"
-  | "tennis_video_play";
+  | "tennis_video_play"
+  | "book_intro_click";
 
 /** GA4 custom events beyond the original three (cv_download,
     field_note_play, gallery_photo_view), which call sendGAEvent

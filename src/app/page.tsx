@@ -5,6 +5,7 @@ import { getHomepageWriting } from "@/lib/writing";
 import { getDesk } from "@/lib/desk";
 import { siteUrl, serializeJsonLd } from "@/lib/seo";
 import ExternalArrow from "@/components/ExternalArrow";
+import BookIntroLink from "@/components/BookIntroLink";
 import {
   Reveal,
   DrawnRule,
@@ -81,7 +82,7 @@ const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Femi Siji-Kenneth",
-  jobTitle: "Lead Product Manager",
+  jobTitle: "Product Leader",
   url: siteUrl,
   sameAs: [
     "https://linkedin.com/in/ifemora",
@@ -102,10 +103,10 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(personJsonLd) }}
       />
       {/* Hero */}
-      <div className="relative isolate min-h-[540px] overflow-hidden sm:min-h-[410px] sm:overflow-visible">
+      <div className="relative isolate min-h-[590px] overflow-hidden sm:min-h-[410px] sm:overflow-visible">
         <div
           aria-hidden
-          className="pointer-events-none absolute left-0 top-[200px] z-0 h-[270px] w-[210px] overflow-hidden border border-rule bg-background sm:left-auto sm:right-[8%] sm:top-0 sm:h-[340px] sm:w-[270px]"
+          className="pointer-events-none absolute left-0 top-[250px] z-0 h-[270px] w-[210px] overflow-hidden border border-rule bg-background sm:left-auto sm:right-[8%] sm:top-0 sm:h-[340px] sm:w-[270px]"
         >
           <Image
             src="/about/femi-profile-2026.jpg"
@@ -145,8 +146,20 @@ export default function Home() {
           <Spiral size={24} delay={1.0} className="text-accent" />
         </div>
 
+        {/* Availability: the pill borrows the nav's treatment so it reads
+            as part of the furniture, not a badge. */}
+        <Reveal immediate delay={0.4}>
+          <div className="relative z-10 mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+            <span className="inline-flex items-center gap-2 rounded-full border border-rule px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted">
+              <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-accent" />
+              Open to new roles
+            </span>
+            <BookIntroLink />
+          </div>
+        </Reveal>
+
         <Reveal immediate delay={0.5}>
-          <p className="absolute left-0 top-[486px] mt-0 w-[210px] font-mono text-xs uppercase tracking-[0.18em] text-muted sm:left-auto sm:right-[8%] sm:top-[356px] sm:w-[270px] sm:text-right">
+          <p className="absolute left-0 top-[536px] mt-0 w-[210px] font-mono text-xs uppercase tracking-[0.18em] text-muted sm:left-auto sm:right-[8%] sm:top-[356px] sm:w-[270px] sm:text-right">
             Product, payments
             <br />
             Vancouver, Canada

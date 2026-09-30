@@ -25,10 +25,13 @@ type NavItem = NavLink | NavGroup;
 const isGroup = (item: NavItem): item is NavGroup => "rooms" in item;
 
 /* The Studio is an umbrella: its rooms open from a sub-nav, the way the
-   palette picker does, so the pill stays to six words. */
+   palette picker does, so the pill stays to six words. CV sits beside
+   Work while the job search is on; it is the highest-intent page for
+   recruiters. */
 const items: NavItem[] = [
   { href: "/about", label: "About" },
   { href: "/work", label: "Work" },
+  { href: "/cv", label: "CV" },
   {
     href: "/studio",
     label: "Studio",
