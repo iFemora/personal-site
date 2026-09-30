@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal, DrawnRule, MaskedLines } from "@femora/design-system";
+import { resolveVoices, type CaseVoice } from "@/lib/caseVoices";
 
 export type CaseStudyFigure = {
   src: string;
@@ -22,6 +23,8 @@ type CaseStudyProps = {
   title: string[];
   standfirst: string;
   sections: CaseStudySection[];
+  /** Wall of Love excerpts placed beside the claim they support. */
+  voices?: CaseVoice[];
 };
 
 export default function CaseStudy({
@@ -29,7 +32,9 @@ export default function CaseStudy({
   title,
   standfirst,
   sections,
+  voices = [],
 }: CaseStudyProps) {
+  const resolved = resolveVoices(voices);
   return (
     <main className="mx-auto w-full max-w-[1100px] px-6 py-16 sm:py-24">
       <Reveal immediate>
@@ -95,6 +100,45 @@ export default function CaseStudy({
           </section>
         ))}
       </div>
+
+      {resolved.length > 0 && (
+        <>
+          <DrawnRule className="my-14 sm:my-20" />
+          <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12">
+            <Reveal>
+              <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
+                <span className="text-accent">In their words</span>
+              </p>
+            </Reveal>
+            <div className="space-y-10">
+              {resolved.map((voice, i) => (
+                <Reveal key={voice.id} delay={i * 0.08}>
+                  <blockquote>
+                    <p className="font-serif text-xl italic leading-snug tracking-tight sm:text-2xl">
+                      &ldquo;{voice.excerpt}&rdquo;
+                    </p>
+                    <footer className="mt-4 font-mono text-xs uppercase tracking-[0.15em] text-muted">
+                      <span className="text-foreground">{voice.name}</span>
+                      {voice.role && <> · {voice.role}</>}
+                      {voice.company && <>, {voice.company}</>}
+                    </footer>
+                  </blockquote>
+                </Reveal>
+              ))}
+              <Reveal delay={0.16}>
+                <p>
+                  <Link
+                    href="/love"
+                    className="link-swipe font-mono text-xs uppercase tracking-[0.18em] text-accent"
+                  >
+                    More on the wall of love →
+                  </Link>
+                </p>
+              </Reveal>
+            </div>
+          </section>
+        </>
+      )}
 
       <DrawnRule className="my-14 sm:my-20" />
 

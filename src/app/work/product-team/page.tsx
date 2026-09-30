@@ -98,6 +98,18 @@ export default function ProductTeamCaseStudy() {
           ],
         },
       ]}
+      voices={[
+        {
+          id: "2026-07-31-ebunoluwa",
+          excerpt:
+            "I find that Femi has the perfect balance of a visionary and an empathetic leader that can inspire and drive people to achieve results.",
+        },
+        {
+          id: "2026-08-01-kehinde-adebiyi",
+          excerpt:
+            "Your ability to challenge thinking, bring clarity, and move conversations toward meaningful outcomes is something I’ve always admired.",
+        },
+      ]}
     />
   );
 }
