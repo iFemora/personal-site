@@ -31,14 +31,14 @@ removed in one sweep once he lands:
 - "CV" in the nav pill (after Work) and the footer link row.
 
 Roadmap: a senior-PM audit (`ifemora-dev-pm-audit-roadmap.md`, kept
-outside the repo in Femi's Downloads) drives the current work. Phase 0
-("Hire me") shipped 2026-09-30. Phase 1 (conversion) shipped the same
-day except the parts that need Femi's words: the Knowledge umbrella,
-the RSS feed, and the tennis counter (hidden below three entries) are
-live; the first on-site essay waits on his pick of a Substack piece, and
-case-study testimonials are drafted on the `case-study-voices` branch
-for his veto. Phase 2 is hardening: colophon copy drift, alt-text audit,
-GitHub Actions CI, the write-API tradeoff note, OG verification.
+outside the repo in Femi's Downloads) drove the 2026-09-30 work, all
+three phases shipped that day: Phase 0 "Hire me" (availability
+signals, CV currency), Phase 1 "Conversion" (Knowledge umbrella, RSS,
+all four Substack essays on-site, Wall of Love voices on the case
+studies, log-counter framing), Phase 2 "Hardening" (CI, alt-text
+audit, colophon copy, OG verified on production, this API note). Open
+from the audit: Follow the Money's own accent, Act IV, and a Marqeta
+voice for the Resolve case study when one lands on the wall.
 
 When Femi opens this repo in Claude Code, his typical request is one of:
 
@@ -411,6 +411,27 @@ Don't generate content in his voice without confirming first. Drafts are fine
 to offer; never assume a tagline or paragraph is what he'd actually write.
 
 ---
+
+# Write APIs (the phone-publishing endpoints)
+
+`POST /api/field-notes` and `POST /api/gallery` take a bearer secret
+(`FIELD_NOTES_SECRET`, compared timing-safe), then commit straight to
+`main` through `GITHUB_PAT`, and Vercel redeploys. Known tradeoffs,
+accepted on purpose for a one-person site: no rate limiting, no
+preview/staging step, no request signing beyond the shared secret. The
+secret is only ever typed into two iOS Shortcuts on Femi's phone, and
+a bad commit is one `git revert` away. Don't "fix" this into a queue,
+a moderation step, or a second environment unless Femi asks; the
+simplicity is the feature (it is how "ship in small releases" is dogfooded).
+
+# CI
+
+`.github/workflows/ci.yml` runs on every PR and push to main: `npm run
+lint`, `tsc --noEmit`, `npm run build`, `npm run audit:contrast`
+(the contrast script exits non-zero on any FAIL). Vercel still builds
+independently; CI is the gate that a broken push is visible on GitHub
+before anyone looks at the deploy. Keep it under ~5 minutes: no
+browser tests, no screenshot diffs.
 
 # Don'ts
 

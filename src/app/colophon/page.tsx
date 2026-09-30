@@ -96,7 +96,8 @@ const sections = [
     body: (
       <>
         Built with Next.js and MDX, and deployed on Vercel. Shared styling and
-        animation live in a separate design-system package. iPhone Shortcuts
+        animation live in a design-system package inside the same repository,
+        so the site and its system move together. iPhone Shortcuts
         publish field notes and gallery photos through an API that commits them
         to the repository.
       </>
