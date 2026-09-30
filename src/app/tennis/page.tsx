@@ -37,8 +37,8 @@ export default function TennisPage() {
       <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12">
         <Reveal immediate delay={0.45}>
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
-            <span className="text-accent">Log</span> — {entries.length}{" "}
-            {entries.length === 1 ? "entry" : "entries"}
+            <span className="text-accent">Log</span>
+            {entries.length >= 3 && <> — {entries.length} entries</>}
           </p>
         </Reveal>
         <Reveal immediate delay={0.5}>

@@ -192,3 +192,24 @@ schemes, 550 checks), 12 failing light-scheme accents darkened 2–10%
 hue-preserved (house ochre and chartreuse among them), one house
 :focus-visible style, wash overlaps accepted as WARN by policy. Full
 standard in docs/accessibility.md; short rules in CLAUDE.md.
+
+## 2026-09-27 — unlisted from the nav (backfilled 2026-09-30)
+
+Femi took MONEY out of the nav: visitors told him a lone item with that
+label was confusing. The page stayed live at /follow-the-money, like
+/tennis, and the plan was a "Knowledge" umbrella (a dropdown like
+Studio, holding this page plus future how-to-build and AI-agent
+pieces) once there was a second piece to put beside it.
+
+## 2026-09-30 — back in the nav, under Knowledge
+
+Decision from the senior-PM audit, Femi's call: don't wait for
+company. The site's job right now is a job search, and this page is
+the single best proof of craft on it; hiding it cost more than a
+one-item dropdown ever could. Shipped: a "Knowledge" umbrella in the
+nav between Studio and Notes, opening to "Follow the Money" (dot in
+the borrowed slate teal) over a muted "More soon" line. The Nav now
+supports any number of umbrellas, so the next knowledge piece is one
+array entry. The page itself is untouched; the open items above (voice
+pass, Act IV, success metric, OG image) still stand.
+

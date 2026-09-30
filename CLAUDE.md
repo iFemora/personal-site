@@ -32,10 +32,13 @@ removed in one sweep once he lands:
 
 Roadmap: a senior-PM audit (`ifemora-dev-pm-audit-roadmap.md`, kept
 outside the repo in Femi's Downloads) drives the current work. Phase 0
-("Hire me") shipped 2026-09-30. Phase 1 is conversion: the Knowledge nav
-umbrella for /follow-the-money, the colophon link check on /work, seeding
-on-site writing + RSS, log-counter framing, and testimonials on case
-studies (the last three need Femi's picks).
+("Hire me") shipped 2026-09-30. Phase 1 (conversion) shipped the same
+day except the parts that need Femi's words: the Knowledge umbrella,
+the RSS feed, and the tennis counter (hidden below three entries) are
+live; the first on-site essay waits on his pick of a Substack piece, and
+case-study testimonials are drafted on the `case-study-voices` branch
+for his veto. Phase 2 is hardening: colophon copy drift, alt-text audit,
+GitHub Actions CI, the write-API tradeoff note, OG verification.
 
 When Femi opens this repo in Claude Code, his typical request is one of:
 
@@ -89,15 +92,18 @@ operations (deleting files, rewriting history, changing DNS).
                         duotone posters, Behance case-study links, Nasir Kareem
                         credited on the Addict Creative pieces.
 /writing                Unified index of Substack pieces + on-site MDX posts
+/writing/rss.xml        RSS feed of that index (advertised in /writing's <head>)
 /writing/[slug]         Individual MDX post
 /field-notes            Short observations + voice memos
 /follow-the-money       Interactive payments explainer — Femi's product proof.
-                        UNLISTED since 2026-09-27 (live at the URL, not in the
-                        nav, like /tennis): visitors found a lone "Money" item
-                        confusing. It comes back under a future "Knowledge"
-                        nav umbrella (dropdown like Studio) once it has company:
-                        how-to-build pieces, AI agents in action, etc. Don't
-                        re-add "Money" to the nav on its own. BEFORE touching
+                        In the nav under the "Knowledge" umbrella (dropdown
+                        like Studio) since 2026-09-30, its only room for now
+                        with a "More soon" note. It was unlisted 2026-09-27
+                        because a lone "Money" item confused visitors; the
+                        audit decided not to wait for company during the job
+                        hunt. Never list it as a bare "Money" item again. Next
+                        knowledge pieces (how-to-build, AI agents in action)
+                        are one entry in the Nav `items` array. BEFORE touching
                         the page, read docs/follow-the-money-playbook.md
                         (pattern + status) and docs/anatomy-log.md (dated
                         decision log). /anatomy 308-redirects here.
@@ -122,11 +128,13 @@ New sections claim the next sibling from the earthy family in
 `packages/femora-ds/tokens.css`.
 
 **Nav order:** About · Work · CV · Studio ▾ (Reel, Writing, Gallery) ·
-Notes · Love. Writing and Gallery keep their URLs and accents; they only
-moved under the Studio dropdown to keep the pill short. Don't re-add them
-as top-level items. CV joined the pill on 2026-09-30 for the job search
-(see Owner status). Unlisted but live: /tennis, /follow-the-money,
-/colophon. Planned next umbrella: "Knowledge" (see /follow-the-money).
+Knowledge ▾ (Follow the Money, "More soon") · Notes · Love. Writing and
+Gallery keep their URLs and accents; they only moved under the Studio
+dropdown to keep the pill short. Don't re-add them as top-level items.
+CV and the Knowledge umbrella joined the pill on 2026-09-30 for the job
+search (see Owner status). The Nav supports any number of umbrellas
+(`NavGroup`: optional hub `href` + `hubLabel`, optional `note`, its own
+`openEvent`). Unlisted but live: /tennis, /colophon.
 
 **The nav is sticky sitewide** (`layout.tsx` header: a full-bleed
 "liquid glass" bar — full viewport width at every size, translucent

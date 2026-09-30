@@ -9,6 +9,7 @@ export type TrackedEvent =
   | "studio_video_play"
   | "studio_room_open"
   | "nav_studio_open"
+  | "nav_knowledge_open"
   | "love_filter_select"
   | "love_search"
   | "love_entry_open"

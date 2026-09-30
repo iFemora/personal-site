@@ -12,22 +12,33 @@ import PalettePicker, {
   ActiveDot,
   PaletteRows,
 } from "@/components/PalettePicker";
-import { trackEvent } from "@/lib/track";
+import { trackEvent, type TrackedEvent } from "@/lib/track";
 
 type NavLink = { href: string; label: string };
 type Room = NavLink & {
   /** Which section accent the room's dot is painted in. */
-  accent: "studio" | "writing" | "gallery";
+  accent: "studio" | "writing" | "gallery" | "work";
 };
-type NavGroup = NavLink & { rooms: Room[] };
+type NavGroup = {
+  label: string;
+  /** The umbrella's own hub page, if it has one. */
+  href?: string;
+  rooms: Room[];
+  /** Muted line under the rooms for an umbrella still filling up. */
+  note?: string;
+  /** Hub link copy, e.g. "The whole studio →". Needs `href`. */
+  hubLabel?: string;
+  openEvent: TrackedEvent;
+};
 type NavItem = NavLink | NavGroup;
 
 const isGroup = (item: NavItem): item is NavGroup => "rooms" in item;
 
-/* The Studio is an umbrella: its rooms open from a sub-nav, the way the
-   palette picker does, so the pill stays to six words. CV sits beside
-   Work while the job search is on; it is the highest-intent page for
-   recruiters. */
+/* Umbrellas open from a sub-nav, the way the palette picker does, so the
+   pill stays short. CV sits beside Work while the job search is on; it is
+   the highest-intent page for recruiters. Knowledge launched 2026-09-30
+   with one room on purpose: hiding Follow the Money during a job hunt
+   cost more than a one-item dropdown does. */
 const items: NavItem[] = [
   { href: "/about", label: "About" },
   { href: "/work", label: "Work" },
@@ -35,15 +46,22 @@ const items: NavItem[] = [
   {
     href: "/studio",
     label: "Studio",
+    hubLabel: "The whole studio →",
+    openEvent: "nav_studio_open",
     rooms: [
       { href: "/studio/reel", label: "Reel", accent: "studio" },
       { href: "/writing", label: "Writing", accent: "writing" },
       { href: "/gallery", label: "Gallery", accent: "gallery" },
     ],
   },
-  // Follow the Money (/follow-the-money) is unlisted for now, like /tennis.
-  // It returns under a future "Knowledge" umbrella once there is more than
-  // one piece to put there.
+  {
+    label: "Knowledge",
+    note: "More soon",
+    openEvent: "nav_knowledge_open",
+    rooms: [
+      { href: "/follow-the-money", label: "Follow the Money", accent: "work" },
+    ],
+  },
   { href: "/field-notes", label: "Notes" },
   { href: "/love", label: "Love" },
 ];
@@ -53,8 +71,11 @@ function isActivePath(pathname: string, href: string): boolean {
 }
 
 function isActiveItem(pathname: string, item: NavItem): boolean {
-  if (isActivePath(pathname, item.href)) return true;
-  return isGroup(item) && item.rooms.some((r) => isActivePath(pathname, r.href));
+  if (isGroup(item)) {
+    if (item.href && isActivePath(pathname, item.href)) return true;
+    return item.rooms.some((r) => isActivePath(pathname, r.href));
+  }
+  return isActivePath(pathname, item.href);
 }
 
 function RoomDot({ accent }: { accent: Room["accent"] }) {
@@ -73,21 +94,25 @@ export default function Nav() {
   const isHome = pathname === "/";
   const [open, setOpen] = useState(false);
   const [panel, setPanel] = useState<"menu" | "palette">("menu");
-  const [studioOpen, setStudioOpen] = useState(false);
+  const [openGroup, setOpenGroup] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
-  const studioRef = useRef<HTMLDivElement>(null);
+  const groupRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   useEffect(() => {
-    if (!open && !studioOpen) return;
+    if (!open && !openGroup) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setOpen(false);
-        setStudioOpen(false);
+        setOpenGroup(null);
       }
     };
     const onDown = (e: PointerEvent) => {
-      if (!menuRef.current?.contains(e.target as Node)) setOpen(false);
-      if (!studioRef.current?.contains(e.target as Node)) setStudioOpen(false);
+      const target = e.target as Node;
+      if (!menuRef.current?.contains(target)) setOpen(false);
+      const insideGroup = Object.values(groupRefs.current).some((el) =>
+        el?.contains(target)
+      );
+      if (!insideGroup) setOpenGroup(null);
     };
     window.addEventListener("keydown", onKey);
     window.addEventListener("pointerdown", onDown);
@@ -95,7 +120,7 @@ export default function Nav() {
       window.removeEventListener("keydown", onKey);
       window.removeEventListener("pointerdown", onDown);
     };
-  }, [open, studioOpen]);
+  }, [open, openGroup]);
 
   const thumb = (layoutId: string) =>
     reduced ? (
@@ -126,6 +151,14 @@ export default function Nav() {
     transition: { duration: 0.25, ease: EASE },
   };
 
+  const noteRow = (note: string, className = "") => (
+    <p
+      className={`px-4 py-2 font-mono text-[9px] uppercase tracking-[0.16em] text-muted/70 ${className}`}
+    >
+      {note}
+    </p>
+  );
+
   const roomRows = (group: NavGroup, surface: "desktop" | "mobile") => (
     <>
       {group.rooms.map((room) => {
@@ -134,7 +167,7 @@ export default function Nav() {
           <Link
             key={room.href}
             href={room.href}
-            onClick={() => setStudioOpen(false)}
+            onClick={() => setOpenGroup(null)}
             aria-current={active ? "page" : undefined}
             className={`flex items-center justify-between gap-4 rounded-full px-4 py-2.5 uppercase transition-colors duration-300 ${
               active
@@ -142,22 +175,32 @@ export default function Nav() {
                 : "text-muted hover:text-foreground"
             }`}
           >
-            <span>{room.label}</span>
+            <span className="whitespace-nowrap">{room.label}</span>
             <RoomDot accent={room.accent} />
           </Link>
         );
       })}
-      <div className="mx-4 my-1 border-t border-rule" />
-      <Link
-        href={group.href}
-        onClick={() => {
-          trackEvent("studio_room_open", { label: "studio", surface });
-          setStudioOpen(false);
-        }}
-        className="block rounded-full px-4 py-2.5 text-[10px] uppercase tracking-[0.16em] text-muted transition-colors duration-300 hover:text-foreground"
-      >
-        The whole studio →
-      </Link>
+      {group.href && group.hubLabel && (
+        <>
+          <div className="mx-4 my-1 border-t border-rule" />
+          <Link
+            href={group.href}
+            onClick={() => {
+              trackEvent("studio_room_open", { label: "studio", surface });
+              setOpenGroup(null);
+            }}
+            className="block rounded-full px-4 py-2.5 text-[10px] uppercase tracking-[0.16em] text-muted transition-colors duration-300 hover:text-foreground"
+          >
+            {group.hubLabel}
+          </Link>
+        </>
+      )}
+      {group.note && (
+        <>
+          <div className="mx-4 my-1 border-t border-rule" />
+          {noteRow(group.note)}
+        </>
+      )}
     </>
   );
 
@@ -197,17 +240,24 @@ export default function Nav() {
           {items.map((item) => {
             const active = isActiveItem(pathname, item);
             if (isGroup(item)) {
+              const isOpen = openGroup === item.label;
               return (
-                <div key={item.href} className="relative" ref={studioRef}>
+                <div
+                  key={item.label}
+                  className="relative"
+                  ref={(el) => {
+                    groupRefs.current[item.label] = el;
+                  }}
+                >
                   <button
                     type="button"
-                    aria-expanded={studioOpen}
+                    aria-expanded={isOpen}
                     aria-haspopup="true"
                     aria-current={active ? "page" : undefined}
                     onClick={() => {
-                      if (!studioOpen)
-                        trackEvent("nav_studio_open", { surface: "desktop" });
-                      setStudioOpen((o) => !o);
+                      if (!isOpen)
+                        trackEvent(item.openEvent, { surface: "desktop" });
+                      setOpenGroup(isOpen ? null : item.label);
                     }}
                     className={segmentClass(active)}
                   >
@@ -220,7 +270,7 @@ export default function Nav() {
                       fill="none"
                       aria-hidden
                       className={`relative transition-transform duration-300 ${
-                        studioOpen ? "rotate-180" : ""
+                        isOpen ? "rotate-180" : ""
                       }`}
                     >
                       <path
@@ -233,9 +283,9 @@ export default function Nav() {
                     </svg>
                   </button>
                   <AnimatePresence>
-                    {studioOpen && (
+                    {isOpen && (
                       <motion.div
-                        className={`${panelClass} left-1/2 top-full w-48 -translate-x-1/2`}
+                        className={`${panelClass} left-1/2 top-full min-w-48 -translate-x-1/2`}
                         {...panelMotion}
                       >
                         {roomRows(item, "desktop")}
@@ -303,24 +353,28 @@ export default function Nav() {
                     {items.map((item) => {
                       const active = isActiveItem(pathname, item);
                       if (isGroup(item)) {
+                        const hubActive =
+                          !!item.href && isActivePath(pathname, item.href);
+                        const parentClass = `relative block rounded-full px-4 py-2.5 transition-colors duration-300 ${
+                          active ? "text-accent" : "text-muted"
+                        }`;
                         return (
-                          <div key={item.href}>
-                            <Link
-                              href={item.href}
-                              onClick={() => setOpen(false)}
-                              aria-current={
-                                isActivePath(pathname, item.href)
-                                  ? "page"
-                                  : undefined
-                              }
-                              className={`relative block rounded-full px-4 py-2.5 transition-colors duration-300 ${
-                                active ? "text-accent" : "text-muted"
-                              }`}
-                            >
-                              {isActivePath(pathname, item.href) &&
-                                thumb("nav-thumb-phone")}
-                              <span className="relative">{item.label}</span>
-                            </Link>
+                          <div key={item.label}>
+                            {item.href ? (
+                              <Link
+                                href={item.href}
+                                onClick={() => setOpen(false)}
+                                aria-current={hubActive ? "page" : undefined}
+                                className={parentClass}
+                              >
+                                {hubActive && thumb("nav-thumb-phone")}
+                                <span className="relative">{item.label}</span>
+                              </Link>
+                            ) : (
+                              <p className={parentClass}>
+                                <span className="relative">{item.label}</span>
+                              </p>
+                            )}
                             {item.rooms.map((room) => {
                               const roomActive = isActivePath(
                                 pathname,
@@ -342,6 +396,7 @@ export default function Nav() {
                                 </Link>
                               );
                             })}
+                            {item.note && noteRow(item.note, "ml-4 py-1.5")}
                           </div>
                         );
                       }

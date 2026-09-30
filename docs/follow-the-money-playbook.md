@@ -11,7 +11,8 @@ Femi's product proof: one concept taken from idea to production solo,
 documented and instrumented so it generates its own case study. The
 product is an interactive explanation of card payments at
 `/follow-the-money` (named by Femi; permanent redirect from the old
-`/anatomy`; nav label MONEY, short form like Notes). Three audiences,
+`/anatomy`; listed in the nav under the "Knowledge" umbrella since
+2026-09-30, after a spell unlisted from 2026-09-27; see the log). Three audiences,
 named by Femi (2026-08-06) and all first-class: people who carry cards
 (learn how money moves), small merchants (what integrating actually
 costs and means), and payments professionals (the competence signal).
@@ -105,7 +106,9 @@ funnel events telling us where curiosity goes).
 - `src/lib/anatomyDepth.ts` — go-deeper chapters per actor.
 - `src/lib/anatomyTrack.ts` — the only place event names exist.
 - `src/components/anatomy/ChapterMark.tsx` — in-view funnel beacons.
-- Touchpoints elsewhere: nav item in `Nav.tsx`; accent mapping in
+- Touchpoints elsewhere: the Knowledge umbrella's room in `Nav.tsx`
+  (`items` array; the umbrella carries a "More soon" note until a
+  second piece lands); accent mapping in
   `AccentController.tsx` (borrows `work` slate teal — its own accent
   is a future decision that requires editing locked tokens plus all
   eight palettes; confirm with Femi first); redirect in
@@ -115,7 +118,8 @@ funnel events telling us where curiosity goes).
 
 ## Status and what's next
 
-Done: Acts I–III live and verified in production; named; in the nav;
+Done: Acts I–III live and verified in production; named; in the nav
+(under Knowledge since 2026-09-30);
 sticky nav sitewide; funnel armed; Act III expanded to four dispute
 cases (2026-08-02); three-audience framing, question-led act intros,
 and the three-seat economics takeaways (2026-08-06, from external
