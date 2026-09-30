@@ -53,6 +53,18 @@ export default function AirlinePaymentsCaseStudy() {
           ],
         },
       ]}
+      voices={[
+        {
+          id: "2026-08-10-ejiro-esigbone",
+          excerpt:
+            "Passion. That is the word I associate most with Femi; he does his work with passion. This translates to great energy as a teammate, willingness to always improve and an “it can be done” approach to difficulty.",
+        },
+        {
+          id: "2026-08-06-loretta-adamu",
+          excerpt:
+            "He takes his work seriously while making the people around him feel supported and valued. I enjoyed working with him at Paystack and would confidently recommend him as a trustworthy professional.",
+        },
+      ]}
     />
   );
 }

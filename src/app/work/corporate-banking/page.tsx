@@ -124,6 +124,13 @@ export default function CorporateBankingCaseStudy() {
           ],
         },
       ]}
+      voices={[
+        {
+          id: "2026-07-29-morakinyo-adejare",
+          excerpt:
+            "Femi is one of the most well-rounded people I know, deeply knowledgeable in his areas of expertise, yet endlessly curious about the things he isn’t. Come to any conversation with facts, because he’ll debate you fairly on anything.",
+        },
+      ]}
     />
   );
 }

@@ -49,6 +49,13 @@ export default function FarmcrowdyCaseStudy() {
           ],
         },
       ]}
+      voices={[
+        {
+          id: "2026-08-13-okechukwu-ukaigwe",
+          excerpt:
+            "From our Farmcrowdy days, where he brought communities and growth ideas to life, to the many times he has pushed himself to experiment, innovate, and try something new, Femi has always had a special ability to turn ideas into momentum.",
+        },
+      ]}
     />
   );
 }
