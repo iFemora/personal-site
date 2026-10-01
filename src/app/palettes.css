@@ -41,6 +41,8 @@ html[data-palette="ink"] {
   --d-accent-love: #eeeeec;
   --l-accent-studio: #21201c;
   --d-accent-studio: #eeeeec;
+  --l-accent-money: #21201c;
+  --d-accent-money: #eeeeec;
 
   --l-wash: 0%;
   --d-wash: 0%;
@@ -80,6 +82,8 @@ html[data-palette="ember"] {
   --d-accent-love: #ff949d;
   --l-accent-studio: #ce2c31; /* red */
   --d-accent-studio: #ff9592;
+  --l-accent-money: #7d5e54; /* bronze — the coin */
+  --d-accent-money: #d4b3a5;
 }
 
 /* Riso — saturated print inks on plain paper, for the colour lovers. */
@@ -109,6 +113,8 @@ html[data-palette="riso"] {
   --d-accent-love: #ff8dcc;
   --l-accent-studio: #8145b5; /* purple */
   --d-accent-studio: #d19dff;
+  --l-accent-money: #1f8066; /* jade */
+  --d-accent-money: #1fd8a4;
 }
 
 /* Chalk — powdery pastel. Sand paper by day, mauve dusk by night. */
@@ -138,6 +144,8 @@ html[data-palette="chalk"] {
   --d-accent-love: #e796f3;
   --l-accent-studio: #107d98; /* cyan */
   --d-accent-studio: #4ccce6;
+  --l-accent-money: #00806e; /* teal */
+  --d-accent-money: #0bd8b6;
 }
 
 /* Tide — cool water and overcast light. Slate neutrals, blue-green accents. */
@@ -167,6 +175,8 @@ html[data-palette="tide"] {
   --d-accent-love: #baa7ff;
   --l-accent-studio: #00749e; /* sky */
   --d-accent-studio: #75c7f0;
+  --l-accent-money: #208056; /* green */
+  --d-accent-money: #3dd68c;
 }
 
 /* Grove — forest floor. Olive paper, greens with bark and one wildflower. */
@@ -196,6 +206,8 @@ html[data-palette="grove"] {
   --d-accent-love: #e796f3;
   --l-accent-studio: #c44b00; /* orange — one fallen leaf */
   --d-accent-studio: #ffa057;
+  --l-accent-money: #1f8066; /* jade — new leaf */
+  --d-accent-money: #1fd8a4;
 }
 
 /* Cobalt — Swiss and electric. Cool slate paper, near-black ink, one
@@ -227,4 +239,6 @@ html[data-palette="cobalt"] {
   --d-accent-love: #70b8ff;
   --l-accent-studio: #0d74ce;
   --d-accent-studio: #70b8ff;
+  --l-accent-money: #0d74ce;
+  --d-accent-money: #70b8ff;
 }

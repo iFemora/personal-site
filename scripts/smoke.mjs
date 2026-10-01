@@ -34,6 +34,7 @@ const routes = [
   "/colophon",
   "/sitemap.xml",
   "/opengraph-image",
+  "/work/resolve/opengraph-image",
 ];
 
 // Noise that is not a site bug.

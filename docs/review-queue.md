@@ -139,6 +139,26 @@ Format: **what** · where · how to resolve.
 - **CV "Print" link.** Beside "Download as PDF →" there is now a muted
   "Print" for people who want the browser dialog ·
   `src/components/PrintButton.tsx` · keep or drop.
+- **Employer wordmarks** (home bio, /work): typographic marks in
+  Fraunces with a note and role under each ("a Stripe company",
+  "First City Monument Bank", "Techstars Toronto"; "Product, key
+  accounts" for Paystack). Official logos were skipped on purpose: four
+  brand systems never sit on one hairline cleanly, and the brand sites
+  are unreachable from the cloud session · `src/components/EmployerStrip.tsx`
+  · keep, reword the notes, or drop in SVGs if all four can match.
+- **CV "In sixty seconds".** ₦70B monthly volume · 200,000+ clients ·
+  5 PMs grown · 29 states, each with a one-line label, printed too ·
+  `src/app/cv/page.tsx` `numbers` · confirm the four, reword labels.
+- **Work page coda.** Entry 06 (this site) now reads "Coda" with
+  smaller type; the index says "five projects, and this site" ·
+  `src/app/work/page.tsx` · keep or restore the sixth number.
+- **Follow the Money accent.** Banknote green, chosen without you;
+  the playbook asked to confirm first and the "Later" batch was the
+  confirmation · `packages/femora-ds/tokens.css`, `src/app/palettes.css`
+  · live with it or pick another hue (swap hues, never steps).
+- **Case-study share cards.** Five new OG images in slate teal with
+  the case title and the eyebrow · `src/app/work/*/opengraph-image.tsx`
+  · check one on LinkedIn's post inspector.
 - **Branch protection on main.** CI runs but cannot block a red push.
   GitHub → Settings → Rules → Rulesets → New branch ruleset: target
   `main`, enable "Require status checks to pass" and pick `lint · types

@@ -7,6 +7,7 @@ import { siteUrl, serializeJsonLd } from "@/lib/seo";
 import ExternalArrow from "@/components/ExternalArrow";
 import BookIntroLink from "@/components/BookIntroLink";
 import HireMe, { SEEKING_LINE } from "@/components/HireMe";
+import EmployerStrip from "@/components/EmployerStrip";
 import {
   Reveal,
   DrawnRule,
@@ -33,8 +34,6 @@ const workItems = [
     href: "/work#cardholder-support",
   },
 ];
-
-const employers = "Marqeta · Paystack, a Stripe company · FCMB · Farmcrowdy";
 
 /* Drafted on Femi's behalf; logged in docs/review-queue.md. */
 const seeking = [
@@ -216,9 +215,7 @@ export default function Home() {
             often, read too much philosophy, and write for minds
             that <Highlight order={3}>think in spirals</Highlight>.
           </p>
-          <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
-            {employers}
-          </p>
+          <EmployerStrip className="mt-10" />
         </Reveal>
       </section>
 

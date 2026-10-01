@@ -359,6 +359,12 @@ review queue.
 
 ### Later — depth
 
+**Status: shipped 2026-10-01**, items 21, 22, 23, 26 and the accent
+half of 27, plus Plentywaka hidden from the home teasers (25). Left:
+24 (Femi's call), the essay imports in 25 (Substack is unreachable from
+the cloud session; run locally), Act IV and the Marqeta voice in 27
+(need Femi), and 28 (two weeks of data).
+
 | # | Item | Type | Where | Effort | Words |
 |---|------|------|-------|--------|-------|
 | 21 | Employer wordmark strip on Home and Work (§4) | design | `page.tsx`, `work/page.tsx` | M | no |

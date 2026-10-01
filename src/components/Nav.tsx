@@ -17,7 +17,7 @@ import { trackEvent, type TrackedEvent } from "@/lib/track";
 type NavLink = { href: string; label: string };
 type Room = NavLink & {
   /** Which section accent the room's dot is painted in. */
-  accent: "studio" | "writing" | "gallery" | "work";
+  accent: "studio" | "writing" | "gallery" | "work" | "money";
 };
 type NavGroup = {
   label: string;
@@ -59,7 +59,7 @@ const items: NavItem[] = [
     note: "More soon",
     openEvent: "nav_knowledge_open",
     rooms: [
-      { href: "/follow-the-money", label: "Follow the Money", accent: "work" },
+      { href: "/follow-the-money", label: "Follow the Money", accent: "money" },
     ],
   },
   { href: "/field-notes", label: "Notes" },

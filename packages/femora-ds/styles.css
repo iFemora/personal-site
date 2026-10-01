@@ -51,6 +51,8 @@
   --d-accent-love: #e2a1a6;
   --l-accent-studio: #474b8a; /* indigo — dye vat */
   --d-accent-studio: #a7abdc;
+  --l-accent-money: #2e6b47; /* banknote green — follow the money */
+  --d-accent-money: #8fcfa5;
 
   --l-wash: 10%;
   --d-wash: 14%;
@@ -71,6 +73,7 @@
   --accent-gallery: var(--l-accent-gallery);
   --accent-love: var(--l-accent-love);
   --accent-studio: var(--l-accent-studio);
+  --accent-money: var(--l-accent-money);
   --wash: var(--l-wash);
   --grain-blend: var(--l-grain-blend);
   --grain-opacity: var(--l-grain-opacity);
@@ -92,6 +95,7 @@
     --accent-gallery: var(--d-accent-gallery);
     --accent-love: var(--d-accent-love);
     --accent-studio: var(--d-accent-studio);
+    --accent-money: var(--d-accent-money);
     --wash: var(--d-wash);
     --grain-blend: var(--d-grain-blend);
     --grain-opacity: var(--d-grain-opacity);
@@ -111,6 +115,7 @@
   --accent-gallery: var(--d-accent-gallery);
   --accent-love: var(--d-accent-love);
   --accent-studio: var(--d-accent-studio);
+  --accent-money: var(--d-accent-money);
   --wash: var(--d-wash);
   --grain-blend: var(--d-grain-blend);
   --grain-opacity: var(--d-grain-opacity);
@@ -143,6 +148,9 @@ html[data-accent="love"] {
 }
 html[data-accent="studio"] {
   --accent: var(--accent-studio);
+}
+html[data-accent="money"] {
+  --accent: var(--accent-money);
 }
 
 @theme inline {

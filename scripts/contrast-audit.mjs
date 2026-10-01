@@ -19,7 +19,7 @@
        gradient: text rarely sits at its strongest point.
 
    Conformance note: WCAG applies to every state the site ships, so all
-   8 palettes x 2 schemes x 8 accents must pass — a user on any theme is
+   8 palettes x 2 schemes x 9 accents must pass — a user on any theme is
    entitled to a readable page there (docs/accessibility.md).
 
    The fix for a failure is Radix discipline: swap the hue, never the
@@ -107,6 +107,7 @@ const ACCENTS = [
   "accent-gallery",
   "accent-love",
   "accent-studio",
+  "accent-money",
 ];
 
 const failures = [];
