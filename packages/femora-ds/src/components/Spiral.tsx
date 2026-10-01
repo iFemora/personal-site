@@ -32,9 +32,13 @@ export function Spiral({ size = 28, delay = 0.8, className }: SpiralProps) {
         stroke="currentColor"
         strokeWidth={4}
         strokeLinecap="round"
-        initial={reduced ? { pathLength: 1 } : { pathLength: 0 }}
+        initial={{ pathLength: 0 }}
         animate={{ pathLength: 1 }}
-        transition={{ duration: 1.6, ease: "easeOut", delay }}
+        transition={
+          reduced
+            ? { duration: 0 }
+            : { duration: 1.6, ease: "easeOut", delay }
+        }
       />
     </svg>
   );

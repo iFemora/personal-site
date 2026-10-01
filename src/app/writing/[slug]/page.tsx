@@ -6,6 +6,7 @@ import {
   formatPostDate,
 } from "@/lib/writing";
 import { siteUrl, serializeJsonLd } from "@/lib/seo";
+import HireMe from "@/components/HireMe";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -88,7 +89,9 @@ export default async function PostPage({ params }: Props) {
         <Post />
       </article>
 
-      <hr className="mt-16 border-t border-rule" />
+      <HireMe location="essay_end" compact />
+
+      <hr className="mt-12 border-t border-rule" />
 
       <p className="mt-6 text-sm">
         <Link

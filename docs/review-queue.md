@@ -91,8 +91,41 @@ Format: **what** · where · how to resolve.
 
 ## Site audit (2026-10-01)
 
-- **Full-site critique and roadmap.** Drafts for the hero positioning
-  line, the OG card line and a "What I'm looking for" section are in
-  §3 of `docs/site-audit-2026-10-01.md`; none ship until Femi words
-  them · `docs/site-audit-2026-10-01.md` · read, reword, then run the
-  "Now" table.
+- **Full-site critique and roadmap.** The "Now" batch shipped
+  2026-10-01 with drafted copy (below); "Next" and "Later" are the
+  backlog · `docs/site-audit-2026-10-01.md` · read, reword, pick the
+  next batch.
+- **Hero positioning line.** "Product leader, ten years in payments and
+  banking. Open to Solutions Architect, Customer Success and Product
+  roles, in Vancouver or remote across Canada." The second sentence is
+  `SEEKING_LINE` in `src/components/HireMe.tsx` and is reused in the
+  hire-me block and the author card; change it once there ·
+  `src/app/page.tsx`, `src/components/HireMe.tsx` · keep or reword.
+- **Hire-me block copy.** Label "Open to new roles"; body "Twenty
+  minutes on a call is the quickest way to find out whether the fit is
+  real. The calendar link books straight into my week."; links "Read
+  the CV →", "Email →" · `src/components/HireMe.tsx` · keep or reword.
+- **Author card under essays and notes.** "Product leader, ten years in
+  payments and banking." + `SEEKING_LINE`, link "The work →" ·
+  `src/components/HireMe.tsx` (`compact`) · keep or reword.
+- **Employer line under the home bio.** "Marqeta · Paystack, a Stripe
+  company · FCMB · Farmcrowdy" · `src/app/page.tsx` `employers` · keep,
+  reorder, or cut.
+- **Home teaser metas** now carry the company ("FCMB · 2024–25",
+  "Paystack · 2021–24", "Marqeta · 2025–26") · `src/app/page.tsx` ·
+  confirm the Marqeta span reads right as "2025–26".
+- **Work case 03 tense.** "Resolve was one of four areas I carried at
+  Marqeta … were the others." · `src/app/work/page.tsx` · confirm.
+- **Follow the Money outro.** "…in Lagos, Toronto and Vancouver. The
+  two seconds have been my working life." (was "my day job") ·
+  `src/app/follow-the-money/page.tsx` · keep or reword.
+- **404 copy.** "Not here." / "The page moved, or never was. The rest
+  of the site is." / "Looking for someone who builds products in
+  payments and banking? That part is not lost." ·
+  `src/app/not-found.tsx` · keep or reword.
+- **Title tag and share card.** Default title "Femi Siji-Kenneth —
+  Product leader, payments and banking"; OG card gains a mono line
+  "Open to Solutions Architect · Customer Success · Product" ·
+  `src/app/layout.tsx`, `src/app/opengraph-image.tsx` · keep or reword.
+- **GitHub repo homepage** still points at the vercel.app URL; set it
+  to https://ifemora.dev · GitHub → repo → About (gear) · one click.

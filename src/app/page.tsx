@@ -6,6 +6,7 @@ import { getDesk } from "@/lib/desk";
 import { siteUrl, serializeJsonLd } from "@/lib/seo";
 import ExternalArrow from "@/components/ExternalArrow";
 import BookIntroLink from "@/components/BookIntroLink";
+import HireMe, { SEEKING_LINE } from "@/components/HireMe";
 import {
   Reveal,
   DrawnRule,
@@ -18,20 +19,22 @@ import {
 const workItems = [
   {
     title: "Built a corporate banking platform from scratch across Nigeria and the UK.",
-    period: "2024–25",
+    meta: "FCMB · 2024–25",
     href: "/work#corporate-banking",
   },
   {
     title: "Expanded a payment platform into airline ticketing.",
-    period: "2021–24",
+    meta: "Paystack · 2021–24",
     href: "/work#airline-payments",
   },
   {
     title: "Took a cardholder support platform from concept to production in under five months.",
-    period: "2025",
+    meta: "Marqeta · 2025–26",
     href: "/work#cardholder-support",
   },
 ];
+
+const employers = "Marqeta · Paystack, a Stripe company · FCMB · Farmcrowdy";
 
 const decisionPrinciples = [
   {
@@ -102,23 +105,10 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(personJsonLd) }}
       />
-      {/* Hero */}
-      <div className="relative isolate min-h-[644px] overflow-hidden sm:min-h-[410px] sm:overflow-visible">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute left-0 top-[304px] z-0 h-[270px] w-[210px] overflow-hidden border border-rule bg-background sm:left-auto sm:right-[8%] sm:top-0 sm:h-[340px] sm:w-[270px]"
-        >
-          <Image
-            src="/about/femi-profile-2026.jpg"
-            alt=""
-            fill
-            priority
-            sizes="(max-width: 640px) 210px, 270px"
-            className="object-cover object-[50%_24%] contrast-[1.03] saturate-[0.9]"
-          />
-          <span className="absolute inset-y-0 left-0 w-1 bg-accent sm:left-auto sm:right-0" />
-        </div>
-
+      {/* Hero. On the phone everything is in flow (name, tagline, line,
+          pills, photo); from sm: the photo block is lifted out to the
+          right so the text never has to dodge it with pixel offsets. */}
+      <div className="relative isolate sm:min-h-[410px]">
         <div className="relative z-10">
           <ProximityType
             lines={[
@@ -146,6 +136,14 @@ export default function Home() {
           <Spiral size={24} delay={1.0} className="text-accent" />
         </div>
 
+        {/* The one line a recruiter needs before anything else. */}
+        <Reveal immediate delay={0.34}>
+          <p className="relative z-10 mt-6 max-w-[500px] text-base leading-relaxed sm:text-lg">
+            Product leader, ten years in payments and banking.{" "}
+            <span className="text-muted">{SEEKING_LINE}</span>
+          </p>
+        </Reveal>
+
         {/* Availability: the pill borrows the nav's treatment so it reads
             as part of the furniture, not a badge. */}
         <Reveal immediate delay={0.4}>
@@ -158,13 +156,29 @@ export default function Home() {
           </div>
         </Reveal>
 
-        <Reveal immediate delay={0.5}>
-          <p className="absolute left-0 top-[590px] mt-0 w-[210px] font-mono text-xs uppercase tracking-[0.18em] text-muted sm:left-auto sm:right-[8%] sm:top-[356px] sm:w-[270px] sm:text-right">
-            Product, payments
-            <br />
-            Vancouver, Canada
-          </p>
-        </Reveal>
+        <div className="relative z-0 mt-10 w-[210px] sm:absolute sm:right-[8%] sm:top-0 sm:mt-0 sm:w-[270px]">
+          <div
+            aria-hidden
+            className="pointer-events-none relative h-[270px] w-full overflow-hidden border border-rule bg-background sm:h-[340px]"
+          >
+            <Image
+              src="/about/femi-profile-2026.jpg"
+              alt=""
+              fill
+              priority
+              sizes="(max-width: 640px) 210px, 270px"
+              className="object-cover object-[50%_24%] contrast-[1.03] saturate-[0.9]"
+            />
+            <span className="absolute inset-y-0 left-0 w-1 bg-accent sm:left-auto sm:right-0" />
+          </div>
+          <Reveal immediate delay={0.5}>
+            <p className="mt-4 font-mono text-xs uppercase tracking-[0.18em] text-muted sm:text-right">
+              Product, payments
+              <br />
+              Vancouver, Canada
+            </p>
+          </Reveal>
+        </div>
       </div>
 
       <DrawnRule className="my-14 sm:my-20" immediate delay={0.45} />
@@ -185,6 +199,9 @@ export default function Home() {
             play <Highlight order={2}>a lot of tennis</Highlight>, badly and
             often, read too much philosophy, and write for minds
             that <Highlight order={3}>think in spirals</Highlight>.
+          </p>
+          <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
+            {employers}
           </p>
         </Reveal>
       </section>
@@ -215,7 +232,7 @@ export default function Home() {
                       {item.title}
                     </span>
                     <span className="col-start-2 whitespace-nowrap font-mono text-xs uppercase tracking-[0.15em] text-muted transition-transform duration-300 group-hover:-translate-x-1 sm:col-start-3">
-                      {item.period}
+                      {item.meta}
                     </span>
                   </Link>
                 </Reveal>
@@ -405,6 +422,10 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
+
+      <DrawnRule className="my-14 sm:my-20" />
+
+      <HireMe location="home_end" />
     </main>
   );
 }

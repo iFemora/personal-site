@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import PrintButton from "@/components/PrintButton";
+import BookIntroLink from "@/components/BookIntroLink";
+import HireMe, { EMAIL } from "@/components/HireMe";
 
 export const metadata: Metadata = {
   title: "CV",
@@ -150,11 +152,27 @@ export default function CVPage() {
           Markets
         </p>
         <p className="mt-4 font-mono text-sm text-muted">
-          Vancouver, BC · oluwafemiakinseye@gmail.com · linkedin.com/in/ifemora
+          Vancouver, BC ·{" "}
+          <a
+            href={`mailto:${EMAIL}`}
+            className="underline underline-offset-4 hover:text-accent print:no-underline"
+          >
+            {EMAIL}
+          </a>{" "}
+          ·{" "}
+          <a
+            href="https://linkedin.com/in/ifemora"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-4 hover:text-accent print:no-underline"
+          >
+            linkedin.com/in/ifemora
+          </a>
         </p>
       </header>
 
-      <div className="mt-6 print:hidden">
+      <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 print:hidden">
+        <BookIntroLink location="cv_header" />
         <PrintButton />
       </div>
 
@@ -272,6 +290,12 @@ export default function CVPage() {
           ))}
         </dl>
       </section>
+
+      <hr className="mt-10 border-t border-rule print:hidden" />
+
+      <div className="mt-10 print:hidden">
+        <HireMe location="cv_end" />
+      </div>
 
       <hr className="mt-10 border-t border-rule print:hidden" />
 

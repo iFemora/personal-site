@@ -2,7 +2,8 @@ import { ImageResponse } from "next/og";
 import { spiralPath } from "@femora/design-system/spiral-path";
 import { ogFonts } from "@/lib/ogFonts";
 
-export const alt = "Femi Siji-Kenneth — Thinker. Tinkerer.";
+export const alt =
+  "Femi Siji-Kenneth — Thinker. Tinkerer. Open to Solutions Architect, Customer Success and Product roles.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -68,6 +69,31 @@ export default async function OGImage() {
             }}
           >
             Thinker. Tinkerer.
+          </div>
+          {/* The job-search signal; remove with the rest of the sweep
+              listed under Owner status in CLAUDE.md. */}
+          <div
+            style={{
+              marginTop: 28,
+              fontFamily: "IBM Plex Mono",
+              fontSize: 22,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: "#9A3B1E",
+              display: "flex",
+              alignItems: "center",
+              gap: 14,
+            }}
+          >
+            <span
+              style={{
+                width: 12,
+                height: 12,
+                borderRadius: 999,
+                background: "#9A3B1E",
+              }}
+            />
+            <span>Open to Solutions Architect · Customer Success · Product</span>
           </div>
         </div>
 

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import HireMe from "@/components/HireMe";
 import {
   Reveal,
   DrawnRule,
@@ -39,8 +40,8 @@ const entries: WorkEntry[] = [
   {
     id: "cardholder-support",
     title: "Took a cardholder support platform from concept to production in under five months.",
-    body: "I designed Resolve by sitting with BPO agents and watching them work. It now supports debit, credit, and prepaid programs across payments, collections, disputes, fraud, and sub-status management. I also built its automated testing workflow in Claude Code and Playwright. Resolve is one of four areas I carry: the program-management dashboard, identity and access management, and the telephony suite behind our IVR are the others.",
-    meta: "Marqeta · 2025",
+    body: "I designed Resolve by sitting with BPO agents and watching them work. It now supports debit, credit, and prepaid programs across payments, collections, disputes, fraud, and sub-status management. I also built its automated testing workflow in Claude Code and Playwright. Resolve was one of four areas I carried at Marqeta: the program-management dashboard, identity and access management, and the telephony suite behind the IVR were the others.",
+    meta: "Marqeta · 2025–26",
     caseStudy: { href: "/work/resolve" },
   },
   {
@@ -148,16 +149,7 @@ export default function WorkPage() {
 
       <DrawnRule className="my-14 sm:my-20" />
 
-      <Reveal>
-        <p>
-          <Link
-            href="/cv"
-            className="link-swipe font-mono text-xs uppercase tracking-[0.18em] text-accent"
-          >
-            Read the long form →
-          </Link>
-        </p>
-      </Reveal>
+      <HireMe location="work_end" />
     </main>
   );
 }

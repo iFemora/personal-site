@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Reveal, DrawnRule, MaskedLines } from "@femora/design-system";
 import { resolveVoices, type CaseVoice } from "@/lib/caseVoices";
+import HireMe from "@/components/HireMe";
 
 export type CaseStudyFigure = {
   src: string;
@@ -139,6 +140,10 @@ export default function CaseStudy({
           </section>
         </>
       )}
+
+      <DrawnRule className="my-14 sm:my-20" />
+
+      <HireMe location="case_study_end" />
 
       <DrawnRule className="my-14 sm:my-20" />
 

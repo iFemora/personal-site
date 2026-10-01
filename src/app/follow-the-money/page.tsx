@@ -187,8 +187,8 @@ export default function FollowTheMoneyPage() {
           <Reveal>
             <p className="text-lg leading-relaxed">
               I have spent ten years building the systems in this story, on
-              the issuing side and the acquiring side, in Lagos and Toronto.
-              The two seconds are my day job.
+              the issuing side and the acquiring side, in Lagos, Toronto and
+              Vancouver. The two seconds have been my working life.
             </p>
             <p className="mt-5 text-lg leading-relaxed">
               If you want the longer version, the{" "}

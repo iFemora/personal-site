@@ -44,10 +44,14 @@ export default function GalleryGrid({ frames, dense = false }: Props) {
           <motion.figure
             key={frame.id}
             className="mb-5 break-inside-avoid"
-            initial={reduced ? { opacity: 1 } : { opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "0px 0px -8% 0px" }}
-            transition={{ duration: 0.7, ease: EASE, delay: (i % 3) * 0.08 }}
+            transition={
+              reduced
+                ? { duration: 0 }
+                : { duration: 0.7, ease: EASE, delay: (i % 3) * 0.08 }
+            }
           >
             <button
               type="button"

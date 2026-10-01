@@ -20,14 +20,23 @@ half (Studio, Notes, Love) must make him memorable.
 Where the "open to work" signal lives, so it can be found and later
 removed in one sweep once he lands:
 
-- Home hero: the `● Open to new roles` pill and the `Book an intro`
+- Home hero: the positioning line under the tagline (uses
+  `SEEKING_LINE`), the `● Open to new roles` pill and the `Book an intro`
   CTA (`src/components/BookIntroLink.tsx`, which also holds the booking
   URL: a Google Calendar appointment schedule, "Meet with Femi",
   https://calendar.app.google/yviSTFyCSgA2VHvd8; hours and timezone are
   managed in Google Calendar, not in code).
-- `/cv`: the Marqeta dates end "Sep 2026" and the summary carries a
-  one-line seeking sentence. Never write "Present" for an ended role.
-- `metadata.description` + OG/Twitter descriptions in `src/app/layout.tsx`.
+- `src/components/HireMe.tsx`: `SEEKING_LINE` and the recruiter close.
+  Full block at the end of Home, Work, every case study (`CaseStudy.tsx`)
+  and the CV; the `compact` author card under essays and at the end of
+  Notes; a booking link on the 404. Each placement passes a GA
+  `link_location`, so GA4 shows which one converts.
+- `/cv`: the Marqeta dates end "Sep 2026", the summary carries a
+  one-line seeking sentence, and `Book an intro` sits beside the PDF
+  link. Never write "Present" for an ended role.
+- `metadata.title` (default) + `metadata.description` + OG/Twitter
+  titles and descriptions in `src/app/layout.tsx`; the "Open to …" mono
+  line on the home share card in `src/app/opengraph-image.tsx`.
 - "CV" in the nav pill (after Work) and the footer link row.
 
 **Review queue:** anything drafted or decided on Femi's behalf that
@@ -45,6 +54,10 @@ studies, log-counter framing), Phase 2 "Hardening" (CI, alt-text
 audit, colophon copy, OG verified on production, this API note). Open
 from the audit: Follow the Money's own accent, Act IV, and a Marqeta
 voice for the Resolve case study when one lands on the wall.
+A second, full-site audit (`docs/site-audit-2026-10-01.md`) followed on
+2026-10-01; its "Now" batch shipped the same day (hire-me block, hero
+line, company names, custom 404, reduced-motion fix, CV links, OG line,
+README). Its "Next" and "Later" tables are the current backlog.
 
 When Femi opens this repo in Claude Code, his typical request is one of:
 
@@ -140,7 +153,8 @@ dropdown to keep the pill short. Don't re-add them as top-level items.
 CV and the Knowledge umbrella joined the pill on 2026-09-30 for the job
 search (see Owner status). The Nav supports any number of umbrellas
 (`NavGroup`: optional hub `href` + `hubLabel`, optional `note`, its own
-`openEvent`). Unlisted but live: /tennis, /colophon.
+`openEvent`). Unlisted but live: /tennis (also `noindex` and out of
+the sitemap until it has content), /colophon.
 
 **The nav is sticky sitewide** (`layout.tsx` header: a full-bleed
 "liquid glass" bar — full viewport width at every size, translucent
@@ -272,7 +286,13 @@ site-specific pieces — `BackgroundSpiral`, `CursorDot`, `CursorField` — stay
 - `src/app/template.tsx` — soft page-entrance transition on route change
 - NO scroll-hijacking: Lenis was added and removed (Femi found it laggy). Never re-add smooth-scroll libraries.
 - The spiral (`@femora/design-system/spiral-path`) IS the logo — favicon, apple-icon, OG image, nav mark all use it. No F-in-a-box.
-- ALL motion respects `prefers-reduced-motion` (collapses to instant/static)
+- ALL motion respects `prefers-reduced-motion` (collapses to instant/static).
+  Do it by shortening the transition (`duration: reduced ? 0 : …`), never
+  by branching `initial` or the markup on `useReducedMotion()`: it is
+  `null` on the server, so a reduced-dependent `initial` leaves the
+  server's hidden inline style in place (the About timeline was invisible
+  to reduced-motion visitors until 2026-10-01) and a markup branch
+  mismatches on hydration.
 - New sections must use these primitives, not ad-hoc animations
 - `/cv` is intentionally static (print-to-PDF page)
 

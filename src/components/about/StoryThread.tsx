@@ -21,15 +21,22 @@ function StoryBeat({ beat, index }: { beat: AboutBeat; index: number }) {
   });
   const reduced = useReducedMotion();
 
+  /* `initial` never branches on `reduced`: useReducedMotion is null on
+     the server, so a reduced-dependent initial leaves the server's
+     opacity:0 inline style in place and the beat never shows. The
+     hidden start is constant; reduced motion collapses the duration. */
   return (
     <motion.li
       ref={ref}
       id={`beat-${beat.id}`}
       className="relative scroll-mt-24 pl-8 sm:pl-0"
-      initial={reduced ? false : { opacity: 0, y: 16 }}
-      whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.18 }}
-      transition={{ duration: 0.55, delay: Math.min(index, 2) * 0.04 }}
+      transition={{
+        duration: reduced ? 0 : 0.55,
+        delay: reduced ? 0 : Math.min(index, 2) * 0.04,
+      }}
     >
       <span
         aria-hidden

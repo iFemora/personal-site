@@ -321,6 +321,10 @@ draft can be prepared and queued in `docs/review-queue.md`.
 
 ### Now (this week) — conversion and correctness
 
+**Status: shipped 2026-10-01** (all ten, on branch
+`claude/relaxed-dijkstra-8zs04p`). The repo homepage setting in item
+10 is a GitHub UI change and is in the review queue.
+
 | # | Item | Type | Where | Effort | Words |
 |---|------|------|-------|--------|-------|
 | 1 | Fix the About timeline reduced-motion bug and the same `initial` pattern in the other motion components (§3.21–22) | code | `StoryThread.tsx`, `template.tsx`, `IdentityFlip.tsx`, `ProximityType.tsx`, `MaskedLines.tsx` | M | no |

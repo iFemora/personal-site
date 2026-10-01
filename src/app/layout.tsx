@@ -39,7 +39,7 @@ const siteUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Femi Siji-Kenneth",
+    default: "Femi Siji-Kenneth — Product leader, payments and banking",
     template: "%s — Femi Siji-Kenneth",
   },
   description:
@@ -49,14 +49,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Femi Siji-Kenneth",
-    title: "Femi Siji-Kenneth",
+    title: "Femi Siji-Kenneth — Product leader, payments and banking",
     description:
       "Femi Siji-Kenneth is a product leader open to Solutions Architect, Customer Success, and Product roles. Vancouver + remote Canada.",
     locale: "en_CA",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Femi Siji-Kenneth",
+    title: "Femi Siji-Kenneth — Product leader, payments and banking",
     description:
       "Femi Siji-Kenneth is a product leader open to Solutions Architect, Customer Success, and Product roles. Vancouver + remote Canada.",
     creator: "@iFemora",
