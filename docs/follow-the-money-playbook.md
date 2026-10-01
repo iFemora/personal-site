@@ -109,9 +109,9 @@ funnel events telling us where curiosity goes).
 - Touchpoints elsewhere: the Knowledge umbrella's room in `Nav.tsx`
   (`items` array; the umbrella carries a "More soon" note until a
   second piece lands); accent mapping in
-  `AccentController.tsx` (borrows `work` slate teal — its own accent
-  is a future decision that requires editing locked tokens plus all
-  eight palettes; confirm with Femi first); redirect in
+  `AccentController.tsx` (`money`: banknote green `#2e6b47` /
+  `#8fcfa5` in tokens.css, with a hue per guest palette in
+  palettes.css, since 2026-10-01; the audit covers it); redirect in
   `next.config.ts`; `sitemap.ts`; sticky header in `layout.tsx`
   (sitewide, `bg-background/85` + blur — the dispute ledger sticks
   just beneath it at `top-[72px]/[76px]`).
@@ -136,8 +136,8 @@ Open, roughly in order:
    watchable build-up or a fourth invention — decide WITH him.
 3. Success metric (before announcing), OG image so links unfurl,
    home-page teaser, first funnel review (which doors get opened,
-   where the chapter drop-off is), and eventually the page's own
-   accent.
+   where the chapter drop-off is). The page's own accent shipped
+   2026-10-01.
 
 Related but separate: the Wall of Love waitlist experiment is parked
 until the wall reaches ~30 voices (he has ~40 contributors pending).

@@ -100,6 +100,15 @@ const education = [
   },
 ];
 
+/* The ten-second read, above the summary. Each number is backed by a
+   bullet below. */
+const numbers: { value: string; label: string }[] = [
+  { value: "₦70B", label: "monthly volume on the corporate banking platform, from ₦200M at alpha" },
+  { value: "200,000+", label: "SME and enterprise clients served across Nigeria and the UK" },
+  { value: "5", label: "product managers hired and grown, APM to Lead" },
+  { value: "29", label: "Nigerian states visited to research in the field" },
+];
+
 const toolGroups: { label: string; items: string }[] = [
   {
     label: "Code & AI",
@@ -177,6 +186,27 @@ export default function CVPage() {
       </div>
 
       <hr className="my-10 border-t border-rule print:my-3" />
+
+      {/* Screen only: the printed CV keeps the conventional shape. */}
+      <section aria-label="In sixty seconds" className="print:hidden">
+        <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
+          <span className="text-accent">In sixty seconds</span>
+        </p>
+        <dl className="mt-5 grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-4">
+          {numbers.map((n) => (
+            <div key={n.value}>
+              <dt className="font-serif text-3xl leading-none tracking-tight sm:text-4xl">
+                {n.value}
+              </dt>
+              <dd className="mt-2 text-sm leading-snug text-muted">
+                {n.label}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <hr className="my-10 border-t border-rule print:hidden" />
 
       <section>
         <h2 className="font-serif text-2xl tracking-tight print:text-lg">

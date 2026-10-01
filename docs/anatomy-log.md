@@ -213,3 +213,14 @@ supports any number of umbrellas, so the next knowledge piece is one
 array entry. The page itself is untouched; the open items above (voice
 pass, Act IV, success metric, OG image) still stand.
 
+
+## 2026-10-01 — its own accent
+
+From the site audit's "Later" batch, on Femi's "ship it". The page no
+longer borrows the work slate teal: `--accent-money`, a banknote green
+(`#2e6b47` light, `#8fcfa5` dark) from the earthy family, with a Radix
+step-11 hue per guest palette (bronze in ember, jade in riso and grove,
+teal in chalk, green in tide; ink and cobalt stay monochrome). The
+Knowledge dropdown's dot and `html[data-accent="money"]` follow it.
+Contrast audit passes in all 8 x 2. Act IV is still to be scoped with
+him; nothing on the page itself changed.

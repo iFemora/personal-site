@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import HireMe from "@/components/HireMe";
+import EmployerStrip from "@/components/EmployerStrip";
 import {
   Reveal,
   DrawnRule,
@@ -20,6 +21,8 @@ type WorkEntry = {
   body: string;
   meta: string;
   caseStudy?: { href: string; label?: string };
+  /** A lighter closing entry, outside the numbered run. */
+  coda?: boolean;
 };
 
 const entries: WorkEntry[] = [
@@ -64,11 +67,13 @@ const entries: WorkEntry[] = [
     body: "A visitor can repaint the whole thing and it remembers: eight palettes, letterpress monochrome through to loud print inks, each one contrast-checked in light and dark so no choice I offer is unreadable. Every colour is declared once and resolved in a single place, which is what keeps eight of them cheap to maintain. The gallery deals itself a fresh order on every visit, and voice notes publish straight from my phone. I built it the way I build products: one small release at a time.",
     meta: "ifemora.dev · 2026",
     caseStudy: { href: "/colophon", label: "Read the colophon →" },
+    coda: true,
   },
 ];
 
 export default function WorkPage() {
-  const total = String(entries.length).padStart(2, "0");
+  const numbered = entries.filter((e) => !e.coda);
+  const total = String(numbered.length).padStart(2, "0");
   return (
     <main className="mx-auto w-full max-w-[1100px] px-6 py-16 sm:py-24">
       <ProximityType
@@ -87,7 +92,7 @@ export default function WorkPage() {
       <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,640px)] sm:gap-12">
         <Reveal immediate delay={0.45}>
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
-            <span className="text-accent">Index</span> — six projects
+            <span className="text-accent">Index</span> — five projects, and this site
           </p>
         </Reveal>
         <Reveal immediate delay={0.5}>
@@ -99,6 +104,7 @@ export default function WorkPage() {
             </Link>
             .
           </p>
+          <EmployerStrip className="mt-10" />
         </Reveal>
       </section>
 
@@ -113,25 +119,47 @@ export default function WorkPage() {
           >
             <Reveal>
               <div>
-                <p
-                  aria-hidden
-                  className="wonk font-serif text-6xl italic leading-none text-rule sm:text-7xl"
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </p>
-                <p className="mt-2 font-mono text-xs uppercase tracking-[0.2em] text-muted">
-                  No. {String(i + 1).padStart(2, "0")} / {total}
-                </p>
+                {entry.coda ? (
+                  <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
+                    <span className="text-accent">Coda</span>
+                  </p>
+                ) : (
+                  <>
+                    <p
+                      aria-hidden
+                      className="wonk font-serif text-6xl italic leading-none text-rule sm:text-7xl"
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </p>
+                    <p className="mt-2 font-mono text-xs uppercase tracking-[0.2em] text-muted">
+                      No. {String(i + 1).padStart(2, "0")} / {total}
+                    </p>
+                  </>
+                )}
                 <p className="mt-3 font-mono text-xs uppercase tracking-[0.15em] text-muted">
                   {entry.meta}
                 </p>
               </div>
             </Reveal>
             <Reveal delay={0.08}>
-              <h2 className="font-serif text-2xl leading-snug tracking-tight sm:text-3xl">
+              <h2
+                className={
+                  entry.coda
+                    ? "font-serif text-xl leading-snug tracking-tight sm:text-2xl"
+                    : "font-serif text-2xl leading-snug tracking-tight sm:text-3xl"
+                }
+              >
                 {entry.title}
               </h2>
-              <p className="mt-5 text-lg leading-relaxed">{entry.body}</p>
+              <p
+                className={
+                  entry.coda
+                    ? "mt-4 leading-relaxed text-muted"
+                    : "mt-5 text-lg leading-relaxed"
+                }
+              >
+                {entry.body}
+              </p>
               {entry.caseStudy && (
                 <p className="mt-5">
                   <Link

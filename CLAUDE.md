@@ -26,6 +26,10 @@ removed in one sweep once he lands:
   URL: a Google Calendar appointment schedule, "Meet with Femi",
   https://calendar.app.google/yviSTFyCSgA2VHvd8; hours and timezone are
   managed in Google Calendar, not in code).
+- `src/components/EmployerStrip.tsx`: the four employer wordmarks
+  (typographic on purpose; see the file comment) under the home bio and
+  on /work. Not a job-search signal as such, but it was added for it;
+  keep it after the search, it is proof either way.
 - Home section 04 "What I'm looking for" (`seeking` in `src/app/page.tsx`):
   three lines on role, place, and where. Remove the section and renumber
   05/06 when the search ends.
@@ -70,9 +74,14 @@ A second, full-site audit (`docs/site-audit-2026-10-01.md`) followed on
 custom 404, reduced-motion fix, CV links, OG line, README) and "Next"
 batch (type floor, flow hero, CV PDF file, skip link, constellation
 targets, per-page footer close, next/image timeline, gallery resize,
-"What I'm looking for", smoke test) shipped the same day. Branch
-protection on main is Femi's to switch on. The "Later" table is the
-current backlog.
+"What I'm looking for", smoke test) shipped the same day, and the
+"Later" batch followed (employer wordmarks, CV numbers strip,
+case-study share cards, work coda, Follow the Money's own accent,
+Plentywaka hidden from home). Still open from it: repo visibility and
+branch protection (Femi's), more Substack essays (network-blocked from
+the cloud session), Follow the Money Act IV (scope it with Femi), a
+Marqeta voice for Resolve, and the GA4 placement review after two
+weeks.
 
 When Femi opens this repo in Claude Code, his typical request is one of:
 
@@ -155,7 +164,7 @@ operations (deleting files, rewriting history, changing DNS).
 **Per-page accents** (html[data-accent], set by `AccentController`):
 home rust · work/cv slate-teal · writing moss · notes ochre · tennis muted
 chartreuse · gallery umber · love madder rose · studio indigo ·
-follow-the-money borrows slate-teal for now. Every accent has a pair in
+follow-the-money banknote green (`money`, since 2026-10-01). Every accent has a pair in
 each of the 7 guest palettes too (`src/app/palettes.css`), so a new one
 means 8 pairs plus the audit list.
 New sections claim the next sibling from the earthy family in
