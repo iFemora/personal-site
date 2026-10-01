@@ -340,6 +340,10 @@ draft can be prepared and queued in `docs/review-queue.md`.
 
 ### Next (two to three weeks) — UX polish
 
+**Status: shipped 2026-10-01**, items 11–19 (12 had shipped with the
+Now batch). Item 20 is a GitHub ruleset; the exact clicks are in the
+review queue.
+
 | # | Item | Type | Where | Effort | Words |
 |---|------|------|-------|--------|-------|
 | 11 | Type floor: no UI text under 11px (§3.11, 3.18) | design | `page.tsx`, `Nav.tsx`, `CaseStudy.tsx`, artifacts | S | no |

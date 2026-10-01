@@ -33,7 +33,7 @@ export function DrawnRule({
     "aria-hidden": true,
   };
 
-  if (immediate) {
+  if (immediate || reduced) {
     return <motion.span {...common} animate={visible} />;
   }
 

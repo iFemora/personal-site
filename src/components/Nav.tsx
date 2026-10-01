@@ -138,7 +138,7 @@ export default function Nav() {
     );
 
   const segmentClass = (active: boolean) =>
-    `relative inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] transition-colors duration-300 lg:px-3.5 lg:text-[11px] lg:tracking-[0.18em] ${
+    `relative inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2 py-1.5 font-mono text-[11px] uppercase tracking-[0.12em] transition-colors duration-300 lg:px-3.5 lg:tracking-[0.18em] ${
       active ? "text-accent" : "text-muted hover:text-foreground"
     }`;
 
@@ -153,7 +153,7 @@ export default function Nav() {
 
   const noteRow = (note: string, className = "") => (
     <p
-      className={`px-4 py-2 font-mono text-[9px] uppercase tracking-[0.16em] text-muted/70 ${className}`}
+      className={`px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-muted/70 ${className}`}
     >
       {note}
     </p>
@@ -189,7 +189,7 @@ export default function Nav() {
               trackEvent("studio_room_open", { label: "studio", surface });
               setOpenGroup(null);
             }}
-            className="block rounded-full px-4 py-2.5 text-[10px] uppercase tracking-[0.16em] text-muted transition-colors duration-300 hover:text-foreground"
+            className="block rounded-full px-4 py-2.5 text-[11px] uppercase tracking-[0.16em] text-muted transition-colors duration-300 hover:text-foreground"
           >
             {group.hubLabel}
           </Link>
@@ -386,7 +386,7 @@ export default function Nav() {
                                   href={room.href}
                                   onClick={() => setOpen(false)}
                                   aria-current={roomActive ? "page" : undefined}
-                                  className={`relative ml-4 flex items-center gap-2.5 rounded-full px-4 py-2 text-[10px] tracking-[0.16em] transition-colors duration-300 ${
+                                  className={`relative ml-4 flex items-center gap-2.5 rounded-full px-4 py-2 text-[11px] tracking-[0.16em] transition-colors duration-300 ${
                                     roomActive ? "text-accent" : "text-muted"
                                   }`}
                                 >

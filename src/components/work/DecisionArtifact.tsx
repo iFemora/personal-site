@@ -14,7 +14,7 @@ export default function DecisionArtifact({
   return (
     <figure className="group mt-9 border-y border-rule py-6 sm:py-8">
       <div className="flex items-baseline justify-between gap-6">
-        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
+        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
           Working model · {label}
         </p>
         <span
@@ -29,7 +29,7 @@ export default function DecisionArtifact({
       </h3>
       <div className="mt-7">{children}</div>
       {caption && (
-        <figcaption className="mt-6 max-w-[62ch] font-mono text-[10px] uppercase leading-relaxed tracking-[0.14em] text-muted">
+        <figcaption className="mt-6 max-w-[62ch] font-mono text-[11px] uppercase leading-relaxed tracking-[0.14em] text-muted">
           {caption}
         </figcaption>
       )}

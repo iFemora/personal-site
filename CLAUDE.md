@@ -26,6 +26,9 @@ removed in one sweep once he lands:
   URL: a Google Calendar appointment schedule, "Meet with Femi",
   https://calendar.app.google/yviSTFyCSgA2VHvd8; hours and timezone are
   managed in Google Calendar, not in code).
+- Home section 04 "What I'm looking for" (`seeking` in `src/app/page.tsx`):
+  three lines on role, place, and where. Remove the section and renumber
+  05/06 when the search ends.
 - `src/components/HireMe.tsx`: `SEEKING_LINE` and the recruiter close.
   Full block at the end of Home, Work, every case study (`CaseStudy.tsx`)
   and the CV; the `compact` author card under essays and at the end of
@@ -33,7 +36,15 @@ removed in one sweep once he lands:
   `link_location`, so GA4 shows which one converts.
 - `/cv`: the Marqeta dates end "Sep 2026", the summary carries a
   one-line seeking sentence, and `Book an intro` sits beside the PDF
-  link. Never write "Present" for an ended role.
+  link. Never write "Present" for an ended role. The downloadable file
+  `public/cv/femi-siji-kenneth.pdf` is generated, not hand-made: after
+  any edit to `src/app/cv/page.tsx` run `npm run build && npm run
+  cv:pdf` and commit the PDF (two Letter pages; `@page` margins live in
+  `packages/femora-ds/utilities.css`).
+- The footer's "debate tennis" ask steps aside on the professional
+  routes (`FooterClose` in `src/components/FooterLinks.tsx`), because
+  those pages end on the hire-me block. Restore it everywhere when the
+  block goes.
 - `metadata.title` (default) + `metadata.description` + OG/Twitter
   titles and descriptions in `src/app/layout.tsx`; the "Open to …" mono
   line on the home share card in `src/app/opengraph-image.tsx`.
@@ -55,9 +66,13 @@ audit, colophon copy, OG verified on production, this API note). Open
 from the audit: Follow the Money's own accent, Act IV, and a Marqeta
 voice for the Resolve case study when one lands on the wall.
 A second, full-site audit (`docs/site-audit-2026-10-01.md`) followed on
-2026-10-01; its "Now" batch shipped the same day (hire-me block, hero
-line, company names, custom 404, reduced-motion fix, CV links, OG line,
-README). Its "Next" and "Later" tables are the current backlog.
+2026-10-01; its "Now" batch (hire-me block, hero line, company names,
+custom 404, reduced-motion fix, CV links, OG line, README) and "Next"
+batch (type floor, flow hero, CV PDF file, skip link, constellation
+targets, per-page footer close, next/image timeline, gallery resize,
+"What I'm looking for", smoke test) shipped the same day. Branch
+protection on main is Femi's to switch on. The "Later" table is the
+current backlog.
 
 When Femi opens this repo in Claude Code, his typical request is one of:
 
@@ -155,6 +170,14 @@ search (see Owner status). The Nav supports any number of umbrellas
 (`NavGroup`: optional hub `href` + `hubLabel`, optional `note`, its own
 `openEvent`). Unlisted but live: /tennis (also `noindex` and out of
 the sitemap until it has content), /colophon.
+
+**Type floor:** no UI text below 11px (`text-[11px]`), including mono
+eyebrows, artifact labels and nav segments. The audit of 2026-10-01
+raised 48 sites from 9–10px; don't reintroduce smaller sizes.
+
+**Skip link:** the first tab stop on every page is "Skip to content"
+(`.skip-link` in `utilities.css`, target `#content` in `layout.tsx`).
+Keep it first in `<body>`.
 
 **The nav is sticky sitewide** (`layout.tsx` header: a full-bleed
 "liquid glass" bar — full viewport width at every size, translucent
@@ -287,12 +310,13 @@ site-specific pieces — `BackgroundSpiral`, `CursorDot`, `CursorField` — stay
 - NO scroll-hijacking: Lenis was added and removed (Femi found it laggy). Never re-add smooth-scroll libraries.
 - The spiral (`@femora/design-system/spiral-path`) IS the logo — favicon, apple-icon, OG image, nav mark all use it. No F-in-a-box.
 - ALL motion respects `prefers-reduced-motion` (collapses to instant/static).
-  Do it by shortening the transition (`duration: reduced ? 0 : …`), never
-  by branching `initial` or the markup on `useReducedMotion()`: it is
-  `null` on the server, so a reduced-dependent `initial` leaves the
-  server's hidden inline style in place (the About timeline was invisible
-  to reduced-motion visitors until 2026-10-01) and a markup branch
-  mismatches on hydration.
+  Do it by swapping `whileInView` for `animate` with `duration: 0` when
+  `reduced` is true (see `Reveal`), never by branching `initial` or the
+  markup on `useReducedMotion()`: it is `null` on the server, so a
+  reduced-dependent `initial` leaves the server's hidden inline style in
+  place (the About timeline was invisible to reduced-motion visitors
+  until 2026-10-01) and a markup branch mismatches on hydration.
+  `npm run smoke` checks the About case.
 - New sections must use these primitives, not ad-hoc animations
 - `/cv` is intentionally static (print-to-PDF page)
 
@@ -452,12 +476,22 @@ simplicity is the feature (it is how "ship in small releases" is dogfooded).
 
 # CI
 
-`.github/workflows/ci.yml` runs on every PR and push to main: `npm run
-lint`, `tsc --noEmit`, `npm run build`, `npm run audit:contrast`
-(the contrast script exits non-zero on any FAIL). Vercel still builds
-independently; CI is the gate that a broken push is visible on GitHub
-before anyone looks at the deploy. Keep it under ~5 minutes: no
-browser tests, no screenshot diffs.
+`.github/workflows/ci.yml` runs on every PR and push to main, as two
+parallel jobs. `check`: `npm run lint`, `tsc --noEmit`, `npm run
+build`, `npm run audit:contrast` (the contrast script exits non-zero
+on any FAIL). `smoke`: `npm run smoke` (`scripts/smoke.mjs`, Playwright
++ Chromium) against a production build: every listed route is 200,
+no console errors, no horizontal overflow at 390px, the custom 404
+renders, the About timeline is visible under reduced motion. It is a
+smoke test, not a suite: keep it under a minute of test time, no
+screenshot diffs. Vercel still builds independently; CI is the gate
+that a broken push is visible on GitHub before anyone looks at the
+deploy. Keep the whole run under ~5 minutes.
+
+Other scripts: `npm run cv:pdf` regenerates the CV file (see Owner
+status); `npm run optimize:gallery` re-encodes gallery JPEGs over
+450 KB to 2000px/q80 (`--all` for every file) and never changes
+dimensions, so content JSON stays valid.
 
 # Don'ts
 

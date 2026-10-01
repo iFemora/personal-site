@@ -130,7 +130,7 @@ const toolGroups: { label: string; items: string }[] = [
 
 export default function CVPage() {
   return (
-    <main className="mx-auto w-full max-w-[680px] px-6 py-16 sm:py-20 print:max-w-none print:px-0 print:py-0 print:text-[12px] print:leading-snug">
+    <main className="mx-auto w-full max-w-[680px] px-6 py-16 sm:py-20 print:max-w-none print:px-0 print:py-0 print:text-[11px] print:leading-snug">
       <p className="mb-12 font-serif italic text-muted print:hidden">
         This is the long form. The short form lives on the{" "}
         <Link
@@ -176,7 +176,7 @@ export default function CVPage() {
         <PrintButton />
       </div>
 
-      <hr className="my-10 border-t border-rule print:my-4" />
+      <hr className="my-10 border-t border-rule print:my-3" />
 
       <section>
         <h2 className="font-serif text-2xl tracking-tight print:text-lg">
@@ -200,13 +200,13 @@ export default function CVPage() {
         </p>
       </section>
 
-      <hr className="my-10 border-t border-rule print:my-4" />
+      <hr className="my-10 border-t border-rule print:my-3" />
 
       <section>
         <h2 className="font-serif text-2xl tracking-tight print:text-lg">
           Experience
         </h2>
-        <div className="mt-6 space-y-10 print:mt-3 print:space-y-4">
+        <div className="mt-6 space-y-10 print:mt-3 print:space-y-3">
           {experiences.map((job) => (
             <article key={`${job.company}-${job.dates}`}>
               <div className="print:break-inside-avoid">
@@ -233,7 +233,7 @@ export default function CVPage() {
         </div>
       </section>
 
-      <hr className="my-10 border-t border-rule print:my-4" />
+      <hr className="my-10 border-t border-rule print:my-3" />
 
       <section>
         <h2 className="font-serif text-2xl tracking-tight print:text-lg">
@@ -256,7 +256,7 @@ export default function CVPage() {
         </ul>
       </section>
 
-      <hr className="my-10 border-t border-rule print:my-4" />
+      <hr className="my-10 border-t border-rule print:my-3" />
 
       <section className="print:break-inside-avoid">
         <h2 className="font-serif text-2xl tracking-tight print:text-lg">
@@ -268,9 +268,9 @@ export default function CVPage() {
         </p>
       </section>
 
-      <hr className="my-10 border-t border-rule print:my-4" />
+      <hr className="my-10 border-t border-rule print:my-3" />
 
-      <section className="print:break-inside-avoid">
+      <section>
         <h2 className="font-serif text-2xl tracking-tight print:text-lg">
           Tools
         </h2>

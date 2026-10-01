@@ -32,7 +32,10 @@ export function Reveal({
       : { duration: 0.7, ease: EASE, delay },
   };
 
-  if (immediate) {
+  // Reduced motion: no scroll-triggered reveal at all, everything is
+  // simply there. (`animate` vs `whileInView` is not markup, so server
+  // and client still hydrate the same HTML.)
+  if (immediate || reduced) {
     return (
       <motion.div initial={initial} animate={visible} className={className}>
         {children}

@@ -20,13 +20,13 @@ export default function BankingSystemMap() {
       <div className="grid gap-7">
         <div className="grid grid-cols-2 gap-px bg-rule">
           <div className="bg-background p-4 transition-colors duration-300 group-hover:bg-accent/5">
-            <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-muted">
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
               Market 01
             </p>
             <p className="mt-2 font-serif text-2xl italic">Nigeria</p>
           </div>
           <div className="bg-background p-4 text-right transition-colors duration-300 group-hover:bg-accent/5">
-            <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-muted">
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
               Market 02
             </p>
             <p className="mt-2 font-serif text-2xl italic">United Kingdom</p>
@@ -36,7 +36,7 @@ export default function BankingSystemMap() {
         <div className="relative py-2">
           <div aria-hidden className="absolute left-1/2 top-0 h-full w-px bg-rule" />
           <div className="relative mx-auto max-w-[340px] bg-background px-4 text-center">
-            <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-accent">
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
               Corporate banking platform
             </p>
             <p className="mt-2 font-serif text-xl">Shared platform</p>
@@ -45,7 +45,7 @@ export default function BankingSystemMap() {
 
         <div className="grid gap-6 sm:grid-cols-2">
           <div>
-            <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-muted">
+            <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
               People doing different jobs
             </p>
             <ul className="mt-3 grid grid-cols-2 border-l border-t border-rule">
@@ -60,7 +60,7 @@ export default function BankingSystemMap() {
             </ul>
           </div>
           <div>
-            <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-muted">
+            <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
               Core capabilities
             </p>
             <ul className="mt-3 grid grid-cols-2 border-l border-t border-rule">
@@ -81,7 +81,7 @@ export default function BankingSystemMap() {
             <p className="wonk font-serif text-3xl italic leading-none text-accent">
               200,000+
             </p>
-            <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.15em] text-muted">
+            <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
               SME + enterprise clients
             </p>
           </div>
@@ -89,7 +89,7 @@ export default function BankingSystemMap() {
             <p className="wonk font-serif text-3xl italic leading-none text-accent">
               ₦70B+
             </p>
-            <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.15em] text-muted">
+            <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
               Monthly volume at scale
             </p>
           </div>
@@ -97,7 +97,7 @@ export default function BankingSystemMap() {
             <p className="wonk font-serif text-3xl italic leading-none text-accent">
               −40%
             </p>
-            <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.15em] text-muted">
+            <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
               Onboarding time-to-value
             </p>
           </div>

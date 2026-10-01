@@ -38,7 +38,7 @@ export default function ResolveReleaseArtifact() {
     >
       <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
         <div>
-          <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+          <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
             <span>V1 · five months</span>
             <span className="text-accent">Core workflows</span>
           </div>
@@ -50,7 +50,7 @@ export default function ResolveReleaseArtifact() {
                   i === v1Workflows.length - 1 ? "col-span-2" : ""
                 }`}
               >
-                <span className="font-mono text-[9px] tracking-[0.16em] text-accent">
+                <span className="font-mono text-[11px] tracking-[0.16em] text-accent">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="mt-2 block text-sm leading-snug">
@@ -62,7 +62,7 @@ export default function ResolveReleaseArtifact() {
         </div>
 
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+          <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
             Release by release
           </p>
           <ol className="relative mt-5 space-y-5 before:absolute before:bottom-3 before:left-[13px] before:top-3 before:w-px before:bg-rule">
@@ -81,7 +81,7 @@ export default function ResolveReleaseArtifact() {
                   <p className="font-serif text-base leading-none">
                     {release.title}
                   </p>
-                  <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.14em] text-muted">
+                  <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
                     {release.detail}
                   </p>
                 </div>

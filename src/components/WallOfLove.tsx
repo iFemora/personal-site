@@ -293,13 +293,13 @@ export default function WallOfLove({ entries }: { entries: WallEntry[] }) {
               key={entry.id}
               className="mb-14 break-inside-avoid sm:mb-16"
               initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "0px 0px -8% 0px" }}
-              transition={
-                reduced
-                  ? { duration: 0 }
-                  : { duration: 0.7, ease: EASE, delay: (i % 2) * 0.08 }
-              }
+              {...(reduced
+                ? { animate: { opacity: 1, y: 0 }, transition: { duration: 0 } }
+                : {
+                    whileInView: { opacity: 1, y: 0 },
+                    viewport: { once: true, margin: "0px 0px -8% 0px" },
+                    transition: { duration: 0.7, ease: EASE, delay: (i % 2) * 0.08 },
+                  })}
             >
               <div
                 className="group cursor-pointer"

@@ -3,7 +3,7 @@ import { Fraunces, Newsreader, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Nav from "@/components/Nav";
-import FooterLinks, { SayHelloLink } from "@/components/FooterLinks";
+import FooterLinks, { FooterClose } from "@/components/FooterLinks";
 import AccentController from "@/components/AccentController";
 import CursorDot from "@/components/motion/CursorDot";
 import BackgroundSpiral from "@/components/motion/BackgroundSpiral";
@@ -81,12 +81,9 @@ function SiteHeader() {
 function SiteFooter() {
   return (
     <footer className="mx-auto w-full max-w-[1100px] overflow-hidden px-6 pb-8 pt-24 print:hidden">
-      <p className="max-w-[680px] font-serif text-2xl leading-snug tracking-tight sm:text-3xl">
-        Building something <s className="text-muted">in payments</s>{" "}
-        <span className="italic text-accent">genuinely good</span>? Or just
-        want to debate tennis?{" "}
-        <SayHelloLink />
-      </p>
+      {/* The playful ask closes the personality pages; the professional
+          pages already end on the hire-me block, so there it steps aside. */}
+      <FooterClose />
       <hr className="mb-8 mt-12 border-t border-rule" />
       <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <FooterLinks />
@@ -129,6 +126,9 @@ export default function RootLayout({
               'try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;var p=localStorage.getItem("palette");if(["ink","ember","riso","chalk","tide","grove","cobalt"].indexOf(p)>-1)document.documentElement.dataset.palette=p}catch(e){}',
           }}
         />
+        <a href="#content" className="skip-link print:hidden">
+          Skip to content
+        </a>
         <CursorFieldProvider>
           <AccentController />
           <CursorDot />
@@ -137,7 +137,9 @@ export default function RootLayout({
           <div aria-hidden className="grain print:hidden" />
           <div className="relative z-10 flex min-h-full flex-1 flex-col">
             <SiteHeader />
-            <div className="flex-1">{children}</div>
+            <div id="content" tabIndex={-1} className="flex-1 outline-none">
+              {children}
+            </div>
             <SiteFooter />
           </div>
         </CursorFieldProvider>

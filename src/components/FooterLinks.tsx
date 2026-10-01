@@ -1,8 +1,32 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { motion, useReducedMotion } from "motion/react";
 import { EASE } from "@femora/design-system/ease";
 import { trackEvent } from "@/lib/track";
+
+/** Routes that already end on the hire-me block. */
+const PROFESSIONAL = ["/", "/work", "/cv", "/follow-the-money"];
+
+function isProfessional(pathname: string) {
+  return PROFESSIONAL.some(
+    (p) => pathname === p || (p !== "/" && pathname.startsWith(`${p}/`))
+  );
+}
+
+/** The footer's big ask. Personality pages get the tennis line; the
+    professional pages, which end on HireMe, get nothing extra. */
+export function FooterClose() {
+  const pathname = usePathname();
+  if (isProfessional(pathname)) return null;
+  return (
+    <p className="max-w-[680px] font-serif text-2xl leading-snug tracking-tight sm:text-3xl">
+      Building something <s className="text-muted">in payments</s>{" "}
+      <span className="italic text-accent">genuinely good</span>? Or just
+      want to debate tennis? <SayHelloLink />
+    </p>
+  );
+}
 
 const links: { label: string; href: string; network?: string }[] = [
   { label: "email", href: "mailto:oluwafemiakinseye@gmail.com", network: "email" },

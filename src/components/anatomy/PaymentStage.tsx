@@ -479,7 +479,7 @@ export default function PaymentStage() {
   return (
     <section className="mt-10">
       {/* Choose a fate */}
-      <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+      <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
         First, choose this tap&apos;s fate
       </p>
       <div className="mt-3 flex flex-wrap gap-2">
@@ -588,7 +588,7 @@ export default function PaymentStage() {
                 return !m;
               });
             }}
-            className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted transition-colors hover:text-accent"
+            className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted transition-colors hover:text-accent"
           >
             {muted ? "Sound off" : "Sound on"}
           </button>
@@ -795,7 +795,7 @@ export default function PaymentStage() {
             className="overflow-hidden"
           >
             <div className="mt-8 border-y border-rule py-8">
-              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
                 Going deeper · the {depth.actor}
               </p>
               <h3 className="mt-3 font-serif text-xl leading-snug tracking-tight sm:text-2xl">
@@ -827,7 +827,7 @@ export default function PaymentStage() {
                       },
                     }}
                   >
-                    <dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                    <dt className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
                       {s.label}
                     </dt>
                     <dd className="mt-2 max-w-[560px] text-[15px] leading-relaxed">
@@ -851,7 +851,7 @@ export default function PaymentStage() {
             transition={{ duration: 0.5, ease: EASE }}
             className="mt-12 max-w-[480px] border border-rule p-5 sm:mt-16"
           >
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
               What the terminal shows
             </p>
             <p

@@ -36,6 +36,22 @@ const workItems = [
 
 const employers = "Marqeta · Paystack, a Stripe company · FCMB · Farmcrowdy";
 
+/* Drafted on Femi's behalf; logged in docs/review-queue.md. */
+const seeking = [
+  {
+    title: "The role: Solutions Architect, Customer Success, or Product.",
+    body: "The seat where a customer's problem meets the platform. I have sat on both sides of that table: shipping the product, and standing with the merchant, the bank, or the agent while it failed to do what they needed.",
+  },
+  {
+    title: "The place: a bank, an enterprise, or a payments company.",
+    body: "Regulated and operationally messy suits me. Card issuing, corporate banking, disputes, collections, identity: the parts of the business where the detail is the product.",
+  },
+  {
+    title: "The where: Vancouver, or remote across Canada.",
+    body: "Pacific time, happy to keep eastern hours. Ten years of working with teams in Lagos, the UK, Toronto and now Vancouver, so time zones are a habit, not a hurdle.",
+  },
+];
+
 const decisionPrinciples = [
   {
     title: "Start close to reality.",
@@ -231,7 +247,7 @@ export default function Home() {
                     <span className="font-serif text-xl leading-snug transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent sm:text-2xl">
                       {item.title}
                     </span>
-                    <span className="col-start-2 whitespace-nowrap font-mono text-xs uppercase tracking-[0.15em] text-muted transition-transform duration-300 group-hover:-translate-x-1 sm:col-start-3">
+                    <span className="col-start-2 font-mono text-xs uppercase tracking-[0.15em] text-muted transition-transform duration-300 group-hover:-translate-x-1 sm:col-start-3 sm:text-right lg:whitespace-nowrap">
                       {item.meta}
                     </span>
                   </Link>
@@ -275,7 +291,7 @@ export default function Home() {
                     href={principle.href}
                     className="group grid gap-3 py-6 sm:grid-cols-[2.5rem_minmax(0,1fr)_auto] sm:items-start sm:gap-5"
                   >
-                    <span className="font-mono text-[10px] tracking-[0.18em] text-accent sm:pt-1">
+                    <span className="font-mono text-[11px] tracking-[0.18em] text-accent sm:pt-1">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span>
@@ -286,10 +302,48 @@ export default function Home() {
                         {principle.body}
                       </span>
                     </span>
-                    <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted transition-colors duration-300 group-hover:text-accent sm:max-w-32 sm:pt-1 sm:text-right">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted transition-colors duration-300 group-hover:text-accent sm:max-w-32 sm:pt-1 sm:text-right">
                       {principle.evidence} →
                     </span>
                   </Link>
+                </Reveal>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <DrawnRule className="my-14 sm:my-20" />
+
+      {/* What I'm looking for — the recruiter's first question, answered
+          in prose. Part of the open-to-work signal (see CLAUDE.md). */}
+      <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-12">
+        <Reveal>
+          <SectionLabel index="04" label="What I’m looking for" />
+        </Reveal>
+        <div>
+          <Reveal delay={0.05}>
+            <p className="mb-10 max-w-[640px] font-serif text-xl italic leading-snug text-muted sm:text-2xl">
+              The next role, in three lines.
+            </p>
+          </Reveal>
+          <ol className="border-t border-rule">
+            {seeking.map((item, i) => (
+              <li key={item.title} className="border-b border-rule">
+                <Reveal delay={Math.min(i, 2) * 0.06}>
+                  <div className="grid gap-3 py-6 sm:grid-cols-[2.5rem_minmax(0,1fr)] sm:gap-5">
+                    <span className="font-mono text-[11px] tracking-[0.18em] text-accent sm:pt-1">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span>
+                      <span className="block font-serif text-xl leading-snug tracking-tight sm:text-2xl">
+                        {item.title}
+                      </span>
+                      <span className="mt-2 block max-w-[580px] leading-relaxed text-muted">
+                        {item.body}
+                      </span>
+                    </span>
+                  </div>
                 </Reveal>
               </li>
             ))}
@@ -303,8 +357,8 @@ export default function Home() {
       <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-12">
         <Reveal>
           <div>
-            <SectionLabel index="04" label="From the desk" />
-            <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.16em] text-muted">
+            <SectionLabel index="05" label="From the desk" />
+            <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
               Updated {desk.updated}
             </p>
           </div>
@@ -320,7 +374,7 @@ export default function Home() {
             }`;
             const content = (
               <>
-                <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-accent">
+                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
                   {item.label}
                 </p>
                 <p className="mt-4 font-serif text-xl leading-snug tracking-tight transition-colors duration-300 group-hover:text-accent">
@@ -330,7 +384,7 @@ export default function Home() {
                   {item.body}
                 </p>
                 {item.href && (
-                  <span className="mt-5 block font-mono text-[9px] uppercase tracking-[0.16em] text-accent">
+                  <span className="mt-5 block font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
                     Read more →
                   </span>
                 )}
@@ -362,7 +416,7 @@ export default function Home() {
       {/* Recent writing */}
       <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-12">
         <Reveal>
-          <SectionLabel index="05" label="Recent writing" />
+          <SectionLabel index="06" label="Recent writing" />
         </Reveal>
         <div>
           <ul className="space-y-8">

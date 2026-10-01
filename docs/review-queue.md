@@ -127,5 +127,20 @@ Format: **what** · where · how to resolve.
   Product leader, payments and banking"; OG card gains a mono line
   "Open to Solutions Architect · Customer Success · Product" ·
   `src/app/layout.tsx`, `src/app/opengraph-image.tsx` · keep or reword.
-- **GitHub repo homepage** still points at the vercel.app URL; set it
-  to https://ifemora.dev · GitHub → repo → About (gear) · one click.
+- **"What I'm looking for" (home section 04).** Three drafted lines:
+  "The role: Solutions Architect, Customer Success, or Product." / "The
+  place: a bank, an enterprise, or a payments company." / "The where:
+  Vancouver, or remote across Canada.", each with a two-sentence body.
+  The third body says "happy to keep eastern hours", an assumption ·
+  `src/app/page.tsx` `seeking` · reword, cut, or confirm the hours line.
+- **Constellation caption.** "21 beats, 1992 to Now. Hover a dot to read
+  it; click to jump." · `src/components/motion/Constellation.tsx` · keep
+  or reword.
+- **CV "Print" link.** Beside "Download as PDF →" there is now a muted
+  "Print" for people who want the browser dialog ·
+  `src/components/PrintButton.tsx` · keep or drop.
+- **Branch protection on main.** CI runs but cannot block a red push.
+  GitHub → Settings → Rules → Rulesets → New branch ruleset: target
+  `main`, enable "Require status checks to pass" and pick `lint · types
+  · build · contrast` and `smoke`; leave "Require a pull request" off so
+  Pages CMS commits still land · GitHub settings · five clicks.
