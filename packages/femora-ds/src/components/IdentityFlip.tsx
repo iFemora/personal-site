@@ -16,10 +16,13 @@ function FlipWord({
 
   const advance = () => setIndex((i) => (i + 1) % words.length);
 
-  if (reduced || words.length === 1) {
+  if (words.length === 1) {
     return <span className={className}>{words[0]}</span>;
   }
 
+  /* Same markup whether or not motion is reduced: useReducedMotion is
+     null on the server, so a structural branch mismatches on hydration.
+     Reduced motion keeps the word deck and drops the roll. */
   return (
     <span
       role="button"
@@ -49,7 +52,7 @@ function FlipWord({
           initial={{ y: "100%", opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: "-100%", opacity: 0 }}
-          transition={{ duration: 0.4, ease: EASE }}
+          transition={{ duration: reduced ? 0 : 0.4, ease: EASE }}
           className={`absolute inset-0 block ${index === 0 ? "" : "text-accent"}`}
         >
           {words[index]}

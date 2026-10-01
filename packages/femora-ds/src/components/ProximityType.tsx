@@ -85,13 +85,13 @@ export function ProximityType({
         <span key={i} className="block overflow-hidden">
           <motion.span
             className={`block ${line.className ?? ""}`}
-            initial={reduced ? { y: 0 } : { y: "110%" }}
+            initial={{ y: "110%" }}
             animate={{
               y: 0,
               transition: {
-                duration: 0.85,
+                duration: reduced ? 0 : 0.85,
                 ease: EASE,
-                delay: delay + i * stagger,
+                delay: reduced ? 0 : delay + i * stagger,
               },
             }}
           >

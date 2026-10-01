@@ -5,7 +5,7 @@ export type AboutBeat = {
   year: string; // "2019", "20XX" (placeholder), or "Now"
   title: string;
   caption?: string;
-  image?: { src: string; alt: string }; // optional photo, treated duotone → color
+  image?: { src: string; alt: string }; // optional photo, 4:3 crop, duotone → color on hover
 };
 
 export const aboutTimeline: AboutBeat[] = timelineData as AboutBeat[];

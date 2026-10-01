@@ -31,20 +31,20 @@ export default function OperatingModelArtifact() {
     >
       <div className="grid gap-9 lg:grid-cols-[1fr_1fr] lg:gap-12">
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
             How it worked
           </p>
           <ol className="mt-4 space-y-4">
             {before.map((row, i) => (
               <li key={row.step} className="flex gap-3">
-                <span className="font-mono text-[10px] leading-5 text-rule">
+                <span className="font-mono text-[11px] leading-5 text-rule">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span>
                   <span className="block text-sm leading-snug text-muted">
                     {row.step}
                   </span>
-                  <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.14em] text-rule">
+                  <span className="mt-1 block font-mono text-[11px] uppercase tracking-[0.14em] text-rule">
                     {row.note}
                   </span>
                 </span>
@@ -53,18 +53,18 @@ export default function OperatingModelArtifact() {
           </ol>
         </div>
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
             How it works now
           </p>
           <ol className="mt-4 space-y-4">
             {after.map((row, i) => (
               <li key={row.step} className="flex gap-3">
-                <span className="font-mono text-[10px] leading-5 text-accent">
+                <span className="font-mono text-[11px] leading-5 text-accent">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span>
                   <span className="block text-sm leading-snug">{row.step}</span>
-                  <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
+                  <span className="mt-1 block font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
                     {row.note}
                   </span>
                 </span>
@@ -75,7 +75,7 @@ export default function OperatingModelArtifact() {
       </div>
 
       <div className="mt-10 border-t border-rule pt-7">
-        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
           What I had to build before any of it held
         </p>
         <ul className="mt-4 space-y-2">

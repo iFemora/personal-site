@@ -14,6 +14,8 @@ export const metadata: Metadata = {
   description:
     "A tennis log — match notes, clips, and photographs from the court.",
   alternates: { canonical: "/tennis" },
+  // Unlisted until the log has more than a handful of entries.
+  robots: { index: false },
 };
 
 export default function TennisPage() {

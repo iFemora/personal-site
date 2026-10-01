@@ -88,3 +88,59 @@ Format: **what** · where · how to resolve.
   ~/Downloads. Move it into `docs/` if you want future sessions to
   read it without being handed the file · your call, it is your
   auditor's document.
+
+## Site audit (2026-10-01)
+
+- **Full-site critique and roadmap.** The "Now" batch shipped
+  2026-10-01 with drafted copy (below); "Next" and "Later" are the
+  backlog · `docs/site-audit-2026-10-01.md` · read, reword, pick the
+  next batch.
+- **Hero positioning line.** "Product leader, ten years in payments and
+  banking. Open to Solutions Architect, Customer Success and Product
+  roles, in Vancouver or remote across Canada." The second sentence is
+  `SEEKING_LINE` in `src/components/HireMe.tsx` and is reused in the
+  hire-me block and the author card; change it once there ·
+  `src/app/page.tsx`, `src/components/HireMe.tsx` · keep or reword.
+- **Hire-me block copy.** Label "Open to new roles"; body "Twenty
+  minutes on a call is the quickest way to find out whether the fit is
+  real. The calendar link books straight into my week."; links "Read
+  the CV →", "Email →" · `src/components/HireMe.tsx` · keep or reword.
+- **Author card under essays and notes.** "Product leader, ten years in
+  payments and banking." + `SEEKING_LINE`, link "The work →" ·
+  `src/components/HireMe.tsx` (`compact`) · keep or reword.
+- **Employer line under the home bio.** "Marqeta · Paystack, a Stripe
+  company · FCMB · Farmcrowdy" · `src/app/page.tsx` `employers` · keep,
+  reorder, or cut.
+- **Home teaser metas** now carry the company ("FCMB · 2024–25",
+  "Paystack · 2021–24", "Marqeta · 2025–26") · `src/app/page.tsx` ·
+  confirm the Marqeta span reads right as "2025–26".
+- **Work case 03 tense.** "Resolve was one of four areas I carried at
+  Marqeta … were the others." · `src/app/work/page.tsx` · confirm.
+- **Follow the Money outro.** "…in Lagos, Toronto and Vancouver. The
+  two seconds have been my working life." (was "my day job") ·
+  `src/app/follow-the-money/page.tsx` · keep or reword.
+- **404 copy.** "Not here." / "The page moved, or never was. The rest
+  of the site is." / "Looking for someone who builds products in
+  payments and banking? That part is not lost." ·
+  `src/app/not-found.tsx` · keep or reword.
+- **Title tag and share card.** Default title "Femi Siji-Kenneth —
+  Product leader, payments and banking"; OG card gains a mono line
+  "Open to Solutions Architect · Customer Success · Product" ·
+  `src/app/layout.tsx`, `src/app/opengraph-image.tsx` · keep or reword.
+- **"What I'm looking for" (home section 04).** Three drafted lines:
+  "The role: Solutions Architect, Customer Success, or Product." / "The
+  place: a bank, an enterprise, or a payments company." / "The where:
+  Vancouver, or remote across Canada.", each with a two-sentence body.
+  The third body says "happy to keep eastern hours", an assumption ·
+  `src/app/page.tsx` `seeking` · reword, cut, or confirm the hours line.
+- **Constellation caption.** "21 beats, 1992 to Now. Hover a dot to read
+  it; click to jump." · `src/components/motion/Constellation.tsx` · keep
+  or reword.
+- **CV "Print" link.** Beside "Download as PDF →" there is now a muted
+  "Print" for people who want the browser dialog ·
+  `src/components/PrintButton.tsx` · keep or drop.
+- **Branch protection on main.** CI runs but cannot block a red push.
+  GitHub → Settings → Rules → Rulesets → New branch ruleset: target
+  `main`, enable "Require status checks to pass" and pick `lint · types
+  · build · contrast` and `smoke`; leave "Require a pull request" off so
+  Pages CMS commits still land · GitHub settings · five clicks.

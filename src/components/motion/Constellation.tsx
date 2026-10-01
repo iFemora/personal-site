@@ -224,18 +224,18 @@ export default function Constellation({ beats }: Props) {
               onFocus={() => setActive(i)}
               onBlur={() => setActive((a) => (a === i ? null : a))}
               aria-label={`${beat.year} — ${beat.title}`}
-              className="group absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer p-2"
+              className="group absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer p-3"
               style={{ left: `${p.x}%`, top: `${p.y}%` }}
             >
               <span
-                className={`block h-[7px] w-[7px] rounded-full transition-[background-color,transform] duration-300 ${
+                className={`block h-2 w-2 rounded-full transition-[background-color,transform] duration-300 ${
                   active === i
                     ? "scale-150 bg-accent"
                     : "bg-muted/70 group-hover:bg-accent"
                 }`}
               />
               <span
-                className={`pointer-events-none absolute left-1/2 top-1/2 select-none whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.14em] transition-colors duration-300 ${
+                className={`pointer-events-none absolute left-1/2 top-1/2 select-none whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.14em] transition-colors duration-300 ${
                   active === i ? "text-accent" : "text-muted"
                 } ${endpoint ? "" : "hidden sm:block"}`}
                 style={{
@@ -252,15 +252,18 @@ export default function Constellation({ beats }: Props) {
       </div>
       <p
         aria-live="polite"
-        className="mt-2 min-h-[1.6em] max-w-[540px] text-center font-mono text-[11px] uppercase tracking-[0.15em] text-muted sm:max-w-[640px]"
+        className="mt-3 min-h-[2.2em] max-w-[540px] text-center font-serif text-base italic leading-snug text-muted sm:max-w-[640px] sm:text-lg"
       >
         {current ? (
           <>
-            <span className="text-accent">{current.year}</span> —{" "}
-            {current.title}
+            <span className="not-italic text-accent">{current.year}</span>{" "}
+            — {current.title}
           </>
         ) : (
-          <>Touch a year to preview it. Click to jump to the story.</>
+          <>
+            {beats.length} beats, {beats[0]?.year} to {beats[beats.length - 1]?.year}
+            . Hover a dot to read it; click to jump.
+          </>
         )}
       </p>
     </div>

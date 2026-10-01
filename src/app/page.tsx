@@ -6,6 +6,7 @@ import { getDesk } from "@/lib/desk";
 import { siteUrl, serializeJsonLd } from "@/lib/seo";
 import ExternalArrow from "@/components/ExternalArrow";
 import BookIntroLink from "@/components/BookIntroLink";
+import HireMe, { SEEKING_LINE } from "@/components/HireMe";
 import {
   Reveal,
   DrawnRule,
@@ -18,18 +19,36 @@ import {
 const workItems = [
   {
     title: "Built a corporate banking platform from scratch across Nigeria and the UK.",
-    period: "2024–25",
+    meta: "FCMB · 2024–25",
     href: "/work#corporate-banking",
   },
   {
     title: "Expanded a payment platform into airline ticketing.",
-    period: "2021–24",
+    meta: "Paystack · 2021–24",
     href: "/work#airline-payments",
   },
   {
     title: "Took a cardholder support platform from concept to production in under five months.",
-    period: "2025",
+    meta: "Marqeta · 2025–26",
     href: "/work#cardholder-support",
+  },
+];
+
+const employers = "Marqeta · Paystack, a Stripe company · FCMB · Farmcrowdy";
+
+/* Drafted on Femi's behalf; logged in docs/review-queue.md. */
+const seeking = [
+  {
+    title: "The role: Solutions Architect, Customer Success, or Product.",
+    body: "The seat where a customer's problem meets the platform. I have sat on both sides of that table: shipping the product, and standing with the merchant, the bank, or the agent while it failed to do what they needed.",
+  },
+  {
+    title: "The place: a bank, an enterprise, or a payments company.",
+    body: "Regulated and operationally messy suits me. Card issuing, corporate banking, disputes, collections, identity: the parts of the business where the detail is the product.",
+  },
+  {
+    title: "The where: Vancouver, or remote across Canada.",
+    body: "Pacific time, happy to keep eastern hours. Ten years of working with teams in Lagos, the UK, Toronto and now Vancouver, so time zones are a habit, not a hurdle.",
   },
 ];
 
@@ -102,23 +121,10 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(personJsonLd) }}
       />
-      {/* Hero */}
-      <div className="relative isolate min-h-[644px] overflow-hidden sm:min-h-[410px] sm:overflow-visible">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute left-0 top-[304px] z-0 h-[270px] w-[210px] overflow-hidden border border-rule bg-background sm:left-auto sm:right-[8%] sm:top-0 sm:h-[340px] sm:w-[270px]"
-        >
-          <Image
-            src="/about/femi-profile-2026.jpg"
-            alt=""
-            fill
-            priority
-            sizes="(max-width: 640px) 210px, 270px"
-            className="object-cover object-[50%_24%] contrast-[1.03] saturate-[0.9]"
-          />
-          <span className="absolute inset-y-0 left-0 w-1 bg-accent sm:left-auto sm:right-0" />
-        </div>
-
+      {/* Hero. On the phone everything is in flow (name, tagline, line,
+          pills, photo); from sm: the photo block is lifted out to the
+          right so the text never has to dodge it with pixel offsets. */}
+      <div className="relative isolate sm:min-h-[410px]">
         <div className="relative z-10">
           <ProximityType
             lines={[
@@ -146,6 +152,14 @@ export default function Home() {
           <Spiral size={24} delay={1.0} className="text-accent" />
         </div>
 
+        {/* The one line a recruiter needs before anything else. */}
+        <Reveal immediate delay={0.34}>
+          <p className="relative z-10 mt-6 max-w-[500px] text-base leading-relaxed sm:text-lg">
+            Product leader, ten years in payments and banking.{" "}
+            <span className="text-muted">{SEEKING_LINE}</span>
+          </p>
+        </Reveal>
+
         {/* Availability: the pill borrows the nav's treatment so it reads
             as part of the furniture, not a badge. */}
         <Reveal immediate delay={0.4}>
@@ -158,13 +172,29 @@ export default function Home() {
           </div>
         </Reveal>
 
-        <Reveal immediate delay={0.5}>
-          <p className="absolute left-0 top-[590px] mt-0 w-[210px] font-mono text-xs uppercase tracking-[0.18em] text-muted sm:left-auto sm:right-[8%] sm:top-[356px] sm:w-[270px] sm:text-right">
-            Product, payments
-            <br />
-            Vancouver, Canada
-          </p>
-        </Reveal>
+        <div className="relative z-0 mt-10 w-[210px] sm:absolute sm:right-[8%] sm:top-0 sm:mt-0 sm:w-[270px]">
+          <div
+            aria-hidden
+            className="pointer-events-none relative h-[270px] w-full overflow-hidden border border-rule bg-background sm:h-[340px]"
+          >
+            <Image
+              src="/about/femi-profile-2026.jpg"
+              alt=""
+              fill
+              priority
+              sizes="(max-width: 640px) 210px, 270px"
+              className="object-cover object-[50%_24%] contrast-[1.03] saturate-[0.9]"
+            />
+            <span className="absolute inset-y-0 left-0 w-1 bg-accent sm:left-auto sm:right-0" />
+          </div>
+          <Reveal immediate delay={0.5}>
+            <p className="mt-4 font-mono text-xs uppercase tracking-[0.18em] text-muted sm:text-right">
+              Product, payments
+              <br />
+              Vancouver, Canada
+            </p>
+          </Reveal>
+        </div>
       </div>
 
       <DrawnRule className="my-14 sm:my-20" immediate delay={0.45} />
@@ -185,6 +215,9 @@ export default function Home() {
             play <Highlight order={2}>a lot of tennis</Highlight>, badly and
             often, read too much philosophy, and write for minds
             that <Highlight order={3}>think in spirals</Highlight>.
+          </p>
+          <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
+            {employers}
           </p>
         </Reveal>
       </section>
@@ -214,8 +247,8 @@ export default function Home() {
                     <span className="font-serif text-xl leading-snug transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent sm:text-2xl">
                       {item.title}
                     </span>
-                    <span className="col-start-2 whitespace-nowrap font-mono text-xs uppercase tracking-[0.15em] text-muted transition-transform duration-300 group-hover:-translate-x-1 sm:col-start-3">
-                      {item.period}
+                    <span className="col-start-2 font-mono text-xs uppercase tracking-[0.15em] text-muted transition-transform duration-300 group-hover:-translate-x-1 sm:col-start-3 sm:text-right lg:whitespace-nowrap">
+                      {item.meta}
                     </span>
                   </Link>
                 </Reveal>
@@ -258,7 +291,7 @@ export default function Home() {
                     href={principle.href}
                     className="group grid gap-3 py-6 sm:grid-cols-[2.5rem_minmax(0,1fr)_auto] sm:items-start sm:gap-5"
                   >
-                    <span className="font-mono text-[10px] tracking-[0.18em] text-accent sm:pt-1">
+                    <span className="font-mono text-[11px] tracking-[0.18em] text-accent sm:pt-1">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span>
@@ -269,10 +302,48 @@ export default function Home() {
                         {principle.body}
                       </span>
                     </span>
-                    <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted transition-colors duration-300 group-hover:text-accent sm:max-w-32 sm:pt-1 sm:text-right">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted transition-colors duration-300 group-hover:text-accent sm:max-w-32 sm:pt-1 sm:text-right">
                       {principle.evidence} →
                     </span>
                   </Link>
+                </Reveal>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <DrawnRule className="my-14 sm:my-20" />
+
+      {/* What I'm looking for — the recruiter's first question, answered
+          in prose. Part of the open-to-work signal (see CLAUDE.md). */}
+      <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-12">
+        <Reveal>
+          <SectionLabel index="04" label="What I’m looking for" />
+        </Reveal>
+        <div>
+          <Reveal delay={0.05}>
+            <p className="mb-10 max-w-[640px] font-serif text-xl italic leading-snug text-muted sm:text-2xl">
+              The next role, in three lines.
+            </p>
+          </Reveal>
+          <ol className="border-t border-rule">
+            {seeking.map((item, i) => (
+              <li key={item.title} className="border-b border-rule">
+                <Reveal delay={Math.min(i, 2) * 0.06}>
+                  <div className="grid gap-3 py-6 sm:grid-cols-[2.5rem_minmax(0,1fr)] sm:gap-5">
+                    <span className="font-mono text-[11px] tracking-[0.18em] text-accent sm:pt-1">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span>
+                      <span className="block font-serif text-xl leading-snug tracking-tight sm:text-2xl">
+                        {item.title}
+                      </span>
+                      <span className="mt-2 block max-w-[580px] leading-relaxed text-muted">
+                        {item.body}
+                      </span>
+                    </span>
+                  </div>
                 </Reveal>
               </li>
             ))}
@@ -286,8 +357,8 @@ export default function Home() {
       <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-12">
         <Reveal>
           <div>
-            <SectionLabel index="04" label="From the desk" />
-            <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.16em] text-muted">
+            <SectionLabel index="05" label="From the desk" />
+            <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
               Updated {desk.updated}
             </p>
           </div>
@@ -303,7 +374,7 @@ export default function Home() {
             }`;
             const content = (
               <>
-                <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-accent">
+                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
                   {item.label}
                 </p>
                 <p className="mt-4 font-serif text-xl leading-snug tracking-tight transition-colors duration-300 group-hover:text-accent">
@@ -313,7 +384,7 @@ export default function Home() {
                   {item.body}
                 </p>
                 {item.href && (
-                  <span className="mt-5 block font-mono text-[9px] uppercase tracking-[0.16em] text-accent">
+                  <span className="mt-5 block font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
                     Read more →
                   </span>
                 )}
@@ -345,7 +416,7 @@ export default function Home() {
       {/* Recent writing */}
       <section className="grid gap-6 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-12">
         <Reveal>
-          <SectionLabel index="05" label="Recent writing" />
+          <SectionLabel index="06" label="Recent writing" />
         </Reveal>
         <div>
           <ul className="space-y-8">
@@ -405,6 +476,10 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
+
+      <DrawnRule className="my-14 sm:my-20" />
+
+      <HireMe location="home_end" />
     </main>
   );
 }

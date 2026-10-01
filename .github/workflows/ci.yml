@@ -40,3 +40,31 @@ jobs:
       # x 2 schemes; WARNs (the accent wash) are accepted by policy.
       - name: Contrast audit
         run: npm run audit:contrast
+
+  # One browser pass, in parallel with the checks above: every route
+  # renders, no console errors, no phone-width overflow, the About
+  # timeline shows under reduced motion. Budget: under a minute of test
+  # time; this is a smoke test, not a suite.
+  smoke:
+    name: smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+
+      - run: npx playwright install --with-deps chromium
+
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: https://ifemora.dev
+
+      - run: npm run smoke

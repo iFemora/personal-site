@@ -9,6 +9,7 @@ import {
   ProximityType,
 } from "@femora/design-system";
 import ExternalArrow from "@/components/ExternalArrow";
+import HireMe from "@/components/HireMe";
 
 export const metadata: Metadata = {
   title: "Notes",
@@ -100,6 +101,10 @@ export default function FieldNotesPage() {
           ))}
         </ol>
       )}
+
+      <div className="sm:ml-[248px] sm:max-w-[640px]">
+        <HireMe location="notes_end" compact />
+      </div>
     </main>
   );
 }

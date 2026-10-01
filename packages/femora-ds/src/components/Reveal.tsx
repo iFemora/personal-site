@@ -20,14 +20,22 @@ export function Reveal({
 }: RevealProps) {
   const reduced = useReducedMotion();
 
-  const initial = reduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 };
+  // The hidden start is constant so server and client markup agree
+  // (useReducedMotion is null on the server); reduced motion collapses
+  // the transition to instant instead.
+  const initial = { opacity: 0, y: 14 };
   const visible = {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: EASE, delay },
+    transition: reduced
+      ? { duration: 0 }
+      : { duration: 0.7, ease: EASE, delay },
   };
 
-  if (immediate) {
+  // Reduced motion: no scroll-triggered reveal at all, everything is
+  // simply there. (`animate` vs `whileInView` is not markup, so server
+  // and client still hydrate the same HTML.)
+  if (immediate || reduced) {
     return (
       <motion.div initial={initial} animate={visible} className={className}>
         {children}

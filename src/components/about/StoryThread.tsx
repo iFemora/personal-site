@@ -1,7 +1,7 @@
 "use client";
 
-/* eslint-disable @next/next/no-img-element */
 import { useRef } from "react";
+import Image from "next/image";
 import {
   motion,
   useInView,
@@ -21,15 +21,23 @@ function StoryBeat({ beat, index }: { beat: AboutBeat; index: number }) {
   });
   const reduced = useReducedMotion();
 
+  /* `initial` never branches on `reduced`: useReducedMotion is null on
+     the server, so a reduced-dependent initial leaves the server's
+     opacity:0 inline style in place and the beat never shows. The
+     hidden start is constant; reduced motion collapses the duration. */
   return (
     <motion.li
       ref={ref}
       id={`beat-${beat.id}`}
       className="relative scroll-mt-24 pl-8 sm:pl-0"
-      initial={reduced ? false : { opacity: 0, y: 16 }}
-      whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.18 }}
-      transition={{ duration: 0.55, delay: Math.min(index, 2) * 0.04 }}
+      initial={{ opacity: 0, y: 16 }}
+      {...(reduced
+        ? { animate: { opacity: 1, y: 0 }, transition: { duration: 0 } }
+        : {
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once: true, amount: 0.18 },
+            transition: { duration: 0.55, delay: Math.min(index, 2) * 0.04 },
+          })}
     >
       <span
         aria-hidden
@@ -63,12 +71,13 @@ function StoryBeat({ beat, index }: { beat: AboutBeat; index: number }) {
             </p>
           )}
           {beat.image && (
-            <figure className="group mt-5 overflow-hidden rounded-sm">
-              <img
+            <figure className="group relative mt-5 aspect-[4/3] overflow-hidden rounded-sm">
+              <Image
                 src={beat.image.src}
                 alt={beat.image.alt}
-                loading="lazy"
-                className="w-full transition-[filter,transform] duration-500 ease-out grayscale-[0.85] sepia-[0.12] group-hover:scale-[1.015] group-hover:grayscale-0 group-hover:sepia-0"
+                fill
+                sizes="(max-width: 640px) 100vw, 640px"
+                className="object-cover transition-[filter,transform] duration-500 ease-out grayscale-[0.85] sepia-[0.12] group-hover:scale-[1.015] group-hover:grayscale-0 group-hover:sepia-0"
               />
             </figure>
           )}

@@ -681,7 +681,7 @@ export default function DisputeCase() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: EASE }}
           >
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
               Four disputes. Each one argues differently.
             </p>
             <ul className="mt-4 max-w-[560px] border-t border-rule">
@@ -696,7 +696,7 @@ export default function DisputeCase() {
                       <span className="font-mono text-[11px] uppercase tracking-[0.15em] transition-colors duration-300 group-hover:text-accent">
                         {c.label}
                       </span>
-                      <span className="font-mono text-[10px] text-muted">
+                      <span className="font-mono text-[11px] text-muted">
                         {c.amount}
                       </span>
                     </span>
@@ -763,7 +763,7 @@ export default function DisputeCase() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, ease: EASE }}
                 >
-                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
                     {current!.choice.prompt}
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2">
@@ -822,7 +822,7 @@ export default function DisputeCase() {
             </>
           </div>
 
-          <p className="mt-8 font-mono text-[10px] uppercase leading-relaxed tracking-[0.14em] text-muted">
+          <p className="mt-8 font-mono text-[11px] uppercase leading-relaxed tracking-[0.14em] text-muted">
             Days are typical, not promises. Every network writes its own
             rulebook. Amounts illustrative.
           </p>

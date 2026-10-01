@@ -18,10 +18,12 @@ export function DrawnRule({
 }: DrawnRuleProps) {
   const reduced = useReducedMotion();
 
-  const initial = reduced ? { scaleX: 1 } : { scaleX: 0 };
+  const initial = { scaleX: 0 };
   const visible = {
     scaleX: 1,
-    transition: { duration: 0.9, ease: EASE, delay },
+    transition: reduced
+      ? { duration: 0 }
+      : { duration: 0.9, ease: EASE, delay },
   };
 
   const common = {
@@ -31,7 +33,7 @@ export function DrawnRule({
     "aria-hidden": true,
   };
 
-  if (immediate) {
+  if (immediate || reduced) {
     return <motion.span {...common} animate={visible} />;
   }
 

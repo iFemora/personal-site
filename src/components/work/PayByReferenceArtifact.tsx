@@ -36,13 +36,13 @@ export default function PayByReferenceArtifact() {
     >
       <div className="grid gap-9 lg:grid-cols-[1fr_1fr] lg:gap-12">
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
             Before
           </p>
           <ol className="mt-4 space-y-2.5">
             {before.map((step, i) => (
               <li key={step} className="flex gap-3 text-sm leading-snug">
-                <span className="font-mono text-[10px] leading-5 text-rule">
+                <span className="font-mono text-[11px] leading-5 text-rule">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="text-muted">{step}</span>
@@ -51,13 +51,13 @@ export default function PayByReferenceArtifact() {
           </ol>
         </div>
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
             After
           </p>
           <ol className="mt-4 space-y-2.5">
             {after.map((step, i) => (
               <li key={step} className="flex gap-3 text-sm leading-snug">
-                <span className="font-mono text-[10px] leading-5 text-accent">
+                <span className="font-mono text-[11px] leading-5 text-accent">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span>{step}</span>
@@ -68,7 +68,7 @@ export default function PayByReferenceArtifact() {
       </div>
 
       <div className="mt-10 border-t border-rule pt-7">
-        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
           What the terminal resolves
         </p>
         <dl className="mt-4 grid gap-5 sm:grid-cols-2 sm:gap-8">

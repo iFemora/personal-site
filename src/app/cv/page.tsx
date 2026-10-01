@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import PrintButton from "@/components/PrintButton";
+import BookIntroLink from "@/components/BookIntroLink";
+import HireMe, { EMAIL } from "@/components/HireMe";
 
 export const metadata: Metadata = {
   title: "CV",
@@ -128,7 +130,7 @@ const toolGroups: { label: string; items: string }[] = [
 
 export default function CVPage() {
   return (
-    <main className="mx-auto w-full max-w-[680px] px-6 py-16 sm:py-20 print:max-w-none print:px-0 print:py-0 print:text-[12px] print:leading-snug">
+    <main className="mx-auto w-full max-w-[680px] px-6 py-16 sm:py-20 print:max-w-none print:px-0 print:py-0 print:text-[11px] print:leading-snug">
       <p className="mb-12 font-serif italic text-muted print:hidden">
         This is the long form. The short form lives on the{" "}
         <Link
@@ -150,15 +152,31 @@ export default function CVPage() {
           Markets
         </p>
         <p className="mt-4 font-mono text-sm text-muted">
-          Vancouver, BC · oluwafemiakinseye@gmail.com · linkedin.com/in/ifemora
+          Vancouver, BC ·{" "}
+          <a
+            href={`mailto:${EMAIL}`}
+            className="underline underline-offset-4 hover:text-accent print:no-underline"
+          >
+            {EMAIL}
+          </a>{" "}
+          ·{" "}
+          <a
+            href="https://linkedin.com/in/ifemora"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-4 hover:text-accent print:no-underline"
+          >
+            linkedin.com/in/ifemora
+          </a>
         </p>
       </header>
 
-      <div className="mt-6 print:hidden">
+      <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 print:hidden">
+        <BookIntroLink location="cv_header" />
         <PrintButton />
       </div>
 
-      <hr className="my-10 border-t border-rule print:my-4" />
+      <hr className="my-10 border-t border-rule print:my-3" />
 
       <section>
         <h2 className="font-serif text-2xl tracking-tight print:text-lg">
@@ -182,13 +200,13 @@ export default function CVPage() {
         </p>
       </section>
 
-      <hr className="my-10 border-t border-rule print:my-4" />
+      <hr className="my-10 border-t border-rule print:my-3" />
 
       <section>
         <h2 className="font-serif text-2xl tracking-tight print:text-lg">
           Experience
         </h2>
-        <div className="mt-6 space-y-10 print:mt-3 print:space-y-4">
+        <div className="mt-6 space-y-10 print:mt-3 print:space-y-3">
           {experiences.map((job) => (
             <article key={`${job.company}-${job.dates}`}>
               <div className="print:break-inside-avoid">
@@ -215,7 +233,7 @@ export default function CVPage() {
         </div>
       </section>
 
-      <hr className="my-10 border-t border-rule print:my-4" />
+      <hr className="my-10 border-t border-rule print:my-3" />
 
       <section>
         <h2 className="font-serif text-2xl tracking-tight print:text-lg">
@@ -238,7 +256,7 @@ export default function CVPage() {
         </ul>
       </section>
 
-      <hr className="my-10 border-t border-rule print:my-4" />
+      <hr className="my-10 border-t border-rule print:my-3" />
 
       <section className="print:break-inside-avoid">
         <h2 className="font-serif text-2xl tracking-tight print:text-lg">
@@ -250,9 +268,9 @@ export default function CVPage() {
         </p>
       </section>
 
-      <hr className="my-10 border-t border-rule print:my-4" />
+      <hr className="my-10 border-t border-rule print:my-3" />
 
-      <section className="print:break-inside-avoid">
+      <section>
         <h2 className="font-serif text-2xl tracking-tight print:text-lg">
           Tools
         </h2>
@@ -272,6 +290,12 @@ export default function CVPage() {
           ))}
         </dl>
       </section>
+
+      <hr className="mt-10 border-t border-rule print:hidden" />
+
+      <div className="mt-10 print:hidden">
+        <HireMe location="cv_end" />
+      </div>
 
       <hr className="mt-10 border-t border-rule print:hidden" />
 

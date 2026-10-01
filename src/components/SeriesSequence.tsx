@@ -48,10 +48,14 @@ function Frame({
   return (
     <motion.figure
       className={className}
-      initial={reduced || priority ? { opacity: 1 } : { opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "0px 0px -8% 0px" }}
-      transition={{ duration: 0.7, ease: EASE }}
+      initial={priority ? { opacity: 1 } : { opacity: 0, y: 16 }}
+      {...(reduced
+        ? { animate: { opacity: 1, y: 0 }, transition: { duration: 0 } }
+        : {
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once: true, margin: "0px 0px -8% 0px" },
+            transition: { duration: 0.7, ease: EASE },
+          })}
     >
       <button
         type="button"
@@ -70,7 +74,7 @@ function Frame({
             className={imgClass}
           />
         </span>
-        <figcaption className="mt-2 font-mono text-[10px] uppercase leading-relaxed tracking-[0.15em] text-muted sm:text-[11px]">
+        <figcaption className="mt-2 font-mono text-[11px] uppercase leading-relaxed tracking-[0.15em] text-muted sm:text-[11px]">
           {meta}
         </figcaption>
       </button>

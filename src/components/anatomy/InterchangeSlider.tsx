@@ -39,7 +39,7 @@ export default function InterchangeSlider() {
       <div className="flex flex-wrap items-baseline justify-between gap-4">
         <label
           htmlFor="anatomy-amount"
-          className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted"
+          className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted"
         >
           You pay
         </label>
@@ -81,7 +81,7 @@ export default function InterchangeSlider() {
         </div>
       </dl>
 
-      <figcaption className="mt-6 font-mono text-[10px] uppercase leading-relaxed tracking-[0.14em] text-muted">
+      <figcaption className="mt-6 font-mono text-[11px] uppercase leading-relaxed tracking-[0.14em] text-muted">
         Illustrative rates, for the mechanic — real schedules vary by card,
         merchant, and country.
       </figcaption>
