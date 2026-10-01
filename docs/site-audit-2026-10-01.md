@@ -164,12 +164,14 @@ CTA plumbing first; the design needs polish, not surgery.
     photo. *Fix: make the phone hero a normal flow column (name →
     tagline → pill/CTA → photo → caption) and keep the absolute layout
     for `sm:` only.* (`src/app/page.tsx` hero)
-13. **About's constellation is unlabelled and small.** The spiral of
-    years is attractive but at 1440px it is ~350px wide with 7px year
-    labels and a mono caption "Touch a year to preview it, click to
-    jump". Most visitors will not know it is interactive. *Fix: larger
-    hit targets, a one-line serif caption ("Twenty beats, 1992 to now.
-    Tap one."), and show the beat title on hover/focus.* (`Constellation.tsx`)
+13. **About's constellation is hard to read as a control.** The spiral
+    of years is attractive, but its dots are 7px, its year labels 10px
+    mono, and the only instruction is a mono caption "Touch a year to
+    preview it, click to jump". Most visitors will not know it is
+    interactive, and 7px dots fall well short of the 24px target-size
+    guideline (WCAG 2.5.8). *Fix: 24px hit areas around each dot, a
+    one-line serif caption ("Twenty beats, 1992 to now. Tap one."),
+    and the beat title shown on hover/focus.* (`Constellation.tsx`)
 14. **No custom 404.** Visitors hitting a dead link get Next's default
     "404 | This page could not be found." in a system sans, with no
     link home, no spiral, no voice. *Fix: `src/app/not-found.tsx` in
