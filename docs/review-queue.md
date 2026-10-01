@@ -88,3 +88,11 @@ Format: **what** · where · how to resolve.
   ~/Downloads. Move it into `docs/` if you want future sessions to
   read it without being handed the file · your call, it is your
   auditor's document.
+
+## Site audit (2026-10-01)
+
+- **Full-site critique and roadmap.** Drafts for the hero positioning
+  line, the OG card line and a "What I'm looking for" section are in
+  §3 of `docs/site-audit-2026-10-01.md`; none ship until Femi words
+  them · `docs/site-audit-2026-10-01.md` · read, reword, then run the
+  "Now" table.
