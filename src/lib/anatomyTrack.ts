@@ -15,6 +15,9 @@ export function anatomyEvent(
     | "anatomy_dispute_end"
     | "anatomy_slider_used"
     | "anatomy_sound"
+    | "anatomy_build_company"
+    | "anatomy_build_seat_opened"
+    | "anatomy_build_funding"
     | "anatomy_complete",
   data?: Record<string, string | number>
 ) {

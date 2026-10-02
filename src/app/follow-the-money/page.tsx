@@ -11,6 +11,7 @@ import PaymentStage from "@/components/anatomy/PaymentStage";
 import InterchangeSlider from "@/components/anatomy/InterchangeSlider";
 import SettlementTimeline from "@/components/anatomy/SettlementTimeline";
 import DisputeCase from "@/components/anatomy/DisputeCase";
+import CardBuild from "@/components/anatomy/CardBuild";
 
 export const metadata: Metadata = {
   title: "Follow the Money",
@@ -52,7 +53,7 @@ export default function FollowTheMoneyPage() {
             shop that accepts, and the people who build the rails between
             them. This page works from any of those seats. Everything below is
             playable, so tap what invites tapping, and carry one question
-            through all four acts: where is the money right now, and who is on
+            through all five acts: where is the money right now, and who is on
             the hook if this step fails?
           </p>
         </Reveal>
@@ -178,6 +179,32 @@ export default function FollowTheMoneyPage() {
             </p>
           </Reveal>
           <DisputeCase />
+        </section>
+
+        <DrawnRule className="my-14 sm:my-20" />
+
+        <section id="build">
+          <ChapterMark chapter="build" />
+          <Reveal>
+            <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
+              <span className="text-accent">05</span> · Before the tap
+            </p>
+            <h2 className="mt-4 font-serif text-2xl leading-snug tracking-tight sm:text-3xl">
+              Every card is a promise someone else keeps.
+            </h2>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <p className="mt-5 text-lg leading-relaxed">
+              Four acts started at the tap and moved outward. This one goes
+              backward. Before any tap there had to be a card, and a card is
+              a promise four parties make together behind one logo. A
+              company that is not a bank can hand you one, and the question
+              that carried you here turns with it: whose money is behind
+              this card, and who promised the network it would be there?
+              Sit in the program manager&apos;s seat and build one.
+            </p>
+          </Reveal>
+          <CardBuild />
         </section>
 
         <DrawnRule className="my-14 sm:my-20" />

@@ -159,6 +159,13 @@ Format: **what** · where · how to resolve.
 - **Case-study share cards.** Five new OG images in slate teal with
   the case title and the eyebrow · `src/app/work/*/opengraph-image.tsx`
   · check one on LinkedIn's post inspector.
+- **Act IV copy, all of it.** Section 05 intro ("Every card is a
+  promise someone else keeps."), the four company lines, the four
+  seats (role, "asks of you", and each go-deeper chapter), the five
+  funding positions and their "for you" lines. Industry facts in my
+  words; a few phrases are deliberately pointed ("a petrol station at
+  midnight", "six-point type") · `src/lib/cardBuild.ts`,
+  `src/app/follow-the-money/page.tsx` · voice pass, beat by beat.
 - **Branch protection on main.** CI runs but cannot block a red push.
   GitHub → Settings → Rules → Rulesets → New branch ruleset: target
   `main`, enable "Require status checks to pass" and pick `lint · types

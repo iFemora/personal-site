@@ -224,3 +224,48 @@ teal in chalk, green in tide; ink and cobalt stay monochrome). The
 Knowledge dropdown's dot and `html[data-accent="money"]` follow it.
 Contrast audit passes in all 8 x 2. Act IV is still to be scoped with
 him; nothing on the page itself changed.
+
+## 2026-10-02 — Act IV scoped and release one shipped (copy DRAFT)
+
+Scoping conversation, Femi's answers on the record:
+
+- **Marqeta line:** industry mechanism only. The act shows he knows the
+  stack; it never says "this is the chapter I built". No employer
+  internals anywhere in the copy.
+- **Bank versus unbundled stack:** show both. Picking "A bank" as the
+  company collapses three of the four seats into one house, which is
+  the comparison without doubling the copy.
+- **Reader's seat:** program manager. The cardholder opening ("why did
+  my app give me a Visa?") is a future variant.
+- **Funding positions:** three for a fintech (prefunded, just-in-time,
+  credit), two for a bank (debit on deposits, credit on the balance
+  sheet). The ledger strip wants three to sing.
+- **Release order:** the PM's call; choices first because they need no
+  animation. Release one = beats 1 to 3. Release two = the opened
+  issuer stop on the Act I rail. Release three = the "who is on the
+  hook" ending with the tap replayed, the seat takeaways, and the
+  share card.
+
+**Shipped (release one), as section 05 "Before the tap":** the build
+sheet (`src/components/anatomy/CardBuild.tsx`, content in
+`src/lib/cardBuild.ts`). Pick who you are (gig platform, neobank,
+expense tool, a bank); meet the four seats (network, sponsor bank,
+issuer processor, you the program), each with a one-line role, what it
+asks of you, and a go-deeper door in the stage's pattern; then choose
+where the money sits and read the ledger strip: the night before, at
+the tap, on the hook, and a line for your company. User-paced
+throughout, so the smoothness bar is met by construction. Three new
+funnel events in `anatomyTrack.ts`: build_company, build_seat_opened,
+build_funding. The hero now says "five acts".
+
+**Refused for v1:** credit underwriting, tokenization and wallet
+provisioning beyond a line, issuing economics beyond one line back to
+Act II, country-by-country regulation, the launch timeline as a beat.
+
+**Success metric (proposed, to pin before announcing):** reach of the
+funding strip as a share of Act IV starts, benchmarked against Act
+III's ending reach once release three lands.
+
+**Open:** Femi's voice pass over every line (all DRAFT); releases two
+and three; the home-page teaser and the page's own share card from
+the earlier list.

@@ -103,6 +103,9 @@ funnel events telling us where curiosity goes).
   duplicate charge) in a `CASES` array; each carries its own steps
   graph (branch via `choice.options[].to`), amount, and closing coda.
   A picker opens the act; endings offer rerun or switch-case.
+- `src/components/anatomy/CardBuild.tsx` — Act IV build sheet (release
+  one, 2026-10-02): company pills, the four seats with doors, the
+  funding strip. Content in `src/lib/cardBuild.ts`.
 - `src/lib/anatomyDepth.ts` — go-deeper chapters per actor.
 - `src/lib/anatomyTrack.ts` — the only place event names exist.
 - `src/components/anatomy/ChapterMark.tsx` — in-view funnel beacons.
@@ -129,11 +132,11 @@ contrast baseline (`npm run audit:contrast`, docs/accessibility.md).
 Open, roughly in order:
 1. **Femi's voice pass** over all copy (Act III most sensitive; the
    2026-08-06 orientation + seat-takeaway copy is DRAFT too).
-2. **Act IV — where cards come from**: the issuing side (network,
-   sponsor bank, issuer processor, program manager; how a company
-   ships a card). His Marqeta chapter and the strongest authority
-   claim; no good explainer of it exists. Grammar: probably a
-   watchable build-up or a fourth invention — decide WITH him.
+2. **Act IV — before the tap**: scoped with Femi 2026-10-02 (see the
+   log). Release one (the build sheet) is live; release two opens the
+   issuer stop on the Act I rail; release three adds the "who is on
+   the hook" ending with a replayed tap and the seat takeaways.
+   Industry mechanism only, never "the chapter I built".
 3. Success metric (before announcing), OG image so links unfurl,
    home-page teaser, first funnel review (which doors get opened,
    where the chapter drop-off is). The page's own accent shipped
