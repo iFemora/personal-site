@@ -139,6 +139,7 @@ operations (deleting files, rewriting history, changing DNS).
 /writing/[slug]         Individual MDX post
 /field-notes            Short observations + voice memos
 /follow-the-money       Interactive payments explainer — Femi's product proof.
+                        Six acts (sections 01–06); Act V is the simulator.
                         In the nav under the "Knowledge" umbrella (dropdown
                         like Studio) since 2026-09-30, its only room for now
                         with a "More soon" note. It was unlisted 2026-09-27

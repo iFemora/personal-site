@@ -15,7 +15,7 @@ export default function SimulatorPage() {
     <main className="mx-auto w-full max-w-[1100px] px-6 py-16 sm:py-24">
       <Reveal immediate>
         <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
-          <span className="text-accent">Follow the Money</span> · after act five
+          <span className="text-accent">Follow the Money</span> · act six, in its own room
         </p>
       </Reveal>
       <ProximityType
@@ -24,7 +24,7 @@ export default function SimulatorPage() {
       />
       <MaskedLines
         as="p"
-        lines={["Five acts said how the money moves.", "This is what it costs to run the thing."]}
+        lines={["Five acts said how the money moves.", "The sixth is what it costs to run the thing."]}
         delay={0.18}
         className="mt-6 max-w-[680px] font-serif text-xl italic leading-snug text-muted sm:text-2xl"
       />
@@ -52,7 +52,7 @@ export default function SimulatorPage() {
             href="/follow-the-money#build"
             className="link-swipe font-mono text-xs uppercase tracking-[0.18em] text-accent"
           >
-            ← Back to the five acts
+            ← Back to the acts
           </Link>
         </p>
       </Reveal>

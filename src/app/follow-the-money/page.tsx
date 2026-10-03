@@ -12,6 +12,7 @@ import InterchangeSlider from "@/components/anatomy/InterchangeSlider";
 import SettlementTimeline from "@/components/anatomy/SettlementTimeline";
 import DisputeCase from "@/components/anatomy/DisputeCase";
 import CardBuild from "@/components/anatomy/CardBuild";
+import { PRESETS, applyPreset, derive, formatMoney } from "@/lib/program-economics";
 
 export const metadata: Metadata = {
   title: "Follow the Money",
@@ -53,7 +54,7 @@ export default function FollowTheMoneyPage() {
             shop that accepts, and the people who build the rails between
             them. This page works from any of those seats. Everything below is
             playable, so tap what invites tapping, and carry one question
-            through all five acts: where is the money right now, and who is on
+            through all six acts: where is the money right now, and who is on
             the hook if this step fails?
           </p>
         </Reveal>
@@ -205,10 +206,104 @@ export default function FollowTheMoneyPage() {
             </p>
           </Reveal>
           <CardBuild />
+          <Reveal delay={0.08}>
+            <dl className="mt-12 space-y-6">
+              <div>
+                <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+                  If you carry the card
+                </dt>
+                <dd className="mt-2 text-[15px] leading-relaxed">
+                  The name on the front is not the bank. Turn the card over
+                  and the small print names the bank that actually holds
+                  your money, and that is the name worth looking up. A
+                  decline at the till is usually a rule the program wrote,
+                  not a judgement the shop made.
+                </dd>
+              </div>
+              <div>
+                <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+                  If you run the shop
+                </dt>
+                <dd className="mt-2 text-[15px] leading-relaxed">
+                  A card from a company founded last year taps like one from
+                  a bank founded last century, because to your terminal it
+                  is one: the range belongs to a member bank, and the rules
+                  arrived with it. You are paid the same way, on the same
+                  night, whoever is on the front.
+                </dd>
+              </div>
+              <div>
+                <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+                  If you build the rails
+                </dt>
+                <dd className="mt-2 text-[15px] leading-relaxed">
+                  Where the money sits is the whole design. Prefunded ties up
+                  cash and sleeps well; just-in-time frees the cash and makes
+                  your uptime the card&apos;s uptime; credit pays the most
+                  and bills you a year later. Pick the funding first, and the
+                  rest of the architecture follows from it.
+                </dd>
+              </div>
+            </dl>
+          </Reveal>
+        </section>
+
+        <DrawnRule className="my-14 sm:my-20" />
+
+        <section id="program">
+          <ChapterMark chapter="program" />
           <Reveal>
-            <p className="mt-12 max-w-[680px] text-lg leading-relaxed">
-              The card is built. What it costs to run one, month by month,
-              has a room of its own:{" "}
+            <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
+              <span className="text-accent">06</span> · What it costs to run
+            </p>
+            <h2 className="mt-4 font-serif text-2xl leading-snug tracking-tight sm:text-3xl">
+              A card program is a business, not a feature.
+            </h2>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <p className="mt-5 text-lg leading-relaxed">
+              The card is built and the cast is paid. So does it pay? Act
+              two showed where a hundred dollars goes at one tap; this act
+              adds the taps up for a month, against what the network, the
+              processor, the fraud and your own team cost, and asks the
+              page&apos;s question one last time, now as a consequence of
+              your numbers. Three stories to start from, then every number
+              is yours to move.
+            </p>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <ul className="mt-9 max-w-[640px] border-t border-rule">
+              {PRESETS.map((p) => {
+                const out = derive(applyPreset(p));
+                const largest = out.largestCost?.label.toLowerCase() ?? "";
+                return (
+                  <li key={p.key} className="border-b border-rule py-5">
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                      <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-accent">
+                        {p.label}
+                      </span>
+                      <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
+                        {formatMoney(out.contribution)} a month ·{" "}
+                        {out.state === "profitable" ? "pays" : "underwater"}
+                      </span>
+                    </div>
+                    <p className="mt-1.5 text-[15px] leading-relaxed text-muted">{p.line}</p>
+                    <p className="mt-1 text-[13px] leading-relaxed text-muted">
+                      Largest line: {largest}
+                      {out.breakEvenCards !== null
+                        ? ` · breaks even at ${out.breakEvenCards.toLocaleString("en-US")} cards`
+                        : " · never breaks even at these settings"}
+                      .
+                    </p>
+                  </li>
+                );
+              })}
+            </ul>
+          </Reveal>
+          <Reveal delay={0.16}>
+            <p className="mt-8 text-lg leading-relaxed">
+              The sheet needs more room than this column has, so it sits in
+              a room of its own:{" "}
               <Link href="/follow-the-money/simulator" className="link-swipe text-accent">
                 build a card program
               </Link>

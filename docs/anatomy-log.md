@@ -332,3 +332,40 @@ Decisions, with Femi (2026-10-03):
   defaults are exempt-bank rates, and regulated debit is a different
   number.
 
+## 2026-10-03 — Act IV release three: who is on the hook (copy DRAFT)
+
+The ending of the build sheet, as its fifth step. For the card built
+above, three nights it could fail (the tap with your service down,
+settlement with you unable to pay, a dispute a month later) and who
+pays on each, then a verdict that answers the page's question for that
+card. Keyed by funding (`ENDINGS` in `src/lib/cardBuild.ts`), because
+that was the choice that decided it; a bank's two positions have their
+own. Crossfades with the funding strip. Event `anatomy_build_end`
+{company, funding} fires once when the ending scrolls into view, which
+makes it the act's completion beacon and the number the proposed
+success metric reads.
+
+With it: the three seat takeaways after the sheet, in the Act II
+pattern (carry the card: the bank is on the back; run the shop: it
+taps like any bank's card because to the terminal it is one; build the
+rails: where the money sits is the whole design), and the page's own
+share card (`src/app/follow-the-money/opengraph-image.tsx`, banknote
+green, the carried question as the subtitle; the simulator inherits
+it; the smoke test fetches it). Act IV is complete.
+
+## 2026-10-03 — Act V is the simulator (Femi)
+
+"Isn't this act v?", on the simulator spec. So the card program
+simulator is the page's sixth section and fifth act in the log's count
+(the acts are stage, settlement, dispute, build, program; the
+economics slider in section 02 was never numbered as one). Section 06
+"What it costs to run" carries the act on the page: a question-led
+intro, the three preset stories with their outcome computed from the
+model at build time (contribution, pays or underwater, largest line,
+break-even), and the door to the sheet, which keeps its own route
+because two columns need the 1100px shell. Hero and share card say
+six acts. Nothing new was invented for an "Act V"; a launch-timeline
+act (the months from the sponsor bank's yes to the first tap, in the
+Act II time-compression grammar) is the obvious candidate for an Act
+VI if the funnel asks for one.
+
