@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { EASE } from "@femora/design-system/ease";
 import { anatomyEvent } from "@/lib/anatomyTrack";
+import IssuerReplay from "@/components/anatomy/IssuerReplay";
 import {
   COMPANIES,
   FUNDING,
@@ -253,6 +254,24 @@ export default function CardBuild() {
             </div>
           </motion.div>
         </AnimatePresence>
+      </div>
+
+      {/* 4. The first tap, replayed (release two) */}
+      <div className="mt-12">
+        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+          Then, replay the first tap
+        </p>
+        <p className="mt-2 max-w-[560px] text-[15px] leading-relaxed text-muted">
+          Act I gave the issuer nine hundred milliseconds and drew it as one
+          stop. Here it is opened up, for the card you just built: the
+          machine that answers, the seat that is sometimes asked, and the
+          book that remembers.
+        </p>
+        <IssuerReplay
+          key={`${company.key}-${funding.key}`}
+          company={company}
+          funding={funding}
+        />
       </div>
     </section>
   );

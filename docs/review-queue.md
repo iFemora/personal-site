@@ -166,6 +166,11 @@ Format: **what** · where · how to resolve.
   words; a few phrases are deliberately pointed ("a petrol station at
   midnight", "six-point type") · `src/lib/cardBuild.ts`,
   `src/app/follow-the-money/page.tsx` · voice pass, beat by beat.
+- **Act IV release two copy.** The replay intro ("the machine that
+  answers, the seat that is sometimes asked, and the book that
+  remembers"), the stop lines per path, the two pills ("Your service
+  answers in time" / "is too slow"), and the four verdict paragraphs ·
+  `src/components/anatomy/IssuerReplay.tsx` `pathFor` · voice pass.
 - **Branch protection on main.** CI runs but cannot block a red push.
   GitHub → Settings → Rules → Rulesets → New branch ruleset: target
   `main`, enable "Require status checks to pass" and pick `lint · types

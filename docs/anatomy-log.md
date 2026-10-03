@@ -269,3 +269,23 @@ III's ending reach once release three lands.
 **Open:** Femi's voice pass over every line (all DRAFT); releases two
 and three; the home-page teaser and the page's own share card from
 the earlier list.
+
+## 2026-10-03 — Act IV release two: the first tap, replayed (copy DRAFT)
+
+`src/components/anatomy/IssuerReplay.tsx`, the fourth step of the build
+sheet. Act I's issuer stop (900 ms on the stage clock) opened into
+three stops: the processor, the program, the books. The path follows
+the card built above: prefunded and credit pass through the program
+stop without asking it ("not asked. The money was already here."); a
+just-in-time card asks it, and a pill chooses whether your service
+answers in time (approved, 350 ms used) or is too slow (the window
+closes, the processor stands in by the rule you wrote, DECLINED · 91,
+760 ms used). A bank's card renames the stops (auth host, product
+team, core ledger) and never leaves the house. Same grammar as the
+stage: keyframe trail with `times`, timer-owned schedule, clock island
+mapping wall time to issuer milliseconds, crossfading status lines,
+no exit animations on buttons, vertical rail on phones. A new company
+or funding choice remounts the stage (keyed), so a run in flight is
+dropped rather than finished on the wrong path. Event:
+`anatomy_replay_run` {company, funding, path}. Release three (the
+ending ledger, seat takeaways, share card) is next.

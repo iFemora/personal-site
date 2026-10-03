@@ -18,6 +18,10 @@ export function anatomyEvent(
     | "anatomy_build_company"
     | "anatomy_build_seat_opened"
     | "anatomy_build_funding"
+    | "anatomy_replay_run"
+    | "simulator_view"
+    | "simulator_preset_applied"
+    | "simulator_program_type_changed"
     | "anatomy_complete",
   data?: Record<string, string | number>
 ) {

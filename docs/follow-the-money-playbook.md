@@ -106,6 +106,9 @@ funnel events telling us where curiosity goes).
 - `src/components/anatomy/CardBuild.tsx` — Act IV build sheet (release
   one, 2026-10-02): company pills, the four seats with doors, the
   funding strip. Content in `src/lib/cardBuild.ts`.
+- `src/components/anatomy/IssuerReplay.tsx` — Act IV release two
+  (2026-10-03): the issuer stop opened into processor, program, books;
+  path and clock follow the card built above.
 - `src/lib/anatomyDepth.ts` — go-deeper chapters per actor.
 - `src/lib/anatomyTrack.ts` — the only place event names exist.
 - `src/components/anatomy/ChapterMark.tsx` — in-view funnel beacons.
@@ -133,9 +136,9 @@ Open, roughly in order:
 1. **Femi's voice pass** over all copy (Act III most sensitive; the
    2026-08-06 orientation + seat-takeaway copy is DRAFT too).
 2. **Act IV — before the tap**: scoped with Femi 2026-10-02 (see the
-   log). Release one (the build sheet) is live; release two opens the
-   issuer stop on the Act I rail; release three adds the "who is on
-   the hook" ending with a replayed tap and the seat takeaways.
+   log). Releases one (the build sheet) and two (the issuer stop
+   opened on its own rail) are live; release three adds the "who is
+   on the hook" ending, the seat takeaways and the share card.
    Industry mechanism only, never "the chapter I built".
 3. Success metric (before announcing), OG image so links unfurl,
    home-page teaser, first funnel review (which doors get opened,
