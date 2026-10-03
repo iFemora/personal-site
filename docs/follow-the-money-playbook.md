@@ -109,6 +109,10 @@ funnel events telling us where curiosity goes).
 - `src/components/anatomy/IssuerReplay.tsx` — Act IV release two
   (2026-10-03): the issuer stop opened into processor, program, books;
   path and clock follow the card built above.
+- `src/lib/program-economics.ts` + `src/components/anatomy/ProgramSimulator.tsx`
+  + `src/app/follow-the-money/simulator/page.tsx` — the card program
+  simulator (2026-10-03), a route of its own linked from the end of
+  act five. The model has no React in it; the view has no formulas.
 - `src/lib/anatomyDepth.ts` — go-deeper chapters per actor.
 - `src/lib/anatomyTrack.ts` — the only place event names exist.
 - `src/components/anatomy/ChapterMark.tsx` — in-view funnel beacons.
@@ -139,7 +143,10 @@ Open, roughly in order:
    log). Releases one (the build sheet) and two (the issuer stop
    opened on its own rail) are live; release three adds the "who is
    on the hook" ending, the seat takeaways and the share card.
-   Industry mechanism only, never "the chapter I built".
+   Industry mechanism only, never "the chapter I built". The card
+   program simulator (`/follow-the-money/simulator`, 2026-10-03) is
+   the instrument at the end of the act: presets, break-even and the
+   hook line are logged with their reasons.
 3. Success metric (before announcing), OG image so links unfurl,
    home-page teaser, first funnel review (which doors get opened,
    where the chapter drop-off is). The page's own accent shipped

@@ -56,6 +56,9 @@ export type Outputs = {
   /** The single largest cost line, for the "never" message and the
       underwater lever. */
   largestCost: Line | null;
+  /** The largest cost that scales with cards or volume (everything but
+      fixed costs): the line that decides whether a card can ever pay. */
+  largestVariableCost: Line | null;
   /** Prepaid and debit only. */
   avgFloat: number | null;
   /** Credit only. */
@@ -97,29 +100,59 @@ export type Preset = {
   key: string;
   label: string;
   line: string;
-  inputs: Partial<Inputs> & { programType: ProgramType };
+  /** A complete input set, so a preset always lands on the same screen
+      whatever the reader tinkered with before. */
+  inputs: Inputs;
 };
 
-/* Proposed in the spec; Femi tunes them (review queue). Each one is a
-   complete story, never an empty state. */
+const preset = (programType: ProgramType, overrides: Partial<Inputs>): Inputs => ({
+  ...DEFAULTS,
+  programType,
+  interchangeRate: INTERCHANGE_DEFAULT[programType],
+  ...overrides,
+});
+
+/* Three stories, chosen to span the model rather than repeat it: one
+   that pays (gig), one that is underwater until a lever moves (neobank),
+   one that pays while its largest line is the one it controls least
+   (credit). Each has a different largest cost. Values illustrative;
+   lines DRAFT (review queue). */
 export const PRESETS: Preset[] = [
   {
     key: "gig",
     label: "Gig payouts",
-    line: "Prepaid, 25,000 drivers, paid the moment the ride ends. The Act IV card.",
-    inputs: { programType: "prepaid", activeCards: 25_000, avgSpendPerCard: 600, cardholderFee: 0 },
+    line: "Prepaid, 25,000 drivers, paid the moment the ride ends and spent by the end of the shift. The card from act five.",
+    inputs: preset("prepaid", { activeCards: 25_000, avgSpendPerCard: 600, cardholderFee: 0, floatDays: 2 }),
   },
   {
     key: "neobank",
     label: "Neobank debit",
-    line: "Debit, 50,000 customers, a two-dollar monthly fee and regulated interchange.",
-    inputs: { programType: "debit", activeCards: 50_000, avgSpendPerCard: 800, cardholderFee: 2 },
+    line: "Debit, 50,000 customers, no monthly fee, balances at the sponsor bank and a team to pay. Underwater until something moves; try the fee.",
+    inputs: preset("debit", {
+      activeCards: 50_000,
+      avgSpendPerCard: 800,
+      cardholderFee: 0,
+      processorPerAccount: 1.5,
+      fraudBps: 10,
+      fixedCosts: 250_000,
+      floatDays: 10,
+    }),
   },
   {
     key: "credit",
     label: "Credit builder",
-    line: "Credit, 15,000 cards, the highest interchange and the longest tail.",
-    inputs: { programType: "credit", activeCards: 15_000, avgSpendPerCard: 500, cardholderFee: 0 },
+    line: "Credit, 15,000 cards, the highest interchange, and a loss line that grows with the balances rather than the cards.",
+    inputs: preset("credit", {
+      activeCards: 15_000,
+      avgSpendPerCard: 500,
+      cardholderFee: 0,
+      processorPerAccount: 1.5,
+      fraudBps: 10,
+      fixedCosts: 25_000,
+      revolveShare: 0.5,
+      costOfFundsAnnual: 8,
+      creditLossRate: 10,
+    }),
   },
 ];
 
@@ -138,9 +171,8 @@ export function withProgramType(inputs: Inputs, programType: ProgramType): Input
   return { ...inputs, programType, interchangeRate: INTERCHANGE_DEFAULT[programType] };
 }
 
-export function applyPreset(inputs: Inputs, preset: Preset): Inputs {
-  const typed = withProgramType(inputs, preset.inputs.programType);
-  return { ...typed, ...preset.inputs };
+export function applyPreset(preset: Preset): Inputs {
+  return { ...preset.inputs };
 }
 
 /** Negative numbers are not meaningful anywhere in this model; they
@@ -213,12 +245,18 @@ export function derive(raw: Inputs): Outputs {
   const totalCost = costs.reduce((s, l) => s + l.total, 0);
   const contribution = safe(totalRevenue - totalCost) + 0;
   const contributionPerCard = perCard(contribution, cards);
+  /* Break-even is where the margin every card brings in, before fixed
+     costs, has paid for the fixed costs. A card that loses money on its
+     own never gets there, however many you add. */
+  const variableMarginPerCard = perCard(contribution + i.fixedCosts, cards);
   const breakEvenCards =
-    contributionPerCard !== null && contributionPerCard > 0
-      ? Math.ceil(i.fixedCosts / contributionPerCard)
+    variableMarginPerCard !== null && variableMarginPerCard > 0
+      ? Math.ceil(i.fixedCosts / variableMarginPerCard)
       : null;
-  const largestCost =
-    costs.length > 0 ? costs.reduce((a, b) => (b.total > a.total ? b : a)) : null;
+  const largest = (lines: Line[]) =>
+    lines.length > 0 ? lines.reduce((a, b) => (b.total > a.total ? b : a)) : null;
+  const largestCost = largest(costs);
+  const largestVariableCost = largest(costs.filter((c) => c.key !== "fixed"));
 
   const state: ProgramState =
     cards === 0 ? "unlaunched" : contribution > 0 ? "profitable" : "underwater";
@@ -237,6 +275,7 @@ export function derive(raw: Inputs): Outputs {
     contributionPerCard,
     breakEvenCards,
     largestCost,
+    largestVariableCost,
     avgFloat,
     avgReceivables,
     warnings,
@@ -284,19 +323,29 @@ export function hookFor(inputs: Inputs, out: Outputs): string {
   }
   if (out.state === "underwater")
     return "You are. Debit pays the least per tap, so the program lives or dies on fees and scale; at these numbers it is dying quietly.";
-  return "Nobody, for now. Regulated interchange keeps the margin thin, and the fee line is doing the quiet work; watch what happens when you set it to zero.";
+  return inputs.cardholderFee > 0
+    ? "Nobody, for now. Debit interchange keeps the margin thin, and the fee line is doing the quiet work; watch what happens when you set it to zero."
+    : "Nobody, for now. Debit interchange keeps the margin thin, and scale is doing all the work; a few basis points off the rate and it is gone.";
 }
 
 export function stateLine(inputs: Inputs, out: Outputs): string {
   if (out.state === "unlaunched")
     return "Add cardholders to see the economics. Every program starts at zero.";
   if (out.state === "underwater") {
+    if (out.breakEvenCards === null) {
+      const l = out.largestVariableCost;
+      return l
+        ? `Underwater at any scale: every card loses money on its own. The largest line is ${l.label.toLowerCase()}${
+            l.perCard !== null ? ` at ${formatMoney(l.perCard, 2)} per card` : ""
+          }; ${leverFor(l)}.`
+        : "Underwater at any scale.";
+    }
     const l = out.largestCost;
     return l
-      ? `Underwater. ${l.label} is the largest line${
+      ? `Underwater at this scale. The largest line is ${l.label.toLowerCase()}${
           l.perCard !== null ? ` at ${formatMoney(l.perCard, 2)} per card` : ""
         }; ${leverFor(l)}.`
-      : "Underwater.";
+      : "Underwater at this scale.";
   }
   return "Profitable at these settings.";
 }

@@ -176,3 +176,18 @@ Format: **what** · where · how to resolve.
   `main`, enable "Require status checks to pass" and pick `lint · types
   · build · contrast` and `smoke`; leave "Require a pull request" off so
   Pages CMS commits still land · GitHub settings · five clicks.
+- **Simulator copy (2026-10-03).** The page hero ("Build a card program",
+  "Five acts said how the money moves. This is what it costs to run the
+  thing.", the intro paragraph), the control eyebrows, the three preset
+  lines, the state lines, the six "who is on the hook" paragraphs and
+  the lever phrases · `src/app/follow-the-money/simulator/page.tsx`,
+  `src/lib/program-economics.ts` (`PRESETS`, `leverFor`, `hookFor`,
+  `stateLine`), `ProgramSimulator.tsx` · voice pass.
+- **Simulator presets and defaults.** Values are illustrative and mine;
+  the neobank story carries $250,000 a month of fixed costs so that it
+  sits underwater until the fee moves · `src/lib/program-economics.ts`
+  `PRESETS`, `DEFAULTS` · tune from your own rate-card memory.
+- **The link out of act five.** "The card is built. What it costs to run
+  one, month by month, has a room of its own: build a card program." ·
+  `src/app/follow-the-money/page.tsx` · keep or reword.
+
