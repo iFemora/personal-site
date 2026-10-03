@@ -27,6 +27,7 @@ const routes = [
   "/writing",
   "/writing/rss.xml",
   "/follow-the-money",
+  "/follow-the-money/simulator",
   "/field-notes",
   "/gallery",
   "/gallery/looking-closer",

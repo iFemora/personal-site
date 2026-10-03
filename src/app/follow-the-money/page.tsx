@@ -205,6 +205,16 @@ export default function FollowTheMoneyPage() {
             </p>
           </Reveal>
           <CardBuild />
+          <Reveal>
+            <p className="mt-12 max-w-[680px] text-lg leading-relaxed">
+              The card is built. What it costs to run one, month by month,
+              has a room of its own:{" "}
+              <Link href="/follow-the-money/simulator" className="link-swipe text-accent">
+                build a card program
+              </Link>
+              .
+            </p>
+          </Reveal>
         </section>
 
         <DrawnRule className="my-14 sm:my-20" />

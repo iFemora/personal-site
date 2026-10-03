@@ -169,7 +169,7 @@ export default function ProgramSimulator() {
   };
 
   const pickPreset = (p: Preset) => {
-    setInputs((i) => applyPreset(i, p));
+    setInputs(applyPreset(p));
     setClamped({});
     setPreset(p.key);
     anatomyEvent("simulator_preset_applied", { preset: p.key });
@@ -351,10 +351,15 @@ export default function ProgramSimulator() {
             <p className="mt-2 font-serif text-2xl tracking-tight">
               {unlaunched ? dash : out.breakEvenCards === null ? "Never at these settings" : `${formatInt(out.breakEvenCards)} cards`}
             </p>
-            {!unlaunched && out.breakEvenCards === null && out.largestCost && (
+            {!unlaunched && out.breakEvenCards === null && out.largestVariableCost && (
               <p className="mt-2 text-[13px] leading-relaxed text-muted">
-                {out.largestCost.label} is the largest line
-                {out.largestCost.perCard !== null ? ` at ${formatMoney(out.largestCost.perCard, 2)} per card` : ""}.
+                Every card loses money on its own; {out.largestVariableCost.label.toLowerCase()} is the largest line
+                {out.largestVariableCost.perCard !== null ? ` at ${formatMoney(out.largestVariableCost.perCard, 2)} per card` : ""}.
+              </p>
+            )}
+            {!unlaunched && out.breakEvenCards !== null && out.state === "underwater" && (
+              <p className="mt-2 text-[13px] leading-relaxed text-muted">
+                {formatInt(out.breakEvenCards - inputs.activeCards)} more than you have today.
               </p>
             )}
           </div>

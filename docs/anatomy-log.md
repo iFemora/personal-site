@@ -289,3 +289,46 @@ or funding choice remounts the stage (keyed), so a run in flight is
 dropped rather than finished on the wrong path. Event:
 `anatomy_replay_run` {company, funding, path}. Release three (the
 ending ledger, seat takeaways, share card) is next.
+
+## 2026-10-03 — The card program simulator (copy DRAFT)
+
+`/follow-the-money/simulator`, from the "Card Program Simulator" spec
+(VP Product mentor spec, 2026-10-03, kept outside the repo). The model
+is `src/lib/program-economics.ts` (no React: types, defaults, presets,
+`derive`, the interpretation lines, formatting); the view is
+`src/components/anatomy/ProgramSimulator.tsx`; the page is
+`src/app/follow-the-money/simulator/page.tsx`. Two columns on desktop
+(controls, sticky results), one on phones. Three events:
+`simulator_view`, `simulator_preset_applied`, `simulator_program_type_changed`.
+
+Decisions, with Femi (2026-10-03):
+
+- **A route, not a section.** The two-column sheet needs the 1100px
+  shell, the acts sit in a 680px column, and a route gets its own
+  metadata and clean analytics. Linked from the end of act five ("The
+  card is built. What it costs to run one ... build a card program"),
+  after the build sheet rather than from the "build one" sentence,
+  because the build sheet is what that sentence introduces. In the
+  sitemap and the smoke list; not in the nav (the Knowledge umbrella
+  keeps one room until a second piece lands).
+- **Presets span the model instead of repeating it.** The spec's three
+  all landed profitable with the processor as the largest line, so
+  clicking through taught one lesson three times. Now: Gig payouts
+  (prepaid, pays; processor largest), Neobank debit (underwater at this
+  scale with no fee and a team to pay; fixed costs largest; a two-dollar
+  fee flips it), Credit builder (pays; credit losses largest). Each
+  preset is a complete input set, so it always lands on the same screen.
+- **Break-even is computed on the variable margin** (contribution before
+  fixed costs, per card), not on contribution per card at the current
+  scale as the spec's worked example did. The spec's definition said
+  "never" for any program underwater today, even one whose cards each
+  earn margin and simply need company, and then recommended "more
+  cards" in the same breath. With the fix the prepaid defaults break
+  even at 4,259 cards (the spec said 7,418); the three presets at 2,613,
+  62,052 and 3,760. "Never" now means every card loses money on its own,
+  and the line named beside it is the largest variable cost (the spec's
+  AC5 wanted the processor; it gets the processor).
+- Interchange lines say "debit interchange", not "regulated": the
+  defaults are exempt-bank rates, and regulated debit is a different
+  number.
+

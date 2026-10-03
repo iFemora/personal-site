@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/studio",
     "/studio/reel",
     "/follow-the-money",
+    "/follow-the-money/simulator",
     "/writing",
     "/cv",
     "/field-notes",

@@ -150,6 +150,13 @@ operations (deleting files, rewriting history, changing DNS).
                         the page, read docs/follow-the-money-playbook.md
                         (pattern + status) and docs/anatomy-log.md (dated
                         decision log). /anatomy 308-redirects here.
+/follow-the-money/simulator
+                        Card program simulator: a route of its own, linked
+                        from the end of act five. Model in
+                        src/lib/program-economics.ts (pure, no React), view
+                        in src/components/anatomy/ProgramSimulator.tsx. All
+                        rates illustrative; presets and break-even decisions
+                        in docs/anatomy-log.md (2026-10-03).
 /tennis                 Tennis log — match notes, photos, video clips
 /gallery                Contact-sheet photo gallery (duotone → color hover, lightbox)
 /gallery/[series]       Sequenced photo series (e.g. /gallery/looking-closer) — chapters,
