@@ -119,9 +119,10 @@ funnel events telling us where curiosity goes).
 - `src/lib/anatomyDepth.ts` — go-deeper chapters per actor.
 - `src/lib/anatomyTrack.ts` — the only place event names exist.
 - `src/components/anatomy/ChapterMark.tsx` — in-view funnel beacons.
-- Touchpoints elsewhere: the Knowledge umbrella's room in `Nav.tsx`
-  (`items` array; the umbrella carries a "More soon" note until a
-  second piece lands); accent mapping in
+- Touchpoints elsewhere: the Knowledge umbrella's two rooms in
+  `Nav.tsx` (`items` array: Follow the Money and Build a Card Program,
+  the simulator; only the deepest matching room lights); accent
+  mapping in
   `AccentController.tsx` (`money`: banknote green `#2e6b47` /
   `#8fcfa5` in tokens.css, with a hue per guest palette in
   palettes.css, since 2026-10-01; the audit covers it); redirect in

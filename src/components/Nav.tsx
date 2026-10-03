@@ -38,7 +38,9 @@ const isGroup = (item: NavItem): item is NavGroup => "rooms" in item;
    pill stays short. CV sits beside Work while the job search is on; it is
    the highest-intent page for recruiters. Knowledge launched 2026-09-30
    with one room on purpose: hiding Follow the Money during a job hunt
-   cost more than a one-item dropdown does. */
+   cost more than a one-item dropdown does. The simulator joined it as a
+   room of its own on 2026-10-03 (Femi's call), so the "More soon" note
+   retired. */
 const items: NavItem[] = [
   { href: "/about", label: "About" },
   { href: "/work", label: "Work" },
@@ -56,10 +58,14 @@ const items: NavItem[] = [
   },
   {
     label: "Knowledge",
-    note: "More soon",
     openEvent: "nav_knowledge_open",
     rooms: [
       { href: "/follow-the-money", label: "Follow the Money", accent: "money" },
+      {
+        href: "/follow-the-money/simulator",
+        label: "Build a Card Program",
+        accent: "money",
+      },
     ],
   },
   { href: "/field-notes", label: "Notes" },
@@ -68,6 +74,14 @@ const items: NavItem[] = [
 
 function isActivePath(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+/* A room nested under another room's path (the simulator lives under
+   Follow the Money) lights only the deepest match, never both. */
+function activeRoom(pathname: string, rooms: Room[]): string | null {
+  return rooms
+    .filter((r) => isActivePath(pathname, r.href))
+    .reduce<string | null>((best, r) => (best && best.length >= r.href.length ? best : r.href), null);
 }
 
 function isActiveItem(pathname: string, item: NavItem): boolean {
@@ -162,7 +176,7 @@ export default function Nav() {
   const roomRows = (group: NavGroup, surface: "desktop" | "mobile") => (
     <>
       {group.rooms.map((room) => {
-        const active = isActivePath(pathname, room.href);
+        const active = activeRoom(pathname, group.rooms) === room.href;
         return (
           <Link
             key={room.href}
@@ -344,7 +358,7 @@ export default function Nav() {
             {open && (
               <motion.div
                 className={`${panelClass} right-0 top-full ${
-                  panel === "palette" ? "w-60" : "w-56"
+                  panel === "palette" ? "w-60" : "w-64"
                 }`}
                 {...panelMotion}
               >
@@ -376,10 +390,8 @@ export default function Nav() {
                               </p>
                             )}
                             {item.rooms.map((room) => {
-                              const roomActive = isActivePath(
-                                pathname,
-                                room.href
-                              );
+                              const roomActive =
+                                activeRoom(pathname, item.rooms) === room.href;
                               return (
                                 <Link
                                   key={room.href}
