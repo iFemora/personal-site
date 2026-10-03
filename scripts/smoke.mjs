@@ -36,6 +36,7 @@ const routes = [
   "/sitemap.xml",
   "/opengraph-image",
   "/work/resolve/opengraph-image",
+  "/follow-the-money/opengraph-image",
 ];
 
 // Noise that is not a site bug.

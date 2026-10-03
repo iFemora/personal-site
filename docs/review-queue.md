@@ -190,4 +190,12 @@ Format: **what** · where · how to resolve.
 - **The link out of act five.** "The card is built. What it costs to run
   one, month by month, has a room of its own: build a card program." ·
   `src/app/follow-the-money/page.tsx` · keep or reword.
+- **Act IV release three copy.** The five endings (three moments and a
+  verdict each) and the three seat takeaways after the sheet ·
+  `src/lib/cardBuild.ts` `ENDINGS`, `src/app/follow-the-money/page.tsx`
+  · voice pass; the verdicts are the lines recruiters will quote.
+- **Section 06 copy and the share card line.** "A card program is a
+  business, not a feature.", the intro, "Six acts, playable" and the
+  carried question on the card · `src/app/follow-the-money/page.tsx`,
+  `src/app/follow-the-money/opengraph-image.tsx` · keep or reword.
 

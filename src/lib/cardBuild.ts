@@ -32,6 +32,9 @@ export type Seat = {
   depth: { title: string; intro: string; sections: { label: string; body: string }[] };
 };
 
+export type HookMoment = { label: string; who: string; line: string };
+export type Ending = { moments: HookMoment[]; verdict: string };
+
 export type Funding = {
   key: FundingKey;
   label: string;
@@ -273,3 +276,122 @@ export const FUNDING: Funding[] = [
 
 export const ONE_HOUSE_NOTE =
   "A bank fills these three seats itself: it is the issuer of record, it runs or rents the processing, and it is its own program manager. The unbundled stack exists so that a non-bank can borrow the first seat and buy the second.";
+
+
+/* Release three: the ending. For the card built above, three nights it
+   could fail and who pays on each, then the answer to the question the
+   page carries. Keyed by funding, because that was the choice that
+   decided it. */
+export const HOOK_MOMENTS = [
+  "The tap, and your service is down",
+  "Settlement, and you cannot pay",
+  "A dispute, a month later",
+] as const;
+
+export const ENDINGS: Record<FundingKey, Ending> = {
+  prefunded: {
+    moments: [
+      {
+        label: HOOK_MOMENTS[0],
+        who: "Nobody notices",
+        line: "The processor answers from the balance it already holds. Your outage is your problem and not the cardholder's; the card keeps working on money that was posted yesterday.",
+      },
+      {
+        label: HOOK_MOMENTS[1],
+        who: "The sponsor bank, from your account",
+        line: "There is nothing to fail. The bank pays the network from the program account you funded, and the only way it comes up short is if you loaded less than your cardholders spent, which the processor would not have let happen.",
+      },
+      {
+        label: HOOK_MOMENTS[2],
+        who: "The cardholder's balance, then the merchant",
+        line: "A chargeback credits the cardholder at the sponsor bank and pulls the money back from the acquirer. Your float is untouched; your support desk is not.",
+      },
+    ],
+    verdict:
+      "Behind this card: your money, posted in advance. The sponsor bank is on the hook to the network, you are on the hook to the sponsor bank, and the cardholder is never asked. The safest card to run, and the one that ties up the most cash.",
+  },
+  jit: {
+    moments: [
+      {
+        label: HOOK_MOMENTS[0],
+        who: "The processor, by your rules",
+        line: "The window closes without you. Stand-in rules answer in your place, approving small and declining the rest, by whatever you wrote in advance. Every stand-in approval is money you now owe without having said yes.",
+      },
+      {
+        label: HOOK_MOMENTS[1],
+        who: "The sponsor bank, then your reserves",
+        line: "The bank pays the network on the day regardless. Then it draws on the reserves it took from you at signing, and if those run short it stops the program before it carries another night.",
+      },
+      {
+        label: HOOK_MOMENTS[2],
+        who: "The sponsor bank first, you by month end",
+        line: "The credit goes to the cardholder from the bank, and the bank bills the program. A just-in-time card has no float to absorb it, so disputes land straight on your ledger.",
+      },
+    ],
+    verdict:
+      "Behind this card: a promise, with the sponsor bank's reserves holding it up. Your uptime is the card's uptime, and the night you cannot settle is the night the program ends. The most capital-efficient card, and the one that asks the most of your engineering.",
+  },
+  credit: {
+    moments: [
+      {
+        label: HOOK_MOMENTS[0],
+        who: "The lender's limit",
+        line: "The processor answers from the limit and the account's standing; nothing of yours is asked. The purchase becomes a loan whether or not you were awake.",
+      },
+      {
+        label: HOOK_MOMENTS[1],
+        who: "The lender funds it",
+        line: "The sponsor bank pays the network, and the lender, which may be the bank itself or a partner, funds the receivable. You are on the hook only for what your agreement makes you share.",
+      },
+      {
+        label: HOOK_MOMENTS[2],
+        who: "The lender, provisionally; the cardholder, in the end",
+        line: "The disputed amount is held off the statement while the argument runs. Win it and the loan shrinks; lose it and the cardholder still owes. Interest is the one thing that never pauses.",
+      },
+    ],
+    verdict:
+      "Behind this card: someone's balance sheet, and a tail that outlives the tap: delinquency, collections, the bureau. The card that pays the most per account, and the one whose losses show up a year later.",
+  },
+  deposits: {
+    moments: [
+      {
+        label: HOOK_MOMENTS[0],
+        who: "Your stand-in rules",
+        line: "If the core is down, the processor or the network stands in by the limits you filed. Every approval made in your absence is a hold you must honour when the core comes back.",
+      },
+      {
+        label: HOOK_MOMENTS[1],
+        who: "You, from your own settlement account",
+        line: "You are the member, so you settle. The customer's deposit covers the hold, and if it does not, the overdraft is yours to collect.",
+      },
+      {
+        label: HOOK_MOMENTS[2],
+        who: "You, provisionally; the merchant, usually",
+        line: "You credit the customer under the network's rules and go after the acquirer. The money sits on your book until the argument ends.",
+      },
+    ],
+    verdict:
+      "Behind this card: the customer's own deposit, inside your own house. Nobody to recruit, nobody to persuade, and every failure yours alone, which is what a licence means.",
+  },
+  balance: {
+    moments: [
+      {
+        label: HOOK_MOMENTS[0],
+        who: "Your limit, your stand-in",
+        line: "The authorization host checks the line. If it is down, the stand-in rules you filed approve against your own balance sheet.",
+      },
+      {
+        label: HOOK_MOMENTS[1],
+        who: "You, from the balance sheet",
+        line: "You pay the network and book the loan on the same day. The customer owes you by the statement date, and the funding cost runs from now until then.",
+      },
+      {
+        label: HOOK_MOMENTS[2],
+        who: "You, provisionally; the customer in the end",
+        line: "The line is held back from the statement while the chargeback runs, and interest does not stop. Lose, and it is a loan again.",
+      },
+    ],
+    verdict:
+      "Behind this card: your own capital, lent at a limit you set. The oldest card and still the richest, as long as your collections team is as good as your marketing.",
+  },
+};

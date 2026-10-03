@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useInView, useReducedMotion } from "motion/react";
 import { EASE } from "@femora/design-system/ease";
 import { anatomyEvent } from "@/lib/anatomyTrack";
 import IssuerReplay from "@/components/anatomy/IssuerReplay";
 import {
   COMPANIES,
+  ENDINGS,
   FUNDING,
   ONE_HOUSE_NOTE,
   SEATS,
@@ -17,8 +18,8 @@ import {
 
 /* Act IV, release one: the build sheet. User-paced by construction
    (pills and doors, no clocks), so the smoothness bar is met without a
-   single keyframe. Release two opens the issuer stop on the Act I rail;
-   release three adds the "who is on the hook" ending. */
+   single keyframe. Release two opened the issuer stop on the Act I rail;
+   release three ends on who is on the hook for the card you built. */
 
 const pillClass = (on: boolean) =>
   `relative rounded-full border px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.15em] transition-colors duration-300 ${
@@ -44,6 +45,18 @@ export default function CardBuild() {
 
   const funding = FUNDING.find((f) => f.key === fundingKey) ?? FUNDING[0];
   const options = FUNDING.filter((f) => company.funding.includes(f.key));
+  const ending = ENDINGS[funding.key];
+
+  /* The ending is the act's completion beacon: once per visit, with the
+     card it was reached on. */
+  const endRef = useRef<HTMLDivElement>(null);
+  const endInView = useInView(endRef, { once: true, margin: "0px 0px -20% 0px" });
+  const endSent = useRef(false);
+  useEffect(() => {
+    if (!endInView || endSent.current) return;
+    endSent.current = true;
+    anatomyEvent("anatomy_build_end", { company: company.key, funding: funding.key });
+  }, [endInView, company.key, funding.key]);
 
   const pickCompany = (c: Company) => {
     setCompany(c);
@@ -272,6 +285,47 @@ export default function CardBuild() {
           company={company}
           funding={funding}
         />
+      </div>
+
+      {/* 5. Who is on the hook (release three) */}
+      <div ref={endRef} className="mt-12">
+        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+          Finally, who is on the hook
+        </p>
+        <p className="mt-2 max-w-[560px] text-[15px] leading-relaxed text-muted">
+          The question this page carries, answered for the card you built.
+          Three nights it could fail, and who pays on each.
+        </p>
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={`end-${company.key}-${funding.key}`}
+            initial={reduced ? { opacity: 1 } : { opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, ease: EASE }}
+            className="mt-6 max-w-[640px]"
+          >
+            <dl className="border-t border-rule">
+              {ending.moments.map((m) => (
+                <div
+                  key={m.label}
+                  className="grid gap-2 border-b border-rule py-5 sm:grid-cols-[minmax(0,11rem)_minmax(0,1fr)] sm:gap-6"
+                >
+                  <dt className="font-mono text-[11px] uppercase leading-relaxed tracking-[0.15em] text-muted">
+                    {m.label}
+                  </dt>
+                  <dd>
+                    <p className="font-serif text-lg leading-snug tracking-tight">{m.who}</p>
+                    <p className="mt-1.5 text-[15px] leading-relaxed">{m.line}</p>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+            <p className="mt-7 font-serif text-xl italic leading-snug text-accent sm:text-2xl">
+              {ending.verdict}
+            </p>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );

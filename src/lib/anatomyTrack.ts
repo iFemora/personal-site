@@ -19,6 +19,7 @@ export function anatomyEvent(
     | "anatomy_build_seat_opened"
     | "anatomy_build_funding"
     | "anatomy_replay_run"
+    | "anatomy_build_end"
     | "simulator_view"
     | "simulator_preset_applied"
     | "simulator_program_type_changed"

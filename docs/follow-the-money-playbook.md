@@ -92,8 +92,10 @@ funnel events telling us where curiosity goes).
 
 ## File map
 
-- `src/app/follow-the-money/page.tsx` — the page: hero, acts 01–04,
-  outro with credit. Section copy lives here.
+- `src/app/follow-the-money/page.tsx` — the page: hero, sections 01–06,
+  outro with credit. Section copy and the seat takeaways live here.
+- `src/app/follow-the-money/opengraph-image.tsx` — the page's share
+  card (banknote green); the simulator route inherits it.
 - `src/components/anatomy/PaymentStage.tsx` — Act I stage (scenarios,
   card, rail, timelines, sound, doors, verdict).
 - `src/components/anatomy/SettlementTimeline.tsx` — Act II night
@@ -108,7 +110,8 @@ funnel events telling us where curiosity goes).
   funding strip. Content in `src/lib/cardBuild.ts`.
 - `src/components/anatomy/IssuerReplay.tsx` — Act IV release two
   (2026-10-03): the issuer stop opened into processor, program, books;
-  path and clock follow the card built above.
+  path and clock follow the card built above. Release three's ending
+  (`ENDINGS` in `cardBuild.ts`) is the sheet's fifth step.
 - `src/lib/program-economics.ts` + `src/components/anatomy/ProgramSimulator.tsx`
   + `src/app/follow-the-money/simulator/page.tsx` — the card program
   simulator (2026-10-03), a route of its own linked from the end of
@@ -140,13 +143,12 @@ Open, roughly in order:
 1. **Femi's voice pass** over all copy (Act III most sensitive; the
    2026-08-06 orientation + seat-takeaway copy is DRAFT too).
 2. **Act IV — before the tap**: scoped with Femi 2026-10-02 (see the
-   log). Releases one (the build sheet) and two (the issuer stop
-   opened on its own rail) are live; release three adds the "who is
-   on the hook" ending, the seat takeaways and the share card.
-   Industry mechanism only, never "the chapter I built". The card
-   program simulator (`/follow-the-money/simulator`, 2026-10-03) is
-   the instrument at the end of the act: presets, break-even and the
-   hook line are logged with their reasons.
+   log). All three releases are live (the build sheet, the issuer stop
+   opened on its own rail, the who-is-on-the-hook ending with the seat
+   takeaways and the share card). Industry mechanism only, never "the
+   chapter I built". **Act V is the card program simulator** (Femi,
+   2026-10-03): section 06 on the page, the sheet at
+   `/follow-the-money/simulator`.
 3. Success metric (before announcing), OG image so links unfurl,
    home-page teaser, first funnel review (which doors get opened,
    where the chapter drop-off is). The page's own accent shipped
