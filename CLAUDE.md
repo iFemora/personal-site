@@ -141,8 +141,9 @@ operations (deleting files, rewriting history, changing DNS).
 /follow-the-money       Interactive payments explainer — Femi's product proof.
                         Six acts (sections 01–06); Act V is the simulator.
                         In the nav under the "Knowledge" umbrella (dropdown
-                        like Studio) since 2026-09-30, its only room for now
-                        with a "More soon" note. It was unlisted 2026-09-27
+                        like Studio) since 2026-09-30; the simulator joined
+                        it as a second room on 2026-10-03 and the "More
+                        soon" note retired. It was unlisted 2026-09-27
                         because a lone "Money" item confused visitors; the
                         audit decided not to wait for company during the job
                         hunt. Never list it as a bare "Money" item again. Next
@@ -152,8 +153,9 @@ operations (deleting files, rewriting history, changing DNS).
                         (pattern + status) and docs/anatomy-log.md (dated
                         decision log). /anatomy 308-redirects here.
 /follow-the-money/simulator
-                        Card program simulator: a route of its own, linked
-                        from the end of act five. Model in
+                        Card program simulator: a route of its own, the
+                        second Knowledge room ("Build a Card Program") and
+                        act six on the page. Model in
                         src/lib/program-economics.ts (pure, no React), view
                         in src/components/anatomy/ProgramSimulator.tsx. All
                         rates illustrative; presets and break-even decisions
@@ -179,7 +181,7 @@ New sections claim the next sibling from the earthy family in
 `packages/femora-ds/tokens.css`.
 
 **Nav order:** About · Work · CV · Studio ▾ (Reel, Writing, Gallery) ·
-Knowledge ▾ (Follow the Money, "More soon") · Notes · Love. Writing and
+Knowledge ▾ (Follow the Money, Build a Card Program) · Notes · Love. Writing and
 Gallery keep their URLs and accents; they only moved under the Studio
 dropdown to keep the pill short. Don't re-add them as top-level items.
 CV and the Knowledge umbrella joined the pill on 2026-09-30 for the job

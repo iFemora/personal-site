@@ -369,3 +369,12 @@ act (the months from the sponsor bank's yes to the first tap, in the
 Act II time-compression grammar) is the obvious candidate for an Act
 VI if the funnel asks for one.
 
+## 2026-10-03 — the simulator gets its own door in the nav (Femi)
+
+"Make 'Build a card program' its own path under knowledge nav, just as
+we have 'follow the money.'" So the Knowledge umbrella has two rooms,
+Follow the Money and Build a Card Program, both in banknote green, and
+the "More soon" note that held the umbrella's place since 2026-09-30
+retired. A room nested under another's path lights only the deepest
+match, so the simulator does not light both rows.
+
