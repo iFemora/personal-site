@@ -199,3 +199,24 @@ Format: **what** · where · how to resolve.
   carried question on the card · `src/app/follow-the-money/page.tsx`,
   `src/app/follow-the-money/opengraph-image.tsx` · keep or reword.
 
+
+## Compliance check against the "website fine" reel (2026-10-05)
+
+- **Privacy disclosure.** GA4 and Vercel Analytics run on every page and
+  nothing on the site says so; Google's Analytics terms require a
+  posted privacy notice that names GA and its cookies · a short
+  `/privacy` page (or a Colophon section) plus a footer link · decide
+  whether you want the page, and whether GA should wait for consent
+  (Quebec Law 25 / GDPR opt-in) or keep loading as it does.
+- **Audio-only field notes need a text alternative (WCAG 1.2.1, level
+  A).** Five of six voice memos have a body that can stand as the
+  transcript; "there's no one way to do anything" (2026-07-01) has
+  nothing · `content/field-notes.json`, `transcript` field · paste a
+  transcript in your words, or a one-paragraph summary.
+- **Four code fixes, no copy involved.** Malformed `<dl>` in the
+  interchange slider and the simulator sheet (WCAG 1.3.1); two About
+  timeline dots overlap under 24px on phones (WCAG 2.5.8); case-study
+  pages jump h1→h3 and Act IV uses h4 under h2; two 8px labels break
+  the 11px floor · `InterchangeSlider.tsx`, `ProgramSimulator.tsx`,
+  `about/`, `CaseStudy.tsx`, `CardBuild.tsx`, `PaymentStage.tsx`,
+  `ResolveReleaseArtifact.tsx` · say "ship the compliance fixes".
