@@ -15,11 +15,36 @@ const TURNS = 2.35;
 const INNER = 5;
 const R_MAX = 45;
 
+/* Beats sit at equal arc length along the spiral, not equal angle: equal
+   angle crowds the inner turn (dots 16px apart on a phone, under the 24px
+   target floor of WCAG 2.5.8) and leaves the outer turn sparse. */
 function layout(n: number) {
-  const b = (R_MAX - INNER) / (TURNS * 2 * Math.PI);
+  const span = TURNS * 2 * Math.PI;
+  const b = (R_MAX - INNER) / span;
+  const STEPS = 2000;
+  const arc: number[] = [0];
+  for (let s = 1; s <= STEPS; s++) {
+    const t0 = ((s - 1) / STEPS) * span;
+    const t1 = (s / STEPS) * span;
+    const r0 = INNER + b * t0;
+    const r1 = INNER + b * t1;
+    arc.push(
+      arc[s - 1] +
+        Math.hypot(
+          r1 * Math.cos(t1) - r0 * Math.cos(t0),
+          r1 * Math.sin(t1) - r0 * Math.sin(t0)
+        )
+    );
+  }
+  const total = arc[STEPS];
   return Array.from({ length: n }, (_, i) => {
-    const theta = (i / Math.max(n - 1, 1)) * TURNS * 2 * Math.PI - Math.PI / 2;
-    const r = INNER + b * (theta + Math.PI / 2);
+    const target = (i / Math.max(n - 1, 1)) * total;
+    let s = 0;
+    while (s < STEPS - 1 && arc[s + 1] < target) s++;
+    const seg = arc[s + 1] - arc[s] || 1;
+    const t = ((s + (target - arc[s]) / seg) / STEPS) * span;
+    const theta = t - Math.PI / 2;
+    const r = INNER + b * t;
     return {
       x: 50 + r * Math.cos(theta),
       y: 50 + r * Math.sin(theta),

@@ -557,7 +557,7 @@ export default function PaymentStage() {
           </p>
           <div className="mt-3 flex items-end justify-between">
             <div>
-              <p className="font-mono text-[8px] uppercase tracking-[0.18em] text-muted">
+              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
                 Valid thru 12/29
               </p>
               <p className="mt-1 font-serif text-sm italic tracking-wide">

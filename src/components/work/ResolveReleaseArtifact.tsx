@@ -69,7 +69,7 @@ export default function ResolveReleaseArtifact() {
             {releases.map((release, i) => (
               <li key={release.marker} className="relative grid grid-cols-[28px_1fr] gap-4">
                 <span
-                  className={`relative z-10 flex h-7 w-7 items-center justify-center rounded-full border font-mono text-[8px] transition-colors duration-300 ${
+                  className={`relative z-10 flex h-7 w-7 items-center justify-center rounded-full border font-mono text-[11px] transition-colors duration-300 ${
                     i === 0
                       ? "border-accent bg-accent text-background"
                       : "border-rule bg-background text-muted group-hover:border-accent/60"

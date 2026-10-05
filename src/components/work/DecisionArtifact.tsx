@@ -24,9 +24,9 @@ export default function DecisionArtifact({
           ↗
         </span>
       </div>
-      <h3 className="mt-3 max-w-[24ch] font-serif text-xl leading-snug tracking-tight sm:text-2xl">
+      <h2 className="mt-3 max-w-[24ch] font-serif text-xl leading-snug tracking-tight sm:text-2xl">
         {title}
-      </h3>
+      </h2>
       <div className="mt-7">{children}</div>
       {caption && (
         <figcaption className="mt-6 max-w-[62ch] font-mono text-[11px] uppercase leading-relaxed tracking-[0.14em] text-muted">

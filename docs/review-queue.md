@@ -213,10 +213,3 @@ Format: **what** · where · how to resolve.
   transcript; "there's no one way to do anything" (2026-07-01) has
   nothing · `content/field-notes.json`, `transcript` field · paste a
   transcript in your words, or a one-paragraph summary.
-- **Four code fixes, no copy involved.** Malformed `<dl>` in the
-  interchange slider and the simulator sheet (WCAG 1.3.1); two About
-  timeline dots overlap under 24px on phones (WCAG 2.5.8); case-study
-  pages jump h1→h3 and Act IV uses h4 under h2; two 8px labels break
-  the 11px floor · `InterchangeSlider.tsx`, `ProgramSimulator.tsx`,
-  `about/`, `CaseStudy.tsx`, `CardBuild.tsx`, `PaymentStage.tsx`,
-  `ResolveReleaseArtifact.tsx` · say "ship the compliance fixes".

@@ -84,7 +84,7 @@ export default function CardBuild() {
             {String(index).padStart(2, "0")}
           </span>
           <div>
-            <h4 className="font-serif text-xl leading-snug tracking-tight">
+            <h3 className="font-serif text-xl leading-snug tracking-tight">
               {inHouse && seat.key !== "network" ? (
                 <>
                   {seat.name}{" "}
@@ -95,7 +95,7 @@ export default function CardBuild() {
               ) : (
                 seat.name
               )}
-            </h4>
+            </h3>
             <p className="mt-1.5 text-[15px] leading-relaxed">{seat.role}</p>
             <p className="mt-2 text-[13px] leading-relaxed text-muted">
               <span className="font-mono text-[11px] uppercase tracking-[0.15em]">
@@ -122,9 +122,9 @@ export default function CardBuild() {
                   className="overflow-hidden"
                 >
                   <div className="mt-5 border-t border-rule pt-5">
-                    <h5 className="font-serif text-lg leading-snug tracking-tight">
+                    <h4 className="font-serif text-lg leading-snug tracking-tight">
                       {seat.depth.title}
-                    </h5>
+                    </h4>
                     <p className="mt-2 max-w-[560px] font-serif italic leading-relaxed text-muted">
                       {seat.depth.intro}
                     </p>

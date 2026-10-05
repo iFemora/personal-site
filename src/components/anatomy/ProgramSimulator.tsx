@@ -308,15 +308,16 @@ export default function ProgramSimulator() {
           )}
         </div>
 
-        <dl className="mt-6">
+        <div className="mt-6">
           <div className="flex items-baseline justify-between gap-4 font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
-            <dt>Line</dt>
-            <dd className="flex gap-6">
+            <span>Line</span>
+            <span className="flex gap-6">
               <span className="w-24 text-right">A month</span>
               <span className="w-20 text-right">Per card</span>
-            </dd>
+            </span>
           </div>
           <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.2em] text-accent">Revenue</p>
+          <dl>
           {out.revenue.map((l) => (
             <div key={l.key} className="flex items-baseline justify-between gap-4 border-b border-rule py-2.5">
               <dt className="text-sm">{l.label}</dt>
@@ -326,7 +327,9 @@ export default function ProgramSimulator() {
               </dd>
             </div>
           ))}
+          </dl>
           <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.2em] text-accent">Costs</p>
+          <dl>
           {out.costs.map((l) => (
             <div key={l.key} className="flex items-baseline justify-between gap-4 border-b border-rule py-2.5">
               <dt className="text-sm">{l.label}</dt>
@@ -336,14 +339,17 @@ export default function ProgramSimulator() {
               </dd>
             </div>
           ))}
-          <div className="flex items-baseline justify-between gap-4 py-3">
-            <dt className="text-sm">Contribution</dt>
-            <dd className="flex gap-6 font-mono text-sm">
-              <span className="w-24 text-right">{money(out.contribution)}</span>
-              <span className="w-20 text-right text-muted">{per(out.contributionPerCard)}</span>
-            </dd>
-          </div>
-        </dl>
+          </dl>
+          <dl>
+            <div className="flex items-baseline justify-between gap-4 py-3">
+              <dt className="text-sm">Contribution</dt>
+              <dd className="flex gap-6 font-mono text-sm">
+                <span className="w-24 text-right">{money(out.contribution)}</span>
+                <span className="w-20 text-right text-muted">{per(out.contributionPerCard)}</span>
+              </dd>
+            </div>
+          </dl>
+        </div>
 
         <div className="mt-6 grid gap-6 border-t border-rule pt-6 sm:grid-cols-2">
           <div>

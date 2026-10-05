@@ -60,17 +60,15 @@ export default function InterchangeSlider() {
 
       <dl className="mt-7 space-y-4">
         {parts.map((p) => (
-          <div key={p.label}>
-            <div className="flex items-baseline justify-between gap-4">
-              <dt className="text-sm text-muted">{p.label}</dt>
-              <dd className="font-mono text-sm">{money(p.value)}</dd>
-            </div>
-            <div className="mt-1.5 h-[3px] bg-rule">
+          <div key={p.label} className="flex flex-wrap items-baseline justify-between gap-x-4">
+            <dt className="text-sm text-muted">{p.label}</dt>
+            <dd className="font-mono text-sm">{money(p.value)}</dd>
+            <dd aria-hidden className="mt-1.5 h-[3px] w-full bg-rule">
               <div
                 className="h-[3px] bg-accent transition-[width] duration-300"
                 style={{ width: `${(p.value / feeTotal) * 100}%` }}
               />
-            </div>
+            </dd>
           </div>
         ))}
         <div className="flex items-baseline justify-between gap-4 border-t border-rule pt-4">
