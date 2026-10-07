@@ -168,7 +168,7 @@ export function maintenanceHtml(): string {
     </p>
     <p class="sign">&mdash; Femi</p>
     <p class="hello">
-      Need me sooner? <a href="mailto:oluwafemiakinseye@gmail.com">say hello</a>
+      Need me sooner? <a href="mailto:hello@ifemora.dev">say hello</a>
     </p>
   </main>
 </body>

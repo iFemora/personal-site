@@ -54,6 +54,17 @@ removed in one sweep once he lands:
   line on the home share card in `src/app/opengraph-image.tsx`.
 - "CV" in the nav pill (after Work) and the footer link row.
 
+**Contact address (since 2026-10-07):** the public email is
+`hello@ifemora.dev`, declared once as `EMAIL` in
+`src/components/HireMe.tsx` (used by the hire-me block and the CV) and
+hard-coded in the footer links (`FooterLinks.tsx`) and the maintenance
+page. It is not a mailbox: ForwardEmail (free plan) forwards `hello@`
+and `femi@` to Femi's Gmail, with the alias map in a `forward-email=`
+TXT record in the ifemora.dev DNS zone on Vercel, and Gmail "Send mail
+as" replies from the same address. Any other local part bounces; new
+aliases are added to that TXT record. This address stays after the
+job search.
+
 **Review queue:** anything drafted or decided on Femi's behalf that
 still needs his eyes goes in `docs/review-queue.md` (one line each:
 what, where, how to resolve). Append there rather than asking in

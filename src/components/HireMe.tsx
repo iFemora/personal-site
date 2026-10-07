@@ -9,7 +9,7 @@ import { Reveal } from "@femora/design-system";
 export const SEEKING_LINE =
   "Open to Solutions Architect, Customer Success and Product roles, in Vancouver or remote across Canada.";
 
-export const EMAIL = "oluwafemiakinseye@gmail.com";
+export const EMAIL = "hello@ifemora.dev";
 
 const linkClass =
   "link-swipe font-mono text-xs uppercase tracking-[0.18em] text-accent";
