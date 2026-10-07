@@ -3,7 +3,7 @@ import { spiralPath } from "@femora/design-system/spiral-path";
 import { ogFonts } from "@/lib/ogFonts";
 
 export const alt =
-  "Femi Siji-Kenneth — Thinker. Tinkerer. Open to Solutions Architect, Customer Success and Product roles.";
+  "Femi Siji-Kenneth — Thinker. Tinkerer. Open to founding and senior product roles.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -93,7 +93,7 @@ export default async function OGImage() {
                 background: "#9A3B1E",
               }}
             />
-            <span>Open to Solutions Architect · Customer Success · Product</span>
+            <span>Open to founding and senior product roles</span>
           </div>
         </div>
 

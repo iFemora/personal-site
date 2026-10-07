@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     template: "%s — Femi Siji-Kenneth",
   },
   description:
-    "Femi Siji-Kenneth is a product leader open to Solutions Architect, Customer Success, and Product roles. Vancouver + remote Canada.",
+    "Femi Siji-Kenneth designs the product and builds the systems beneath it: payments, banking, regulated platforms. Open to founding and senior product roles, Vancouver or remote across Canada.",
   authors: [{ name: "Femi Siji-Kenneth" }],
   creator: "Femi Siji-Kenneth",
   openGraph: {
@@ -51,14 +51,14 @@ export const metadata: Metadata = {
     siteName: "Femi Siji-Kenneth",
     title: "Femi Siji-Kenneth — Product leader, payments and banking",
     description:
-      "Femi Siji-Kenneth is a product leader open to Solutions Architect, Customer Success, and Product roles. Vancouver + remote Canada.",
+      "Femi Siji-Kenneth designs the product and builds the systems beneath it: payments, banking, regulated platforms. Open to founding and senior product roles, Vancouver or remote across Canada.",
     locale: "en_CA",
   },
   twitter: {
     card: "summary_large_image",
     title: "Femi Siji-Kenneth — Product leader, payments and banking",
     description:
-      "Femi Siji-Kenneth is a product leader open to Solutions Architect, Customer Success, and Product roles. Vancouver + remote Canada.",
+      "Femi Siji-Kenneth designs the product and builds the systems beneath it: payments, banking, regulated platforms. Open to founding and senior product roles, Vancouver or remote across Canada.",
     creator: "@iFemora",
   },
 };

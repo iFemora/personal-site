@@ -6,8 +6,14 @@ import { Reveal } from "@femora/design-system";
 /** The one-line positioning statement, reused wherever the signal lives
     so the wording can change in one place. Drafted on Femi's behalf;
     logged in docs/review-queue.md. */
+export const LEAD_LINE = "Product leader, ten years in payments and banking.";
+
+/** The positioning thesis (2026-10-07): design-led, systems-deep. */
+export const THESIS_LINE =
+  "I care most about how a product feels to use, and I carry the ledgers, APIs and operations underneath it myself.";
+
 export const SEEKING_LINE =
-  "Open to Solutions Architect, Customer Success and Product roles, in Vancouver or remote across Canada.";
+  "Open to founding and senior product roles, Head of Product to Director, in Vancouver or remote across Canada.";
 
 export const EMAIL = "oluwafemiakinseye@gmail.com";
 
@@ -48,7 +54,7 @@ export default function HireMe({
             Femi Siji-Kenneth
           </p>
           <p className="mt-1 text-sm leading-relaxed text-muted">
-            Product leader, ten years in payments and banking. {SEEKING_LINE}
+            {LEAD_LINE} {SEEKING_LINE}
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3">
             <BookIntroLink location={location} />
@@ -75,6 +81,12 @@ export default function HireMe({
       <Reveal delay={0.08}>
         <p className="font-serif text-2xl leading-snug tracking-tight sm:text-3xl">
           {SEEKING_LINE}
+        </p>
+        <p className="mt-4 max-w-[560px] leading-relaxed text-muted">
+          If you are a founder with a first product still to ship, I design
+          it end to end and build the first version with your engineers. If
+          you run product at a scale-up or a bank, I take the regulated,
+          operationally heavy workflows and make them feel simple.
         </p>
         <p className="mt-4 max-w-[560px] leading-relaxed text-muted">
           Twenty minutes on a call is the quickest way to find out whether

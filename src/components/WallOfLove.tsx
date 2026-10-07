@@ -17,6 +17,10 @@ const FILTERS = [
 
 type FilterKey = (typeof FILTERS)[number]["key"];
 
+/** Words that appear on the wall today, offered when a search finds
+    nothing. Check them against the JSON when entries change. */
+const SUGGESTIONS = ["kind", "honest", "curious", "design"];
+
 /** Fold case and diacritics so "opeyemi" finds Ọpẹ́yẹmí and "hes family"
     finds "He's family". Thirteen entries need a filter, not a search engine. */
 function fold(text: string): string {
@@ -282,9 +286,29 @@ export default function WallOfLove({ entries }: { entries: WallEntry[] }) {
 
       {shown.length === 0 ? (
         <p className="font-serif text-lg italic leading-relaxed text-muted">
-          {query.trim()
-            ? "No one on the wall says that yet."
-            : "Nothing filed under this yet."}
+          {query.trim() ? (
+            <>
+              No one on the wall says that yet. Try{" "}
+              {SUGGESTIONS.map((word, i) => (
+                <span key={word}>
+                  <button
+                    type="button"
+                    onClick={() => setQuery(word)}
+                    className="not-italic text-accent underline underline-offset-4 hover:no-underline"
+                  >
+                    {word}
+                  </button>
+                  {i < SUGGESTIONS.length - 2
+                    ? ", "
+                    : i === SUGGESTIONS.length - 2
+                      ? " or "
+                      : "."}
+                </span>
+              ))}
+            </>
+          ) : (
+            "Nothing filed under this yet."
+          )}
         </p>
       ) : (
         <div key={filter} className="columns-1 gap-12 sm:columns-2">

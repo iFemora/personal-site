@@ -6,7 +6,8 @@ import { getDesk } from "@/lib/desk";
 import { siteUrl, serializeJsonLd } from "@/lib/seo";
 import ExternalArrow from "@/components/ExternalArrow";
 import BookIntroLink from "@/components/BookIntroLink";
-import HireMe, { SEEKING_LINE } from "@/components/HireMe";
+import HireMe, { LEAD_LINE, THESIS_LINE, SEEKING_LINE } from "@/components/HireMe";
+import ProofStrip from "@/components/ProofStrip";
 import EmployerStrip from "@/components/EmployerStrip";
 import {
   Reveal,
@@ -38,12 +39,12 @@ const workItems = [
 /* Drafted on Femi's behalf; logged in docs/review-queue.md. */
 const seeking = [
   {
-    title: "The role: Solutions Architect, Customer Success, or Product.",
-    body: "The seat where a customer's problem meets the platform. I have sat on both sides of that table: shipping the product, and standing with the merchant, the bank, or the agent while it failed to do what they needed.",
+    title: "The role: a founding product seat, or a senior one.",
+    body: "Head of Product or founding PM at an early-stage company, where the first product still has to be designed and shipped. Or Principal, Lead or Director at a scale-up or a bank, where the product exists and the work is making complex workflows feel simple.",
   },
   {
-    title: "The place: a bank, an enterprise, or a payments company.",
-    body: "Regulated and operationally messy suits me. Card issuing, corporate banking, disputes, collections, identity: the parts of the business where the detail is the product.",
+    title: "The place: where the detail is the product.",
+    body: "Payments, banking, B2B platforms, marketplaces. Regulated and operationally messy suits me: card issuing, corporate banking, disputes, collections, identity. I have shipped in all of them, and twice built the team as well as the product.",
   },
   {
     title: "The where: Vancouver, or remote across Canada.",
@@ -72,7 +73,7 @@ const decisionPrinciples = [
   },
   {
     title: "Keep the complexity behind the product.",
-    body: "Moving money and filing disputes are complicated. The interface should not make them feel more complicated.",
+    body: "Moving money and filing disputes are complicated. The screen is where that complexity is either absorbed or passed on to the person using it, and I would rather absorb it: fewer steps, plain words, the state of things always visible.",
     evidence: "Two markets, one banking surface",
     href: "/work/corporate-banking",
   },
@@ -154,7 +155,7 @@ export default function Home() {
         {/* The one line a recruiter needs before anything else. */}
         <Reveal immediate delay={0.34}>
           <p className="relative z-10 mt-6 max-w-[500px] text-base leading-relaxed sm:text-lg">
-            Product leader, ten years in payments and banking.{" "}
+            {LEAD_LINE} {THESIS_LINE}{" "}
             <span className="text-muted">{SEEKING_LINE}</span>
           </p>
         </Reveal>
@@ -195,6 +196,8 @@ export default function Home() {
           </Reveal>
         </div>
       </div>
+
+      <ProofStrip />
 
       <DrawnRule className="my-14 sm:my-20" immediate delay={0.45} />
 
