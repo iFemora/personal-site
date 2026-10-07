@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Newsreader, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import SiteAnalytics from "@/components/SiteAnalytics";
 import Nav from "@/components/Nav";
 import FooterLinks, { FooterClose } from "@/components/FooterLinks";
 import AccentController from "@/components/AccentController";
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     template: "%s — Femi Siji-Kenneth",
   },
   description:
-    "Femi Siji-Kenneth is a product leader open to Solutions Architect, Customer Success, and Product roles. Vancouver + remote Canada.",
+    "Femi Siji-Kenneth designs the product and builds the systems beneath it: payments, banking, regulated platforms. Open to founding and senior product roles, Vancouver or remote across Canada.",
   authors: [{ name: "Femi Siji-Kenneth" }],
   creator: "Femi Siji-Kenneth",
   openGraph: {
@@ -51,14 +51,14 @@ export const metadata: Metadata = {
     siteName: "Femi Siji-Kenneth",
     title: "Femi Siji-Kenneth — Product leader, payments and banking",
     description:
-      "Femi Siji-Kenneth is a product leader open to Solutions Architect, Customer Success, and Product roles. Vancouver + remote Canada.",
+      "Femi Siji-Kenneth designs the product and builds the systems beneath it: payments, banking, regulated platforms. Open to founding and senior product roles, Vancouver or remote across Canada.",
     locale: "en_CA",
   },
   twitter: {
     card: "summary_large_image",
     title: "Femi Siji-Kenneth — Product leader, payments and banking",
     description:
-      "Femi Siji-Kenneth is a product leader open to Solutions Architect, Customer Success, and Product roles. Vancouver + remote Canada.",
+      "Femi Siji-Kenneth designs the product and builds the systems beneath it: payments, banking, regulated platforms. Open to founding and senior product roles, Vancouver or remote across Canada.",
     creator: "@iFemora",
   },
 };
@@ -107,7 +107,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   // GA only loads when NEXT_PUBLIC_GA_ID is set (Vercel env), so local dev
-  // traffic never reaches the property.
+  // traffic never reaches the property; SiteAnalytics also skips visitors
+  // who send Global Privacy Control, as /privacy promises.
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
@@ -144,8 +145,8 @@ export default function RootLayout({
           </div>
         </CursorFieldProvider>
         <Analytics />
+        {gaId && <SiteAnalytics gaId={gaId} />}
       </body>
-      {gaId && <GoogleAnalytics gaId={gaId} />}
     </html>
   );
 }

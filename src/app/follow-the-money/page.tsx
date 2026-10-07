@@ -7,6 +7,7 @@ import {
   ProximityType,
 } from "@femora/design-system";
 import ChapterMark from "@/components/anatomy/ChapterMark";
+import HireMe from "@/components/HireMe";
 import PaymentStage from "@/components/anatomy/PaymentStage";
 import InterchangeSlider from "@/components/anatomy/InterchangeSlider";
 import SettlementTimeline from "@/components/anatomy/SettlementTimeline";
@@ -336,6 +337,10 @@ export default function FollowTheMoneyPage() {
           </Reveal>
         </section>
       </div>
+
+      <DrawnRule className="my-14 sm:my-20" />
+
+      <HireMe location="money_end" />
     </main>
   );
 }

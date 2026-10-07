@@ -10,9 +10,14 @@ Vancouver (moved from Toronto in 2026). He writes essays on Substack
 
 ## Owner status (as of 2026-09-30): job-hunting
 
-Femi is actively looking. Target roles: Solutions Architect, Customer
-Success / Product Success, and PM roles at banks and enterprises, in
-Vancouver or remote across Canada. North-star metric for the site:
+Femi is actively looking. Positioning since 2026-10-07: a design-led,
+systems-deep product leader ("I care most about how a product feels to
+use, and I carry the ledgers, APIs and operations underneath it myself").
+Target roles: founding PM / Head of Product at early-stage companies,
+and Principal, Lead or Director of Product at scale-ups and banks, in
+Vancouver or remote across Canada. The earlier "Solutions Architect,
+Customer Success, Product" trio was retired on 2026-10-07 because it read
+as three jobs; never reintroduce it. North-star metric for the site:
 **three recruiter conversations a day.** Weigh every change against that;
 the professional half (Work, CV, home hero) must convert, the personality
 half (Studio, Notes, Love) must make him memorable.
@@ -20,8 +25,9 @@ half (Studio, Notes, Love) must make him memorable.
 Where the "open to work" signal lives, so it can be found and later
 removed in one sweep once he lands:
 
-- Home hero: the positioning line under the tagline (uses
-  `SEEKING_LINE`), the `● Open to new roles` pill and the `Book an intro`
+- Home hero: the positioning line under the tagline (`LEAD_LINE` +
+  `THESIS_LINE` + `SEEKING_LINE`, all in `src/components/HireMe.tsx`),
+  the `● Open to new roles` pill and the `Book an intro`
   CTA (`src/components/BookIntroLink.tsx`, which also holds the booking
   URL: a Google Calendar appointment schedule, "Meet with Femi",
   https://calendar.app.google/yviSTFyCSgA2VHvd8; hours and timezone are
@@ -33,7 +39,11 @@ removed in one sweep once he lands:
 - Home section 04 "What I'm looking for" (`seeking` in `src/app/page.tsx`):
   three lines on role, place, and where. Remove the section and renumber
   05/06 when the search ends.
-- `src/components/HireMe.tsx`: `SEEKING_LINE` and the recruiter close.
+- `src/components/ProofStrip.tsx` under the home hero: four numbers from
+  `src/lib/proof.ts`, shared with the CV "In sixty seconds" strip. Not a
+  job-search signal as such; keep it after the search.
+- `src/components/HireMe.tsx`: `SEEKING_LINE`, the two-audience paragraph
+  (founders / scale-ups and banks) and the recruiter close.
   Full block at the end of Home, Work, every case study (`CaseStudy.tsx`)
   and the CV; the `compact` author card under essays and at the end of
   Notes; a booking link on the 404. Each placement passes a GA
@@ -176,6 +186,13 @@ operations (deleting files, rewriting history, changing DNS).
 /gallery/[series]       Sequenced photo series (e.g. /gallery/looking-closer) — chapters,
                         pairs/triptychs, authored order; listed as a strip above the sheet
 /colophon               How the site is made — mark, type, colour, motion, build
+/privacy                What is collected (GA4 with cookies, Vercel Analytics
+                        without), what sits in localStorage, third parties, how
+                        to opt out. Mirrors the code: SiteAnalytics skips GA for
+                        Global Privacy Control browsers, VideoEmbed uses
+                        youtube-nocookie / Vimeo dnt. Change one, change both.
+                        No cookie banner, on purpose (Femi's call, 2026-10-07):
+                        GPC + disclosure instead. Linked from the footer.
 /api/field-notes        POST endpoint hit by the iOS Shortcut for phone publishing
 /api/gallery            POST endpoint hit by the "Publish Photo" iOS Shortcut
 /maintenance            Preview of the "out, briefly" page (to take the site dark,

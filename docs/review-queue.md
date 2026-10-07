@@ -202,12 +202,14 @@ Format: **what** · where · how to resolve.
 
 ## Compliance check against the "website fine" reel (2026-10-05)
 
-- **Privacy disclosure.** GA4 and Vercel Analytics run on every page and
-  nothing on the site says so; Google's Analytics terms require a
-  posted privacy notice that names GA and its cookies · a short
-  `/privacy` page (or a Colophon section) plus a footer link · decide
-  whether you want the page, and whether GA should wait for consent
-  (Quebec Law 25 / GDPR opt-in) or keep loading as it does.
+- **Privacy page copy.** Five short sections (what is collected, what
+  stays on your device, third parties, opting out, questions), plain and
+  first person, "last revised on 7 October 2026" · `src/app/privacy/page.tsx`
+  · read once; the facts mirror the code. The decision taken for you: no
+  cookie banner; instead GA does not load for browsers sending Global
+  Privacy Control (`src/components/SiteAnalytics.tsx`). If you would
+  rather gate GA behind consent for everyone, say so and it becomes a
+  one-line toggle.
 - **Audio-only field notes need a text alternative (WCAG 1.2.1, level
   A).** Five of six voice memos have a body that can stand as the
   transcript; "there's no one way to do anything" (2026-07-01) has
@@ -221,3 +223,49 @@ Format: **what** · where · how to resolve.
   strip; two bugs found on the way (Knowledge pages end without HireMe,
   home has no H2s) · `docs/comparison-prashanthnimmagadda-2026-10-07.md`
   · read, reword the drafts, pick the "Now" batch.
+## Positioning pivot (2026-10-07, Femi's "yes" to the design-led framing)
+
+- **The three lines.** `LEAD_LINE` "Product leader, ten years in payments
+  and banking."; `THESIS_LINE` "I care most about how a product feels to
+  use, and I carry the ledgers, APIs and operations underneath it
+  myself."; `SEEKING_LINE` "Open to founding and senior product roles,
+  Head of Product to Director, in Vancouver or remote across Canada." ·
+  `src/components/HireMe.tsx` · reword once, every placement follows.
+- **Hire-me two-audience paragraph.** "If you are a founder with a first
+  product still to ship, I design it end to end and build the first
+  version with your engineers. If you run product at a scale-up or a
+  bank, I take the regulated, operationally heavy workflows and make them
+  feel simple." · `src/components/HireMe.tsx` · keep or reword.
+- **"What I'm looking for" lines 1 and 2.** "The role: a founding product
+  seat, or a senior one." and "The place: where the detail is the
+  product." with new bodies; line 3 unchanged · `src/app/page.tsx`
+  `seeking` · keep or reword.
+- **"How I decide" principle 04 body.** Now "…The screen is where that
+  complexity is either absorbed or passed on to the person using it, and
+  I would rather absorb it: fewer steps, plain words, the state of things
+  always visible." · `src/app/page.tsx` · keep or reword.
+- **CV header and summary.** Subtitle "Product Leader · Design-led
+  Products on Complex, Regulated Systems"; summary gains "design the
+  experience myself alongside the design team, carry the ledgers, APIs
+  and operational detail underneath it"; seeking sentence recast to the
+  new roles · `src/app/cv/page.tsx` · confirm, then the PDF regenerates
+  with `npm run build && npm run cv:pdf`.
+- **Meta description and share card.** "Femi Siji-Kenneth designs the
+  product and builds the systems beneath it: payments, banking, regulated
+  platforms. Open to founding and senior product roles, Vancouver or
+  remote across Canada." and the OG line "Open to founding and senior
+  product roles" · `src/app/layout.tsx`,
+  `src/app/opengraph-image.tsx` · keep or reword.
+- **Home proof strip.** "Under 5 months" (Resolve), ₦70B, 200,000+, 5 PMs
+  under the hero; the CV keeps its four with 29 states · `src/lib/proof.ts`
+  · confirm the four, or swap one for 29 states.
+- **Nav dropdown notes.** Studio "Film, essays, photographs"; Knowledge
+  "How card money moves, and what a program costs" · `src/components/Nav.tsx`.
+- **Love search suggestions.** "kind, honest, curious or design", words
+  that appear on the wall today · `src/components/WallOfLove.tsx`
+  `SUGGESTIONS` · swap for words you would rather people find.
+- **Resolve outcomes.** The Gemini spec claimed a >50% handling-time cut
+  and zero missed deadlines; nothing on the site supports them, so they
+  were not used. If any outcome is true and sayable, give the number and
+  it goes into the case study and the proof strip ·
+  `src/app/work/resolve/page.tsx`, `src/lib/proof.ts`.

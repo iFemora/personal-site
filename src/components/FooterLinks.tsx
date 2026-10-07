@@ -35,6 +35,7 @@ const links: { label: string; href: string; network?: string }[] = [
   { label: "substack", href: "https://substack.com/@ifemora", network: "substack" },
   { label: "cv", href: "/cv" },
   { label: "colophon", href: "/colophon" },
+  { label: "privacy", href: "/privacy" },
 ];
 
 /** The "Say hello →" mailto in the footer paragraph — a client island so

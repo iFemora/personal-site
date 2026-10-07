@@ -25,6 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/gallery",
     "/love",
     "/colophon",
+    "/privacy",
   ].map((path) => ({
     url: `${siteUrl}${path}`,
     lastModified: new Date(),

@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import PrintButton from "@/components/PrintButton";
 import BookIntroLink from "@/components/BookIntroLink";
+import { pick } from "@/lib/proof";
 import HireMe, { EMAIL } from "@/components/HireMe";
 
 export const metadata: Metadata = {
@@ -101,13 +102,9 @@ const education = [
 ];
 
 /* The ten-second read, above the summary. Each number is backed by a
-   bullet below. */
-const numbers: { value: string; label: string }[] = [
-  { value: "₦70B", label: "monthly volume on the corporate banking platform, from ₦200M at alpha" },
-  { value: "200,000+", label: "SME and enterprise clients served across Nigeria and the UK" },
-  { value: "5", label: "product managers hired and grown, APM to Lead" },
-  { value: "29", label: "Nigerian states visited to research in the field" },
-];
+   bullet below; the figures live in src/lib/proof.ts, shared with the
+   home proof strip. */
+const numbers = pick(["volume", "clients", "pms", "states"]);
 
 const toolGroups: { label: string; items: string }[] = [
   {
@@ -157,8 +154,7 @@ export default function CVPage() {
           Femi Siji-Kenneth
         </h1>
         <p className="mt-2 font-serif text-xl italic text-muted print:text-base">
-          Product Leader · Product Teams, Digital Experiences & Regulated
-          Markets
+          Product Leader · Design-led Products on Complex, Regulated Systems
         </p>
         <p className="mt-4 font-mono text-sm text-muted">
           Vancouver, BC ·{" "}
@@ -218,15 +214,18 @@ export default function CVPage() {
           them running. I have built and led PM teams, coaching product
           managers from associate to lead, and taken products from concept to
           national scale. My approach is consistent: meet customers where they
-          work, partner closely with design, and ship in small releases. That
+          work, design the experience myself alongside the design team, carry the
+          ledgers, APIs and operational detail underneath it, and ship in
+          small releases. That
           has taken me from farms in 29 Nigerian states to contact centres
           supporting global card programmes. I also build working prototypes in
           Claude Code so I can test product ideas before asking a team to
           commit to them.
         </p>
         <p className="mt-4 leading-relaxed print:mt-2 print:leading-snug">
-          I am now open to Solutions Architect, Customer Success, and Product
-          leadership roles, in Vancouver or remote across Canada.
+          I am now open to founding and senior product roles: Head of Product
+          at an early-stage company, or Principal to Director at a scale-up or
+          a bank, in Vancouver or remote across Canada.
         </p>
       </section>
 

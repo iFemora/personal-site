@@ -49,6 +49,7 @@ const items: NavItem[] = [
     href: "/studio",
     label: "Studio",
     hubLabel: "The whole studio →",
+    note: "Film, essays, photographs",
     openEvent: "nav_studio_open",
     rooms: [
       { href: "/studio/reel", label: "Reel", accent: "studio" },
@@ -58,6 +59,7 @@ const items: NavItem[] = [
   },
   {
     label: "Knowledge",
+    note: "How card money moves, and what a program costs",
     openEvent: "nav_knowledge_open",
     rooms: [
       { href: "/follow-the-money", label: "Follow the Money", accent: "money" },

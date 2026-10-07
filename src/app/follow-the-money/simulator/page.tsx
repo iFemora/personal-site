@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Reveal, DrawnRule, MaskedLines, ProximityType } from "@femora/design-system";
 import ProgramSimulator from "@/components/anatomy/ProgramSimulator";
+import HireMe from "@/components/HireMe";
 
 export const metadata: Metadata = {
   title: "Card Program Simulator",
@@ -56,6 +57,10 @@ export default function SimulatorPage() {
           </Link>
         </p>
       </Reveal>
+
+      <DrawnRule className="my-14 sm:my-20" />
+
+      <HireMe location="simulator_end" />
     </main>
   );
 }
