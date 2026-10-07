@@ -175,6 +175,13 @@ operations (deleting files, rewriting history, changing DNS).
 /gallery/[series]       Sequenced photo series (e.g. /gallery/looking-closer) — chapters,
                         pairs/triptychs, authored order; listed as a strip above the sheet
 /colophon               How the site is made — mark, type, colour, motion, build
+/privacy                What is collected (GA4 with cookies, Vercel Analytics
+                        without), what sits in localStorage, third parties, how
+                        to opt out. Mirrors the code: SiteAnalytics skips GA for
+                        Global Privacy Control browsers, VideoEmbed uses
+                        youtube-nocookie / Vimeo dnt. Change one, change both.
+                        No cookie banner, on purpose (Femi's call, 2026-10-07):
+                        GPC + disclosure instead. Linked from the footer.
 /api/field-notes        POST endpoint hit by the iOS Shortcut for phone publishing
 /api/gallery            POST endpoint hit by the "Publish Photo" iOS Shortcut
 /maintenance            Preview of the "out, briefly" page (to take the site dark,

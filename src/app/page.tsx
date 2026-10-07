@@ -87,9 +87,9 @@ const decisionPrinciples = [
 
 function SectionLabel({ index, label }: { index: string; label: string }) {
   return (
-    <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
+    <h2 className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
       <span className="text-accent">{index}</span> — {label}
-    </p>
+    </h2>
   );
 }
 

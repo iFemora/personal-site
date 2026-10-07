@@ -202,12 +202,14 @@ Format: **what** · where · how to resolve.
 
 ## Compliance check against the "website fine" reel (2026-10-05)
 
-- **Privacy disclosure.** GA4 and Vercel Analytics run on every page and
-  nothing on the site says so; Google's Analytics terms require a
-  posted privacy notice that names GA and its cookies · a short
-  `/privacy` page (or a Colophon section) plus a footer link · decide
-  whether you want the page, and whether GA should wait for consent
-  (Quebec Law 25 / GDPR opt-in) or keep loading as it does.
+- **Privacy page copy.** Five short sections (what is collected, what
+  stays on your device, third parties, opting out, questions), plain and
+  first person, "last revised on 7 October 2026" · `src/app/privacy/page.tsx`
+  · read once; the facts mirror the code. The decision taken for you: no
+  cookie banner; instead GA does not load for browsers sending Global
+  Privacy Control (`src/components/SiteAnalytics.tsx`). If you would
+  rather gate GA behind consent for everyone, say so and it becomes a
+  one-line toggle.
 - **Audio-only field notes need a text alternative (WCAG 1.2.1, level
   A).** Five of six voice memos have a body that can stand as the
   transcript; "there's no one way to do anything" (2026-07-01) has

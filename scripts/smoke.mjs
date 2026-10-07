@@ -33,6 +33,7 @@ const routes = [
   "/gallery/looking-closer",
   "/love",
   "/colophon",
+  "/privacy",
   "/sitemap.xml",
   "/opengraph-image",
   "/work/resolve/opengraph-image",
