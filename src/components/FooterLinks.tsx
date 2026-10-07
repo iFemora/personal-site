@@ -29,7 +29,7 @@ export function FooterClose() {
 }
 
 const links: { label: string; href: string; network?: string }[] = [
-  { label: "email", href: "mailto:oluwafemiakinseye@gmail.com", network: "email" },
+  { label: "email", href: "mailto:hello@ifemora.dev", network: "email" },
   { label: "linkedin", href: "https://linkedin.com/in/ifemora", network: "linkedin" },
   { label: "x", href: "https://x.com/iFemora", network: "x" },
   { label: "substack", href: "https://substack.com/@ifemora", network: "substack" },
@@ -43,7 +43,7 @@ const links: { label: string; href: string; network?: string }[] = [
 export function SayHelloLink() {
   return (
     <a
-      href="mailto:oluwafemiakinseye@gmail.com"
+      href="mailto:hello@ifemora.dev"
       onClick={() =>
         trackEvent("social_link_click", {
           network: "email",

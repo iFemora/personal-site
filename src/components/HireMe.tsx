@@ -15,7 +15,7 @@ export const THESIS_LINE =
 export const SEEKING_LINE =
   "Open to founding and senior product roles, Head of Product to Director, in Vancouver or remote across Canada.";
 
-export const EMAIL = "oluwafemiakinseye@gmail.com";
+export const EMAIL = "hello@ifemora.dev";
 
 const linkClass =
   "link-swipe font-mono text-xs uppercase tracking-[0.18em] text-accent";
