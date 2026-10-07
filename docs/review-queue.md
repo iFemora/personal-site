@@ -213,3 +213,11 @@ Format: **what** · where · how to resolve.
   transcript; "there's no one way to do anything" (2026-07-01) has
   nothing · `content/field-notes.json`, `transcript` field · paste a
   transcript in your words, or a one-paragraph summary.
+
+## Comparison with prashanthnimmagadda.vercel.app (2026-10-07)
+
+- **Comparison doc.** Nine borrowable moves, ranked, with draft copy for
+  the thesis line, five "decision" lines on Work and a capabilities
+  strip; two bugs found on the way (Knowledge pages end without HireMe,
+  home has no H2s) · `docs/comparison-prashanthnimmagadda-2026-10-07.md`
+  · read, reword the drafts, pick the "Now" batch.
