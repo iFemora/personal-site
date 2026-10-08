@@ -135,6 +135,9 @@ content:
           - name: href
             label: Link (optional)
             type: string
+          - name: cta
+            label: Link text (optional, defaults to "Read more")
+            type: string
 
   - name: gallery
     label: Gallery

@@ -7,6 +7,8 @@ export type DeskItem = {
   title: string;
   body: string;
   href?: string;
+  /** Link text; defaults to "Read more". */
+  cta?: string;
 };
 
 export type Desk = {

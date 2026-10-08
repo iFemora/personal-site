@@ -272,11 +272,6 @@ Format: **what** · where · how to resolve.
 
 ## Reading now (2026-10-08)
 
-- **Icons of Evolution cover.** The shelf shows a typographic
-  placeholder (title and author on house paper) because image hosts
-  were unreachable from the cloud session · replace
-  `public/gallery/books/icons-of-evolution.jpg` with the real cover
-  (500×800 or update `width`/`height` in `content/gallery.json`).
 - **Desk "Reading" body.** "Jonathan Wells on the textbook examples of
   evolution, and how well each one holds up." is drafted copy, and the
   book sits on the faith shelf · `content/desk.json`,

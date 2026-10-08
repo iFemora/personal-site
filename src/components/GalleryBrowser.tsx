@@ -25,6 +25,8 @@ type Props = {
   books: GalleryFrame[];
   /** Sequenced photo series, shown above the shuffled contact sheet. */
   series?: SeriesSummary[];
+  /** Which pill segment is selected on first render (from `?section=`). */
+  initialSection?: SectionKey;
 };
 
 /** The pill toggle from the wall of love: click a segment or slide across. */
@@ -119,14 +121,15 @@ export default function GalleryBrowser({
   art,
   books,
   series = [],
+  initialSection = "photos",
 }: Props) {
   const reduced = useReducedMotion();
-  const [section, setSection] = useState<SectionKey>("photos");
+  const [section, setSection] = useState<SectionKey>(initialSection);
   const [shelf, setShelf] = useState<ShelfKey>("all");
 
   // Trailing debounce so sliding across the pill reports only where the
   // pointer settles, and re-selecting the current segment reports nothing.
-  const lastSent = useRef("photos");
+  const lastSent = useRef<string>(`${initialSection}:`);
   const sendTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const trackSelect = (params: { section: SectionKey; shelf?: ShelfKey }) => {
     const key = `${params.section}:${params.shelf ?? ""}`;

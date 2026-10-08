@@ -26,7 +26,19 @@ function shuffle<T>(items: T[]): T[] {
   return a;
 }
 
-export default function GalleryPage() {
+type SearchParams = Promise<{ section?: string | string[] }>;
+
+export default async function GalleryPage({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}) {
+  // `/gallery?section=books` opens the shelf directly (the home desk's
+  // reading item links there); anything else lands on the photos.
+  const { section } = await searchParams;
+  const initialSection =
+    section === "books" || section === "art" ? section : undefined;
+
   // Only the photo wall shuffles. The shelf and the drawings keep their
   // authored order — what I'm reading now should stay findable.
   const photos = shuffle(getPhotos());
@@ -58,6 +70,7 @@ export default function GalleryPage() {
         art={art}
         books={books}
         series={getSeriesSummaries()}
+        initialSection={initialSection}
       />
     </main>
   );

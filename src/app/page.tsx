@@ -385,7 +385,7 @@ export default function Home() {
                 </p>
                 {item.href && (
                   <span className="mt-5 block font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
-                    Read more →
+                    {item.cta ?? "Read more"} →
                   </span>
                 )}
               </>
