@@ -269,3 +269,16 @@ Format: **what** · where · how to resolve.
   were not used. If any outcome is true and sayable, give the number and
   it goes into the case study and the proof strip ·
   `src/app/work/resolve/page.tsx`, `src/lib/proof.ts`.
+
+## Reading now (2026-10-08)
+
+- **Icons of Evolution cover.** The shelf shows a typographic
+  placeholder (title and author on house paper) because image hosts
+  were unreachable from the cloud session · replace
+  `public/gallery/books/icons-of-evolution.jpg` with the real cover
+  (500×800 or update `width`/`height` in `content/gallery.json`).
+- **Desk "Reading" body.** "Jonathan Wells on the textbook examples of
+  evolution, and how well each one holds up." is drafted copy, and the
+  book sits on the faith shelf · `content/desk.json`,
+  `content/gallery.json` · keep or reword; move the shelf if it belongs
+  under others.

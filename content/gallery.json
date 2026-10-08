@@ -363,6 +363,18 @@
     "kind": "art"
   },
   {
+    "id": "book-icons-of-evolution",
+    "src": "/gallery/books/icons-of-evolution.jpg",
+    "alt": "Cover of Icons of Evolution by Jonathan Wells",
+    "caption": "Icons of Evolution",
+    "note": "Jonathan Wells",
+    "status": "reading",
+    "width": 500,
+    "height": 800,
+    "kind": "book",
+    "category": "faith"
+  },
+  {
     "id": "book-faith-to-be-an-atheist",
     "src": "/gallery/books/faith-to-be-an-atheist.jpg",
     "alt": "Cover of I Don't Have Enough Faith to Be an Atheist by Norman L. Geisler and Frank Turek",
